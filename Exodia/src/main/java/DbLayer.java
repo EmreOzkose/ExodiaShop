@@ -23,21 +23,21 @@ public class DbLayer {
             ResultSet myRs = null;
 
             String user = "root";
-            String pass = "student";
+            String pass = "aezakmi1997";
 
             try {
                 // 1. Get a connection to database
-                myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/exodiadb", user, pass);
+                myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/exodiadb?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey", user, pass);
 
                 // 2. Create a statement
                 myStmt = myConn.createStatement();
 
                 // 3. Execute SQL query
-                myRs = myStmt.executeQuery("select * from employees");
+                myRs = myStmt.executeQuery("select * from customer");
 
                 // 4. Process the result set
                 while (myRs.next()) {
-                    System.out.println(myRs.getString("last_name") + ", " + myRs.getString("first_name"));
+                    System.out.println(myRs.getString("Name") + ", " + myRs.getString("Surname"));
                 }
 
             } catch (Exception exc) {
