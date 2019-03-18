@@ -10,4 +10,8 @@
  */
 public class Register_Customer extends Customer{
     
+    public Register_Customer(String name) {
+        super(name);
+    }
+    
 }

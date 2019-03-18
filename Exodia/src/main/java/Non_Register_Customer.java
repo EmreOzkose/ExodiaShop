@@ -10,4 +10,8 @@
  */
 public class Non_Register_Customer extends Customer{
     
+    public Non_Register_Customer() {
+        super("");
+    }
+    
 }
