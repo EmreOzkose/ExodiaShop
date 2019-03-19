@@ -15,16 +15,11 @@ import java.sql.*;
  * @author Mehmet Taha USTA
  */
 public class DbLayer {
+    private Connection myConn = null;
+    private Statement myStmt = null;
+    private ResultSet myRs = null;
     
-    public static void main(String[] args) throws SQLException {
-
-            Connection myConn = null;
-            Statement myStmt = null;
-            ResultSet myRs = null;
-
-            String user = "root";
-            String pass = "aezakmi1997";
-
+    public Connection connect(String user,String pass) throws SQLException{
             try {
                 // 1. Get a connection to database
                 myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/exodiadb?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey", user, pass);
@@ -46,7 +41,6 @@ public class DbLayer {
                 if (myRs != null) {
                     myRs.close();
                 }
-
                 if (myStmt != null) {
                     myStmt.close();
                 }
@@ -55,6 +49,11 @@ public class DbLayer {
                     myConn.close();
                 }
             }
-        }
+            return myConn;    
+    }
+    public static void main(String[] args) throws SQLException {
+    DbLayer deneme = new DbLayer();
+    deneme.connect("root","aezakmi1997");
+    }
     
 }
