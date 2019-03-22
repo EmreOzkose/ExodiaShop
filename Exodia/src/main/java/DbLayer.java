@@ -45,7 +45,7 @@ public class DbLayer {
 
             // 3. Execute SQL query
             myRs = myStmt.executeQuery("select Password from customer where name ='"+UserName+"'");
-            
+            //bozukkk
             if(Password.equals(myRs.getString("Password"))){
                 return true;
             }
