@@ -34,6 +34,24 @@ public class DbLayer {
             }
         }
     }
+    public boolean Check(String UserName,String Password) throws SQLException{
+        if(myConn == null){
+            //baglı degil diye give an error
+            //connect(Commd, Commd);
+        }else{
+            // 2. Create a statement
+            myStmt = myConn.createStatement();
+            System.out.println("select Password from customer where name ='"+UserName+"'");
+
+            // 3. Execute SQL query
+            myRs = myStmt.executeQuery("select Password from customer where name ='"+UserName+"'");
+            
+            if(Password.equals(myRs.getString("Password"))){
+                return true;
+            }
+        }
+        return false;
+    }
     public void Close() throws SQLException{
         if (myRs != null) {
             myRs.close();
@@ -49,7 +67,8 @@ public class DbLayer {
     public static void main(String[] args) throws SQLException {
         DbLayer deneme = new DbLayer();
         deneme.connect("root","aezakmi1997");
-        deneme.Command("select * from customer");
+        //deneme.Command("select * from customer");
+        deneme.Check("Mehmet Taha", "password123");
         deneme.Close();
     }
     
