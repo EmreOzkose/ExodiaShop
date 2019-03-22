@@ -18,6 +18,10 @@ public class DbLayer {
         }
     }
     public void Command(String Commd) throws SQLException{
+        if(myConn == null){
+            //istek geri yollancak
+            connect(Commd, Commd);
+        }
         // 2. Create a statement
         myStmt = myConn.createStatement();
 
@@ -25,6 +29,7 @@ public class DbLayer {
         myRs = myStmt.executeQuery(Commd);
 
         // 4. Process the result set
+        //degiscek
         while (myRs.next()){
         System.out.println(myRs.getString("Name") + ", " + myRs.getString("Surname"));
         }       
@@ -42,11 +47,10 @@ public class DbLayer {
     }
     
     public static void main(String[] args) throws SQLException {
-    DbLayer deneme = new DbLayer();
-    deneme.connect("root","aezakmi1997");
-    /*bura düzenlenmesi gerekiyor ic kodlar dahil*/
-    deneme.Command("select * from customer");
-    deneme.Close();
+        DbLayer deneme = new DbLayer();
+        deneme.connect("root","aezakmi1997");
+        deneme.Command("select * from customer");
+        deneme.Close();
     }
     
 }
