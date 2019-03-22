@@ -19,20 +19,20 @@ public class DbLayer {
     }
     public void Command(String Commd) throws SQLException{
         if(myConn == null){
-            //istek geri yollancak
+            //baglı degil diye give an error
             connect(Commd, Commd);
+        }else{
+            // 2. Create a statement
+            myStmt = myConn.createStatement();
+
+            // 3. Execute SQL query
+            myRs = myStmt.executeQuery(Commd);
+
+            // 4. Process the result set
+            while (myRs.next()){
+            System.out.println(myRs.getString("Name") + ", " + myRs.getString("Surname"));
+            }
         }
-        // 2. Create a statement
-        myStmt = myConn.createStatement();
-
-        // 3. Execute SQL query
-        myRs = myStmt.executeQuery(Commd);
-
-        // 4. Process the result set
-        //degiscek
-        while (myRs.next()){
-        System.out.println(myRs.getString("Name") + ", " + myRs.getString("Surname"));
-        }       
     }
     public void Close() throws SQLException{
         if (myRs != null) {
