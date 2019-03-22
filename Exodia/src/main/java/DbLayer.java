@@ -33,8 +33,8 @@ public class DbLayer {
     public static void main(String[] args) throws SQLException {
     DbLayer deneme = new DbLayer();
     deneme.connect("root","aezakmi1997");
+    /*bura düzenlenmesi gerekiyor ic kodlar dahil*/
     deneme.Command(deneme,"select * from customer");
-    
     }
     
 }
