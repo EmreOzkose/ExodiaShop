@@ -54,7 +54,10 @@ body {
    width: 100%;
    margin-bottom: 20px;
  }
-
+ .login-button{
+   width: 100%;
+   margin-bottom: 20px;
+ }
  .login input[type="text"], input[type="password"]{
    border: none;
    border-bottom: 1px solid #000;
@@ -65,7 +68,7 @@ body {
    font-size: 16px;
  }
 
- .login input[type="submit"] {
+ .login-button[type="button"] {
    border: none;
    outline: none;
    height: 40px;
@@ -75,7 +78,7 @@ body {
    border-radius: 20px;
  }
 
- .login input[type="submit"]:hover {
+ .login-button[type="button"]:hover {
     cursor: pointer;
     background: #79fff0;
     color: #fff;
