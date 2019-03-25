@@ -8,9 +8,12 @@
         <script>
            function sendPureAjax(parameters) {
             var xmlHttp = new XMLHttpRequest();
-            xmlHttp.onreadystatechange = function () {
-                if (xmlHttp.readyState === 4) {
-                    if (xmlHttp.status === 200) {
+            xmlHttp.onreadystatechange = function () 
+            {
+                if (xmlHttp.readyState === 4) 
+                {
+                    if (xmlHttp.status === 200) 
+                    {
                         parameters.success(xmlHttp.responseText);
                     } else {
                         parameters.failure(xmlHttp.statusText, xmlHttp.status, xmlHttp.responseText);
