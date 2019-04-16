@@ -4,12 +4,52 @@
 	pageEncoding="ISO-8859-1"%>
 <html>
 <head>
+    <style>
+       html {
+  height:100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: rgb(121,255,240);
+  background: -moz-linear-gradient(128deg, rgba(121,255,240,1) 0%, rgba(143,203,246,1) 50%, rgba(172,130,255,1) 100%);
+  background: -webkit-linear-gradient(128deg, rgba(121,255,240,1) 0%, rgba(143,203,246,1) 50%, rgba(172,130,255,1) 100%);
+  background: linear-gradient(128deg, rgba(121,255,240,1) 0%, rgba(143,203,246,1) 50%, rgba(172,130,255,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#79fff0",endColorstr="#ac82ff",GradientType=1);
+}
+input[type="text"], input[type="password"]{
+   border: none;
+   border-bottom: 1px solid #000;
+   background: transparent;
+   outline: none;
+   height: 40px;
+   color: #000;
+   font-size: 16px;
+ }
+  button{
+   border: none;
+   outline: none;
+   height: 40px;
+   background: #ac82ff;
+   color: #fff;
+   font-size: 18px;
+   border-radius: 20px;
+ }
+
+ input[type="submit"]:hover {
+    cursor: pointer;
+    background: #79fff0;
+    color: #fff;
+ }
+     
+    </style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Registration</title>
 </head>
 <body>
 	<form:form id="regForm" modelAttribute="customer" action="registerProcess" method="post">
-
 		<table align="center">
 			<tr>
 				<td><form:label path="username">Username</form:label></td>
@@ -48,7 +88,6 @@
 				<td><form:label path="phonenumber">Phone</form:label></td>
 				<td><form:input path="phonenumber" name="phonenumber" id="phonenumber" /></td>
 			</tr>
-
 			<tr>
 				<td></td>
 				<td><form:button id="register" name="register">Register</form:button></td>

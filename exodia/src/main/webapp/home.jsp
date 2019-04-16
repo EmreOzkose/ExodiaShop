@@ -11,6 +11,8 @@
 		<tr>
 			<td><a href="login">Login</a></td>
 			<td><a href="register">Register</a></td>
+                        <td><a href="deneme.jsp">deneme</a></td>
+                        <td><a href="mainafterlogin.jsp">Main</a></td>
 		</tr>
 	</table>
 </body>
