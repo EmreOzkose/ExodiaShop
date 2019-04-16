@@ -1,0 +1,104 @@
+
+html {
+  height:100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: rgb(121,255,240);
+  background: -moz-linear-gradient(128deg, rgba(121,255,240,1) 0%, rgba(143,203,246,1) 50%, rgba(172,130,255,1) 100%);
+  background: -webkit-linear-gradient(128deg, rgba(121,255,240,1) 0%, rgba(143,203,246,1) 50%, rgba(172,130,255,1) 100%);
+  background: linear-gradient(128deg, rgba(121,255,240,1) 0%, rgba(143,203,246,1) 50%, rgba(172,130,255,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#79fff0",endColorstr="#ac82ff",GradientType=1);
+}
+
+.logo img{
+  width: 318px;
+  height: 102px;
+  position: absolute;
+  top: -15%;
+  left: 13%;
+}
+
+.login {
+  width: 400px;
+  height: 500px;
+  background: transparent;
+  color: #ffffff;
+  top: 43%;
+  left: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 70px 30px;
+  border-radius: 20px;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  position: absolute;
+  top: -5%;
+  left: calc(50% - 33px);
+}
+
+ h1 {
+   margin: 0;
+   padding: 0 0 20px;
+   text-align: center;
+   line-height: 1em;
+   font-size: 26px;
+ }
+
+ .login p{
+   margin: 0;
+   padding: 0;
+   font-weight: bold;
+   font-size: 14px;
+ }
+
+ .login input{
+   width: 100%;
+   margin-bottom: 20px;
+ }
+
+ .login input[type="text"], input[type="password"]{
+   border: none;
+   border-bottom: 1px solid #000;
+   background: transparent;
+   outline: none;
+   height: 40px;
+   color: #000;
+   font-size: 16px;
+ }
+
+ .login input[type="submit"] {
+   border: none;
+   outline: none;
+   height: 40px;
+   background: #ac82ff;
+   color: #fff;
+   font-size: 18px;
+   border-radius: 20px;
+ }
+
+ .login input[type="submit"]:hover {
+    cursor: pointer;
+    background: #79fff0;
+    color: #fff;
+ }
+
+.login a{
+  left: 50%;
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 20px;
+  color: #037d6f;
+}
+
+.login a:hover {
+  color: #3d0066;
+}
