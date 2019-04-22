@@ -43,6 +43,17 @@ input[type="text"], input[type="password"]{
     background: #79fff0;
     color: #fff;
  }
+ a{
+  left: 50%;
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 20px;
+  color: #037d6f;
+}
+
+a:hover {
+  color: #3d0066;
+}
      
     </style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">

@@ -18,8 +18,8 @@
        background: -webkit-linear-gradient(128deg, rgba(121,255,240,1) 0%, rgba(143,203,246,1) 50%, rgba(172,130,255,1) 100%);
        background: linear-gradient(128deg, rgba(121,255,240,1) 0%, rgba(143,203,246,1) 50%, rgba(172,130,255,1) 100%);
        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#79fff0",endColorstr="#ac82ff",GradientType=1);
-     }
-    input[type="text"], input[type="password"]{
+    }
+   input[type="text"], input[type="password"]{
    border: none;
    border-bottom: 1px solid #000;
    background: transparent;
@@ -43,7 +43,7 @@
 <title>Login</title>
 </head>
 <body>
-        
+        <img src= <c:url value="/resources/avatar.png"> </c:url>  >  
 	<form:form id="loginForm" modelAttribute="login" action="loginProcess" method="post">
             <table align="center">
                 <tr>
