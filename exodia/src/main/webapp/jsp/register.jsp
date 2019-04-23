@@ -55,58 +55,66 @@ a:hover {
   color: #3d0066;
 }
      
+label{
+    color: #fff;
+}
     </style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Registration</title>
 </head>
 <body>
+    
 	<form:form id="regForm" modelAttribute="customer" action="registerProcess" method="post">
+            <img src="exodia-cursive.png" alt="exodia shop">
+            
 		<table align="center">
-			<tr>
-				<td><form:label path="username">Username</form:label></td>
-				<td><form:input path="username" name="username" id="username" /></td>
+                    
+                    <tr>
+                            <tr>
+                                    <td><form:label path="Name">Name</form:label></td>
+                            </tr>
+				
+				<td><form:input path="Name" name="Name"	id="Name" placeholder ="Name"/></td>
+			</tr>
+                        
+                        <tr>
+                            <tr><td><form:label path="surname">Surname</form:label></td></tr>
+				<td><form:input path="surname" name="surname" id="surname" placeholder ="Surname"/></td>
 			</tr>
 			<tr>
-				<td><form:label path="password">Password</form:label></td>
+                        <tr><td><form:label path="username">Username</form:label></td></tr>
+				<td><form:input path="username" name="username" id="username" placeholder ="Username"/></td>
+			</tr>
+			<tr>
+				<tr><td><form:label path="password">Password</form:label></td></tr>
 				<td><form:password path="password" name="password"
-						id="password" /></td>
+						id="password" placeholder ="Password"/></td>
+			</tr>
+			
+			<tr>
+                        <tr><td><form:label path="dateofbirth">Date Of Birth</form:label></td></tr>
+				<td><form:input path="dateofbirth" name="dateofbirth" id="dateofbirth" placeholder ="DD-MM-YYYY"/></td>
 			</tr>
 			<tr>
-				<td><form:label path="Name">Name</form:label></td>
-				<td><form:input path="Name" name="Name"	id="Name" /></td>
+                        <tr><td><form:label path="gender">Gender</form:label></td></tr>
+				<td><form:input path="gender" name="gender" id="gender" placeholder ="Gender"/></td>
 			</tr>
 			<tr>
-				<td><form:label path="surname">Surname</form:label></td>
-				<td><form:input path="surname" name="surname" id="surname" /></td>
+				<tr><td><form:label path="email">Email</form:label></td></tr>
+				<td><form:input path="email" name="email" id="email" placeholder = "E-Mail"/></td>
 			</tr>
+			
+			
 			<tr>
-				<td><form:label path="dateofbirth">Date Of Birth</form:label></td>
-				<td><form:input path="dateofbirth" name="dateofbirth" id="dateofbirth" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="gender">Gender</form:label></td>
-				<td><form:input path="gender" name="gender" id="gender" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="email">Email</form:label></td>
-				<td><form:input path="email" name="email" id="email" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="address">Address</form:label></td>
-				<td><form:input path="address" name="address" id="address" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="phonenumber">Phone</form:label></td>
-				<td><form:input path="phonenumber" name="phonenumber" id="phonenumber" /></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><form:button id="register" name="register">Register</form:button></td>
+				<tr><td><form:button id="register" name="register">Register</form:button></td></tr>
+				
 			</tr>
 			<tr></tr>
+                        
+                        
 			<tr>
-				<td></td>
-				<td><a href="home.jsp">Home</a></td>
+                        <tr></tr>
+				<tr><td><a href="home.jsp">Home</a></td></tr>
 			</tr>
 		</table>
 	</form:form>

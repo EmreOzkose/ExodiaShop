@@ -38,6 +38,9 @@
    font-size: 18px;
    border-radius: 20px;
  }
+ label{
+    color: #fff;
+ }
      
 </style>
 <title>Login</title>
@@ -47,21 +50,23 @@
 	<form:form id="loginForm" modelAttribute="login" action="loginProcess" method="post">
             <table align="center">
                 <tr>
-                        <td><form:label path="username">Username: </form:label></td>
+                         <tr>
+                             <td><form:label path="username">Username: </form:label></td></tr>
                         <td><form:input path="username"  name="username"  placeholder ="Enter your username" id="username" /></td>
                 </tr>
                 <tr>
-                        <td><form:label path="password">Password:</form:label></td>
+                         <tr>
+                             <td><form:label path="password">Password:</form:label></td></tr>
                         <td><form:password path="password" name="password" placeholder ="Enter your password" id="password" /></td>
                 </tr>
                 <tr>
-                        <td></td>
+                        <tr></tr>
                         <td align="left"><form:button id="login" name="login">Login</form:button></td>
                 </tr>
 
                 <tr></tr>
                 <tr>
-                        <td></td>
+                        <tr></tr>
                         <td><a href="home.jsp">Home</a></td>
                 </tr>
             </table>

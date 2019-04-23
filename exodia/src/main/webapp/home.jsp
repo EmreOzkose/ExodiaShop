@@ -13,6 +13,8 @@
 			<td><a href="register">Register</a></td>
                        
                         <td><a href="mainafterlogin.jsp">Main</a></td>
+                        
+                        <td><a href="product_details.jsp">Product</a></td>
 		</tr>
 	</table>
 </body>

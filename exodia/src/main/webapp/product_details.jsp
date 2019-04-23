@@ -1,12 +1,11 @@
 <%-- 
-    Document   : mainafterlogin
-    Created on : Apr 16, 2019, 11:16:35 PM
+    Document   : product_details
+    Created on : Apr 23, 2019, 7:28:00 PM
     Author     : Enes
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -14,10 +13,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    
-    
     <!-- Bootstrap styles -->
-    <!--  <link href="assets/css/bootstrap.css" rel="stylesheet"/> -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet"/>
+    <style>
+        body{ background: rgb(155,255,244);
+background: -moz-linear-gradient(128deg, rgba(155,255,244,1) 0%, rgba(191,160,254,1) 100%);
+background: -webkit-linear-gradient(128deg, rgba(155,255,244,1) 0%, rgba(191,160,254,1) 100%);
+background: linear-gradient(128deg, rgba(155,255,244,1) 0%, rgba(191,160,254,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#9bfff4",endColorstr="#bfa0fe",GradientType=1);}
+#header{padding:8px 0 8px;}
+#header a{text-decoration:none}
+#header p{padding:0; margin:0; line-height:1em; font-size:100%}
+#header h1{margin:0;line-height:1em }
+#header h1.dotmark{line-height:1.5em;}
+#header{ padding-top:44px;}
+.logo {padding-top: 11px;display: block;}
+.logo span{display:none}
+.dotmark{padding:4px; font-size:14px; line-height:1.5em;  background:#fff; border:1px dashed rgb(252, 111, 0); margin:0; color:rgb(252, 111, 0); position:relative;}
+.dotmark:hover{ border:1px dashed #fff; color:#fff; background:#8fcbf6;}
+.dotmark i{position:absolute; left:10%; top:-12px; font-size:21px;}
+.offerNoteWrapper{display: none; border:6px solid #fff; margin: 6px;}
+.offerNoteWrapper:hover{border-color:#79fff0;}
+h3 {font-size: 18px;line-height: 1.5em;}
+hr.soften {margin: 8px 0;background: #DDD;}
+.moreOptopm.carousel .carousel-control,.moreOptopm.carousel .carousel-control:hover {background:transparent; }
+.moreOptopm.carousel .carousel-control {border: 0; top: 50%; bottom: 0;}
+.moreOptopm.carousel .carousel-control.right, .moreOptopm.carousel .carousel-control.right:hover {right:0; }
+.moreOptopm.carousel .carousel-control.left, .moreOptopm.carousel .carousel-control.left:hover {left:0; }
+.moreOptopm.carousel .carousel-control, .moreOptopm.carousel .carousel-control:hover {color: #000;}
+.homCar{overflow:hidden;}
+.navbar .brand {padding: 0px 20px 0;font-size: 37px;color: black;}
+.spaceBtm{padding-bottom:8px}
+#myCarousel.homCar .item img{width:100%; max-height:400px}
+#myCarousel .btn {border: 0 none;border-radius: 0 0 0 0;bottom: 49px;font-size: 18px;line-height: 42px;padding: 0 28px;position: absolute;right: 0;text-shadow: 0 0 0 transparent;}
+#myCarousel{position:relative; margin: 0;}
+.navbar-inner {padding-left: 0;padding-right: 0;}
+.thumbnail .btn{ border-radius: 0 0 0 0;}
+.thumbnail h4{line-height:42px}
+.thumbnail img{ max-width:100%}
+.thumbnail:hover {border: 1px solid #CACACA;}
+.form-horizontal.qtyFrm .control-label{text-align: left;}
+.form-horizontal.qtyFrm .control-label span{font-size:18px}
+.clr{clear:both;}
+.moreOptopm.carousel .item img{padding:2px; border:1px solid #ddd}
+.moreOptopm.carousel .item img:hover{ border:1px solid pink}
+.carousel .item > img {display:inline;}
+.moreOptopm{min-height:116px}
+#productDetail {margin-bottom:0}
+.tabWrapper{background:#fff; padding:14px; border:1px solid #ddd; border-top:0}
+#productView .btn-toolbar{padding-left:3px;}
+.carousel-control {border: 0px; border-radius:2px}
+.carousel-control, .carousel-control:hover {background:rgba(248, 118, 16, 1); height:43px; line-height:34px; color: #fff;}
+.carousel-control {top: 50%;}
+.homCar h4 {background-color: #8040fe; color: #fff;padding: 11px 4px;font-size: 26px;text-transform: uppercase;float: left;width: auto;-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=80)';opacity: 0.8;}
+.homCar p span{background-color: #fff;color: #000;padding: 2px 10px;line-height: 30px;font-size: 28px;float: left;width: auto;opacity: 0.8;-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=80)';}
+.carousel-control.left{left: -15600px;}
+.carousel-control.right{right: -15600px;}
+.carousel:hover .carousel-control.right{right: 8px; left: auto;}
+.carousel:hover .carousel-control.left{left: 8px;}
+.alignR{text-align:right;}
+.control-label.alignL, .alignL{text-align:left;}
+.loginFrm{ margin-bottom:8px;}
+.loginFrm .control-group{padding:8px 14px 0; margin-bottom:0 }
+.navbar .pull-right > li > .dropdown-menu, .navbar .nav > li > .dropdown-menu.pull-right {display: none; right: 0;left: auto;border-radius: 0; border-color: #ccc;}
+.navbar .nav , .marginLess{margin:0}
+.navbar-search .search-query { padding: 4px 14px;-moz-border-radius: 1px;-webkit-border-radius: 1px;border-radius: 1px;line-height: 1.5em; min-width: 200px;}
+.navbar-search{margin-left:570px;}
+.actionList a{width:50%; font-size:11px; color:#444}
+.caption p{margin:0}
+.caption h4{margin:0}
+.thumbnail .caption {padding: 9px;color: #555555;background: #F3F2F2;}
+.footer {background-color:#222; color:#eee; padding: 28px 8px 18px; margin-top: 18px;}
+.footer a{color:#bbb; font-size:12px;}
+.copyright {clear: both; padding: 8px; border-top: 1px solid #CCC; font-size: 13px; background: #f2f2f2; box-shadow: 0 0 3px #B1AFAF;}
+.topNav{padding: 0;border-bottom: 1px solid #CCC;background: #f2f2f2;box-shadow: 0 0 3px #B1AFAF;}
+.topNav a{color:#333; font-size:12px; font-weight:bold; display:inline-block;  padding:8px 4px;}
+.topNav a:hover, .topNav a.active{color:#fff; background:#ac82ff; text-decoration:none}
+.socialNw a{width:24px; height:24px; line-height:24px; display:inline-block; padding:3px; margin-top:3px; font-size:21px; border-radius:50%; background:#999; color:#fff; text-align:center; }
+.cntr{text-align:center}
+.cart{border:1px solid #ddd;  }
+#sidebar ul {margin: 0;padding: 0;}
+#sidebar .alert {padding: 8px;}
+#sidebar .nav a{color:#000}
+#sidebar .nav a:hover{color:#ac82ff}
+#sidebar .cart{border:1px solid #B94A48; }
+#sidebar h4{margin:0;  line-height:1.5em; padding:0 13px;  }
+#sidebar h2{font-size:21px; line-height:21px;}
+#sidebar a.defaultBtn:hover, .defaultBtn:hover{color:#fff; text-decoration:none; background:#333}
+#sidebar .nav a.zoomTool{color:#fff}
+.thumbnail>a{display:block; text-align:center}
+.carousel-caption {background: transparent;background: transparent;}
+#compairTbl td{text-align:center;}
+.justify{text-align:justify;}
+.table td[align=right] {text-align: right;}
+.thumbnail h5,.thumbnail p{text-align:center}
+.bs-docs-sidenav > li > a {border: 0; border-bottom:1px solid #e5e5e5;}
+.thumbnail{position:relative;}
+.tag {background:url(assets/img/new.png) no-repeat 0 0; position: absolute; display:block; top: -4px;right: -18px; height:48px; width:48px;}
+.np{padding:0}
+.totalInCart{line-height:26px;}
+.absoluteBlk{position:absolute; left:8px; top:8px; width:45%; }
+.relative{position:relative}
+.socialMedia .on, .socialMedia:hover .off{display:block}
+.socialMedia .off, .socialMedia:hover .on{display:none}
+#newProductCar .carousel-control {position: absolute;top: -48px;width: 24px;height: 24px;margin-top: 0;font-size: 16px;font-weight: bold;line-height: 1.5em;color: #ffffff;text-align: center;background: #9ca9fa;border: 0;-webkit-border-radius: 0;-moz-border-radius: 0;border-radius: 0;}
+#newProductCar .carousel-control.right {right: 8px; left: auto;}
+#newProductCar .carousel-control.left {right: 38px; left: auto;}
+#newProductCar{margin-bottom:0}
+.zoomTool{width:120px; height:34px; font-size:14px; font-weight:bold; line-height:34px; text-align:center; color:#fff; border-radius:2px; background:#ac82ff; position:absolute; left:50%; top:44%; margin-left:-60px; z-index:999; display:none}.thumbnail{background:#fff}
+.zoomTool:hover{color:#fff; text-decoration:none; }
+.thumbnail>a.overlay, .thumbnail>a.zoomTool {display:none;}
+.shopBtn {min-height: 34px;font-size: 14px;font-weight: bold;line-height: 34px;text-align: center;color: #fff;border-radius: 2px;background: #ac82ff;display:inline-block;padding:0 12px;border:0;}
+.defaultBtn {min-height: 34px;font-size: 14px;font-weight: bold;line-height: 34px;text-align: center;border-radius: 2px;display:inline-block;padding:0 12px;color: #666;text-decoration: none;background: #e6e6e6;border:0;}
+.shopBtn:hover {color: #fff; text-decoration:none; background:#8040fe}
+.gotop {background-color: #000000;display: none;position: fixed;bottom: 30px;right: 30px;padding: 0px 10px 5px;color: #fff;text-decoration: none;font-size: 30px;line-height: 34px;}
+.gotop:hover {color: #fff;text-decoration: none;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;}
+#gototop{margin-top:1px;}
+#footerMenu a{ font-size:12px; text-transform:lowercase}
+
+/* YENİ KOD */
+
+.cardInfo {
+  display: inline-block;
+  align-items: baseline;
+  width: auto;
+  top: 10%;
+  margin: 20px;
+}
+
+.cardCol {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.cardInfo label{
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.cardInfo input[type="submit"] {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-left: 25px;
+}
+
+    </style>
     <style>
         /*!
  * Bootstrap v2.3.2
@@ -6193,1641 +6333,10 @@ a.badge:focus {
 }
 
     </style>
-    
-    
     <!-- Customize styles -->
-    <!-- <link href="style.css" rel="stylesheet"/> -->
-    <style>
-        body{ background: rgb(155,255,244);
-background: -moz-linear-gradient(128deg, rgba(155,255,244,1) 0%, rgba(191,160,254,1) 100%);
-background: -webkit-linear-gradient(128deg, rgba(155,255,244,1) 0%, rgba(191,160,254,1) 100%);
-background: linear-gradient(128deg, rgba(155,255,244,1) 0%, rgba(191,160,254,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#9bfff4",endColorstr="#bfa0fe",GradientType=1);}
-#header{padding:8px 0 8px;}
-#header a{text-decoration:none}
-#header p{padding:0; margin:0; line-height:1em; font-size:100%}
-#header h1{margin:0;line-height:1em }
-#header h1.dotmark{line-height:1.5em;}
-#header{ padding-top:44px;}
-.logo {padding-top: 11px;display: block;}
-.logo span{display:none}
-.dotmark{padding:4px; font-size:14px; line-height:1.5em;  background:#fff; border:1px dashed rgb(252, 111, 0); margin:0; color:rgb(252, 111, 0); position:relative;}
-.dotmark:hover{ border:1px dashed #fff; color:#fff; background:#8fcbf6;}
-.dotmark i{position:absolute; left:10%; top:-12px; font-size:21px;}
-.offerNoteWrapper{display: none; border:6px solid #fff; margin: 6px;}
-.offerNoteWrapper:hover{border-color:#79fff0;}
-h3 {font-size: 18px;line-height: 1.5em;}
-hr.soften {margin: 8px 0;background: #DDD;}
-.moreOptopm.carousel .carousel-control,.moreOptopm.carousel .carousel-control:hover {background:transparent; }
-.moreOptopm.carousel .carousel-control {border: 0; top: 50%; bottom: 0;}
-.moreOptopm.carousel .carousel-control.right, .moreOptopm.carousel .carousel-control.right:hover {right:0; }
-.moreOptopm.carousel .carousel-control.left, .moreOptopm.carousel .carousel-control.left:hover {left:0; }
-.moreOptopm.carousel .carousel-control, .moreOptopm.carousel .carousel-control:hover {color: #000;}
-.homCar{overflow:hidden;}
-.navbar .brand {padding: 0px 20px 0;font-size: 37px;color: black;}
-.spaceBtm{padding-bottom:8px}
-#myCarousel.homCar .item img{width:100%; max-height:400px}
-#myCarousel .btn {border: 0 none;border-radius: 0 0 0 0;bottom: 49px;font-size: 18px;line-height: 42px;padding: 0 28px;position: absolute;right: 0;text-shadow: 0 0 0 transparent;}
-#myCarousel{position:relative; margin: 0;}
-.navbar-inner {padding-left: 0;padding-right: 0;}
-.thumbnail .btn{ border-radius: 0 0 0 0;}
-.thumbnail h4{line-height:42px}
-.thumbnail img{ max-width:100%}
-.thumbnail:hover {border: 1px solid #CACACA;}
-.form-horizontal.qtyFrm .control-label{text-align: left;}
-.form-horizontal.qtyFrm .control-label span{font-size:18px}
-.clr{clear:both;}
-.moreOptopm.carousel .item img{padding:2px; border:1px solid #ddd}
-.moreOptopm.carousel .item img:hover{ border:1px solid pink}
-.carousel .item > img {display:inline;}
-.moreOptopm{min-height:116px}
-#productDetail {margin-bottom:0}
-.tabWrapper{background:#fff; padding:14px; border:1px solid #ddd; border-top:0}
-#productView .btn-toolbar{padding-left:3px;}
-.carousel-control {border: 0px; border-radius:2px}
-.carousel-control, .carousel-control:hover {background:rgba(248, 118, 16, 1); height:43px; line-height:34px; color: #fff;}
-.carousel-control {top: 50%;}
-.homCar h4 {background-color: #8040fe; color: #fff;padding: 11px 4px;font-size: 26px;text-transform: uppercase;float: left;width: auto;-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=80)';opacity: 0.8;}
-.homCar p span{background-color: #fff;color: #000;padding: 2px 10px;line-height: 30px;font-size: 28px;float: left;width: auto;opacity: 0.8;-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=80)';}
-.carousel-control.left{left: -15600px;}
-.carousel-control.right{right: -15600px;}
-.carousel:hover .carousel-control.right{right: 8px; left: auto;}
-.carousel:hover .carousel-control.left{left: 8px;}
-.alignR{text-align:right;}
-.control-label.alignL, .alignL{text-align:left;}
-.loginFrm{ margin-bottom:8px;}
-.loginFrm .control-group{padding:8px 14px 0; margin-bottom:0 }
-.navbar .pull-right > li > .dropdown-menu, .navbar .nav > li > .dropdown-menu.pull-right {display: none; right: 0;left: auto;border-radius: 0; border-color: #ccc;}
-.navbar .nav , .marginLess{margin:0}
-.navbar-search .search-query { padding: 4px 14px;-moz-border-radius: 1px;-webkit-border-radius: 1px;border-radius: 1px;line-height: 1.5em; min-width: 200px;}
-.navbar-search{margin-left:570px;}
-.actionList a{width:50%; font-size:11px; color:#444}
-.caption p{margin:0}
-.caption h4{margin:0}
-.thumbnail .caption {padding: 9px;color: #555555;background: #F3F2F2;}
-.footer {background-color:#222; color:#eee; padding: 28px 8px 18px; margin-top: 18px;}
-.footer a{color:#bbb; font-size:12px;}
-.copyright {clear: both; padding: 8px; border-top: 1px solid #CCC; font-size: 13px; background: #f2f2f2; box-shadow: 0 0 3px #B1AFAF;}
-.topNav{padding: 0;border-bottom: 1px solid #CCC;background: #f2f2f2;box-shadow: 0 0 3px #B1AFAF;}
-.topNav a{color:#333; font-size:12px; font-weight:bold; display:inline-block;  padding:8px 4px;}
-.topNav a:hover, .topNav a.active{color:#fff; background:#ac82ff; text-decoration:none}
-.socialNw a{width:24px; height:24px; line-height:24px; display:inline-block; padding:3px; margin-top:3px; font-size:21px; border-radius:50%; background:#999; color:#fff; text-align:center; }
-.cntr{text-align:center}
-.cart{border:1px solid #ddd;  }
-#sidebar ul {margin: 0;padding: 0;}
-#sidebar .alert {padding: 8px;}
-#sidebar .nav a{color:#000}
-#sidebar .nav a:hover{color:#ac82ff}
-#sidebar .cart{border:1px solid #B94A48; }
-#sidebar h4{margin:0;  line-height:1.5em; padding:0 13px;  }
-#sidebar h2{font-size:21px; line-height:21px;}
-#sidebar a.defaultBtn:hover, .defaultBtn:hover{color:#fff; text-decoration:none; background:#333}
-#sidebar .nav a.zoomTool{color:#fff}
-.thumbnail>a{display:block; text-align:center}
-.carousel-caption {background: transparent;background: transparent;}
-#compairTbl td{text-align:center;}
-.justify{text-align:justify;}
-.table td[align=right] {text-align: right;}
-.thumbnail h5,.thumbnail p{text-align:center}
-.bs-docs-sidenav > li > a {border: 0; border-bottom:1px solid #e5e5e5;}
-.thumbnail{position:relative;}
-.tag {background:url(assets/img/new.png) no-repeat 0 0; position: absolute; display:block; top: -4px;right: -18px; height:48px; width:48px;}
-.np{padding:0}
-.totalInCart{line-height:26px;}
-.absoluteBlk{position:absolute; left:8px; top:8px; width:45%; }
-.relative{position:relative}
-.socialMedia .on, .socialMedia:hover .off{display:block}
-.socialMedia .off, .socialMedia:hover .on{display:none}
-#newProductCar .carousel-control {position: absolute;top: -48px;width: 24px;height: 24px;margin-top: 0;font-size: 16px;font-weight: bold;line-height: 1.5em;color: #ffffff;text-align: center;background: #9ca9fa;border: 0;-webkit-border-radius: 0;-moz-border-radius: 0;border-radius: 0;}
-#newProductCar .carousel-control.right {right: 8px; left: auto;}
-#newProductCar .carousel-control.left {right: 38px; left: auto;}
-#newProductCar{margin-bottom:0}
-.zoomTool{width:120px; height:34px; font-size:14px; font-weight:bold; line-height:34px; text-align:center; color:#fff; border-radius:2px; background:#ac82ff; position:absolute; left:50%; top:44%; margin-left:-60px; z-index:999; display:none}.thumbnail{background:#fff}
-.zoomTool:hover{color:#fff; text-decoration:none; }
-.thumbnail>a.overlay, .thumbnail>a.zoomTool {display:none;}
-.shopBtn {min-height: 34px;font-size: 14px;font-weight: bold;line-height: 34px;text-align: center;color: #fff;border-radius: 2px;background: #ac82ff;display:inline-block;padding:0 12px;border:0;}
-.defaultBtn {min-height: 34px;font-size: 14px;font-weight: bold;line-height: 34px;text-align: center;border-radius: 2px;display:inline-block;padding:0 12px;color: #666;text-decoration: none;background: #e6e6e6;border:0;}
-.shopBtn:hover {color: #fff; text-decoration:none; background:#8040fe}
-.gotop {background-color: #000000;display: none;position: fixed;bottom: 30px;right: 30px;padding: 0px 10px 5px;color: #fff;text-decoration: none;font-size: 30px;line-height: 34px;}
-.gotop:hover {color: #fff;text-decoration: none;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;}
-#gototop{margin-top:1px;}
-#footerMenu a{ font-size:12px; text-transform:lowercase}
-
-/* YENİ KOD */
-
-.cardInfo {
-  display: inline-block;
-  align-items: baseline;
-  width: auto;
-  top: 10%;
-  margin: 20px;
-}
-
-.cardCol {
-  display: inline-block;
-  margin-left: 10px;
-}
-
-.cardInfo label{
-  padding-top: 2px;
-  padding-bottom: 2px;
-}
-
-.cardInfo input[type="submit"] {
-  margin-top: 20px;
-  margin-bottom: 30px;
-  margin-left: 25px;
-}
-
-    </style> 
-
-    
-    
+    <link href="style.css" rel="stylesheet"/>
     <!-- font awesome styles -->
-    <!-- <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">-->
-    <style>
-        /*!
- *  Font Awesome 3.2.1
- *  the iconic font designed for Bootstrap
- *  ------------------------------------------------------------------------------
- *  The full suite of pictographic icons, examples, and documentation can be
- *  found at http://fontawesome.io.  Stay up to date on Twitter at
- *  http://twitter.com/fontawesome.
- *
- *  License
- *  ------------------------------------------------------------------------------
- *  - The Font Awesome font is licensed under SIL OFL 1.1 -
- *    http://scripts.sil.org/OFL
- *  - Font Awesome CSS, LESS, and SASS files are licensed under MIT License -
- *    http://opensource.org/licenses/mit-license.html
- *  - Font Awesome documentation licensed under CC BY 3.0 -
- *    http://creativecommons.org/licenses/by/3.0/
- *  - Attribution is no longer required in Font Awesome 3.0, but much appreciated:
- *    "Font Awesome by Dave Gandy - http://fontawesome.io"
- *
- *  Author - Dave Gandy
- *  ------------------------------------------------------------------------------
- *  Email: dave@fontawesome.io
- *  Twitter: http://twitter.com/davegandy
- *  Work: Lead Product Designer @ Kyruus - http://kyruus.com
- */
-/* FONT PATH
- * -------------------------- */
-@font-face {
-  font-family: 'FontAwesome';
-  src: url('../font/fontawesome-webfont.eot?v=3.2.1');
-  src: url('../font/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('../font/fontawesome-webfont.woff?v=3.2.1') format('woff'), url('../font/fontawesome-webfont.ttf?v=3.2.1') format('truetype'), url('../font/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-/* FONT AWESOME CORE
- * -------------------------- */
-[class^="icon-"],
-[class*=" icon-"] {
-  font-family: FontAwesome;
-  font-weight: normal;
-  font-style: normal;
-  text-decoration: inherit;
-  -webkit-font-smoothing: antialiased;
-  *margin-right: .3em;
-}
-[class^="icon-"]:before,
-[class*=" icon-"]:before {
-  text-decoration: inherit;
-  display: inline-block;
-  speak: none;
-}
-/* makes the font 33% larger relative to the icon container */
-.icon-large:before {
-  vertical-align: -10%;
-  font-size: 1.3333333333333333em;
-}
-/* makes sure icons active on rollover in links */
-a [class^="icon-"],
-a [class*=" icon-"] {
-  display: inline;
-}
-/* increased font size for icon-large */
-[class^="icon-"].icon-fixed-width,
-[class*=" icon-"].icon-fixed-width {
-  display: inline-block;
-  width: 1.1428571428571428em;
-  text-align: right;
-  padding-right: 0.2857142857142857em;
-}
-[class^="icon-"].icon-fixed-width.icon-large,
-[class*=" icon-"].icon-fixed-width.icon-large {
-  width: 1.4285714285714286em;
-}
-.icons-ul {
-  margin-left: 2.142857142857143em;
-  list-style-type: none;
-}
-.icons-ul > li {
-  position: relative;
-}
-.icons-ul .icon-li {
-  position: absolute;
-  left: -2.142857142857143em;
-  width: 2.142857142857143em;
-  text-align: center;
-  line-height: inherit;
-}
-[class^="icon-"].hide,
-[class*=" icon-"].hide {
-  display: none;
-}
-.icon-muted {
-  color: #eeeeee;
-}
-.icon-light {
-  color: #ffffff;
-}
-.icon-dark {
-  color: #333333;
-}
-.icon-border {
-  border: solid 1px #eeeeee;
-  padding: .2em .25em .15em;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-}
-.icon-2x {
-  font-size: 2em;
-}
-.icon-2x.icon-border {
-  border-width: 2px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-}
-.icon-3x {
-  font-size: 3em;
-}
-.icon-3x.icon-border {
-  border-width: 3px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
-.icon-4x {
-  font-size: 4em;
-}
-.icon-4x.icon-border {
-  border-width: 4px;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-}
-.icon-5x {
-  font-size: 5em;
-}
-.icon-5x.icon-border {
-  border-width: 5px;
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  border-radius: 7px;
-}
-.pull-right {
-  float: right;
-}
-.pull-left {
-  float: left;
-}
-[class^="icon-"].pull-left,
-[class*=" icon-"].pull-left {
-  margin-right: .3em;
-}
-[class^="icon-"].pull-right,
-[class*=" icon-"].pull-right {
-  margin-left: .3em;
-}
-/* BOOTSTRAP SPECIFIC CLASSES
- * -------------------------- */
-/* Bootstrap 2.0 sprites.less reset */
-[class^="icon-"],
-[class*=" icon-"] {
-  display: inline;
-  width: auto;
-  height: auto;
-  line-height: normal;
-  vertical-align: baseline;
-  background-image: none;
-  background-position: 0% 0%;
-  background-repeat: repeat;
-  margin-top: 0;
-}
-/* more sprites.less reset */
-.icon-white,
-.nav-pills > .active > a > [class^="icon-"],
-.nav-pills > .active > a > [class*=" icon-"],
-.nav-list > .active > a > [class^="icon-"],
-.nav-list > .active > a > [class*=" icon-"],
-.navbar-inverse .nav > .active > a > [class^="icon-"],
-.navbar-inverse .nav > .active > a > [class*=" icon-"],
-.dropdown-menu > li > a:hover > [class^="icon-"],
-.dropdown-menu > li > a:hover > [class*=" icon-"],
-.dropdown-menu > .active > a > [class^="icon-"],
-.dropdown-menu > .active > a > [class*=" icon-"],
-.dropdown-submenu:hover > a > [class^="icon-"],
-.dropdown-submenu:hover > a > [class*=" icon-"] {
-  background-image: none;
-}
-/* keeps Bootstrap styles with and without icons the same */
-.btn [class^="icon-"].icon-large,
-.nav [class^="icon-"].icon-large,
-.btn [class*=" icon-"].icon-large,
-.nav [class*=" icon-"].icon-large {
-  line-height: .9em;
-}
-.btn [class^="icon-"].icon-spin,
-.nav [class^="icon-"].icon-spin,
-.btn [class*=" icon-"].icon-spin,
-.nav [class*=" icon-"].icon-spin {
-  display: inline-block;
-}
-.nav-tabs [class^="icon-"],
-.nav-pills [class^="icon-"],
-.nav-tabs [class*=" icon-"],
-.nav-pills [class*=" icon-"],
-.nav-tabs [class^="icon-"].icon-large,
-.nav-pills [class^="icon-"].icon-large,
-.nav-tabs [class*=" icon-"].icon-large,
-.nav-pills [class*=" icon-"].icon-large {
-  line-height: .9em;
-}
-.btn [class^="icon-"].pull-left.icon-2x,
-.btn [class*=" icon-"].pull-left.icon-2x,
-.btn [class^="icon-"].pull-right.icon-2x,
-.btn [class*=" icon-"].pull-right.icon-2x {
-  margin-top: .18em;
-}
-.btn [class^="icon-"].icon-spin.icon-large,
-.btn [class*=" icon-"].icon-spin.icon-large {
-  line-height: .8em;
-}
-.btn.btn-small [class^="icon-"].pull-left.icon-2x,
-.btn.btn-small [class*=" icon-"].pull-left.icon-2x,
-.btn.btn-small [class^="icon-"].pull-right.icon-2x,
-.btn.btn-small [class*=" icon-"].pull-right.icon-2x {
-  margin-top: .25em;
-}
-.btn.btn-large [class^="icon-"],
-.btn.btn-large [class*=" icon-"] {
-  margin-top: 0;
-}
-.btn.btn-large [class^="icon-"].pull-left.icon-2x,
-.btn.btn-large [class*=" icon-"].pull-left.icon-2x,
-.btn.btn-large [class^="icon-"].pull-right.icon-2x,
-.btn.btn-large [class*=" icon-"].pull-right.icon-2x {
-  margin-top: .05em;
-}
-.btn.btn-large [class^="icon-"].pull-left.icon-2x,
-.btn.btn-large [class*=" icon-"].pull-left.icon-2x {
-  margin-right: .2em;
-}
-.btn.btn-large [class^="icon-"].pull-right.icon-2x,
-.btn.btn-large [class*=" icon-"].pull-right.icon-2x {
-  margin-left: .2em;
-}
-/* Fixes alignment in nav lists */
-.nav-list [class^="icon-"],
-.nav-list [class*=" icon-"] {
-  line-height: inherit;
-}
-/* EXTRAS
- * -------------------------- */
-/* Stacked and layered icon */
-.icon-stack {
-  position: relative;
-  display: inline-block;
-  width: 2em;
-  height: 2em;
-  line-height: 2em;
-  vertical-align: -35%;
-}
-.icon-stack [class^="icon-"],
-.icon-stack [class*=" icon-"] {
-  display: block;
-  text-align: center;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  font-size: 1em;
-  line-height: inherit;
-  *line-height: 2em;
-}
-.icon-stack .icon-stack-base {
-  font-size: 2em;
-  *line-height: 1em;
-}
-/* Animated rotating icon */
-.icon-spin {
-  display: inline-block;
-  -moz-animation: spin 2s infinite linear;
-  -o-animation: spin 2s infinite linear;
-  -webkit-animation: spin 2s infinite linear;
-  animation: spin 2s infinite linear;
-}
-/* Prevent stack and spinners from being taken inline when inside a link */
-a .icon-stack,
-a .icon-spin {
-  display: inline-block;
-  text-decoration: none;
-}
-@-moz-keyframes spin {
-  0% {
-    -moz-transform: rotate(0deg);
-  }
-  100% {
-    -moz-transform: rotate(359deg);
-  }
-}
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(359deg);
-  }
-}
-@-o-keyframes spin {
-  0% {
-    -o-transform: rotate(0deg);
-  }
-  100% {
-    -o-transform: rotate(359deg);
-  }
-}
-@-ms-keyframes spin {
-  0% {
-    -ms-transform: rotate(0deg);
-  }
-  100% {
-    -ms-transform: rotate(359deg);
-  }
-}
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(359deg);
-  }
-}
-/* Icon rotations and mirroring */
-.icon-rotate-90:before {
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  transform: rotate(90deg);
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
-}
-.icon-rotate-180:before {
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
-}
-.icon-rotate-270:before {
-  -webkit-transform: rotate(270deg);
-  -moz-transform: rotate(270deg);
-  -ms-transform: rotate(270deg);
-  -o-transform: rotate(270deg);
-  transform: rotate(270deg);
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-}
-.icon-flip-horizontal:before {
-  -webkit-transform: scale(-1, 1);
-  -moz-transform: scale(-1, 1);
-  -ms-transform: scale(-1, 1);
-  -o-transform: scale(-1, 1);
-  transform: scale(-1, 1);
-}
-.icon-flip-vertical:before {
-  -webkit-transform: scale(1, -1);
-  -moz-transform: scale(1, -1);
-  -ms-transform: scale(1, -1);
-  -o-transform: scale(1, -1);
-  transform: scale(1, -1);
-}
-/* ensure rotation occurs inside anchor tags */
-a .icon-rotate-90:before,
-a .icon-rotate-180:before,
-a .icon-rotate-270:before,
-a .icon-flip-horizontal:before,
-a .icon-flip-vertical:before {
-  display: inline-block;
-}
-/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
-   readers do not read off random characters that represent icons */
-.icon-glass:before {
-  content: "\f000";
-}
-.icon-music:before {
-  content: "\f001";
-}
-.icon-search:before {
-  content: "\f002";
-}
-.icon-envelope-alt:before {
-  content: "\f003";
-}
-.icon-heart:before {
-  content: "\f004";
-}
-.icon-star:before {
-  content: "\f005";
-}
-.icon-star-empty:before {
-  content: "\f006";
-}
-.icon-user:before {
-  content: "\f007";
-}
-.icon-film:before {
-  content: "\f008";
-}
-.icon-th-large:before {
-  content: "\f009";
-}
-.icon-th:before {
-  content: "\f00a";
-}
-.icon-th-list:before {
-  content: "\f00b";
-}
-.icon-ok:before {
-  content: "\f00c";
-}
-.icon-remove:before {
-  content: "\f00d";
-}
-.icon-zoom-in:before {
-  content: "\f00e";
-}
-.icon-zoom-out:before {
-  content: "\f010";
-}
-.icon-power-off:before,
-.icon-off:before {
-  content: "\f011";
-}
-.icon-signal:before {
-  content: "\f012";
-}
-.icon-gear:before,
-.icon-cog:before {
-  content: "\f013";
-}
-.icon-trash:before {
-  content: "\f014";
-}
-.icon-home:before {
-  content: "\f015";
-}
-.icon-file-alt:before {
-  content: "\f016";
-}
-.icon-time:before {
-  content: "\f017";
-}
-.icon-road:before {
-  content: "\f018";
-}
-.icon-download-alt:before {
-  content: "\f019";
-}
-.icon-download:before {
-  content: "\f01a";
-}
-.icon-upload:before {
-  content: "\f01b";
-}
-.icon-inbox:before {
-  content: "\f01c";
-}
-.icon-play-circle:before {
-  content: "\f01d";
-}
-.icon-rotate-right:before,
-.icon-repeat:before {
-  content: "\f01e";
-}
-.icon-refresh:before {
-  content: "\f021";
-}
-.icon-list-alt:before {
-  content: "\f022";
-}
-.icon-lock:before {
-  content: "\f023";
-}
-.icon-flag:before {
-  content: "\f024";
-}
-.icon-headphones:before {
-  content: "\f025";
-}
-.icon-volume-off:before {
-  content: "\f026";
-}
-.icon-volume-down:before {
-  content: "\f027";
-}
-.icon-volume-up:before {
-  content: "\f028";
-}
-.icon-qrcode:before {
-  content: "\f029";
-}
-.icon-barcode:before {
-  content: "\f02a";
-}
-.icon-tag:before {
-  content: "\f02b";
-}
-.icon-tags:before {
-  content: "\f02c";
-}
-.icon-book:before {
-  content: "\f02d";
-}
-.icon-bookmark:before {
-  content: "\f02e";
-}
-.icon-print:before {
-  content: "\f02f";
-}
-.icon-camera:before {
-  content: "\f030";
-}
-.icon-font:before {
-  content: "\f031";
-}
-.icon-bold:before {
-  content: "\f032";
-}
-.icon-italic:before {
-  content: "\f033";
-}
-.icon-text-height:before {
-  content: "\f034";
-}
-.icon-text-width:before {
-  content: "\f035";
-}
-.icon-align-left:before {
-  content: "\f036";
-}
-.icon-align-center:before {
-  content: "\f037";
-}
-.icon-align-right:before {
-  content: "\f038";
-}
-.icon-align-justify:before {
-  content: "\f039";
-}
-.icon-list:before {
-  content: "\f03a";
-}
-.icon-indent-left:before {
-  content: "\f03b";
-}
-.icon-indent-right:before {
-  content: "\f03c";
-}
-.icon-facetime-video:before {
-  content: "\f03d";
-}
-.icon-picture:before {
-  content: "\f03e";
-}
-.icon-pencil:before {
-  content: "\f040";
-}
-.icon-map-marker:before {
-  content: "\f041";
-}
-.icon-adjust:before {
-  content: "\f042";
-}
-.icon-tint:before {
-  content: "\f043";
-}
-.icon-edit:before {
-  content: "\f044";
-}
-.icon-share:before {
-  content: "\f045";
-}
-.icon-check:before {
-  content: "\f046";
-}
-.icon-move:before {
-  content: "\f047";
-}
-.icon-step-backward:before {
-  content: "\f048";
-}
-.icon-fast-backward:before {
-  content: "\f049";
-}
-.icon-backward:before {
-  content: "\f04a";
-}
-.icon-play:before {
-  content: "\f04b";
-}
-.icon-pause:before {
-  content: "\f04c";
-}
-.icon-stop:before {
-  content: "\f04d";
-}
-.icon-forward:before {
-  content: "\f04e";
-}
-.icon-fast-forward:before {
-  content: "\f050";
-}
-.icon-step-forward:before {
-  content: "\f051";
-}
-.icon-eject:before {
-  content: "\f052";
-}
-.icon-chevron-left:before {
-  content: "\f053";
-}
-.icon-chevron-right:before {
-  content: "\f054";
-}
-.icon-plus-sign:before {
-  content: "\f055";
-}
-.icon-minus-sign:before {
-  content: "\f056";
-}
-.icon-remove-sign:before {
-  content: "\f057";
-}
-.icon-ok-sign:before {
-  content: "\f058";
-}
-.icon-question-sign:before {
-  content: "\f059";
-}
-.icon-info-sign:before {
-  content: "\f05a";
-}
-.icon-screenshot:before {
-  content: "\f05b";
-}
-.icon-remove-circle:before {
-  content: "\f05c";
-}
-.icon-ok-circle:before {
-  content: "\f05d";
-}
-.icon-ban-circle:before {
-  content: "\f05e";
-}
-.icon-arrow-left:before {
-  content: "\f060";
-}
-.icon-arrow-right:before {
-  content: "\f061";
-}
-.icon-arrow-up:before {
-  content: "\f062";
-}
-.icon-arrow-down:before {
-  content: "\f063";
-}
-.icon-mail-forward:before,
-.icon-share-alt:before {
-  content: "\f064";
-}
-.icon-resize-full:before {
-  content: "\f065";
-}
-.icon-resize-small:before {
-  content: "\f066";
-}
-.icon-plus:before {
-  content: "\f067";
-}
-.icon-minus:before {
-  content: "\f068";
-}
-.icon-asterisk:before {
-  content: "\f069";
-}
-.icon-exclamation-sign:before {
-  content: "\f06a";
-}
-.icon-gift:before {
-  content: "\f06b";
-}
-.icon-leaf:before {
-  content: "\f06c";
-}
-.icon-fire:before {
-  content: "\f06d";
-}
-.icon-eye-open:before {
-  content: "\f06e";
-}
-.icon-eye-close:before {
-  content: "\f070";
-}
-.icon-warning-sign:before {
-  content: "\f071";
-}
-.icon-plane:before {
-  content: "\f072";
-}
-.icon-calendar:before {
-  content: "\f073";
-}
-.icon-random:before {
-  content: "\f074";
-}
-.icon-comment:before {
-  content: "\f075";
-}
-.icon-magnet:before {
-  content: "\f076";
-}
-.icon-chevron-up:before {
-  content: "\f077";
-}
-.icon-chevron-down:before {
-  content: "\f078";
-}
-.icon-retweet:before {
-  content: "\f079";
-}
-.icon-shopping-cart:before {
-  content: "\f07a";
-}
-.icon-folder-close:before {
-  content: "\f07b";
-}
-.icon-folder-open:before {
-  content: "\f07c";
-}
-.icon-resize-vertical:before {
-  content: "\f07d";
-}
-.icon-resize-horizontal:before {
-  content: "\f07e";
-}
-.icon-bar-chart:before {
-  content: "\f080";
-}
-.icon-twitter-sign:before {
-  content: "\f081";
-}
-.icon-facebook-sign:before {
-  content: "\f082";
-}
-.icon-camera-retro:before {
-  content: "\f083";
-}
-.icon-key:before {
-  content: "\f084";
-}
-.icon-gears:before,
-.icon-cogs:before {
-  content: "\f085";
-}
-.icon-comments:before {
-  content: "\f086";
-}
-.icon-thumbs-up-alt:before {
-  content: "\f087";
-}
-.icon-thumbs-down-alt:before {
-  content: "\f088";
-}
-.icon-star-half:before {
-  content: "\f089";
-}
-.icon-heart-empty:before {
-  content: "\f08a";
-}
-.icon-signout:before {
-  content: "\f08b";
-}
-.icon-linkedin-sign:before {
-  content: "\f08c";
-}
-.icon-pushpin:before {
-  content: "\f08d";
-}
-.icon-external-link:before {
-  content: "\f08e";
-}
-.icon-signin:before {
-  content: "\f090";
-}
-.icon-trophy:before {
-  content: "\f091";
-}
-.icon-github-sign:before {
-  content: "\f092";
-}
-.icon-upload-alt:before {
-  content: "\f093";
-}
-.icon-lemon:before {
-  content: "\f094";
-}
-.icon-phone:before {
-  content: "\f095";
-}
-.icon-unchecked:before,
-.icon-check-empty:before {
-  content: "\f096";
-}
-.icon-bookmark-empty:before {
-  content: "\f097";
-}
-.icon-phone-sign:before {
-  content: "\f098";
-}
-.icon-twitter:before {
-  content: "\f099";
-}
-.icon-facebook:before {
-  content: "\f09a";
-}
-.icon-github:before {
-  content: "\f09b";
-}
-.icon-unlock:before {
-  content: "\f09c";
-}
-.icon-credit-card:before {
-  content: "\f09d";
-}
-.icon-rss:before {
-  content: "\f09e";
-}
-.icon-hdd:before {
-  content: "\f0a0";
-}
-.icon-bullhorn:before {
-  content: "\f0a1";
-}
-.icon-bell:before {
-  content: "\f0a2";
-}
-.icon-certificate:before {
-  content: "\f0a3";
-}
-.icon-hand-right:before {
-  content: "\f0a4";
-}
-.icon-hand-left:before {
-  content: "\f0a5";
-}
-.icon-hand-up:before {
-  content: "\f0a6";
-}
-.icon-hand-down:before {
-  content: "\f0a7";
-}
-.icon-circle-arrow-left:before {
-  content: "\f0a8";
-}
-.icon-circle-arrow-right:before {
-  content: "\f0a9";
-}
-.icon-circle-arrow-up:before {
-  content: "\f0aa";
-}
-.icon-circle-arrow-down:before {
-  content: "\f0ab";
-}
-.icon-globe:before {
-  content: "\f0ac";
-}
-.icon-wrench:before {
-  content: "\f0ad";
-}
-.icon-tasks:before {
-  content: "\f0ae";
-}
-.icon-filter:before {
-  content: "\f0b0";
-}
-.icon-briefcase:before {
-  content: "\f0b1";
-}
-.icon-fullscreen:before {
-  content: "\f0b2";
-}
-.icon-group:before {
-  content: "\f0c0";
-}
-.icon-link:before {
-  content: "\f0c1";
-}
-.icon-cloud:before {
-  content: "\f0c2";
-}
-.icon-beaker:before {
-  content: "\f0c3";
-}
-.icon-cut:before {
-  content: "\f0c4";
-}
-.icon-copy:before {
-  content: "\f0c5";
-}
-.icon-paperclip:before,
-.icon-paper-clip:before {
-  content: "\f0c6";
-}
-.icon-save:before {
-  content: "\f0c7";
-}
-.icon-sign-blank:before {
-  content: "\f0c8";
-}
-.icon-reorder:before {
-  content: "\f0c9";
-}
-.icon-list-ul:before {
-  content: "\f0ca";
-}
-.icon-list-ol:before {
-  content: "\f0cb";
-}
-.icon-strikethrough:before {
-  content: "\f0cc";
-}
-.icon-underline:before {
-  content: "\f0cd";
-}
-.icon-table:before {
-  content: "\f0ce";
-}
-.icon-magic:before {
-  content: "\f0d0";
-}
-.icon-truck:before {
-  content: "\f0d1";
-}
-.icon-pinterest:before {
-  content: "\f0d2";
-}
-.icon-pinterest-sign:before {
-  content: "\f0d3";
-}
-.icon-google-plus-sign:before {
-  content: "\f0d4";
-}
-.icon-google-plus:before {
-  content: "\f0d5";
-}
-.icon-money:before {
-  content: "\f0d6";
-}
-.icon-caret-down:before {
-  content: "\f0d7";
-}
-.icon-caret-up:before {
-  content: "\f0d8";
-}
-.icon-caret-left:before {
-  content: "\f0d9";
-}
-.icon-caret-right:before {
-  content: "\f0da";
-}
-.icon-columns:before {
-  content: "\f0db";
-}
-.icon-sort:before {
-  content: "\f0dc";
-}
-.icon-sort-down:before {
-  content: "\f0dd";
-}
-.icon-sort-up:before {
-  content: "\f0de";
-}
-.icon-envelope:before {
-  content: "\f0e0";
-}
-.icon-linkedin:before {
-  content: "\f0e1";
-}
-.icon-rotate-left:before,
-.icon-undo:before {
-  content: "\f0e2";
-}
-.icon-legal:before {
-  content: "\f0e3";
-}
-.icon-dashboard:before {
-  content: "\f0e4";
-}
-.icon-comment-alt:before {
-  content: "\f0e5";
-}
-.icon-comments-alt:before {
-  content: "\f0e6";
-}
-.icon-bolt:before {
-  content: "\f0e7";
-}
-.icon-sitemap:before {
-  content: "\f0e8";
-}
-.icon-umbrella:before {
-  content: "\f0e9";
-}
-.icon-paste:before {
-  content: "\f0ea";
-}
-.icon-lightbulb:before {
-  content: "\f0eb";
-}
-.icon-exchange:before {
-  content: "\f0ec";
-}
-.icon-cloud-download:before {
-  content: "\f0ed";
-}
-.icon-cloud-upload:before {
-  content: "\f0ee";
-}
-.icon-user-md:before {
-  content: "\f0f0";
-}
-.icon-stethoscope:before {
-  content: "\f0f1";
-}
-.icon-suitcase:before {
-  content: "\f0f2";
-}
-.icon-bell-alt:before {
-  content: "\f0f3";
-}
-.icon-coffee:before {
-  content: "\f0f4";
-}
-.icon-food:before {
-  content: "\f0f5";
-}
-.icon-file-text-alt:before {
-  content: "\f0f6";
-}
-.icon-building:before {
-  content: "\f0f7";
-}
-.icon-hospital:before {
-  content: "\f0f8";
-}
-.icon-ambulance:before {
-  content: "\f0f9";
-}
-.icon-medkit:before {
-  content: "\f0fa";
-}
-.icon-fighter-jet:before {
-  content: "\f0fb";
-}
-.icon-beer:before {
-  content: "\f0fc";
-}
-.icon-h-sign:before {
-  content: "\f0fd";
-}
-.icon-plus-sign-alt:before {
-  content: "\f0fe";
-}
-.icon-double-angle-left:before {
-  content: "\f100";
-}
-.icon-double-angle-right:before {
-  content: "\f101";
-}
-.icon-double-angle-up:before {
-  content: "\f102";
-}
-.icon-double-angle-down:before {
-  content: "\f103";
-}
-.icon-angle-left:before {
-  content: "\f104";
-}
-.icon-angle-right:before {
-  content: "\f105";
-}
-.icon-angle-up:before {
-  content: "\f106";
-}
-.icon-angle-down:before {
-  content: "\f107";
-}
-.icon-desktop:before {
-  content: "\f108";
-}
-.icon-laptop:before {
-  content: "\f109";
-}
-.icon-tablet:before {
-  content: "\f10a";
-}
-.icon-mobile-phone:before {
-  content: "\f10b";
-}
-.icon-circle-blank:before {
-  content: "\f10c";
-}
-.icon-quote-left:before {
-  content: "\f10d";
-}
-.icon-quote-right:before {
-  content: "\f10e";
-}
-.icon-spinner:before {
-  content: "\f110";
-}
-.icon-circle:before {
-  content: "\f111";
-}
-.icon-mail-reply:before,
-.icon-reply:before {
-  content: "\f112";
-}
-.icon-github-alt:before {
-  content: "\f113";
-}
-.icon-folder-close-alt:before {
-  content: "\f114";
-}
-.icon-folder-open-alt:before {
-  content: "\f115";
-}
-.icon-expand-alt:before {
-  content: "\f116";
-}
-.icon-collapse-alt:before {
-  content: "\f117";
-}
-.icon-smile:before {
-  content: "\f118";
-}
-.icon-frown:before {
-  content: "\f119";
-}
-.icon-meh:before {
-  content: "\f11a";
-}
-.icon-gamepad:before {
-  content: "\f11b";
-}
-.icon-keyboard:before {
-  content: "\f11c";
-}
-.icon-flag-alt:before {
-  content: "\f11d";
-}
-.icon-flag-checkered:before {
-  content: "\f11e";
-}
-.icon-terminal:before {
-  content: "\f120";
-}
-.icon-code:before {
-  content: "\f121";
-}
-.icon-reply-all:before {
-  content: "\f122";
-}
-.icon-mail-reply-all:before {
-  content: "\f122";
-}
-.icon-star-half-full:before,
-.icon-star-half-empty:before {
-  content: "\f123";
-}
-.icon-location-arrow:before {
-  content: "\f124";
-}
-.icon-crop:before {
-  content: "\f125";
-}
-.icon-code-fork:before {
-  content: "\f126";
-}
-.icon-unlink:before {
-  content: "\f127";
-}
-.icon-question:before {
-  content: "\f128";
-}
-.icon-info:before {
-  content: "\f129";
-}
-.icon-exclamation:before {
-  content: "\f12a";
-}
-.icon-superscript:before {
-  content: "\f12b";
-}
-.icon-subscript:before {
-  content: "\f12c";
-}
-.icon-eraser:before {
-  content: "\f12d";
-}
-.icon-puzzle-piece:before {
-  content: "\f12e";
-}
-.icon-microphone:before {
-  content: "\f130";
-}
-.icon-microphone-off:before {
-  content: "\f131";
-}
-.icon-shield:before {
-  content: "\f132";
-}
-.icon-calendar-empty:before {
-  content: "\f133";
-}
-.icon-fire-extinguisher:before {
-  content: "\f134";
-}
-.icon-rocket:before {
-  content: "\f135";
-}
-.icon-maxcdn:before {
-  content: "\f136";
-}
-.icon-chevron-sign-left:before {
-  content: "\f137";
-}
-.icon-chevron-sign-right:before {
-  content: "\f138";
-}
-.icon-chevron-sign-up:before {
-  content: "\f139";
-}
-.icon-chevron-sign-down:before {
-  content: "\f13a";
-}
-.icon-html5:before {
-  content: "\f13b";
-}
-.icon-css3:before {
-  content: "\f13c";
-}
-.icon-anchor:before {
-  content: "\f13d";
-}
-.icon-unlock-alt:before {
-  content: "\f13e";
-}
-.icon-bullseye:before {
-  content: "\f140";
-}
-.icon-ellipsis-horizontal:before {
-  content: "\f141";
-}
-.icon-ellipsis-vertical:before {
-  content: "\f142";
-}
-.icon-rss-sign:before {
-  content: "\f143";
-}
-.icon-play-sign:before {
-  content: "\f144";
-}
-.icon-ticket:before {
-  content: "\f145";
-}
-.icon-minus-sign-alt:before {
-  content: "\f146";
-}
-.icon-check-minus:before {
-  content: "\f147";
-}
-.icon-level-up:before {
-  content: "\f148";
-}
-.icon-level-down:before {
-  content: "\f149";
-}
-.icon-check-sign:before {
-  content: "\f14a";
-}
-.icon-edit-sign:before {
-  content: "\f14b";
-}
-.icon-external-link-sign:before {
-  content: "\f14c";
-}
-.icon-share-sign:before {
-  content: "\f14d";
-}
-.icon-compass:before {
-  content: "\f14e";
-}
-.icon-collapse:before {
-  content: "\f150";
-}
-.icon-collapse-top:before {
-  content: "\f151";
-}
-.icon-expand:before {
-  content: "\f152";
-}
-.icon-euro:before,
-.icon-eur:before {
-  content: "\f153";
-}
-.icon-gbp:before {
-  content: "\f154";
-}
-.icon-dollar:before,
-.icon-usd:before {
-  content: "\f155";
-}
-.icon-rupee:before,
-.icon-inr:before {
-  content: "\f156";
-}
-.icon-yen:before,
-.icon-jpy:before {
-  content: "\f157";
-}
-.icon-renminbi:before,
-.icon-cny:before {
-  content: "\f158";
-}
-.icon-won:before,
-.icon-krw:before {
-  content: "\f159";
-}
-.icon-bitcoin:before,
-.icon-btc:before {
-  content: "\f15a";
-}
-.icon-file:before {
-  content: "\f15b";
-}
-.icon-file-text:before {
-  content: "\f15c";
-}
-.icon-sort-by-alphabet:before {
-  content: "\f15d";
-}
-.icon-sort-by-alphabet-alt:before {
-  content: "\f15e";
-}
-.icon-sort-by-attributes:before {
-  content: "\f160";
-}
-.icon-sort-by-attributes-alt:before {
-  content: "\f161";
-}
-.icon-sort-by-order:before {
-  content: "\f162";
-}
-.icon-sort-by-order-alt:before {
-  content: "\f163";
-}
-.icon-thumbs-up:before {
-  content: "\f164";
-}
-.icon-thumbs-down:before {
-  content: "\f165";
-}
-.icon-youtube-sign:before {
-  content: "\f166";
-}
-.icon-youtube:before {
-  content: "\f167";
-}
-.icon-xing:before {
-  content: "\f168";
-}
-.icon-xing-sign:before {
-  content: "\f169";
-}
-.icon-youtube-play:before {
-  content: "\f16a";
-}
-.icon-dropbox:before {
-  content: "\f16b";
-}
-.icon-stackexchange:before {
-  content: "\f16c";
-}
-.icon-instagram:before {
-  content: "\f16d";
-}
-.icon-flickr:before {
-  content: "\f16e";
-}
-.icon-adn:before {
-  content: "\f170";
-}
-.icon-bitbucket:before {
-  content: "\f171";
-}
-.icon-bitbucket-sign:before {
-  content: "\f172";
-}
-.icon-tumblr:before {
-  content: "\f173";
-}
-.icon-tumblr-sign:before {
-  content: "\f174";
-}
-.icon-long-arrow-down:before {
-  content: "\f175";
-}
-.icon-long-arrow-up:before {
-  content: "\f176";
-}
-.icon-long-arrow-left:before {
-  content: "\f177";
-}
-.icon-long-arrow-right:before {
-  content: "\f178";
-}
-.icon-apple:before {
-  content: "\f179";
-}
-.icon-windows:before {
-  content: "\f17a";
-}
-.icon-android:before {
-  content: "\f17b";
-}
-.icon-linux:before {
-  content: "\f17c";
-}
-.icon-dribbble:before {
-  content: "\f17d";
-}
-.icon-skype:before {
-  content: "\f17e";
-}
-.icon-foursquare:before {
-  content: "\f180";
-}
-.icon-trello:before {
-  content: "\f181";
-}
-.icon-female:before {
-  content: "\f182";
-}
-.icon-male:before {
-  content: "\f183";
-}
-.icon-gittip:before {
-  content: "\f184";
-}
-.icon-sun:before {
-  content: "\f185";
-}
-.icon-moon:before {
-  content: "\f186";
-}
-.icon-archive:before {
-  content: "\f187";
-}
-.icon-bug:before {
-  content: "\f188";
-}
-.icon-vk:before {
-  content: "\f189";
-}
-.icon-weibo:before {
-  content: "\f18a";
-}
-.icon-renren:before {
-  content: "\f18b";
-}
-
-    </style>   
-        
+	<link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 		<!--[if IE 7]>
 			<link href="css/font-awesome-ie7.min.css" rel="stylesheet">
 		<![endif]-->
@@ -7844,18 +6353,17 @@ a .icon-flip-vertical:before {
 	Upper Header Section
 -->
 
-
 <!--
 Lower Header Section
 -->
-<div class="container">
-<div id="gototop"> </div>
+<div class="container" >
+<div id="gototop" > </div>
 <header id="header">
-<div class="row">
-	<div class="span4">
+<div class="row"  >
+	<div class="span4" >
 	<h1>
-	<a class="logo" href="index.html"><span>Twitter Bootstrap ecommerce template</span>
-		<img src="assets/img/exodia-cursive.png" alt="exodia shop">
+	<a class="logo" href="index.html"  >
+		<img src="exodia-cursive.png" alt="exodia shop">
 	</a>
 	</h1>
 	</div>
@@ -7863,287 +6371,109 @@ Lower Header Section
 	<div class="offerNoteWrapper">
 	<h1 class="dotmark">
 	<i class="icon-cut"></i>
-	Twitter Bootstrap shopping cart HTML template is available @ $14
 	</h1>
 	</div>
 	</div>
 	<div class="span4 alignR">
-	<p><br> <strong>          </strong><br><br></p>
 	<span class="btn btn-mini">[ 0 ] <span class="icon-shopping-cart"></span></span>
-
-
 	</div>
 </div>
 </header>
-
 <!--
 Navigation Bar Section
 -->
 <div class="navbar">
-	  <div class="navbar-inner">
-		<div class="container">
-		  <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		  </a>
-		  <div class="nav-collapse">
-			<ul class="nav">
-			  <li class="active"><a href="grid-view.html">Home	</a></li>
+    <div class="navbar-inner" >
+          <div class="container" >
+            <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+            </a>
+            <div class="nav-collapse">
+                  <ul class="nav">
+                    <li class="active"><a href="index.html" >Home	</a></li>
 
-
-			</ul>
-			<form action="#" class="navbar-search pull-left">
-			  <input type="text" placeholder="Search" class="search-query span2">
-			</form>
-			<ul class="nav pull-right">
-			<li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#"> My account </a>
-				<div class="dropdown-menu">
-				<form class="form-horizontal loginFrm">
-				  <div class="control-group">
-					<input type="text" class="span2" id="inputEmail" placeholder="Email">
-				  </div>
-				  <div class="control-group">
-					<input type="password" class="span2" id="inputPassword" placeholder="Password">
-				  </div>
-				  <div class="control-group">
-					<label class="checkbox">
-					<input type="checkbox"> Remember me
-					</label>
-					<button type="submit" class="shopBtn btn-block">Sign in</button>
-				  </div>
-				</form>
-				</div>
-			</li>
-			</ul>
-		  </div>
-		</div>
-	  </div>
-	</div>
+                  </ul>
+                  <form action="#" class="navbar-search pull-left">
+                    <input type="text" placeholder="Search" class="search-query span2">
+                  </form>
+                  <ul class="nav pull-right">
+                  <li class="dropdown">
+                          <a data-toggle="dropdown"  class="dropdown-toggle" href="#"> Login </a>
+                  </li>
+                  </ul>
+            </div>
+          </div>
+    </div>
+  </div>
 <!--
 Body Section
 -->
 	<div class="row">
-<div id="sidebar" class="span3">
-<div class="well well-small">
-	<ul class="nav nav-list">
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Women</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Men</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Bags & Shoes</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Clothes</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Cosmetic</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Electronics</a></li>
+<div id="sidebar" class="span3" >
+
+    <div class="well well-small" ">
+            <ul class="nav nav-list">
+                    <li><a href="products.html"><span class="icon-chevron-right"></span>Women</a></li>
+                    <li><a href="products.html"><span class="icon-chevron-right"></span>Men</a></li>
+                    <li><a href="products.html"><span class="icon-chevron-right"></span>Bags & Shoes</a></li>
+                    <li><a href="products.html"><span class="icon-chevron-right"></span>Clothes</a></li>
+                    <li><a href="products.html"><span class="icon-chevron-right"></span>Cosmetic</a></li>
+                    <li><a href="products.html"><span class="icon-chevron-right"></span>Electronic</a></li>
 
 
-		<li style="border:0"> &nbsp;</li>
-
-	</ul>
+                    <li style="border:0"> &nbsp;</li>
+                    <li>
+            </ul>
+    </div>
 </div>
+	<div class="span9" style="background-color:rgba(0, 0, 0, 0.0);">
+    <ul class="breadcrumb" style="background-color:rgba(0, 0, 0, 0.0);">
+    <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+    <li><a href="products.html">Items</a> <span class="divider">/</span></li>
+    <li class="active">Preview</li>
+    </ul>
+	<div style="background-color:rgba(0, 0, 0, 0.0);" class="well well-small">
+	<div style="background-color:rgba(0, 0, 0, 0.0);" class="row-fluid">
+			<div class="span5">
+			<div id="myCarousel" class="carousel slide cntr">
+                <div class="carousel-inner">
+                  <div class="item active">
+                   <a href="#"> <img src="assets/img/giyim-erkek.jpg" alt="" style="width:100%"></a>
+                  </div>
+
+                </div>
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+            </div>
+			</div>
+			<div class="span7" style="background-color:rgba(0, 0, 0, 0.0);">
+				<h3>Broadway Shirt [$250.00]</h3>
+				<hr class="soft"/>
+
+ <br><br>
+				  <br><br>
+ <br><br><br><br>
+				  <br><br>
+				  <h4>100 items in stock</h4>
+				  <p>
+				  <br><br>
+				  
+</br>
+				  <p>
+				  <button type="submit" class="shopBtn"><span class=" icon-shopping-cart"></span> Add to cart</button>
+				</form>
+			</div>
+			</div>
+				<hr class="softn clr"/>
 
 
-
-
-
-	</div>
-	<div class="span9">
-
-<!-------------------------------------------------------------------------------------
-New Products
--->
-	<div class="well well-small">
-	<h3>Products </h3>
-		<div class="row-fluid">
-		  <ul class="thumbnails">
-			<li class="span4">
-			  <div class="thumbnail">
-				<a href="product_details.html" class="overlay"></a>
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/etek.jpg" alt=""></a>
-				<div class="caption cntr">
-					<p>Broadway Skirt</p>
-					<p><strong> $100.00</strong></p>
-					<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
-					<br class="clr">
-				</div>
-			  </div>
-			</li>
-			<li class="span4">
-			  <div class="thumbnail">
-				<a href="product_details.html" class="overlay"></a>
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/kadin-gomlek.jpg" alt=""></a>
-				<div class="caption cntr">
-					<p>Broadway Jeans</p>
-					<p><strong> $200.00</strong></p>
-					<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
-					<br class="clr">
-				</div>
-			  </div>
-			</li>
-			<li class="span4">
-			  <div class="thumbnail">
-				<a href="product_details.html" class="overlay"></a>
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/giyim-erkek.jpg" alt=""></a>
-				<div class="caption cntr">
-					<p>Broadway Shirt</p>
-					<p><strong> $250.00</strong></p>
-					<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
-					<br class="clr">
-				</div>
-			  </div>
-			</li>
-		  </ul>
-		</div>
-	<div class="row-fluid">
-		  <ul class="thumbnails">
-			<li class="span4">
-			  <div class="thumbnail">
-				<a href="product_details.html" class="overlay"></a>
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/parfumkadın.jpeg" alt=""></a>
-				<div class="caption cntr">
-					<p>Shiseido Ever Bloom Perfume</p>
-					<p><strong> $500.00</strong></p>
-					<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
-					<br class="clr">
-				</div>
-			  </div>
-			</li>
-			<li class="span4">
-			  <div class="thumbnail">
-				<a href="product_details.html" class="overlay"></a>
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/parfumerkek.jpeg" alt=""></a>
-				<div class="caption cntr">
-					<p>Tom Ford Ombre Leather Perfume</p>
-					<p><strong> $800.00</strong></p>
-					<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
-					<br class="clr">
-				</div>
-			  </div>
-			</li>
-			<li class="span4">
-			  <div class="thumbnail">
-				<a href="product_details.html" class="overlay"></a>
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/kozmetik-kadın.jpg" alt=""></a>
-				<div class="caption cntr">
-					<p>Shiseido Lipstick</p>
-					<p><strong> $750.00</strong></p>
-					<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
-					<br class="clr">
-				</div>
-			  </div>
-			</li>
-		  </ul>
-		</div>
-	<div class="row-fluid">
-		  <ul class="thumbnails">
-			<li class="span4">
-			  <div class="thumbnail">
-				<a href="product_details.html" class="overlay"></a>
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/TV.jpg" alt=""></a>
-				<div class="caption cntr">
-					<p>Electronic</p>
-					<p><strong> $5125.00</strong></p>
-					<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
-					<br class="clr">
-				</div>
-			  </div>
-			</li>
-			<li class="span4">
-			  <div class="thumbnail">
-				<a href="product_details.html" class="overlay"></a>
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/cellphone.jpg" alt=""></a>
-				<div class="caption cntr">
-					<p>Electronic</p>
-					<p><strong> $215.00</strong></p>
-					<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
-					<br class="clr">
-				</div>
-			  </div>
-			</li>
-			<li class="span4">
-			  <div class="thumbnail">
-				<a href="product_details.html" class="overlay"></a>
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/kulaklık.jpg" alt=""></a>
-				<div class="caption cntr">
-					<p>Electronic</p>
-					<p><strong> $520.00</strong></p>
-					<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
-					<br class="clr">
-				</div>
-			  </div>
-			</li>
-		  </ul>
-		</div>
-	<div class="row-fluid">
-		  <ul class="thumbnails">
-			<li class="span4">
-			  <div class="thumbnail">
-				<a href="product_details.html" class="overlay"></a>
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/ayakkabıerkek.jpg" alt=""></a>
-				<div class="caption cntr">
-					<p>Shoes</p>
-					<p><strong> $300.00</strong></p>
-					<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
-					<br class="clr">
-				</div>
-			  </div>
-			</li>
-			<li class="span4">
-			  <div class="thumbnail">
-				<a href="product_details.html" class="overlay"></a>
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/ayakkabıkadın.jpg" alt=""></a>
-				<div class="caption cntr">
-					<p>Shoes</p>
-					<p><strong> $450.00</strong></p>
-					<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
-					<br class="clr">
-				</div>
-			  </div>
-			</li>
-			<li class="span4">
-			  <div class="thumbnail">
-				<a href="product_details.html" class="overlay"></a>
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/ayakkabıspor.jpg" alt=""></a>
-				<div class="caption cntr">
-					<p>Shoes</p>
-					<p><strong> $320.00</strong></p>
-					<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
-					<br class="clr">
-				</div>
-			  </div>
-			</li>
-		  </ul>
-		</div>
-
-	</div>
-	</div>
-	</div>
-<!--
-Clients
--->
+           
+            
+</div>
+</div>
+</div> <!-- Body wrapper -->
 
 
 </div><!-- /container -->
