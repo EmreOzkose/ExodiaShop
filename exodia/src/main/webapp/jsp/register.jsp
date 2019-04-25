@@ -5,7 +5,8 @@
 <html>
 <head>
     <style>
-       html {
+       
+        html {
   height:100%;
 }
 
@@ -19,6 +20,33 @@ body {
   background: linear-gradient(128deg, rgba(121,255,240,1) 0%, rgba(143,203,246,1) 50%, rgba(172,130,255,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#79fff0",endColorstr="#ac82ff",GradientType=1);
 }
+.register {
+  width: 400px;
+  height: 500px;
+  background: transparent;
+  color: #ffffff;
+  top: 38%;
+  left: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 70px 30px;
+  border-radius: 20px;
+}
+img{
+  width: 318px;
+  height: 102px;
+  position: absolute;
+  top: -15%;
+  left: 13%;
+}
+h1 {
+   margin: 0;
+   padding: 0 0 20px;
+   text-align: center;
+   line-height: 1em;
+   font-size: 26px;
+ }
 input[type="text"], input[type="password"]{
    border: none;
    border-bottom: 1px solid #000;
@@ -36,9 +64,13 @@ input[type="text"], input[type="password"]{
    color: #fff;
    font-size: 18px;
    border-radius: 20px;
+   width: 100%;
  }
 
- input[type="submit"]:hover {
+ .register input{
+     width: 100%;
+ }
+ button:hover {
     cursor: pointer;
     background: #79fff0;
     color: #fff;
@@ -57,16 +89,21 @@ a:hover {
      
 label{
     color: #fff;
+    width: 100%;
+}
+
+table{
+    width: 100%;
 }
     </style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Registration</title>
 </head>
 <body>
-   
+   <div class="register">
 	<form:form id="regForm" modelAttribute="user" action="registerProcess" method="post">
             <img src="img/exodia-cursive.png" alt="exodia shop">
-            
+                <h1> Sign Up </h1>
 		<table align="center">
                     
                     <tr>
@@ -102,17 +139,17 @@ label{
                         
 			<tr>
 				<tr><td><form:label path="email">Email</form:label></td></tr>
-				<td><form:input required="required" path="email" name="email" id="email" placeholder = "E-Mail"/></td>
+				<td><form:input required="required" path="email" name="email" id="email" placeholder = "Email"/></td>
 			</tr>
                         <tr>
 				<tr><td><form:label path="address">Address</form:label></td></tr>
-				<td><form:password required="required" path="address" name="address"
-						id="address" placeholder ="address"/></td>
+				<td><form:input required="required" path="address" name="address"
+						id="address" placeholder ="Address"/></td>
 			</tr>
 			 <tr>
 				<tr><td><form:label path="phonenumber">Phone Number</form:label></td></tr>
-				<td><form:password required="required" path="phonenumber" name="phonenumber"
-						id="phonenumber" placeholder ="phonenumber"/></td>
+				<td><form:input  required="required" path="phonenumber" name="phonenumber"
+						id="phonenumber" placeholder ="Phone number"/></td>
 			</tr>
 			<tr>
                        
@@ -131,6 +168,6 @@ label{
 			</tr>
 		</table>
 	</form:form>
-
+   </div>
 </body>
 </html>
