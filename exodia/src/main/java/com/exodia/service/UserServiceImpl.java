@@ -16,8 +16,23 @@ public class UserServiceImpl implements UserService {
     userDao.register(user);
   }
 
+  @Override
   public User validateUser(Login login) {
     return userDao.validateUser(login);
+  }
+  
+  @Override
+  public Boolean check_username(String username) {
+    return userDao.check_username(username);
+  }
+  
+  @Override
+  public Boolean check_email(String email){
+      return userDao.check_email(email);
+  }
+  @Override
+  public Boolean check_pnumber(String pnumber){
+      return userDao.check_pnumber(pnumber);
   }
 
 }

@@ -18,7 +18,12 @@
 
   	<!-- Spring will search in the bellow paths controller an services annotations-->	
  	<mvc:resources mapping="/img/**" location="/img/" />
-	<mvc:annotation-driven />      
+	<mvc:annotation-driven />   
+
+        <!--  messages.properties dosyasının baglanmasi-->
+        <bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
+            <property name="basename" value="messages" />
+        </bean>       
         
 	<context:component-scan base-package="com.exodia" />
 	<context:annotation-config />
@@ -29,14 +34,5 @@
 		<property name="suffix" value=".jsp" />
          
 	</bean>
-        
-        <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-            <property name="basenames">
-                <list>
-                    <value>classpath:validation</value>
-                </list>
-            </property>
-        </bean>
-
-        
+                
 </beans>

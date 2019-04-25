@@ -14,30 +14,55 @@ import com.exodia.model.Login;
 import com.exodia.model.User;
 
 public class UserDaoImpl implements UserDao {
+    @Autowired
+    DataSource datasource;
 
-  @Autowired
-  DataSource datasource;
+    @Autowired
+    JdbcTemplate jdbcTemplate;
 
-  @Autowired
-  JdbcTemplate jdbcTemplate;
+    @Override
+    public void register(User user) {
 
-  public void register(User user) {
+        String sql = "insert into user values(?,?,?,?,?,?,?,?,?,?,?)";
 
-    String sql = "insert into user values(?,?,?,?,?,?,?,?,?,?)";
+        jdbcTemplate.update(sql, new Object[] {user.getId(), user.getUsername(), user.getPassword(), user.getName(),user.getSurname(),user.getDateofbirth(),user.getGender(), user.getEmail(), user.getAddress(), user.getPhonenumber() , "customer"});
+    }
 
-    jdbcTemplate.update(sql, new Object[] {3, user.getUsername(), user.getPassword(), user.getName(),user.getSurname(),user.getDateofbirth(),user.getGender(), user.getEmail(), user.getAddress(), user.getPhonenumber()});
-  }
+    @Override
+    public User validateUser(Login login) {
 
-  public User validateUser(Login login) {
+      String sql = "select * from user where username='" + login.getUsername() + "' and password='" + login.getPassword()
+          + "'";
 
-    String sql = "select * from user where username='" + login.getUsername() + "' and password='" + login.getPassword()
-        + "'";
+      List<User> users = jdbcTemplate.query(sql, new UserMapper());
 
-    List<User> users = jdbcTemplate.query(sql, new UserMapper());
+      return users.size() > 0 ? users.get(0) : null;
+    }
+  
+    @Override
+      public Boolean check_username(String Username) {
+          String sql = "select * from user where username='" + Username +  "'";
 
-    return users.size() > 0 ? users.get(0) : null;
-  }
+          List<User> users = jdbcTemplate.query(sql, new UserMapper());
+          /*size 0 den büyükse , true döndürür yoksa null*/
+          return users.size() > 0 ? true : null;
+      }
+    @Override
+      public Boolean check_email(String email) {
+          String sql = "select * from user where email='" + email +  "'";
 
+          List<User> users = jdbcTemplate.query(sql, new UserMapper());
+          /*size 0 den büyükse , true döndürür yoksa null*/
+          return users.size() > 0 ? true : null;
+      }
+    @Override
+      public Boolean check_pnumber(String pnumber) {
+          String sql = "select * from user where phonenumber='" + pnumber +  "'";
+
+          List<User> users = jdbcTemplate.query(sql, new UserMapper());
+          /*size 0 den büyükse , true döndürür yoksa null*/
+          return users.size() > 0 ? true : null;
+      }
 }
 
 class UserMapper implements RowMapper<User> {

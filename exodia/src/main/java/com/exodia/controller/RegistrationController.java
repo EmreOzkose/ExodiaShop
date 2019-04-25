@@ -12,25 +12,34 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.exodia.model.User;
 import com.exodia.service.UserService;
+import com.exodia.validator.UserValidator;
+import javax.validation.Valid;
+import org.springframework.validation.BindingResult;
+
 
 @Controller
 public class RegistrationController {
-  @Autowired
-  public UserService userService;
+    @Autowired
+    public UserService userService;
+    @Autowired
+    private UserValidator userValidator;
 
-  @RequestMapping(value = "/register", method = RequestMethod.GET)
-  public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
-    ModelAndView mav = new ModelAndView("register");
-    mav.addObject("user", new User());
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
+      ModelAndView mav = new ModelAndView("register");
+      mav.addObject("user", new User());
 
-    return mav;
-  }
+      return mav;
+    }
+  
 
-  @RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
-  public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("user") User user) {
+    @RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
+    public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
 
-    userService.register(user);
-
-    return new ModelAndView("welcome", "name", user.getName());
-  }
+        if (bindingResult.hasErrors() == true) {
+          return new ModelAndView("register");
+        }
+        userService.register(user);
+        return new ModelAndView("welcome", "name", user.getName());
+    }
 }

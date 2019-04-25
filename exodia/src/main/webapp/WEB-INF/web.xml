@@ -5,7 +5,7 @@
 	version="3.0">
         
         
-	<display-name>Archetype Created Web Application</display-name>
+	<display-name>Exodia Web Application</display-name>
 
 	<welcome-file-list>
 		<welcome-file>mainbeforelogin.jsp</welcome-file>
@@ -25,7 +25,6 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring-mvc-servlet.xml</param-value>
 	</context-param>
-
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener> -->

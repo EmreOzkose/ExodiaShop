@@ -1,19 +1,40 @@
 package com.exodia.model;
 
 import java.util.Date;
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 public class User {
-  private Long id;
-  private String username;
-  private String password;
-  private String name;
-  private String surname;
-  private Date dateofbirth;
-  private String gender;
-  private String email;
-  private String address;
-  private String phonenumber;
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
+    @NotNull
+    @Size(min = 4, max = 50)
+    private String username;
+    @NotNull
+    @Size(min = 8, max = 32)
+    private String password;
+    @NotNull
+    @Size(min = 3, max =60)
+    @Pattern(regexp="[a-zA-Z][a-zA-Z ]+", message="Name can only consist of letters")
+    private String name;
+    @NotNull
+    @Size(min = 3, max =60)
+    @Pattern(regexp="[a-zA-Z][a-zA-Z ]+", message="Surname can only consist of letters")
+    private String surname;
+    @Past
+    @DateTimeFormat(pattern="MM/dd/yyyy")
+    private Date dateofbirth;
+    @NotNull
+    private String gender;
+    @NotNull
+    @Pattern(regexp = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$", message="uygun degil")
+    private String email;
+    private String address;
+    private String phonenumber;
+    private String role;
   
     public Long getId() {
         return id;
@@ -93,6 +114,14 @@ public class User {
 
     public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
   
 
