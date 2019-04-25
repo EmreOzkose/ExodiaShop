@@ -14,7 +14,6 @@
                         
 			<td><a href="register">Register</a></td>
                     </tr>
-                        <tr><td><a href="mainafterlogin.jsp">AccountMain</a></td></tr>
                         
                         <td><a href="mainbeforelogin.jsp">Main</a></td>
                     <tr>  
