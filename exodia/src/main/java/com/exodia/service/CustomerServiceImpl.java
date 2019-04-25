@@ -12,7 +12,10 @@ public class CustomerServiceImpl implements CustomerService {
   public CustomerDao customerDao;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   @Override
+=======
+>>>>>>> parent of 3098006... product
 =======
 >>>>>>> parent of 3098006... product
   public void register(Customer customer) {
@@ -20,7 +23,10 @@ public class CustomerServiceImpl implements CustomerService {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   @Override
+=======
+>>>>>>> parent of 3098006... product
 =======
 >>>>>>> parent of 3098006... product
   public Customer validateUser(Login login) {

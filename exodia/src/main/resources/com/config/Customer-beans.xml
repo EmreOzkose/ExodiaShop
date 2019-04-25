@@ -13,6 +13,7 @@
         
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<bean id="UserService" class="com.exodia.service.UserServiceImpl" />
 	<bean id="UserDao" class="com.exodia.dao.UserDaoImpl" />
 =======
@@ -22,6 +23,10 @@
 	<bean id="CustomerService" class="com.exodia.service.CustomerServiceImpl" />
 	<bean id="CustomerDao" class="com.exodia.dao.CustomerDaoImpl" />
 >>>>>>> 948653c7047f5286bec97ed5c6f710522deedf2e
+=======
+	<bean id="CustomerService" class="com.exodia.service.CustomerServiceImpl" />
+	<bean id="CustomerDao" class="com.exodia.dao.CustomerDaoImpl" />
+>>>>>>> parent of 3098006... product
 =======
 	<bean id="CustomerService" class="com.exodia.service.CustomerServiceImpl" />
 	<bean id="CustomerDao" class="com.exodia.dao.CustomerDaoImpl" />
