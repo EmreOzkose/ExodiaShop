@@ -26,7 +26,7 @@ public class ProductController {
   ProductService productService;
 
   @RequestMapping(value = "/listItem", method = RequestMethod.GET)
-  public ModelAndView listItem(HttpServletRequest request, HttpServletResponse response) {
+  public String listItem(HttpServletRequest request, HttpServletResponse response) {
     ArrayList<Product> products = productService.productlist();
     ModelAndView mav = new ModelAndView("mainbeforelogin");
     String name = products.get(0).getName();
@@ -35,7 +35,7 @@ public class ProductController {
             mav.addObject("name", products.get(0).getName());
             mav.addObject("price", String.valueOf(products.get(0).getPrice()));
         //}
-    return mav;
+    return name;
   }
     
     
