@@ -31,6 +31,15 @@
    font-size: 16px;
    
  }
+ 
+ img{
+  width: 318px;
+  height: 102px;
+  position: absolute;
+  top: -15%;
+  left: 13%;
+}
+ 
  button{
    border: none;
    outline: none;
@@ -39,10 +48,83 @@
    color: #fff;
    font-size: 18px;
    border-radius: 20px;
+   width: 100%;
  }
  label{
     color: #fff;
+    width: 100%;
  }
+ 
+ .login {
+  width: 400px;
+  height: 500px;
+  background: transparent;
+  color: #fff;
+  top: 55%;
+  left: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 70px 30px;
+  border-radius: 20px;
+}
+
+
+ h1 {
+   margin: 0;
+   padding: 0 0 20px;
+   text-align: center;
+   line-height: 1em;
+   font-size: 26px;
+ }
+
+ .login p{
+   margin: 0;
+   padding: 0;
+   font-weight: bold;
+   font-size: 14px;
+ }
+
+ .login input{
+   width: 100%;
+   margin-bottom: 20px;
+ }
+
+ .login input[type="text"], input[type="password"]{
+   border: none;
+   border-bottom: 1px solid #000;
+   background: transparent;
+   outline: none;
+   height: 40px;
+   color: #000;
+   font-size: 16px;
+ }
+
+ 
+
+ .login input[type="submit"]:hover {
+    cursor: pointer;
+    background: #79fff0;
+    color: #fff;
+ }
+
+.login a{
+  left: 50%;
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 20px;
+  color: #037d6f;
+}
+
+button:hover {
+  cursor: pointer;
+    background: #79fff0;
+    color: #fff;
+}
+
+table{
+    width: 100%;
+}
      
 </style>
 <title>Login</title>
@@ -50,7 +132,9 @@
 
 </head>
 <body>
+    <div class="login">
     <img src="img/exodia-cursive.png" alt="exodia logo"/>
+    <h1> Sign in </h1>
 	<form:form id="loginForm" modelAttribute="login" action="loginProcess" method="post">
             <table align="center">
                 <tr>
@@ -66,7 +150,7 @@
                 </tr>
                 <tr>
                         <tr></tr>
-                        <td align="left"><form:button id="login" onclick="myFunction()" name="login">Login</form:button></td>
+                        <td align="center"><form:button id="login" name="login">Login</form:button></td>
                 </tr>
 
                 <tr></tr>
@@ -81,7 +165,7 @@
 			<td style="font-style: italic; color: red;">${message}</td>
 		</tr>
 	</table>
-
+    </div>
 </body>
 
 </html>
