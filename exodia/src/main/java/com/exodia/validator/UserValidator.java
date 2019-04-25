@@ -23,16 +23,13 @@ public class UserValidator implements Validator {
         User user = (User) o;
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
-        if (user.getUsername().length() < 6 || user.getUsername().length() > 32) {
-            errors.rejectValue("username", "Size.userForm.username");
-        }
         
         if (userService.check_username(user.getUsername()) != null) {
             errors.rejectValue("username", "Duplicate.userForm.username");
         }
         
         if(user.getUsername().contains(" ")){
-            errors.rejectValue("username", "Not.empty.space");
+            errors.rejectValue("username", "NotEmpty.space");
         }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
@@ -44,28 +41,29 @@ public class UserValidator implements Validator {
             errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
         }*/
         if(user.getPassword().contains(" ")){
-            errors.rejectValue("password", "Not.empty.space");
+            errors.rejectValue("password", "NotEmpty.space");
         }
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "gender", "NotEmpty");
         if (user.getGender().length() < 5 ) {
-            errors.rejectValue("gender", "Not.empty.gender");
+            errors.rejectValue("gender", "NotEmpty");
         }
         
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "Email", "NotEmpty");
-        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
+        /*String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
         if (user.getEmail().matches(regex) == false) {
-            errors.rejectValue("Email", "Email.validate");
-        }
+            errors.rejectValue("email", "email.validate");
+        }*/
         if (userService.check_email(user.getEmail()) != null) {
-            errors.rejectValue("Email", "Duplicate.userForm.email");
+            errors.rejectValue("email", "Duplicate.userForm.email");
         }
         
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "Phonenumber", "NotEmpty");
         if (userService.check_pnumber(user.getPhonenumber()) != null) {
             errors.rejectValue("Phonenumber", "Duplicate.userForm.phonenumber");
         }
+        /*
         if (user.getPhonenumber().length()!=0 && user.getPhonenumber().length()!=11) {
             errors.rejectValue("Phonenumber", "Size.userForm.phonenumber");
-        }    
+        } */   
     }
 }

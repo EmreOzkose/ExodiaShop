@@ -165,7 +165,6 @@ table{
 			</tr>
 			<tr></tr>
                         
-                        
 			<tr>
                         <tr></tr>
 				<tr><td><a href="home.jsp">Home</a></td></tr>

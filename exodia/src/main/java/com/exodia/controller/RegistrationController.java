@@ -35,7 +35,7 @@ public class RegistrationController {
 
     @RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
     public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
-
+        userValidator.validate(user, bindingResult);
         if (bindingResult.hasErrors() == true) {
           return new ModelAndView("register");
         }
