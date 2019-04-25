@@ -7845,7 +7845,7 @@ Lower Header Section
 	<div class="span4">
 	<h1>
 	<a class="logo" href="index.html">
-		<img src="assets/img/exodia-cursive.png" alt="exodia shop">
+            <img src=" img/exodia-cursive.png" alt="exodia logo">
 	</a>
 	</h1>
 	</div>
@@ -7935,7 +7935,7 @@ Body Section
 			  <div class="thumbnail">
 				<a href="product_details.html" class="overlay"></a>
 				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/etek.jpg" alt=""></a>
+				<a href="product_details.html"><img src="img/etek.jpg" alt=""></a>
 				<div class="caption cntr">
 					<p>Broadway Skirt</p>
 					<p><strong> $100.00</strong></p>
@@ -7949,7 +7949,7 @@ Body Section
 			  <div class="thumbnail">
 				<a href="product_details.html" class="overlay"></a>
 				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/kadin-gomlek.jpg" alt=""></a>
+				<a href="product_details.html"><img src="img/kadin-gomlek.jpg" alt=""></a>
 				<div class="caption cntr">
 					<p>Broadway Jeans</p>
 					<p><strong> $200.00</strong></p>
@@ -7963,7 +7963,7 @@ Body Section
 			  <div class="thumbnail">
 				<a href="product_details.html" class="overlay"></a>
 				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/giyim-erkek.jpg" alt=""></a>
+				<a href="product_details.html"><img src="img/giyim-erkek.jpg" alt=""></a>
 				<div class="caption cntr">
 					<p>Broadway Shirt</p>
 					<p><strong> $250.00</strong></p>
@@ -7981,7 +7981,7 @@ Body Section
 			  <div class="thumbnail">
 				<a href="product_details.html" class="overlay"></a>
 				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/parfumkadın.jpeg" alt=""></a>
+				<a href="product_details.html"><img src="img/parfumkadın.jpeg" alt=""></a>
 				<div class="caption cntr">
 					<p>Shiseido Ever Bloom Perfume</p>
 					<p><strong> $500.00</strong></p>
@@ -7995,7 +7995,7 @@ Body Section
 			  <div class="thumbnail">
 				<a href="product_details.html" class="overlay"></a>
 				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/parfumerkek.jpeg" alt=""></a>
+				<a href="product_details.html"><img src="img/parfumerkek.jpeg" alt=""></a>
 				<div class="caption cntr">
 					<p>Tom Ford Ombre Leather Perfume</p>
 					<p><strong> $800.00</strong></p>
@@ -8009,7 +8009,7 @@ Body Section
 			  <div class="thumbnail">
 				<a href="product_details.html" class="overlay"></a>
 				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/kozmetik-kadın.jpg" alt=""></a>
+				<a href="product_details.html"><img src="img/kozmetik-kadın.jpg" alt=""></a>
 				<div class="caption cntr">
 					<p>Shiseido Lipstick</p>
 					<p><strong> $750.00</strong></p>
@@ -8027,7 +8027,7 @@ Body Section
 			  <div class="thumbnail">
 				<a href="product_details.html" class="overlay"></a>
 				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/TV.jpg" alt=""></a>
+				<a href="product_details.html"><img src="img/TV.jpg" alt=""></a>
 				<div class="caption cntr">
 					<p>Electronic</p>
 					<p><strong> $5125.00</strong></p>
@@ -8041,7 +8041,7 @@ Body Section
 			  <div class="thumbnail">
 				<a href="product_details.html" class="overlay"></a>
 				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/cellphone.jpg" alt=""></a>
+				<a href="product_details.html"><img src="img/cellphone.jpg" alt=""></a>
 				<div class="caption cntr">
 					<p>Electronic</p>
 					<p><strong> $215.00</strong></p>
@@ -8055,7 +8055,7 @@ Body Section
 			  <div class="thumbnail">
 				<a href="product_details.html" class="overlay"></a>
 				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/kulaklık.jpg" alt=""></a>
+				<a href="product_details.html"><img src="img/kulaklık.jpg" alt=""></a>
 				<div class="caption cntr">
 					<p>Electronic</p>
 					<p><strong> $520.00</strong></p>
@@ -8073,7 +8073,7 @@ Body Section
 			  <div class="thumbnail">
 				<a href="product_details.html" class="overlay"></a>
 				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/ayakkabıerkek.jpg" alt=""></a>
+				<a href="product_details.html"><img src="img/ayakkabıerkek.jpg" alt=""></a>
 				<div class="caption cntr">
 					<p>Shoes</p>
 					<p><strong> $300.00</strong></p>
@@ -8087,7 +8087,7 @@ Body Section
 			  <div class="thumbnail">
 				<a href="product_details.html" class="overlay"></a>
 				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/ayakkabıkadın.jpg" alt=""></a>
+				<a href="product_details.html"><img src="img/ayakkabıkadın.jpg" alt=""></a>
 				<div class="caption cntr">
 					<p>Shoes</p>
 					<p><strong> $450.00</strong></p>
@@ -8101,7 +8101,7 @@ Body Section
 			  <div class="thumbnail">
 				<a href="product_details.html" class="overlay"></a>
 				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="assets/img/ayakkabıspor.jpg" alt=""></a>
+				<a href="product_details.html"><img src="img/ayakkabıspor.jpg" alt=""></a>
 				<div class="caption cntr">
 					<p>Shoes</p>
 					<p><strong> $320.00</strong></p>

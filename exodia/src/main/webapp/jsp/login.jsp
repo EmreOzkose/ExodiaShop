@@ -47,7 +47,7 @@
 <title>Login</title>
 </head>
 <body>
-    <img src ="resources/exodia-cursive.png"/>
+    <img src="img/exodia-cursive.png" alt="exodia logo"/>
 	<form:form id="loginForm" modelAttribute="login" action="loginProcess" method="post">
             <table align="center">
                 <tr>
