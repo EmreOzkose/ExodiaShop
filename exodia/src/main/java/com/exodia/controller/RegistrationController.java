@@ -10,27 +10,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.exodia.model.Customer;
-import com.exodia.service.CustomerService;
+import com.exodia.model.User;
+import com.exodia.service.UserService;
 
 @Controller
 public class RegistrationController {
   @Autowired
-  public CustomerService userService;
+  public UserService userService;
 
   @RequestMapping(value = "/register", method = RequestMethod.GET)
   public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
     ModelAndView mav = new ModelAndView("register");
-    mav.addObject("customer", new Customer());
+    mav.addObject("user", new User());
 
     return mav;
   }
 
   @RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
-  public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("customer") Customer customer) {
+  public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("user") User user) {
 
-    userService.register(customer);
+    userService.register(user);
 
-    return new ModelAndView("welcome", "name", customer.getName());
+    return new ModelAndView("welcome", "name", user.getName());
   }
 }

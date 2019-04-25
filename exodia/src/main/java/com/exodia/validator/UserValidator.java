@@ -1,29 +1,29 @@
 package com.exodia.validator;
 
-import com.exodia.model.Customer;
-import com.exodia.service.CustomerService;
+import com.exodia.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
+import com.exodia.service.UserService;
 
 @Component
 public class UserValidator implements Validator {
     @Autowired
-    private CustomerService userService;
+    private UserService userService;
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return Customer.class.equals(aClass);
+        return User.class.equals(aClass);
     }
 
     @Override
     public void validate(Object o, Errors errors) {
-        Customer customer = (Customer) o;
+        User user = (User) o;
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
-        if (customer.getUsername().length() < 6 || customer.getUsername().length() > 32) {
+        if (user.getUsername().length() < 6 || user.getUsername().length() > 32) {
             errors.rejectValue("username", "Size.userForm.username");
         }
         /*
@@ -32,7 +32,7 @@ public class UserValidator implements Validator {
         }*/
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
-        if (customer.getPassword().length() < 8 || customer.getPassword().length() > 32) {
+        if (user.getPassword().length() < 8 || user.getPassword().length() > 32) {
             errors.rejectValue("password", "Size.userForm.password");
         }
         /*

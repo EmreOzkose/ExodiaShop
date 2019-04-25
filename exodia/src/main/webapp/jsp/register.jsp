@@ -64,7 +64,7 @@ label{
 </head>
 <body>
    
-	<form:form id="regForm" modelAttribute="customer" action="registerProcess" method="post">
+	<form:form id="regForm" modelAttribute="user" action="registerProcess" method="post">
             <img src="img/exodia-cursive.png" alt="exodia shop">
             
 		<table align="center">
