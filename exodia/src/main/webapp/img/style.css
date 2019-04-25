@@ -62,7 +62,7 @@ hr.soften {margin: 8px 0;background: #DDD;}
 .navbar .pull-right > li > .dropdown-menu, .navbar .nav > li > .dropdown-menu.pull-right {display: none; right: 0;left: auto;border-radius: 0; border-color: #ccc;}
 .navbar .nav , .marginLess{margin:0}
 .navbar-search .search-query { padding: 4px 14px;-moz-border-radius: 1px;-webkit-border-radius: 1px;border-radius: 1px;line-height: 1.5em; min-width: 200px;}
-.navbar-search{margin-left:570px;}
+.navbar-search{margin-left:500px; margin-top: 10px;}
 .actionList a{width:50%; font-size:11px; color:#444}
 .caption p{margin:0}
 .caption h4{margin:0}

@@ -28,7 +28,7 @@
 		<![endif]-->
 
 	<!-- Favicons -->
-    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="shortcut icon" href="img/favicon.ico">
   </head>
 <body>
 
@@ -100,6 +100,8 @@ Navigation Bar Section
 				</form>
 				</div>
 			</li>
+                        
+                        <button  class="log">Sign up</button>
 			</ul>
 		  </div>
 		</div>

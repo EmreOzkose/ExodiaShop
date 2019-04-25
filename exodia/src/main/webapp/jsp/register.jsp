@@ -99,10 +99,23 @@ label{
                         <tr><td><form:label path="gender">Gender</form:label></td></tr>
 				<td><form:input path="gender" name="gender" id="gender" placeholder ="Gender"/></td>
 			</tr>
+                        
 			<tr>
 				<tr><td><form:label path="email">Email</form:label></td></tr>
 				<td><form:input path="email" name="email" id="email" placeholder = "E-Mail"/></td>
 			</tr>
+                        <tr>
+				<tr><td><form:label path="address">Address</form:label></td></tr>
+				<td><form:password path="address" name="address"
+						id="address" placeholder ="address"/></td>
+			</tr>
+			 <tr>
+				<tr><td><form:label path="phonenumber">Phone Number</form:label></td></tr>
+				<td><form:password path="phonenumber" name="phonenumber"
+						id="phonenumber" placeholder ="phonenumber"/></td>
+			</tr>
+			<tr>
+                       
 			
 			
 			<tr>

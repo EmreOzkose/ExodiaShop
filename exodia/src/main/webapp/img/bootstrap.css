@@ -6170,3 +6170,8 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+
+.log {
+    margin-right: 10px;
+    margin-top: 7px;
+}
