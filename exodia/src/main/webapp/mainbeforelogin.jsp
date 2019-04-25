@@ -112,7 +112,6 @@ Body Section
 					<p>Broadway Skirt</p>
 					<p><strong> $100.00</strong></p>
 					<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
 					<br class="clr">
 				</div>
 			  </div>
