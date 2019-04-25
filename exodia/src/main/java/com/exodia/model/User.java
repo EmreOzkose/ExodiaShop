@@ -3,8 +3,8 @@ package com.exodia.model;
 import java.util.Date;
 
 
-public class Customer {
-  private Long id;
+public class User {
+  private int id;
   private String username;
   private String password;
   private String name;
@@ -14,12 +14,22 @@ public class Customer {
   private String email;
   private String address;
   private String phonenumber;
-  
-    public Long getId() {
+  private String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

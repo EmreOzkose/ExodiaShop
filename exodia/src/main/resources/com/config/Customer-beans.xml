@@ -11,11 +11,16 @@
 	<context:component-scan base-package="com.exodia" />
 	<context:annotation-config />
         
+<<<<<<< HEAD
+	<bean id="UserService" class="com.exodia.service.UserServiceImpl" />
+	<bean id="UserDao" class="com.exodia.dao.UserDaoImpl" />
+=======
 
 
 
 	<bean id="CustomerService" class="com.exodia.service.CustomerServiceImpl" />
 	<bean id="CustomerDao" class="com.exodia.dao.CustomerDaoImpl" />
+>>>>>>> 948653c7047f5286bec97ed5c6f710522deedf2e
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="datasource" />
@@ -25,9 +30,9 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
                 
-		<property name="url" value="jdbc:mysql://localhost:3306/exodiadb?zeroDateTimeBehavior=convertToNull" />
+		<property name="url" value="jdbc:mysql://localhost:3306/exodiadb?serverTimezone=EST5EDT"/>
 		<property name="username" value="root" />
-		<property name="password" value="root" />
+		<property name="password" value="753159Aa+" />
 	</bean>
 
 </beans>

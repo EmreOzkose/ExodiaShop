@@ -63,10 +63,14 @@ label{
 <title>Registration</title>
 </head>
 <body>
+<<<<<<< HEAD
+	<form:form id="regForm" modelAttribute="user" action="registerProcess" method="post">
+=======
     
 	<form:form id="regForm" modelAttribute="customer" action="registerProcess" method="post">
             <img src="img/exodia-cursive.png" alt="exodia shop">
             
+>>>>>>> 948653c7047f5286bec97ed5c6f710522deedf2e
 		<table align="center">
                     
                     <tr>
