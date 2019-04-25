@@ -21,27 +21,30 @@ public class CustomerDaoImpl implements CustomerDao {
   @Autowired
   JdbcTemplate jdbcTemplate;
 
-  public void register(Customer customer) {
 
-    String sql = "insert into customer values(?,?,?,?,?,?,?,?,?,?)";
+    @Override
+    public void register(Customer customer) {
 
-    jdbcTemplate.update(sql, new Object[] {3, customer.getUsername(), customer.getPassword(), customer.getName(),customer.getSurname(),customer.getDateofbirth(),customer.getGender(), customer.getEmail(), customer.getAddress(), customer.getPhonenumber()});
-  }
+        String sql = "insert into customer values(?,?,?,?,?,?,?,?,?,?)";
 
-  public Customer validateUser(Login login) {
+        jdbcTemplate.update(sql, new Object[] {3, customer.getUsername(), customer.getPassword(), customer.getName(),customer.getSurname(),customer.getDateofbirth(),customer.getGender(), customer.getEmail(), customer.getAddress(), customer.getPhonenumber()});
+    }
 
-    String sql = "select * from customer where username='" + login.getUsername() + "' and password='" + login.getPassword()
-        + "'";
+    @Override
+    public Customer validateUser(Login login) {
 
-    List<Customer> users = jdbcTemplate.query(sql, new UserMapper());
+        String sql = "select * from customer where username='" + login.getUsername() + "' and password='" + login.getPassword() + "'";
 
-    return users.size() > 0 ? users.get(0) : null;
-  }
+        List<Customer> users = jdbcTemplate.query(sql, new UserMapper());
+
+        return users.size() > 0 ? users.get(0) : null;
+    }
 
 }
 
 class UserMapper implements RowMapper<Customer> {
 
+  @Override
   public Customer mapRow(ResultSet rs, int arg1) throws SQLException {
     Customer customer = new Customer();
     /*galiba jsp den gelen yazılar*/
