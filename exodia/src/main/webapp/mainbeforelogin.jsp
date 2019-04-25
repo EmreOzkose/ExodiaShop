@@ -15,19 +15,7 @@
      <link href="img/style.css" rel="stylesheet"/> 
     
     
-    <!-- font awesome styles -->
-    <!-- <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">-->
-    
-        
-		<!--[if IE 7]>
-			<link href="css/font-awesome-ie7.min.css" rel="stylesheet">
-		<![endif]-->
-
-		<!--[if lt IE 9]>
-			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-
-	<!-- Favicons -->
+  
     <link rel="shortcut icon" href="img/favicon.ico">
   </head>
 <body>
@@ -60,6 +48,7 @@ Lower Header Section
 	</div>
 </div>
 </header>
+
 <!--
 Navigation Bar Section
 -->
@@ -81,27 +70,10 @@ Navigation Bar Section
 			  <input type="text" placeholder="Search" class="search-query span2">
 			</form>
 			<ul class="nav pull-right">
-			<li class="dropdown">
-				<button  class="log">Sign in</button>
-				<div class="dropdown-menu">
-				<form class="form-horizontal loginFrm">
-				  <div class="control-group">
-					<input type="text" class="span2" id="inputEmail" placeholder="Email">
-				  </div>
-				  <div class="control-group">
-					<input type="password" class="span2" id="inputPassword" placeholder="Password">
-				  </div>
-				  <div class="control-group">
-					<label class="checkbox">
-					<input type="checkbox"> Remember me
-					</label>
-					<button type="submit" class="shopBtn btn-block" onclick ="login.jsp">Sign in</button>
-				  </div>
-				</form>
-				</div>
-			</li>
-                        
-                        <button  class="log">Sign up</button>
+			
+                            <button class="log" onclick ="location.href='login'">Sign in</button>
+			                        
+                            <button  class="log" onclick ="location.href='register'">Sign up</button>
 			</ul>
 		  </div>
 		</div>
@@ -114,12 +86,12 @@ Body Section
 <div id="sidebar" class="span3">
 <div class="well well-small">
 	<ul class="nav nav-list">
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Women</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Men</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Bags & Shoes</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Clothes</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Cosmetic</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Electronics</a></li>
+		<li><a href="products.jsp"><span class="icon-chevron-right"></span>Women</a></li>
+		<li><a href="products.jsp"><span class="icon-chevron-right"></span>Men</a></li>
+		<li><a href="products.jsp"><span class="icon-chevron-right"></span>Bags & Shoes</a></li>
+		<li><a href="products.jsp"><span class="icon-chevron-right"></span>Clothes</a></li>
+		<li><a href="products.jsp"><span class="icon-chevron-right"></span>Cosmetic</a></li>
+		<li><a href="products.jsp"><span class="icon-chevron-right"></span>Electronics</a></li>
 
 		<li style="border:0"> &nbsp;</li>
 	</ul>
@@ -318,13 +290,6 @@ Body Section
 	</div>
 	</div>
 
-</div><!-- /container -->
-<a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/jquery.easing-1.3.min.js"></script>
-    <script src="assets/js/jquery.scrollTo-1.4.3.1-min.js"></script>
-    <script src="assets/js/shop.js"></script>
+</div>
   </body>
 </html>

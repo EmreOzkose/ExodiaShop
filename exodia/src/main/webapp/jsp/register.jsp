@@ -74,44 +74,44 @@ label{
                                     <td><form:label path="Name">Name</form:label></td>
                             </tr>
 				
-				<td><form:input path="Name" name="Name"	id="Name" placeholder ="Name"/></td>
+				<td><form:input required="required" path="Name" name="Name"	id="Name" placeholder ="Name"/></td>
 			</tr>
                         
                         <tr>
                             <tr><td><form:label path="surname">Surname</form:label></td></tr>
-				<td><form:input path="surname" name="surname" id="surname" placeholder ="Surname"/></td>
+				<td><form:input required="required" path="surname" name="surname" id="surname" placeholder ="Surname"/></td>
 			</tr>
 			<tr>
                         <tr><td><form:label path="username">Username</form:label></td></tr>
-				<td><form:input path="username" name="username" id="username" placeholder ="Username"/></td>
+				<td><form:input required="required"   path="username" name="username" id="username" placeholder ="Username"/></td>
 			</tr>
 			<tr>
 				<tr><td><form:label path="password">Password</form:label></td></tr>
-				<td><form:password path="password" name="password"
+				<td><form:password required="required" path="password" name="password"
 						id="password" placeholder ="Password"/></td>
 			</tr>
 			
 			<tr>
                         <tr><td><form:label path="dateofbirth">Date Of Birth</form:label></td></tr>
-				<td><form:input path="dateofbirth" name="dateofbirth" id="dateofbirth" placeholder ="DD-MM-YYYY"/></td>
+				<td><form:input required="required" path="dateofbirth" name="dateofbirth" id="dateofbirth" placeholder ="DD-MM-YYYY"/></td>
 			</tr>
 			<tr>
                         <tr><td><form:label path="gender">Gender</form:label></td></tr>
-				<td><form:input path="gender" name="gender" id="gender" placeholder ="Gender"/></td>
+				<td><form:input required="required" path="gender" name="gender" id="gender" placeholder ="Gender"/></td>
 			</tr>
                         
 			<tr>
 				<tr><td><form:label path="email">Email</form:label></td></tr>
-				<td><form:input path="email" name="email" id="email" placeholder = "E-Mail"/></td>
+				<td><form:input required="required" path="email" name="email" id="email" placeholder = "E-Mail"/></td>
 			</tr>
                         <tr>
 				<tr><td><form:label path="address">Address</form:label></td></tr>
-				<td><form:password path="address" name="address"
+				<td><form:password required="required" path="address" name="address"
 						id="address" placeholder ="address"/></td>
 			</tr>
 			 <tr>
 				<tr><td><form:label path="phonenumber">Phone Number</form:label></td></tr>
-				<td><form:password path="phonenumber" name="phonenumber"
+				<td><form:password required="required" path="phonenumber" name="phonenumber"
 						id="phonenumber" placeholder ="phonenumber"/></td>
 			</tr>
 			<tr>
