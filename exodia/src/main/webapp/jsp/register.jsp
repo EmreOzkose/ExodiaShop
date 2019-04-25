@@ -49,7 +49,7 @@ input[type="text"], input[type="password"]{
 <title>Registration</title>
 </head>
 <body>
-	<form:form id="regForm" modelAttribute="customer" action="registerProcess" method="post">
+	<form:form id="regForm" modelAttribute="user" action="registerProcess" method="post">
 		<table align="center">
 			<tr>
 				<td><form:label path="username">Username</form:label></td>

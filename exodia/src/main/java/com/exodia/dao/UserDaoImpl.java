@@ -11,9 +11,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.exodia.model.Login;
-import com.exodia.model.Customer;
+import com.exodia.model.User;
 
-public class CustomerDaoImpl implements CustomerDao {
+public class UserDaoImpl implements UserDao {
 
   @Autowired
   DataSource datasource;
@@ -21,29 +21,29 @@ public class CustomerDaoImpl implements CustomerDao {
   @Autowired
   JdbcTemplate jdbcTemplate;
 
-  public void register(Customer customer) {
+  public void register(User user) {
 
-    String sql = "insert into customer values(?,?,?,?,?,?,?,?,?,?)";
+    String sql = "insert into user(username, password, name, surname,dateofbirth, gender, email, address, phonenumber, role) values(?,?,?,?,?,?,?,?,?)";
 
-    jdbcTemplate.update(sql, new Object[] {3, customer.getUsername(), customer.getPassword(), customer.getName(),customer.getSurname(),customer.getDateofbirth(),customer.getGender(), customer.getEmail(), customer.getAddress(), customer.getPhonenumber()});
+    jdbcTemplate.update(sql, new Object[] { user.getUsername(), user.getPassword(), user.getName(),user.getSurname(),user.getDateofbirth(),user.getGender(), user.getEmail(), user.getAddress(), user.getPhonenumber(), user.getRole()});
   }
 
-  public Customer validateUser(Login login) {
+  public User validateUser(Login login) {
 
     String sql = "select * from customer where username='" + login.getUsername() + "' and password='" + login.getPassword()
         + "'";
 
-    List<Customer> users = jdbcTemplate.query(sql, new UserMapper());
+    List<User> users = jdbcTemplate.query(sql, new UserMapper());
 
     return users.size() > 0 ? users.get(0) : null;
   }
 
 }
 
-class UserMapper implements RowMapper<Customer> {
+class UserMapper implements RowMapper<User> {
 
-  public Customer mapRow(ResultSet rs, int arg1) throws SQLException {
-    Customer customer = new Customer();
+  public User mapRow(ResultSet rs, int arg1) throws SQLException {
+    User customer = new User();
     /*galiba jsp den gelen yazılar*/
 
     customer.setUsername(rs.getString("username"));
