@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.exodia.model.Login;
-import com.exodia.model.User;
-import com.exodia.service.UserService;
+import com.exodia.model.Customer;
+import com.exodia.service.CustomerService;
 
 @Controller
 public class LoginController {
 
   @Autowired
-  UserService userService;
+  CustomerService userService;
 
   @RequestMapping(value = "/login", method = RequestMethod.GET)
   public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
@@ -33,11 +33,10 @@ public class LoginController {
       @ModelAttribute("login") Login login) {
     ModelAndView mav = null;
 
-    User user = userService.validateUser(login);
-    
+    Customer user = userService.validateUser(login);
+
     if (null != user) {
       mav = new ModelAndView("welcome");
-      System.out.println(user.getName());
       mav.addObject("name", user.getName());
     } else {
       mav = new ModelAndView("login");

@@ -64,6 +64,7 @@ label{
 </head>
 <body>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<form:form id="regForm" modelAttribute="user" action="registerProcess" method="post">
 =======
     
@@ -71,6 +72,9 @@ label{
             <img src="img/exodia-cursive.png" alt="exodia shop">
             
 >>>>>>> 948653c7047f5286bec97ed5c6f710522deedf2e
+=======
+	<form:form id="regForm" modelAttribute="customer" action="registerProcess" method="post">
+>>>>>>> parent of 3098006... product
 		<table align="center">
                     
                     <tr>

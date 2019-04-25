@@ -11,9 +11,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.exodia.model.Login;
-import com.exodia.model.User;
+import com.exodia.model.Customer;
 
-public class UserDaoImpl implements UserDao {
+public class CustomerDaoImpl implements CustomerDao {
 
   @Autowired
   DataSource datasource;
@@ -22,19 +22,28 @@ public class UserDaoImpl implements UserDao {
   JdbcTemplate jdbcTemplate;
 
 <<<<<<< HEAD:exodia/src/main/java/com/exodia/dao/UserDaoImpl.java
+<<<<<<< HEAD:exodia/src/main/java/com/exodia/dao/UserDaoImpl.java
   public void register(User user) {
+=======
+  public void register(Customer customer) {
+>>>>>>> parent of 3098006... product:exodia/src/main/java/com/exodia/dao/CustomerDaoImpl.java
 
-    String sql = "insert into user(username, password, name, surname,dateofbirth, gender, email, address, phonenumber, role) values(?,?,?,?,?,?,?,?,?)";
+    String sql = "insert into customer values(?,?,?,?,?,?,?,?,?,?)";
 
-    jdbcTemplate.update(sql, new Object[] { user.getUsername(), user.getPassword(), user.getName(),user.getSurname(),user.getDateofbirth(),user.getGender(), user.getEmail(), user.getAddress(), user.getPhonenumber(), user.getRole()});
+    jdbcTemplate.update(sql, new Object[] {3, customer.getUsername(), customer.getPassword(), customer.getName(),customer.getSurname(),customer.getDateofbirth(),customer.getGender(), customer.getEmail(), customer.getAddress(), customer.getPhonenumber()});
   }
 
+<<<<<<< HEAD:exodia/src/main/java/com/exodia/dao/UserDaoImpl.java
   public User validateUser(Login login) {
 =======
+=======
+  public Customer validateUser(Login login) {
+>>>>>>> parent of 3098006... product:exodia/src/main/java/com/exodia/dao/CustomerDaoImpl.java
 
     @Override
     public void register(Customer customer) {
 
+<<<<<<< HEAD:exodia/src/main/java/com/exodia/dao/UserDaoImpl.java
         String sql = "insert into customer values(?,?,?,?,?,?,?,?,?,?)";
 
         jdbcTemplate.update(sql, new Object[] {3, customer.getUsername(), customer.getPassword(), customer.getName(),customer.getSurname(),customer.getDateofbirth(),customer.getGender(), customer.getEmail(), customer.getAddress(), customer.getPhonenumber()});
@@ -49,6 +58,9 @@ public class UserDaoImpl implements UserDao {
 =======
         String sql = "select * from customer where username='" + login.getUsername() + "' and password='" + login.getPassword() + "'";
 >>>>>>> 948653c7047f5286bec97ed5c6f710522deedf2e:exodia/src/main/java/com/exodia/dao/CustomerDaoImpl.java
+=======
+    List<Customer> users = jdbcTemplate.query(sql, new UserMapper());
+>>>>>>> parent of 3098006... product:exodia/src/main/java/com/exodia/dao/CustomerDaoImpl.java
 
         List<Customer> users = jdbcTemplate.query(sql, new UserMapper());
 
@@ -57,8 +69,9 @@ public class UserDaoImpl implements UserDao {
 
 }
 
-class UserMapper implements RowMapper<User> {
+class UserMapper implements RowMapper<Customer> {
 
+<<<<<<< HEAD:exodia/src/main/java/com/exodia/dao/UserDaoImpl.java
 <<<<<<< HEAD:exodia/src/main/java/com/exodia/dao/UserDaoImpl.java
   public User mapRow(ResultSet rs, int arg1) throws SQLException {
     User customer = new User();
@@ -67,6 +80,10 @@ class UserMapper implements RowMapper<User> {
   public Customer mapRow(ResultSet rs, int arg1) throws SQLException {
     Customer customer = new Customer();
 >>>>>>> 948653c7047f5286bec97ed5c6f710522deedf2e:exodia/src/main/java/com/exodia/dao/CustomerDaoImpl.java
+=======
+  public Customer mapRow(ResultSet rs, int arg1) throws SQLException {
+    Customer customer = new Customer();
+>>>>>>> parent of 3098006... product:exodia/src/main/java/com/exodia/dao/CustomerDaoImpl.java
     /*galiba jsp den gelen yazılar*/
 
     customer.setUsername(rs.getString("username"));
