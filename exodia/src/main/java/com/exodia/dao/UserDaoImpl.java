@@ -21,6 +21,7 @@ public class UserDaoImpl implements UserDao {
   @Autowired
   JdbcTemplate jdbcTemplate;
 
+<<<<<<< HEAD:exodia/src/main/java/com/exodia/dao/UserDaoImpl.java
   public void register(User user) {
 
     String sql = "insert into user(username, password, name, surname,dateofbirth, gender, email, address, phonenumber, role) values(?,?,?,?,?,?,?,?,?)";
@@ -29,21 +30,43 @@ public class UserDaoImpl implements UserDao {
   }
 
   public User validateUser(Login login) {
+=======
 
-    String sql = "select * from customer where username='" + login.getUsername() + "' and password='" + login.getPassword()
-        + "'";
+    @Override
+    public void register(Customer customer) {
 
+        String sql = "insert into customer values(?,?,?,?,?,?,?,?,?,?)";
+
+        jdbcTemplate.update(sql, new Object[] {3, customer.getUsername(), customer.getPassword(), customer.getName(),customer.getSurname(),customer.getDateofbirth(),customer.getGender(), customer.getEmail(), customer.getAddress(), customer.getPhonenumber()});
+    }
+>>>>>>> 948653c7047f5286bec97ed5c6f710522deedf2e:exodia/src/main/java/com/exodia/dao/CustomerDaoImpl.java
+
+    @Override
+    public Customer validateUser(Login login) {
+
+<<<<<<< HEAD:exodia/src/main/java/com/exodia/dao/UserDaoImpl.java
     List<User> users = jdbcTemplate.query(sql, new UserMapper());
+=======
+        String sql = "select * from customer where username='" + login.getUsername() + "' and password='" + login.getPassword() + "'";
+>>>>>>> 948653c7047f5286bec97ed5c6f710522deedf2e:exodia/src/main/java/com/exodia/dao/CustomerDaoImpl.java
 
-    return users.size() > 0 ? users.get(0) : null;
-  }
+        List<Customer> users = jdbcTemplate.query(sql, new UserMapper());
+
+        return users.size() > 0 ? users.get(0) : null;
+    }
 
 }
 
 class UserMapper implements RowMapper<User> {
 
+<<<<<<< HEAD:exodia/src/main/java/com/exodia/dao/UserDaoImpl.java
   public User mapRow(ResultSet rs, int arg1) throws SQLException {
     User customer = new User();
+=======
+  @Override
+  public Customer mapRow(ResultSet rs, int arg1) throws SQLException {
+    Customer customer = new Customer();
+>>>>>>> 948653c7047f5286bec97ed5c6f710522deedf2e:exodia/src/main/java/com/exodia/dao/CustomerDaoImpl.java
     /*galiba jsp den gelen yazılar*/
 
     customer.setUsername(rs.getString("username"));

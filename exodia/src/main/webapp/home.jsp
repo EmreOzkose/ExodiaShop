@@ -9,10 +9,17 @@
 <body>
 	<table align="center">
 		<tr>
+                    <tr>
 			<td><a href="login">Login</a></td>
+                        
 			<td><a href="register">Register</a></td>
-                        <td><a href="deneme.jsp">deneme</a></td>
-                        <td><a href="mainafterlogin.jsp">Main</a></td>
+                    </tr>
+                        <tr><td><a href="mainafterlogin.jsp">AccountMain</a></td></tr>
+                        
+                        <td><a href="mainbeforelogin.jsp">Main</a></td>
+                    <tr>  
+                        <td><a href="product_details.jsp">Product</a></td>
+                    </tr>
 		</tr>
 	</table>
 </body>
