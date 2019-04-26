@@ -30,7 +30,7 @@ public class User {
     @NotNull
     private String gender;
     @NotNull
-    @Pattern(regexp = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$", message="uygun degil")
+    @Pattern(regexp = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$", message="Not Valid")
     private String email;
     private String address;
     private String phonenumber;
