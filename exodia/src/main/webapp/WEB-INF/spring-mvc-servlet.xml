@@ -20,7 +20,7 @@
  	<mvc:resources mapping="/img/**" location="/img/" />
 	<mvc:annotation-driven />   
 
-        <!--  messages.properties dosyasının baglanmasi-->
+        <!--  messages.properties file connection-->
         <bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
             <property name="basename" value="messages" />
         </bean>       
