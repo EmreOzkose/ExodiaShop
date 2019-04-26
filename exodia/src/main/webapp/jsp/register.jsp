@@ -130,14 +130,10 @@ table{
 				<td><form:password required="required" path="password" name="password"	id="password" placeholder ="Password"/></td>
                                 <td><form:errors path="password" cssClass="error" /></td>
 			</tr>
-			<tr>
-				<tr><td><form:label path="passwordconfirm">Passwordconfirm</form:label></td></tr>
-				<td><form:password required="required" path="passwordconfirm" name="passwordconfirm" id="passwordconfirm" placeholder ="Passwordconfirm"/></td>
-                                <td><form:errors path="passwordconfirm" cssClass="error" /></td>
-			</tr>			
+			
 			<tr>
                         <tr><td><form:label path="dateofbirth">Date Of Birth</form:label></td></tr>
-				<td><form:input path="dateofbirth" name="dateofbirth" id="dateofbirth" placeholder ="DD-MM-YYYY"/></td>
+				<td><form:input required="required" path="dateofbirth" name="dateofbirth" id="dateofbirth" placeholder ="DD-MM-YYYY"/></td>
                                 <td><form:errors path="dateofbirth" cssClass="error" /></td>
 			</tr>
 			<tr>
@@ -153,13 +149,13 @@ table{
 			</tr>
                         <tr>
 				<tr><td><form:label path="address">Address</form:label></td></tr>
-				<td><form:input path="address" name="address" id="address" placeholder ="Address"/></td>
+				<td><form:input required="required" path="address" name="address" id="address" placeholder ="Address"/></td>
                                 <td><form:errors path="address" cssClass="error" /></td>
 			</tr>
 			 <tr>
 				<tr><td><form:label path="phonenumber">Phone Number</form:label></td></tr>
-				<td><form:input  path="phonenumber" name="phonenumber" id="phonenumber" placeholder ="Phone number"/></td>
-                                <td><form:errors path="phonenumber" cssClass="error" /></td>
+				<td><form:input  required="required" path="phonenumber" name="phonenumber" id="phonenumber" placeholder ="Phone number"/></td>
+                                <td><form:errors path="dateofbirth" cssClass="error" /></td>
 			</tr>
 			<tr>
                     			

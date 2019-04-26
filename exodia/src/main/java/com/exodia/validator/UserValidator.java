@@ -22,7 +22,8 @@ public class UserValidator implements Validator {
     public void validate(Object o, Errors errors) {
         User user = (User) o;
 
-                
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
+        
         if (userService.check_username(user.getUsername()) != null) {
             errors.rejectValue("username", "Duplicate.userForm.username");
         }
@@ -31,22 +32,23 @@ public class UserValidator implements Validator {
             errors.rejectValue("username", "NotEmpty.space");
         }
 
-        
-        /*if (user.getPassword().length() < 8 || user.getPassword().length() > 32) {
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
+        if (user.getPassword().length() < 8 || user.getPassword().length() > 32) {
             errors.rejectValue("password", "Size.userForm.password");
-        }*/
-        
-        if (!user.getPasswordconfirm().equals(user.getPassword())) {
-            errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
         }
+        /*
+        if (!user.getPasswordConfirm().equals(user.getPassword())) {
+            errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
+        }*/
         if(user.getPassword().contains(" ")){
             errors.rejectValue("password", "NotEmpty.space");
         }
-        
-        if (user.getGender().toLowerCase().compareTo("erkek") != 0 && user.getGender().toLowerCase().compareTo("kadin") !=0 ) {
-            errors.rejectValue("gender", "maleorfemale");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "gender", "NotEmpty");
+        if (user.getGender().length() < 5 ) {
+            errors.rejectValue("gender", "NotEmpty");
         }
         
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
         /*String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
         if (user.getEmail().matches(regex) == false) {
             errors.rejectValue("email", "email.validate");
@@ -55,12 +57,9 @@ public class UserValidator implements Validator {
             errors.rejectValue("email", "Duplicate.userForm.email");
         }
         
-        if (userService.check_pnumber(user.getPhonenumber()) != null && user.getPhonenumber().length()!=0) {
-            errors.rejectValue("phonenumber", "Duplicate.userForm.phonenumber");
-        }
-        
-        if(user.getDateofbirth() == null){
-            errors.rejectValue("dateofbirth", "typeMismatch.postForm.date");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "Phonenumber", "NotEmpty");
+        if (userService.check_pnumber(user.getPhonenumber()) != null) {
+            errors.rejectValue("Phonenumber", "Duplicate.userForm.phonenumber");
         }
         /*
         if (user.getPhonenumber().length()!=0 && user.getPhonenumber().length()!=11) {

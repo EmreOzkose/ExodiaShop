@@ -17,9 +17,6 @@ public class User {
     @Size(min = 8, max = 32)
     private String password;
     @NotNull
-    @Size(min = 8, max = 32)
-    private String passwordconfirm;
-    @NotNull
     @Size(min = 3, max =60)
     @Pattern(regexp="[a-zA-Z][a-zA-Z ]+", message="Name can only consist of letters")
     private String name;
@@ -28,7 +25,7 @@ public class User {
     @Pattern(regexp="[a-zA-Z][a-zA-Z ]+", message="Surname can only consist of letters")
     private String surname;
     @Past
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern="MM/dd/yyyy")
     private Date dateofbirth;
     @NotNull
     private String gender;
@@ -125,14 +122,6 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public String getPasswordconfirm() {
-        return passwordconfirm;
-    }
-
-    public void setPasswordconfirm(String passwordconfirm) {
-        this.passwordconfirm = passwordconfirm;
     }
   
 
