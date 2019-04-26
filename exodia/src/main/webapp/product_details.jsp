@@ -34,7 +34,7 @@ Lower Header Section
 	<div class="span4" >
 	<h1>
 	<a class="logo" href="index.html"  >
-		<img src="exodia-cursive.png" alt="exodia shop">
+		<img src="img\exodia-cursive.png" alt="exodia shop">
 	</a>
 	</h1>
 	</div>
@@ -111,7 +111,7 @@ Body Section
 			<div id="myCarousel" class="carousel slide cntr">
                 <div class="carousel-inner">
                   <div class="item active">
-                   <a href="#"> <img src="assets/img/giyim-erkek.jpg" alt="" style="width:100%"></a>
+                   <a href="#"> <img src="img/products/clothes/4.jpg" alt="" style="width:100%"></a>
                   </div>
 
                 </div>

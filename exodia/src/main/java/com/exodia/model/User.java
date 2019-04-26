@@ -34,7 +34,6 @@ public class User {
     private String email;
     private String address;
     private String phonenumber;
-    private String role;
   
     public Long getId() {
         return id;
@@ -115,15 +114,5 @@ public class User {
     public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-  
-
 
 }

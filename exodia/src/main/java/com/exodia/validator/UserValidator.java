@@ -31,5 +31,15 @@ public class UserValidator implements Validator {
         if(user.getPassword().contains(" ")){
             errors.rejectValue("password", "NotEmpty.space.password");
         }
+        if (!(user.getGender().toLowerCase().compareTo("male")==0 || user.getGender().toLowerCase().compareTo("female") ==0)) {
+            errors.rejectValue("gender", "MaleOrFemale");
+        }
+        if (userService.check_email(user.getEmail()) != null) {
+            errors.rejectValue("email", "Duplicate.userForm.email");
+        }
+        if(user.getDateofbirth() == null){
+            errors.rejectValue("dateofbirth", "typeMismatch.postForm.date");
+        }
+
     }
 }

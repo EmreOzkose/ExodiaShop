@@ -23,9 +23,9 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void register(User user) {
 
-        String sql = "insert into user values(?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into user values(?,?,?,?,?,?,?,?,?,?)";
 
-        jdbcTemplate.update(sql, new Object[] {user.getId(), user.getUsername(), user.getPassword(), user.getName(),user.getSurname(),user.getDateofbirth(),user.getGender(), user.getEmail(), user.getAddress(), user.getPhonenumber() , "customer"});
+        jdbcTemplate.update(sql, new Object[] {user.getId(), user.getUsername(), user.getPassword(), user.getName(),user.getSurname(),user.getDateofbirth(),user.getGender(), user.getEmail(), user.getAddress(), user.getPhonenumber() });
     }
 
     @Override

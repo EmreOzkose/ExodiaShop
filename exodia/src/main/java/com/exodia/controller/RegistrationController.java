@@ -40,6 +40,7 @@ public class RegistrationController {
           return new ModelAndView("register");
         }
         userService.register(user);
-        return new ModelAndView("welcome", "name", user.getName());
+        ModelAndView mav =new ModelAndView("mainbeforelogin");
+        return mav.addObject( "name", user.getName());
     }
 }
