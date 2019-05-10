@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @Controller
 public class ProductController {
@@ -19,7 +20,7 @@ public class ProductController {
     ProductService productService;
 
     @RequestMapping("/product/{id}")
-    public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response, @PathVariable int id) {
+    public ModelAndView viewProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable int id) {
         ModelAndView mav = null;
 
         Product product = productService.getProductByID(id);
@@ -27,6 +28,27 @@ public class ProductController {
         if (product != null) {
             mav = new ModelAndView("product");
             mav.addObject("product", product);
+        }
+        else{
+            mav = new ModelAndView("404");
+        }
+
+        return mav;
+    }
+
+    @RequestMapping("/categories/{category_name}")
+    public ModelAndView viewCategory(HttpServletRequest request, HttpServletResponse response, @PathVariable String category_name) {
+        ModelAndView mav = null;
+
+        List<Product> product_list = productService.getProductByCategory(category_name);
+
+        for (int i=0; i<product_list.size(); i++)
+            System.out.println(product_list.get(i).getName());
+
+        if (product_list != null) {
+            mav = new ModelAndView("category");
+            mav.addObject("product_list", product_list);
+            mav.addObject("category_name", category_name);
         }
         else{
             mav = new ModelAndView("404");

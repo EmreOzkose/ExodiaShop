@@ -8,6 +8,7 @@ public class Product {
     private float price;
     private String img_path;
     private int stock_number;
+    private String category_name;
 
     public Product(int id, String name){
         this.id = id;
@@ -15,12 +16,13 @@ public class Product {
 
     }
 
-    public Product(int id, String name, float price, String img_path, int stock_number){
+    public Product(int id, String name, float price, String category_name, String img_path, int stock_number){
         this.id = id;
         this.name = name;
         this.price = price;
         this.img_path = img_path;
         this.stock_number = stock_number;
+        this.category_name = category_name;
     }
 
     public int getId() {
@@ -61,5 +63,13 @@ public class Product {
 
     public void setStock_number(int stock_number) {
         this.stock_number = stock_number;
+    }
+
+    public String getCategory_name() {
+        return category_name;
+    }
+
+    public void setCategory_name(String category_name) {
+        this.category_name = category_name;
     }
 }
