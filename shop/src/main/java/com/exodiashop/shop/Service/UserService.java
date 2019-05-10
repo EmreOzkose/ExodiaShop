@@ -17,16 +17,15 @@ public class UserService {
 
 
     List<User> userList = new ArrayList<User>( Arrays.asList(
-                    new User("Yunusemre", "Özköse", "yunus@hotmail.com", "yunusemre123", 21,0,1),
-                    new User("Büşra", "Ekşi", "busra@hotmail.com", "busra123", 21,0,1),
-                    new User("Ahmet", "Özköse", "ahmet@hotmail.com", "ahmetdayi", 16,1,0)
+                    new User("Yunusemre", "Özköse", "yunus@hotmail.com", "yunusemre123", 21,0,1, "/img/profiles/yunusemre123.jpg"),
+                    new User("Büşra", "Ekşi", "busra@hotmail.com", "busra123", 21,0,1, ""),
+                    new User("Ahmet", "Özköse", "ahmet@hotmail.com", "ahmetdayi", 16,1,0, "")
             )
     );
 
     public List<User> getUserList(){
         return userList;
     }
-
 
     public User getUserByUserName(String username){
         return getUserList().stream().filter(t -> t.getUsername().equals(username)).findFirst().get();
@@ -45,7 +44,6 @@ public class UserService {
         }
     }
 
-
     public void add2cart(String username, int productID){
         Product product = productService.getProductByID(productID);
         getUserList().stream().filter(t -> t.getUsername().equals(username)).findFirst().get().getShopping_cart().add(product);
@@ -54,7 +52,7 @@ public class UserService {
 
     public User validateUser(String userName, String password) {
 
-        User u = new User("Derya", "Durmaz", "derya@hotmail.com", "derya123", 22, 1,1);
+        User u = new User("Derya", "Durmaz", "derya@hotmail.com", "derya123", 22, 1,1, "");
         return u;
     }
 

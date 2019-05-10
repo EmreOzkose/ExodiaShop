@@ -23,12 +23,13 @@ public class User {
      */
     private int gender;
     private List<Product> shopping_cart;
+    private String profilePhoto;
 
     public User(){
 
     }
 
-    public User(String name, String surname, String email, String username, int age, int gender, int userType){
+    public User(String name, String surname, String email, String username, int age, int gender, int userType, String profilePhoto){
         this.name = name;
         this.username = username;
         this.age = age;
@@ -36,6 +37,7 @@ public class User {
         this.email = email;
         this.userType = userType;
         this.gender = gender;
+        this.profilePhoto = profilePhoto;
         this.shopping_cart = new ArrayList<>();
 
     }
@@ -102,5 +104,13 @@ public class User {
 
     public void setShopping_cart(List<Product> shopping_cart) {
         this.shopping_cart = shopping_cart;
+    }
+
+    public String getProfilePhoto() {
+        return profilePhoto;
+    }
+
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhoto = profilePhoto;
     }
 }

@@ -149,6 +149,7 @@ Lower Header Section
 
 
                     </ul>
+                    <img src="${user.profilePhoto}">
                     <div id="myTabContent" class="tab-content tabWrapper">
                         <div class="tab-pane fade active in" id="home">
                             <table class="table table-striped">
@@ -164,8 +165,6 @@ Lower Header Section
                             <p>  <button type="submit" class="shopBtn">> Edit Profile </button></p>
                         </div>
                     </div>
-
-
 
                 </div>
             </div>

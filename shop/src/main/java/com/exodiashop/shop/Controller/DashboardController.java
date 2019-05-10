@@ -7,6 +7,7 @@ import com.exodiashop.shop.Service.ProductService;
 import com.exodiashop.shop.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -68,6 +69,17 @@ public class DashboardController {
         return "../redirections/to_dashboard";
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/checkout/{username}")
+    public ModelAndView checkout(HttpServletRequest request, HttpServletResponse response, @PathVariable String username){
+        ModelAndView mav = new ModelAndView("checkout");
 
+        mav.addObject("username", username);
+
+        User user =  userService.getUserByUserName(username);
+        List<Product> product_list = user.getShopping_cart();
+        mav.addObject("product_list", product_list);
+
+        return mav;
+    }
 
 }

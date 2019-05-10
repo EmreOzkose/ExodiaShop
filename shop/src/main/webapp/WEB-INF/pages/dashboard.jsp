@@ -36,10 +36,10 @@ Lower Header Section
             </div>
             <div class="span4 alignR">
                 <p><br> <strong>          </strong><br><br></p>
+                <a href="/checkout/${loggedUser.username}">
                 <c:if test="${loggedUser!=null && loggedUser.userType == 1}">
                     <span class="btn btn-mini">[ ${loggedUser.shopping_cart.size()} ] <span class="icon-shopping-cart"></span></span>
                 </c:if>
-
 
             </div>
         </div>
@@ -126,7 +126,7 @@ Lower Header Section
                                         <p><strong> $${product.price}</strong></p>
                                         <form id="loginForm" action="/add2cart?username=${loggedUser.username}&productID=${product.id}" method="POST">
                                             <table align="center">
-                                                <td align="center"><button id="login" name="add2cartbtn"><h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4></button></td>
+                                                <td align="center"><button id="login" name="add2cartbtn">Add to cart</button></td>
                                             </table>
                                         </form>
 
