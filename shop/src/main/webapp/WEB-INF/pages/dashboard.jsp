@@ -63,8 +63,9 @@ Lower Header Section
 
                     </ul>
                     <form action="/search" class="navbar-search pull-left">
-                        <input type="text" placeholder="Search" class="search-query span2">
+                        <input type="text"  name="criteria" placeholder="Search" class="search-query span2">
                     </form>
+
                     <ul class="nav pull-right">
 
                         <c:if test="${loggedUser==null}">

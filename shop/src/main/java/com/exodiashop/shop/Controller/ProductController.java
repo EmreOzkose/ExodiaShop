@@ -42,9 +42,6 @@ public class ProductController {
 
         List<Product> product_list = productService.getProductByCategory(category_name);
 
-        for (int i=0; i<product_list.size(); i++)
-            System.out.println(product_list.get(i).getName());
-
         if (product_list != null) {
             mav = new ModelAndView("category");
             mav.addObject("product_list", product_list);
