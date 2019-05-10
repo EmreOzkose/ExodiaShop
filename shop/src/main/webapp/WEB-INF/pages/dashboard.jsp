@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="com.exodiashop.shop.Model.User" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,10 +7,9 @@
     <title>Exodia Dashboard</title>
 
     <!-- Bootstrap styles -->
-    <link href="/libs/bootstrap.css" rel="stylesheet"/>
+    <link href="libs/bootstrap.css" rel="stylesheet"/>
     <link href="/libs/style.css" rel="stylesheet"/>
     <link rel="shortcut icon" href="/img/logos/favicon.ico">
-
 
 </head>
 <body>
@@ -58,7 +56,7 @@ Lower Header Section
                 </a>
                 <div class="nav-collapse">
                     <ul class="nav">
-                        <li class="active"><a href="grid-view.html">Home ${name}</a></li>
+                        <li class="active"><a href="grid-view.html">Home ${loggedUser.name}</a></li>
 
 
                     </ul>
@@ -67,9 +65,12 @@ Lower Header Section
                     </form>
                     <ul class="nav pull-right">
 
-                        <button class="log" onclick ="location.href='login'">Sign in</button>
+                        <% if (request.getParameter("loggedUser") == null) { %>
+                            <button class="log" onclick ="location.href='login'">Sign in</button>
+                            <button  class="log" onclick ="location.href='register'">Sign up</button>
+                        <% } %>
 
-                        <button  class="log" onclick ="location.href='register'">Sign up</button>
+
                     </ul>
                 </div>
             </div>
@@ -94,6 +95,7 @@ Lower Header Section
                     <li style="border:0"> &nbsp;</li>
                 </ul>
             </div>
+
         </div>
         <div class="span9">
 
@@ -105,9 +107,9 @@ Lower Header Section
                         <c:forEach items="${product_list}" var="product">
                             <li class="span4">
                                 <div class="thumbnail">
-                                    <a href="product_details.jsp" class="overlay"></a>
-                                    <a class="zoomTool" href="product_details.jsp" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                    <a href="/WEB-INF/pages/product_details"><img src="${product.img_path}" alt=""></a>
+                                    <a href="product.jsp" class="overlay"></a>
+                                    <a class="zoomTool" href="/product/${product.id}" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+                                    <a href="/product/${product.id}"><img src="${product.img_path}" alt=""></a>
                                     <div class="caption cntr">
                                         <p>${product.name}</p>
                                         <p><strong> $${product.price}</strong></p>

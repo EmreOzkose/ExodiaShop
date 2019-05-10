@@ -33,14 +33,15 @@ public class DashboardController {
 
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
     public ModelAndView listItems(HttpServletRequest request, HttpServletResponse response) {
-        User user = userService.getUserList().get(0);
+        //User loggedUser = userService.getUserByUserName(request.getParameter("loggedUserName"));
+        User loggedUser = userService.getUserByUserName("yunusemre123");
         List<Product> product_list = productService.getProductList();
 
         ModelAndView mav = null;
 
-        if (null != user) {
+        if (null != loggedUser) {
             mav = new ModelAndView("dashboard");
-            mav.addObject("name", user.getName());
+            mav.addObject("loggedUser", loggedUser);
             mav.addObject("product_list", product_list);
 
         } else {
