@@ -4,11 +4,12 @@ package com.exodiashop.shop.Controller;
 import com.exodiashop.shop.Model.User;
 import com.exodiashop.shop.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class UserController {
 
     @Autowired

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.exodiashop.shop.Model.User" %>
 
 <!DOCTYPE html>
@@ -100,185 +101,23 @@ Lower Header Section
                 <h3>Products </h3>
                 <div class="row-fluid">
                     <ul class="thumbnails">
-                        <li class="span4">
-                            <div class="thumbnail">
-                                <a href="product_details.jsp" class="overlay"></a>
-                                <a class="zoomTool" href="product_details.jsp" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                <a href="/WEB-INF/pages/product_details"><img src="img/products/clothes/2.jpg" alt=""></a>
-                                <div class="caption cntr">
-                                    <p>Broadway Skirt</p>
-                                    <p><strong> $100.00</strong></p>
-                                    <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-                                    <br class="clr">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span4">
-                            <div class="thumbnail">
-                                <a href="product_details.html" class="overlay"></a>
-                                <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                <a href="product_details.jsp"><img src="img/products/clothes/5.jpg" alt=""></a>
-                                <div class="caption cntr">
-                                    <p>Broadway Jeans</p>
-                                    <p><strong> $200.00</strong></p>
-                                    <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
 
-                                    <br class="clr">
+                        <c:forEach items="${product_list}" var="product">
+                            <li class="span4">
+                                <div class="thumbnail">
+                                    <a href="product_details.jsp" class="overlay"></a>
+                                    <a class="zoomTool" href="product_details.jsp" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+                                    <a href="/WEB-INF/pages/product_details"><img src="${product.img_path}" alt=""></a>
+                                    <div class="caption cntr">
+                                        <p>${product.name}</p>
+                                        <p><strong> $${product.price}</strong></p>
+                                        <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
+                                        <br class="clr">
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="span4">
-                            <div class="thumbnail">
-                                <a href="product_details.html" class="overlay"></a>
-                                <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                <a href="product_details.html"><img src="img/products/clothes/4.jpg" alt=""></a>
-                                <div class="caption cntr">
-                                    <p>Broadway Shirt</p>
-                                    <p><strong> $250.00</strong></p>
-                                    <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
+                            </li>
+                        </c:forEach>
 
-                                    <br class="clr">
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="row-fluid">
-                    <ul class="thumbnails">
-                        <li class="span4">
-                            <div class="thumbnail">
-                                <a href="product_details.html" class="overlay"></a>
-                                <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                <a href="product_details.html"><img src="img/products/cosmetic/3.jpeg" alt=""></a>
-                                <div class="caption cntr">
-                                    <p>Shiseido Ever Bloom Perfume</p>
-                                    <p><strong> $500.00</strong></p>
-                                    <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
-                                    <br class="clr">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span4">
-                            <div class="thumbnail">
-                                <a href="product_details.html" class="overlay"></a>
-                                <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                <a href="product_details.html"><img src="img/products/cosmetic/2.jpeg" alt=""></a>
-                                <div class="caption cntr">
-                                    <p>Tom Ford Ombre Leather Perfume</p>
-                                    <p><strong> $800.00</strong></p>
-                                    <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
-                                    <br class="clr">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span4">
-                            <div class="thumbnail">
-                                <a href="product_details.html" class="overlay"></a>
-                                <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                <a href="product_details.html"><img src="img/products/cosmetic/1.jpg" alt=""></a>
-                                <div class="caption cntr">
-                                    <p>Shiseido Lipstick</p>
-                                    <p><strong> $750.00</strong></p>
-                                    <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
-                                    <br class="clr">
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="row-fluid">
-                    <ul class="thumbnails">
-                        <li class="span4">
-                            <div class="thumbnail">
-                                <a href="product_details.html" class="overlay"></a>
-                                <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                <a href="product_details.html"><img src="img/products/electronic/3.jpg" alt=""></a>
-                                <div class="caption cntr">
-                                    <p>Electronic</p>
-                                    <p><strong> $5125.00</strong></p>
-                                    <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
-                                    <br class="clr">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span4">
-                            <div class="thumbnail">
-                                <a href="product_details.html" class="overlay"></a>
-                                <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                <a href="product_details.html"><img src="img/products/electronic/4.jpg" alt=""></a>
-                                <div class="caption cntr">
-                                    <p>Electronic</p>
-                                    <p><strong> $215.00</strong></p>
-                                    <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
-                                    <br class="clr">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span4">
-                            <div class="thumbnail">
-                                <a href="product_details.html" class="overlay"></a>
-                                <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                <a href="product_details.html"><img src="img/products/electronic/1.jpg" alt=""></a>
-                                <div class="caption cntr">
-                                    <p>Electronic</p>
-                                    <p><strong> $520.00</strong></p>
-                                    <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
-                                    <br class="clr">
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="row-fluid">
-                    <ul class="thumbnails">
-                        <li class="span4">
-                            <div class="thumbnail">
-                                <a href="product_details.html" class="overlay"></a>
-                                <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                <a href="product_details.html"><img src="img/products/shoes/2.jpg" alt=""></a>
-                                <div class="caption cntr">
-                                    <p>Shoes</p>
-                                    <p><strong> $300.00</strong></p>
-                                    <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
-                                    <br class="clr">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span4">
-                            <div class="thumbnail">
-                                <a href="product_details.html" class="overlay"></a>
-                                <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                <a href="product_details.html"><img src="img/products/shoes/3.jpg" alt=""></a>
-                                <div class="caption cntr">
-                                    <p>Shoes</p>
-                                    <p><strong> $450.00</strong></p>
-                                    <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
-                                    <br class="clr">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span4">
-                            <div class="thumbnail">
-                                <a href="product_details.html" class="overlay"></a>
-                                <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                <a href="product_details.html"><img src="img/products/shoes/1.jpg" alt=""></a>
-                                <div class="caption cntr">
-                                    <p>Shoes</p>
-                                    <p><strong> $320.00</strong></p>
-                                    <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-
-                                    <br class="clr">
-                                </div>
-                            </div>
-                        </li>
                     </ul>
                 </div>
 
