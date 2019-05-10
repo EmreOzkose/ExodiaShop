@@ -36,9 +36,6 @@ public class ProductService {
         return getProductList().stream().filter(t -> (t.getCategory_name().contains(criteria))).collect(Collectors.toList());
     }
 
-    public void add2cart(){
-
-    }
 
 
 }

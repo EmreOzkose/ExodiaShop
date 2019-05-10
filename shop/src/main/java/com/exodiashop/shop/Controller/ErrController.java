@@ -1,3 +1,7 @@
+/*
+
+// IT IS WORKING BUT BECAUSE OF SEEING ERRORS, IT IS DEACTIVATED
+
 package com.exodiashop.shop.Controller;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
@@ -19,3 +23,6 @@ public class ErrController implements ErrorController {
         return "/error";
     }
 }
+
+
+ */

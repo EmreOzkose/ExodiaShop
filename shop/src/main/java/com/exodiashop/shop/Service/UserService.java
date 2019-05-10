@@ -1,6 +1,8 @@
 package com.exodiashop.shop.Service;
 
+import com.exodiashop.shop.Model.Product;
 import com.exodiashop.shop.Model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,6 +11,10 @@ import java.util.List;
 
 @Service
 public class UserService {
+
+    @Autowired
+    ProductService productService;
+
 
     List<User> userList = new ArrayList<User>( Arrays.asList(
                     new User("Yunusemre", "Özköse", "yunus@hotmail.com", "yunusemre123", 21,0,1),
@@ -39,10 +45,19 @@ public class UserService {
         }
     }
 
+
+    public void add2cart(String username, int productID){
+        Product product = productService.getProductByID(productID);
+        getUserList().stream().filter(t -> t.getUsername().equals(username)).findFirst().get().getShopping_cart().add(product);
+    }
+
+
     public User validateUser(String userName, String password) {
 
         User u = new User("Derya", "Durmaz", "derya@hotmail.com", "derya123", 22, 1,1);
         return u;
     }
+
+
 
 }

@@ -37,7 +37,7 @@ Lower Header Section
             <div class="span4 alignR">
                 <p><br> <strong>          </strong><br><br></p>
                 <c:if test="${loggedUser!=null && loggedUser.userType == 1}">
-                    <span class="btn btn-mini">[ 0 ] <span class="icon-shopping-cart"></span></span>
+                    <span class="btn btn-mini">[ ${loggedUser.shopping_cart.size()} ] <span class="icon-shopping-cart"></span></span>
                 </c:if>
 
 
@@ -124,7 +124,12 @@ Lower Header Section
                                     <div class="caption cntr">
                                         <p>${product.name}</p>
                                         <p><strong> $${product.price}</strong></p>
-                                        <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
+                                        <form id="loginForm" action="/add2cart?username=${loggedUser.username}&productID=${product.id}" method="POST">
+                                            <table align="center">
+                                                <td align="center"><button id="login" name="add2cartbtn"><h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4></button></td>
+                                            </table>
+                                        </form>
+
                                         <br class="clr">
                                     </div>
                                 </div>
