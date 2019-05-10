@@ -26,9 +26,14 @@ public class DashboardController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String index(){
+    public ModelAndView index() {
+        List<Product> product_list = productService.getProductList();
+        ModelAndView mav = null;
 
-        return "dashboard";
+        mav = new ModelAndView("dashboard");
+        mav.addObject("product_list", product_list);
+
+        return mav;
     }
 
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)

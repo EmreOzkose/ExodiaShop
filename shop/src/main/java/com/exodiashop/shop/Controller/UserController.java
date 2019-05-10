@@ -6,7 +6,10 @@ import com.exodiashop.shop.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
@@ -22,8 +25,15 @@ public class UserController {
     }
 
     @RequestMapping("/users/{username}")
-    public User getUserByUsername(@PathVariable String username){
-        return userService.getUserByUserName(username);
+    public ModelAndView viewUser(HttpServletRequest request, HttpServletResponse response, @PathVariable String username){
+        ModelAndView mav = null;
+
+        User user = userService.getUserByUserName(username);
+
+        mav = new ModelAndView("user");
+        mav.addObject("user", user);
+
+        return mav;
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/users")

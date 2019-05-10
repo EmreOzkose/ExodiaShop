@@ -11,9 +11,9 @@ import java.util.List;
 public class UserService {
 
     List<User> userList = new ArrayList<User>( Arrays.asList(
-                    new User("Yunusemre", "yunusemre123", 21),
-                    new User("Büşra", "busra123", 21),
-                    new User("Ahmet", "ahmetdayi", 16)
+                    new User("Yunusemre", "Özköse", "yunus@hotmail.com", "yunusemre123", 21,0,1),
+                    new User("Büşra", "Ekşi", "busra@hotmail.com", "busra123", 21,0,1),
+                    new User("Ahmet", "Özköse", "ahmet@hotmail.com", "ahmetdayi", 16,1,0)
             )
     );
 
@@ -41,7 +41,7 @@ public class UserService {
 
     public User validateUser(String userName, String password) {
 
-        User u = new User("Derya", "derya123", 22);
+        User u = new User("Derya", "Durmaz", "derya@hotmail.com", "derya123", 22, 1,1);
         return u;
     }
 

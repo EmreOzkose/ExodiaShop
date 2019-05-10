@@ -36,7 +36,9 @@ Lower Header Section
             </div>
             <div class="span4 alignR">
                 <p><br> <strong>          </strong><br><br></p>
-                <span class="btn btn-mini">[ 0 ] <span class="icon-shopping-cart"></span></span>
+                <c:if test="${loggedUser!=null && loggedUser.userType == 1}">
+                    <span class="btn btn-mini">[ 0 ] <span class="icon-shopping-cart"></span></span>
+                </c:if>
 
 
             </div>
@@ -60,16 +62,19 @@ Lower Header Section
 
 
                     </ul>
-                    <form action="#" class="navbar-search pull-left">
+                    <form action="/search" class="navbar-search pull-left">
                         <input type="text" placeholder="Search" class="search-query span2">
                     </form>
                     <ul class="nav pull-right">
 
-                        <% if (request.getParameter("loggedUser") == null) { %>
+                        <c:if test="${loggedUser==null}">
                             <button class="log" onclick ="location.href='login'">Sign in</button>
                             <button  class="log" onclick ="location.href='register'">Sign up</button>
-                        <% } %>
+                        </c:if>
 
+                        <c:if test="${loggedUser!=null}">
+                            <button class="log" onclick ="location.href='/users/${loggedUser.username}'">Account</button>
+                        </c:if>
 
                     </ul>
                 </div>
@@ -103,6 +108,10 @@ Lower Header Section
                 <h3>Products </h3>
                 <div class="row-fluid">
                     <ul class="thumbnails">
+
+                        <c:if test="${product_list.size() == 0}">
+                            <h1>No Product</h1>
+                        </c:if>
 
                         <c:forEach items="${product_list}" var="product">
                             <li class="span4">
