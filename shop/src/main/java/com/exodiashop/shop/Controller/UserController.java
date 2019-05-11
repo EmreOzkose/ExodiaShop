@@ -2,6 +2,7 @@ package com.exodiashop.shop.Controller;
 
 
 import com.exodiashop.shop.Model.User;
+import com.exodiashop.shop.Repositories.UserRepository;
 import com.exodiashop.shop.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,19 +17,21 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private UserRepository userRepository;
 
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("/users")
     public List<User> getAllUsers(){
-        return userService.getUserList();
+        return userRepository.findAll();
     }
 
     @RequestMapping("/users/{username}")
     public ModelAndView viewUser(HttpServletRequest request, HttpServletResponse response, @PathVariable String username){
         ModelAndView mav = null;
 
-        User user = userService.getUserByUserName(username);
+        User user = userRepository.findByUsername(username);
 
         mav = new ModelAndView("user");
         mav.addObject("user", user);

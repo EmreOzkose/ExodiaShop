@@ -12,14 +12,16 @@ import java.util.List;
 @Service
 public class UserService {
 
+
     @Autowired
     ProductService productService;
 
 
-    List<User> userList = new ArrayList<User>( Arrays.asList(
-                    new User("Yunusemre", "Özköse", "yunus@hotmail.com", "yunusemre123", 21,0,1, "/img/profiles/yunusemre123.jpg"),
-                    new User("Büşra", "Ekşi", "busra@hotmail.com", "busra123", 21,0,1, ""),
-                    new User("Ahmet", "Özköse", "ahmet@hotmail.com", "ahmetdayi", 16,1,0, "")
+
+        List<User> userList = new ArrayList<User>( Arrays.asList(
+                    new User(),
+                    new User(),
+                    new User()
             )
     );
 
@@ -31,7 +33,7 @@ public class UserService {
         return getUserList().stream().filter(t -> t.getUsername().equals(username)).findFirst().get();
     }
 
-    public void addUser(User user){
+        public void addUser(User user){
         userList.add(user);
     }
 
@@ -46,13 +48,13 @@ public class UserService {
 
     public void add2cart(String username, int productID){
         Product product = productService.getProductByID(productID);
-        getUserList().stream().filter(t -> t.getUsername().equals(username)).findFirst().get().getShopping_cart().add(product);
+        //getUserList().stream().filter(t -> t.getUsername().equals(username)).findFirst().get().getShopping_cart().add(product);
     }
 
 
     public User validateUser(String userName, String password) {
 
-        User u = new User("Derya", "Durmaz", "derya@hotmail.com", "derya123", 22, 1,1, "");
+        User u = new User();
         return u;
     }
 

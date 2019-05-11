@@ -36,6 +36,8 @@ public class RegisterController {
 
         boolean correct = checkCorrectInfoForUser(username, name, surname, password, dateofbirth, gender, email, address, phonenumber);
 
+
+
         return mav;
     }
 
