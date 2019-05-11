@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,83 +12,14 @@
     
     </head>
 <body>
-<!--	Upper Header Section    -->
 
-<!--
-Lower Header Section
--->
-<div class="container" >
-<div id="gototop" > </div>
-<header id="header">
-<div class="row"  >
-	<div class="span4" >
-	<h1>
-	<a class="logo" href="index.html"  >
-		<img src="/img/logos/exodia-cursive.png" alt="exodia shop">
-	</a>
-	</h1>
-	</div>
-	<div class="span4">
-	<div class="offerNoteWrapper">
-	<h1 class="dotmark">
-	<i class="icon-cut"></i>
-	</h1>
-	</div>
-	</div>
-	<div class="span4 alignR">
-	<span class="btn btn-mini">[ 0 ] <span class="icon-shopping-cart"></span></span>
-	</div>
-</div>
-</header>
-<!--
-Navigation Bar Section
--->
-<div class="navbar">
-    <div class="navbar-inner" >
-          <div class="container" >
-            <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-            </a>
-            <div class="nav-collapse">
-                  <ul class="nav">
-                    <li class="active"><a href="/dashboard" >Home</a></li>
-
-                  </ul>
-                  <form action="#" class="navbar-search pull-left">
-                    <input type="text" placeholder="Search" class="search-query span2">
-                  </form>
-                  <ul class="nav pull-right">
-                  <li class="dropdown">
-                          <a data-toggle="dropdown"  class="dropdown-toggle" href="#"> Login </a>
-                  </li>
-                  </ul>
-            </div>
-          </div>
-    </div>
-  </div>
-<!--
-Body Section
--->
-	<div class="row">
-<div id="sidebar" class="span3" >
-
-    <div class="well well-small">
-            <ul class="nav nav-list">
-                    <li><a href="products.html"><span class="icon-chevron-right"></span>Women</a></li>
-                    <li><a href="products.html"><span class="icon-chevron-right"></span>Men</a></li>
-                    <li><a href="products.html"><span class="icon-chevron-right"></span>Bags & Shoes</a></li>
-                    <li><a href="products.html"><span class="icon-chevron-right"></span>Clothes</a></li>
-                    <li><a href="products.html"><span class="icon-chevron-right"></span>Cosmetic</a></li>
-                    <li><a href="products.html"><span class="icon-chevron-right"></span>Electronics</a></li>
+    <jsp:include page="/components/header.jsp" />
+    <jsp:include page="/components/navbar.jsp" />
+    <jsp:include page="/components/sidebar.jsp" />
 
 
-                    <li style="border:0"> &nbsp;</li>
-                    <li>
-            </ul>
-    </div>
-</div>
+    <div class="row">
+
 	<div class="span9" style="background-color:rgba(0, 0, 0, 0.0);">
     <ul class="breadcrumb" style="background-color:rgba(0, 0, 0, 0.0);">
     <li><a href="index.html">Home</a> <span class="divider">/</span></li>

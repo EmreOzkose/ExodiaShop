@@ -15,11 +15,8 @@
     <!-- Bootstrap styles -->
     <link href="/libs/bootstrap.css" rel="stylesheet"/>
     <link href="/libs/style.css" rel="stylesheet"/>
-
-    <!-- font awesome styles -->
     <link href="/libs/font-awesome/css/font-awesome.css" rel="stylesheet">
 
-    <!-- Favicons -->
     <link rel="shortcut icon" href="/img/logos/favicon.ico">
 </head>
 <body>
