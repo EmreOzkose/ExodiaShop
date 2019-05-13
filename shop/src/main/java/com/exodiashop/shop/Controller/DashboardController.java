@@ -76,7 +76,7 @@ public class DashboardController {
         mav.addObject("username", username);
 
         User user =  userService.getUserByUserName(username);
-        List<Product> product_list = user.getShopping_cart();
+        List<Product> product_list = user.getShoppingCart();
         mav.addObject("product_list", product_list);
 
         return mav;

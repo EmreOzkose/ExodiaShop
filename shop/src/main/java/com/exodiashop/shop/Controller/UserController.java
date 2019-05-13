@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
 import java.util.List;
 
 @Controller
@@ -20,7 +21,7 @@ public class UserController {
 
 
     @RequestMapping("/users")
-    public List<User> getAllUsers(){
+    public List<User> getAllUsers() throws SQLException {
         return userService.getUserList();
     }
 
@@ -55,5 +56,7 @@ public class UserController {
             System.out.println(file.getName());
         }
     }*/
+
+
 
 }

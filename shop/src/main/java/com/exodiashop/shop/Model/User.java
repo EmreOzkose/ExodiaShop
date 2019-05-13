@@ -1,53 +1,55 @@
 package com.exodiashop.shop.Model;
 
-
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 public class User {
-
-    private String name;
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
+    @NotNull
+    @Size(min = 4, max = 50)
     private String username;
-    private int age;
+    @NotNull
+    @Size(min = 8, max = 32)
+    private String password;
+    @NotNull
+    @Size(min = 8, max = 32)
+    private String passwordconfirm;
+    @NotNull
+    @Size(min = 3, max =60)
+    @Pattern(regexp="[a-zA-Z][a-zA-Z ]+", message="Name can only consist of letters")
+    private String name;
+    @NotNull
+    @Size(min = 3, max =60)
+    @Pattern(regexp="[a-zA-Z][a-zA-Z ]+", message="Surname can only consist of letters")
     private String surname;
+    @Past
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date dateofbirth;
+    @NotNull
+    private String gender;
+    @NotNull
+    @Pattern(regexp = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$", message="uygun degil")
     private String email;
-    /**
-     * 0: admin
-     * 1: customer
-     * 2: seller
-     */
-    private int userType;
-    /**
-     * 0: male
-     * 1: female
-     */
-    private int gender;
-    private List<Product> shopping_cart;
-    private String profilePhoto;
+    private String address;
+    private String phonenumber;
+    private String role;
 
-    public User(){
+    // remove initial value later
+    private String ShoppingCart = "1,2,3,4,5";
 
+    public Long getId() {
+        return id;
     }
 
-    public User(String name, String surname, String email, String username, int age, int gender, int userType, String profilePhoto){
-        this.name = name;
-        this.username = username;
-        this.age = age;
-        this.surname = surname;
-        this.email = email;
-        this.userType = userType;
-        this.gender = gender;
-        this.profilePhoto = profilePhoto;
-        this.shopping_cart = new ArrayList<>();
-
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -58,12 +60,20 @@ public class User {
         this.username = username;
     }
 
-    public int getAge() {
-        return age;
+    public String getPassword() {
+        return password;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getSurname() {
@@ -74,6 +84,22 @@ public class User {
         this.surname = surname;
     }
 
+    public Date getDateofbirth() {
+        return dateofbirth;
+    }
+
+    public void setDateofbirth(Date dateofbirth) {
+        this.dateofbirth = dateofbirth;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -82,35 +108,47 @@ public class User {
         this.email = email;
     }
 
-    public int getUserType() {
-        return userType;
+    public String getAddress() {
+        return address;
     }
 
-    public void setUserType(int userType) {
-        this.userType = userType;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public int getGender() {
-        return gender;
+    public String getPhonenumber() {
+        return phonenumber;
     }
 
-    public void setGender(int gender) {
-        this.gender = gender;
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
     }
 
-    public List<Product> getShopping_cart() {
-        return shopping_cart;
+    public String getRole() {
+        return role;
     }
 
-    public void setShopping_cart(List<Product> shopping_cart) {
-        this.shopping_cart = shopping_cart;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    public String getProfilePhoto() {
-        return profilePhoto;
+    public String getPasswordconfirm() {
+        return passwordconfirm;
     }
 
-    public void setProfilePhoto(String profilePhoto) {
-        this.profilePhoto = profilePhoto;
+    public void setPasswordconfirm(String passwordconfirm) {
+        this.passwordconfirm = passwordconfirm;
+    }
+
+
+    public List<Product> getShoppingCart() {
+        List<Product> productList = new ArrayList<>();
+
+        return productList;
+    }
+
+    // Update with string-list switch
+    public void setShoppingCart(String shoppingCart) {
+        ShoppingCart = shoppingCart;
     }
 }

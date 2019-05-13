@@ -1,13 +1,17 @@
 package com.exodiashop.shop.Service;
 
+import com.exodiashop.shop.DAO.UserDAO;
+import com.exodiashop.shop.DAO.UserDAO;
 import com.exodiashop.shop.Model.Product;
 import com.exodiashop.shop.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.springframework.context.ApplicationContext;
 
 @Service
 public class UserService {
@@ -15,17 +19,26 @@ public class UserService {
     @Autowired
     ProductService productService;
 
+    UserDAO userDao;
 
-    List<User> userList = new ArrayList<User>( Arrays.asList(
-                    new User("Yunusemre", "Özköse", "yunus@hotmail.com", "yunusemre123", 21,0,1, "/img/profiles/yunusemre123.jpg"),
-                    new User("Büşra", "Ekşi", "busra@hotmail.com", "busra123", 21,0,1, ""),
-                    new User("Ahmet", "Özköse", "ahmet@hotmail.com", "ahmetdayi", 16,1,0, "")
+    public UserService(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("Module.xml");
+        this.userDao = (UserDAO) context.getBean("userDAO");
+    }
+
+    List<User> userList = new ArrayList<>( Arrays.asList(
+            new User()
             )
     );
 
     public List<User> getUserList(){
         return userList;
     }
+
+    public List<User> getAllUsers() {
+        return userDao.getAllUsers();
+    }
+
 
     public User getUserByUserName(String username){
         return getUserList().stream().filter(t -> t.getUsername().equals(username)).findFirst().get();
@@ -46,16 +59,7 @@ public class UserService {
 
     public void add2cart(String username, int productID){
         Product product = productService.getProductByID(productID);
-        getUserList().stream().filter(t -> t.getUsername().equals(username)).findFirst().get().getShopping_cart().add(product);
+        getUserList().stream().filter(t -> t.getUsername().equals(username)).findFirst().get().getShoppingCart().add(product);
     }
-
-
-    public User validateUser(String userName, String password) {
-
-        User u = new User("Derya", "Durmaz", "derya@hotmail.com", "derya123", 22, 1,1, "");
-        return u;
-    }
-
-
 
 }
