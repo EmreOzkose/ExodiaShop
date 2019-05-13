@@ -56,10 +56,12 @@ public class UserService {
             }
         }
     }
-
+/*
     public void add2cart(String username, int productID){
         Product product = productService.getProductByID(productID);
         getUserList().stream().filter(t -> t.getUsername().equals(username)).findFirst().get().getShoppingCart().add(product);
     }
 
+
+ */
 }

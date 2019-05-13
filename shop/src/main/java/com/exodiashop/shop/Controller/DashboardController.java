@@ -58,7 +58,7 @@ public class DashboardController {
         return mav;
 
     }
-
+/*
     @RequestMapping("/add2cart")
     public String add2cart(HttpServletRequest request, HttpServletResponse response) {
         String username = request.getParameter("username");
@@ -69,6 +69,8 @@ public class DashboardController {
         return "../redirections/to_dashboard";
     }
 
+
+ */
     @RequestMapping(method = RequestMethod.GET, value = "/checkout/{username}")
     public ModelAndView checkout(HttpServletRequest request, HttpServletResponse response, @PathVariable String username){
         ModelAndView mav = new ModelAndView("checkout");

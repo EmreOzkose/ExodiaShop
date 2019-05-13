@@ -5,5 +5,6 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
     <import resource="database/Datasource.xml"/>
     <import resource="Customer-beans.xml"/>
+    <import resource="Product-beans.xml"/>
 
 </beans>

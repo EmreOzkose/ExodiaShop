@@ -17,7 +17,7 @@ public class SearchController {
     @Autowired
     ProductService productService;
 
-
+/*
     @RequestMapping("/search")
     public ModelAndView viewSearhResults(HttpServletRequest request, HttpServletResponse response){
         ModelAndView mav = null;
@@ -31,4 +31,6 @@ public class SearchController {
 
         return mav;
     }
+
+ */
 }

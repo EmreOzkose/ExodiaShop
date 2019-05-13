@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -19,6 +20,16 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
+    @RequestMapping("/products")
+    public String index(){
+        List<Product> productList = productService.getProductList();
+        for (Product p : productList)
+            System.out.println(p.getName());
+
+        return "";
+    }
+
+/*
     @RequestMapping("/product/{id}")
     public ModelAndView viewProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable int id) {
         ModelAndView mav = null;
@@ -35,7 +46,8 @@ public class ProductController {
 
         return mav;
     }
-
+*/
+/*
     @RequestMapping("/categories/{category_name}")
     public ModelAndView viewCategory(HttpServletRequest request, HttpServletResponse response, @PathVariable String category_name) {
         ModelAndView mav = null;
@@ -53,5 +65,5 @@ public class ProductController {
 
         return mav;
     }
-
+*/
 }

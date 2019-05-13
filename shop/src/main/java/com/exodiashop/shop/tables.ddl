@@ -23,3 +23,27 @@ create table user
 
 alter table user
     add primary key (id);
+
+-- auto-generated definition
+create table product
+(
+    id       int auto_increment,
+    name     varchar(45)  not null,
+    gender   varchar(45)  null,
+    brand    varchar(45)  not null,
+    color    varchar(45)  null,
+    type     varchar(45)  not null,
+    category varchar(45)  not null,
+    size     varchar(45)  null,
+    price    double       not null,
+    total    int          not null,
+    image    varchar(200) not null,
+    seller   varchar(100) not null,
+    constraint id_UNIQUE
+        unique (id)
+)
+    collate = utf8_turkish_ci;
+
+alter table product
+    add primary key (id);
+
