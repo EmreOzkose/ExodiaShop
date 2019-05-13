@@ -26,32 +26,22 @@ public class UserService {
         this.userDao = (UserDAO) context.getBean("userDAO");
     }
 
-    List<User> userList = new ArrayList<>( Arrays.asList(
-            new User()
-            )
-    );
-
     public List<User> getUserList(){
-        return userList;
-    }
-
-    public List<User> getAllUsers() {
         return userDao.getAllUsers();
     }
-
 
     public User getUserByUserName(String username){
         return getUserList().stream().filter(t -> t.getUsername().equals(username)).findFirst().get();
     }
 
     public void addUser(User user){
-        userList.add(user);
+        getUserList().add(user);
     }
 
     public void updateUser(User user, String username){
-        for (int i=0; i<userList.size(); i++) {
-            if (userList.get(i).getUsername().equals(username)) {
-                userList.set(i, user);
+        for (int i=0; i<getUserList().size(); i++) {
+            if (getUserList().get(i).getUsername().equals(username)) {
+                getUserList().set(i, user);
                 break;
             }
         }

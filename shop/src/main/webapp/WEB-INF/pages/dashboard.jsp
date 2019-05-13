@@ -46,6 +46,7 @@ Lower Header Section
                         <li class="span4">
                             <div class="thumbnail">
                                 <a href="product.jsp" class="overlay"></a>
+
                                 <a class="zoomTool" href="/product/${product.id}" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
                                 <a href="/product/${product.id}"><img src="${product.img_path}" alt=""></a>
                                 <div class="caption cntr">

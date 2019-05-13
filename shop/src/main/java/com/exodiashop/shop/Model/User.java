@@ -42,7 +42,7 @@ public class User {
     private String role;
 
     // remove initial value later
-    private String ShoppingCart = "1,2,3,4,5";
+    private String shoppingCart = "1,2,3,4,5";
 
     public Long getId() {
         return id;
@@ -149,6 +149,6 @@ public class User {
 
     // Update with string-list switch
     public void setShoppingCart(String shoppingCart) {
-        ShoppingCart = shoppingCart;
+        this.shoppingCart = shoppingCart;
     }
 }

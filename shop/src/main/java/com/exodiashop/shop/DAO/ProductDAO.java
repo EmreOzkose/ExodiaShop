@@ -58,7 +58,7 @@ class ProductMapper implements RowMapper<Product> {
         p.setSize(rs.getString("size"));
         p.setPrice(rs.getDouble("price"));
         p.setStock_number(rs.getInt("total"));
-        p.setImg_path(rs.getString("image"));
+        p.setImg_path(rs.getString("img_path"));
         p.setSeller(rs.getString("seller"));
 
         return p;

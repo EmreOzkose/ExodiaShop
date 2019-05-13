@@ -34,8 +34,8 @@
         <div class="span4 alignR">
             <p><br> <strong>          </strong><br><br></p>
             <a href="/checkout/${loggedUser.username}">
-                <c:if test="${loggedUser!=null && loggedUser.userType == 1}">
-                <span class="btn btn-mini">[ ${loggedUser.shopping_cart.size()} ] <span class="icon-shopping-cart"></span></span>
+                <c:if test="${loggedUser!=null && loggedUser.role == 'customer'}">
+                <span class="btn btn-mini">[ ${loggedUser.shoppingCart.size()} ] <span class="icon-shopping-cart"></span></span>
                 </c:if>
 
         </div>

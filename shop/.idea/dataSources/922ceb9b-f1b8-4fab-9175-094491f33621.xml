@@ -1250,7 +1250,7 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="293" parent="236" name="image">
+    <column id="293" parent="236" name="img_path">
       <Position>11</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>

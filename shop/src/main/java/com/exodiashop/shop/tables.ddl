@@ -37,7 +37,7 @@ create table product
     size     varchar(45)  null,
     price    double       not null,
     total    int          not null,
-    image    varchar(200) not null,
+    img_path    varchar(200) not null,
     seller   varchar(100) not null,
     constraint id_UNIQUE
         unique (id)
