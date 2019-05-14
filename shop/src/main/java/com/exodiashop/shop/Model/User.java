@@ -40,6 +40,7 @@ public class User {
     private String address;
     private String phonenumber;
     private String role;
+    private String profilePhoto;
 
     // remove initial value later
     private String shoppingCart = "1,2,3,4,5";
@@ -150,5 +151,13 @@ public class User {
     // Update with string-list switch
     public void setShoppingCart(String shoppingCart) {
         this.shoppingCart = shoppingCart;
+    }
+
+    public String getProfilePhoto() {
+        return profilePhoto;
+    }
+
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhoto = profilePhoto;
     }
 }

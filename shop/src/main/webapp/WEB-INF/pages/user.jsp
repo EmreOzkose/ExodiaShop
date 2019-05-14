@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: eramas
@@ -149,17 +150,40 @@ Lower Header Section
                     <img src="${user.profilePhoto}">
                     <div id="myTabContent" class="tab-content tabWrapper">
                         <div class="tab-pane fade active in" id="home">
-                            <table class="table table-striped">
-                                <tbody>
-                                <tr class="techSpecRow"><td class="techSpecTD1">Username:</td><td class="techSpecTD2">${user.username}</td></tr>
-                                <tr class="techSpecRow"><td class="techSpecTD1">Name: </td><td class="techSpecTD2">${user.name}</td></tr>
-                                <tr class="techSpecRow"><td class="techSpecTD1">Surname:</td><td class="techSpecTD2">${user.surname}</td></tr>
-                                <tr class="techSpecRow"><td class="techSpecTD1">Email: </td><td class="techSpecTD2">${user.email}</td></tr>
-                                <tr class="techSpecRow"><td class="techSpecTD1">Password:</td><td class="techSpecTD2">**********</td></tr>
-                                </tbody>
-                            </table>
 
-                            <p>  <button type="submit" class="shopBtn">> Edit Profile </button></p>
+                            <c:choose>
+                                <c:when test="${isEdit == 1}">
+                                    <form id="loginForm" action="/users/${user.username}/editProfileProcess" method="POST">
+
+                                        <table class="table table-striped">
+                                            <tbody>
+                                            <tr class="techSpecRow"><td class="techSpecTD1">Username:</td><td class="techSpecTD2"><input required="required" type="text" name="newUsername"  value="${user.username}" placeholder ="Enter new username" id="username" /></td></tr>
+                                            <tr class="techSpecRow"><td class="techSpecTD1">Name: </td><td class="techSpecTD2"><input required="required" type="text" name="newName" value="${user.name}" placeholder ="Enter new name" id="name" /></td></tr>
+                                            <tr class="techSpecRow"><td class="techSpecTD1">Surname:</td><td class="techSpecTD2"><input required="required" type="text" name="newSurname" value="${user.surname}" placeholder ="Enter new surname" id="surname" /></td></tr>
+                                            <tr class="techSpecRow"><td class="techSpecTD1">Email: </td><td class="techSpecTD2"><input required="required" type="text" name="newEmail" value="${user.email}" placeholder ="Enter new email" id="email" /></td></tr>
+                                            <tr class="techSpecRow"><td class="techSpecTD1">Password:</td><td class="techSpecTD2"><input required="required" type="text" name="newPassword"  placeholder ="Enter new password" id="password" /></td></tr>
+                                            <tr class="techSpecRow"><td class="techSpecTD1"></td><td class="techSpecTD2"><button id="login" name="login">Apply</button></td></tr>
+
+                                            </tbody>
+                                        </table>
+
+                                    </form>
+                                </c:when>
+                                <c:otherwise>
+                                    <table class="table table-striped">
+                                        <tbody>
+                                        <tr class="techSpecRow"><td class="techSpecTD1">Username:</td><td class="techSpecTD2">${user.username}</td></tr>
+                                        <tr class="techSpecRow"><td class="techSpecTD1">Name: </td><td class="techSpecTD2">${user.name}</td></tr>
+                                        <tr class="techSpecRow"><td class="techSpecTD1">Surname:</td><td class="techSpecTD2">${user.surname}</td></tr>
+                                        <tr class="techSpecRow"><td class="techSpecTD1">Email: </td><td class="techSpecTD2">${user.email}</td></tr>
+                                        <tr class="techSpecRow"><td class="techSpecTD1">Password:</td><td class="techSpecTD2">**********</td></tr>
+                                        </tbody>
+                                    </table>
+                                    <form id="loginForm" action="/users/${user.username}/editProfile" method="POST">
+                                        <p>  <button type="submit" class="shopBtn">> Edit Profile </button></p>
+                                    </form>
+                                </c:otherwise>
+                            </c:choose>
                         </div>
                     </div>
 

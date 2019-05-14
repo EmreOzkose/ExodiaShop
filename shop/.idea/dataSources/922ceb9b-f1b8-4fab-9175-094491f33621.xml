@@ -1400,35 +1400,40 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="319" parent="238" name="id_UNIQUE">
+    <column id="319" parent="238" name="profilePhoto">
+      <Position>12</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="320" parent="238" name="id_UNIQUE">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="320" parent="238" name="username_UNIQUE">
+    <index id="321" parent="238" name="username_UNIQUE">
       <ColNames>username</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="321" parent="238" name="phonenumber_UNIQUE">
+    <index id="322" parent="238" name="phonenumber_UNIQUE">
       <ColNames>phonenumber</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="322" parent="238" name="PRIMARY">
+    <key id="323" parent="238" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="323" parent="238" name="id_UNIQUE">
+    <key id="324" parent="238" name="id_UNIQUE">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>id_UNIQUE</UnderlyingIndexName>
     </key>
-    <key id="324" parent="238" name="username_UNIQUE">
+    <key id="325" parent="238" name="username_UNIQUE">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>username_UNIQUE</UnderlyingIndexName>
     </key>
-    <key id="325" parent="238" name="phonenumber_UNIQUE">
+    <key id="326" parent="238" name="phonenumber_UNIQUE">
       <ColNames>phonenumber</ColNames>
       <UnderlyingIndexName>phonenumber_UNIQUE</UnderlyingIndexName>
     </key>

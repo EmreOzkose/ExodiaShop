@@ -31,20 +31,15 @@ public class UserService {
     }
 
     public User getUserByUserName(String username){
-        return getUserList().stream().filter(t -> t.getUsername().equals(username)).findFirst().get();
+        return userDao.getUserByUsername((username));
     }
 
     public void addUser(User user){
         getUserList().add(user);
     }
 
-    public void updateUser(User user, String username){
-        for (int i=0; i<getUserList().size(); i++) {
-            if (getUserList().get(i).getUsername().equals(username)) {
-                getUserList().set(i, user);
-                break;
-            }
-        }
+    public void updateUser(String username, String newUsername){
+        userDao.updateUser(username, newUsername);
     }
 /*
     public void add2cart(String username, int productID){

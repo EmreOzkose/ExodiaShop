@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.sql.Types;
 
 import javax.sql.DataSource;
 
@@ -20,11 +21,9 @@ public class UserDAO extends JdbcDaoSupport{
     @Autowired
     DataSource datasource;
 
-    JdbcTemplate jdbcTemplate;
-
     public void register(User user) {
         String sql = "insert into user values(?,?,?,?,?,?,?,?,?,?,?)";
-        jdbcTemplate.update(sql, new Object[] {user.getId(), user.getUsername(), user.getPassword(), user.getName(),user.getSurname(),user.getDateofbirth(),user.getGender(), user.getEmail(), user.getAddress(), user.getPhonenumber() , "user"});
+        getJdbcTemplate().update(sql, new Object[] {user.getId(), user.getUsername(), user.getPassword(), user.getName(),user.getSurname(),user.getDateofbirth(),user.getGender(), user.getEmail(), user.getAddress(), user.getPhonenumber() , "user"});
     }
 
     public List<User> getAllUsers() {
@@ -38,23 +37,21 @@ public class UserDAO extends JdbcDaoSupport{
         return user_list;
     }
 
-    //query mutiple rows with manual mapping
-    public List<User> findAll(){
+    public User getUserByUsername(String username) {
+        String sql = "select * from user where username='" + username + "'";
 
-        String sql = "SELECT * FROM user";
+        List<User> user_list = getJdbcTemplate().query(sql,
+                new BeanPropertyRowMapper(User.class));
 
-        List<User> customers = new ArrayList<User>();
-
-        for (Map row : getJdbcTemplate().queryForList(sql)) {
-            User customer = new User();
-            customer.setName((String)row.get("username"));
-
-            customers.add(customer);
-        }
-
-        return customers;
+        return user_list.size() > 0 ? user_list.get(0) : null;
     }
 
+    public void updateUser(String username, String newUsername){
+        System.out.println("s: " + username + " new : " + newUsername);
+
+        getJdbcTemplate().update("update user set username = ? where username = ?", newUsername, username);
+
+    }
 
 }
 
@@ -73,6 +70,7 @@ class UserMapper implements RowMapper<User> {
         user.setEmail(rs.getString("email"));
         user.setAddress(rs.getString("address"));
         user.setPhonenumber(rs.getString("phonenumber"));
+        user.setProfilePhoto(rs.getString("profilePhoto"));
 
         return user;
     }

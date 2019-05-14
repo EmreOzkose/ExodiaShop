@@ -33,6 +33,7 @@ public class UserController {
 
         mav = new ModelAndView("user");
         mav.addObject("user", user);
+        mav.addObject("isEdit", 0);
 
         return mav;
     }
@@ -40,11 +41,6 @@ public class UserController {
     @RequestMapping(method = RequestMethod.POST, value = "/users")
     public void addUser(@RequestBody User user){
         userService.addUser(user);
-    }
-
-    @RequestMapping(method = RequestMethod.POST, value = "/users/{username}")
-    public void updateUser(@RequestBody User user, @PathVariable String username){
-        userService.updateUser(user, username);
     }
 
 
