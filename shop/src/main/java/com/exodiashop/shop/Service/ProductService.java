@@ -27,11 +27,11 @@ public class ProductService {
         return productDAO.getAllProducts();
     }
 
-/*
-    public Product getProductByID(int id){
-        return getProductList().stream().filter(t -> (t.getId() == id)).findFirst().get();
-    }
 
+    public Product getProductByID(int id){
+        return productDAO.getProductByID();
+    }
+/*
     public List<Product> getProductByCategory(String category_name){
         return getProductList().stream().filter(t -> (t.getCategory_name().equals(category_name))).collect(Collectors.toList());
     }

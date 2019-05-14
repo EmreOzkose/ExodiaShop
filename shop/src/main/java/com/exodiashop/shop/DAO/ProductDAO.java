@@ -41,6 +41,7 @@ public class ProductDAO extends JdbcDaoSupport{
         return product_list;
     }
 
+
 }
 
 class ProductMapper implements RowMapper<Product> {

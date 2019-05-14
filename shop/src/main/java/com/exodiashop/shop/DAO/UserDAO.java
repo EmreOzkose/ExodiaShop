@@ -46,11 +46,9 @@ public class UserDAO extends JdbcDaoSupport{
         return user_list.size() > 0 ? user_list.get(0) : null;
     }
 
-    public void updateUser(String username, String newUsername){
+    public void updateUser(String username, String newUsername, String newName, String newSurname, String newEmail, String newPassword){
         System.out.println("s: " + username + " new : " + newUsername);
-
-        getJdbcTemplate().update("update user set username = ? where username = ?", newUsername, username);
-
+        getJdbcTemplate().update("update user set username = ?, name = ?, surname = ?, email = ?, password = ? where username = ?", newUsername, username);
     }
 
 }

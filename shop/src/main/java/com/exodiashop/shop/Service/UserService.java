@@ -38,8 +38,8 @@ public class UserService {
         getUserList().add(user);
     }
 
-    public void updateUser(String username, String newUsername){
-        userDao.updateUser(username, newUsername);
+    public void updateUser(String username, String newUsername, String newName, String newSurname, String newEmail, String newPassword){
+        userDao.updateUser(username, newUsername, newName, newSurname, newEmail, newPassword);
     }
 /*
     public void add2cart(String username, int productID){

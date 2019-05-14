@@ -100,28 +100,20 @@ Lower Header Section
             </div>
         </div>
     </div>
-    <!--
-    Body Section
-    -->
-    <div class="row">
-        <div id="sidebar" class="span3">
-            <div class="well-well-small">
-                <ul class="nav nav-list">
-                    <li><a href="products.html"><span class="icon-chevron-right"></span>Profile </a></li>
-                    <li><a href="products.html"><span class="icon-chevron-right"></span>Orders</a></li>
-                    <li><a href="products.html"><span class="icon-chevron-right"></span>Settings</a></li>
+            <!--
+            Body Section
+            -->
+            <div class="row">
+                <div id="sidebar" class="span3">
+                    <div class="well-well-small">
+                        <ul class="nav nav-list">
 
-
-                    <li style="border:0"> &nbsp;</li>
-
-                </ul>
-            </div>
+                        </ul>
+                    </div>
 
 
 
-
-
-        </div>
+                </div>
         <div class="span9">
 
             <!-------------------------------------------------------------------------------------

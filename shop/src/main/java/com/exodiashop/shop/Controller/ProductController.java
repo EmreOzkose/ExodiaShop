@@ -20,16 +20,7 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @RequestMapping("/products")
-    public String index(){
-        List<Product> productList = productService.getProductList();
-        for (Product p : productList)
-            System.out.println(p.getName());
 
-        return "";
-    }
-
-/*
     @RequestMapping("/product/{id}")
     public ModelAndView viewProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable int id) {
         ModelAndView mav = null;
@@ -46,7 +37,7 @@ public class ProductController {
 
         return mav;
     }
-*/
+
 /*
     @RequestMapping("/categories/{category_name}")
     public ModelAndView viewCategory(HttpServletRequest request, HttpServletResponse response, @PathVariable String category_name) {

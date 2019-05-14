@@ -35,7 +35,11 @@ public class EditProfileController {
         ModelAndView mav = new ModelAndView("../redirections/to_profile");
 
         String newUsername = request.getParameter("newUsername");
-        userService.updateUser(username, newUsername);
+        String newName = request.getParameter("newName");
+        String newSurname = request.getParameter("newSurname");
+        String newEmail = request.getParameter("newEmail");
+        String newPassword = request.getParameter("newPassword");
+        userService.updateUser(username, newUsername, newName, newSurname, newEmail, newPassword);
 
         mav.addObject("isEdit", 0);
         mav.addObject("username", newUsername);
