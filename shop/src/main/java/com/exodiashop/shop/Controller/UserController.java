@@ -2,7 +2,6 @@ package com.exodiashop.shop.Controller;
 
 
 import com.exodiashop.shop.Model.User;
-import com.exodiashop.shop.Repositories.UserRepository;
 import com.exodiashop.shop.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,30 +10,30 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
 import java.util.List;
 
 @Controller
 public class UserController {
 
     @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
     private UserService userService;
 
+
     @RequestMapping("/users")
-    public List<User> getAllUsers(){
-        return userRepository.findAll();
+    public List<User> getAllUsers() {
+        return userService.getUserList();
     }
 
     @RequestMapping("/users/{username}")
     public ModelAndView viewUser(HttpServletRequest request, HttpServletResponse response, @PathVariable String username){
         ModelAndView mav = null;
 
-        User user = userRepository.findByUsername(username);
+        User user = userService.getUserByUserName(username);
 
         mav = new ModelAndView("user");
         mav.addObject("user", user);
+        mav.addObject("isEdit", 0);
 
         return mav;
     }
@@ -42,11 +41,6 @@ public class UserController {
     @RequestMapping(method = RequestMethod.POST, value = "/users")
     public void addUser(@RequestBody User user){
         userService.addUser(user);
-    }
-
-    @RequestMapping(method = RequestMethod.POST, value = "/users/{username}")
-    public void updateUser(@RequestBody User user, @PathVariable String username){
-        userService.updateUser(user, username);
     }
 
 
@@ -58,5 +52,7 @@ public class UserController {
             System.out.println(file.getName());
         }
     }*/
+
+
 
 }

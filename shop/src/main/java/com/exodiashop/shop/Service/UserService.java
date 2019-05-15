@@ -1,63 +1,52 @@
 package com.exodiashop.shop.Service;
 
+import com.exodiashop.shop.DAO.UserDAO;
+import com.exodiashop.shop.DAO.UserDAO;
 import com.exodiashop.shop.Model.Product;
 import com.exodiashop.shop.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.springframework.context.ApplicationContext;
 
 @Service
 public class UserService {
 
-
     @Autowired
     ProductService productService;
 
+    UserDAO userDao;
 
-
-        List<User> userList = new ArrayList<User>( Arrays.asList(
-                    new User(),
-                    new User(),
-                    new User()
-            )
-    );
+    public UserService(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("Module.xml");
+        this.userDao = (UserDAO) context.getBean("userDAO");
+    }
 
     public List<User> getUserList(){
-        return userList;
+        return userDao.getAllUsers();
     }
 
     public User getUserByUserName(String username){
-        return getUserList().stream().filter(t -> t.getUsername().equals(username)).findFirst().get();
+        return userDao.getUserByUsername((username));
     }
 
-        public void addUser(User user){
-        userList.add(user);
+    public void addUser(User user){
+        getUserList().add(user);
     }
 
-    public void updateUser(User user, String username){
-        for (int i=0; i<userList.size(); i++) {
-            if (userList.get(i).getUsername().equals(username)) {
-                userList.set(i, user);
-                break;
-            }
-        }
+    public void updateUser(String username, String newUsername, String newName, String newSurname, String newEmail, String newPassword){
+        userDao.updateUser(username, newUsername, newName, newSurname, newEmail, newPassword);
     }
-
+/*
     public void add2cart(String username, int productID){
         Product product = productService.getProductByID(productID);
-        //getUserList().stream().filter(t -> t.getUsername().equals(username)).findFirst().get().getShopping_cart().add(product);
+        getUserList().stream().filter(t -> t.getUsername().equals(username)).findFirst().get().getShoppingCart().add(product);
     }
 
 
-    public User validateUser(String userName, String password) {
-
-        User u = new User();
-        return u;
-    }
-
-
-
+ */
 }

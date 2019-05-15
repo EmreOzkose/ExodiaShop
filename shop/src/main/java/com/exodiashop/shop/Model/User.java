@@ -1,80 +1,56 @@
 package com.exodiashop.shop.Model;
 
-
-
-
-
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
+import javax.validation.constraints.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
-@Entity
-@Table(name = "user", schema = "exodiadb")
-public class User implements Serializable {
-
+public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
-    private int id;
-
-    @Column(name = "username", unique = true, nullable = false)
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
+    @NotNull
+    @Size(min = 4, max = 50)
     private String username;
-
-    @Column(name = "password", nullable = false)
+    @NotNull
+    @Size(min = 8, max = 32)
     private String password;
-
-    @Column(name = "name", nullable = false)
+    @NotNull
+    @Size(min = 8, max = 32)
+    private String passwordconfirm;
+    @NotNull
+    @Size(min = 3, max =60)
+    @Pattern(regexp="[a-zA-Z][a-zA-Z ]+", message="Name can only consist of letters")
     private String name;
-
-    @Column(name = "surname", nullable = false)
+    @NotNull
+    @Size(min = 3, max =60)
+    @Pattern(regexp="[a-zA-Z][a-zA-Z ]+", message="Surname can only consist of letters")
     private String surname;
-
-    @Column(name = "dateofbirth")
-    private Date dateOfBirth;
-
-    @Column(name = "email", nullable = false)
+    @Past
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date dateofbirth;
+    @NotNull
+    private String gender;
+    @NotNull
+    @Pattern(regexp = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$", message="uygun degil")
     private String email;
-
-    /**
-     * 0: admin
-     * 1: customer
-     * 2: seller
-     */
-    @Column(name = "userType", nullable = false)
-    private int userType;
-    /**
-     * 0: male
-     * 1: female
-     */
-    @Column(name = "gender", nullable = false)
-    private int gender;
-    @Column(name = "shopping_cart")
-    private String shopping_cart;
-    @Column(name = "profilePhoto")
+    private String address;
+    private String phonenumber;
+    private String role;
     private String profilePhoto;
 
-    public User(){}
-  /*  public User(String name, String surname, String email, String username, String password, int gender, int userType, String profilePhoto, String shopping_cart){
-        this.name = name;
-        this.username = username;
-        this.password = password;
-        this.surname = surname;
-        this.email = email;
-        this.userType = userType;
-        this.gender = gender;
-        this.profilePhoto = profilePhoto;
-        this.shopping_cart = shopping_cart;
+    // remove initial value later
+    private String shoppingCart = "1,2,3,4,5";
 
-
-  }
- */
-  public String getName() {
-        return name;
+    public Long getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -85,6 +61,21 @@ public class User implements Serializable {
         this.username = username;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getSurname() {
         return surname;
@@ -92,6 +83,22 @@ public class User implements Serializable {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public Date getDateofbirth() {
+        return dateofbirth;
+    }
+
+    public void setDateofbirth(Date dateofbirth) {
+        this.dateofbirth = dateofbirth;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getEmail() {
@@ -102,22 +109,49 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public int getUserType() {
-        return userType;
+    public String getAddress() {
+        return address;
     }
 
-    public void setUserType(int userType) {
-        this.userType = userType;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public int getGender() {
-        return gender;
+    public String getPhonenumber() {
+        return phonenumber;
     }
 
-    public void setGender(int gender) {
-        this.gender = gender;
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getPasswordconfirm() {
+        return passwordconfirm;
+    }
+
+    public void setPasswordconfirm(String passwordconfirm) {
+        this.passwordconfirm = passwordconfirm;
+    }
+
+
+    public List<Product> getShoppingCart() {
+        List<Product> productList = new ArrayList<>();
+
+        return productList;
+    }
+
+    // Update with string-list switch
+    public void setShoppingCart(String shoppingCart) {
+        this.shoppingCart = shoppingCart;
+    }
 
     public String getProfilePhoto() {
         return profilePhoto;
@@ -125,37 +159,5 @@ public class User implements Serializable {
 
     public void setProfilePhoto(String profilePhoto) {
         this.profilePhoto = profilePhoto;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getShopping_cart() {
-        return shopping_cart;
-    }
-
-    public void setShopping_cart(String shopping_cart) {
-        this.shopping_cart = shopping_cart;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }

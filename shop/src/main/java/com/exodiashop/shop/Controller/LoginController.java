@@ -36,7 +36,6 @@ public class LoginController {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-
         Boolean is_valid_user = true;
 
         if (is_valid_user) {

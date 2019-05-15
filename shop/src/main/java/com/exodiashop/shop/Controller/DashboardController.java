@@ -26,8 +26,6 @@ public class DashboardController {
     ProductService productService;
 
 
-
-
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index() {
         List<Product> product_list = productService.getProductList();
@@ -42,25 +40,21 @@ public class DashboardController {
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
     public ModelAndView listItems(HttpServletRequest request, HttpServletResponse response) {
         //User loggedUser = userService.getUserByUserName(request.getParameter("loggedUserName"));
-        User loggedUser = userService.getUserByUserName("yunusemre123");
+        User loggedUser = userService.getUserByUserName("lone");
         List<Product> product_list = productService.getProductList();
 
         ModelAndView mav = null;
+        mav = new ModelAndView("dashboard");
+        mav.addObject("product_list", product_list);
 
         if (null != loggedUser) {
-            mav = new ModelAndView("dashboard");
             mav.addObject("loggedUser", loggedUser);
-            mav.addObject("product_list", product_list);
-
-        } else {
-            mav = new ModelAndView("dashboard");
-            mav.addObject("message", "Username or Password is wrong!!");
         }
 
         return mav;
 
     }
-
+/*
     @RequestMapping("/add2cart")
     public String add2cart(HttpServletRequest request, HttpServletResponse response) {
         String username = request.getParameter("username");
@@ -71,6 +65,8 @@ public class DashboardController {
         return "../redirections/to_dashboard";
     }
 
+
+ */
     @RequestMapping(method = RequestMethod.GET, value = "/checkout/{username}")
     public ModelAndView checkout(HttpServletRequest request, HttpServletResponse response, @PathVariable String username){
         ModelAndView mav = new ModelAndView("checkout");
@@ -78,8 +74,8 @@ public class DashboardController {
         mav.addObject("username", username);
 
         User user =  userService.getUserByUserName(username);
-        //List<Product> product_list = user.getShopping_cart();
-        //mav.addObject("product_list", product_list);
+        List<Product> product_list = user.getShoppingCart();
+        mav.addObject("product_list", product_list);
 
         return mav;
     }

@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class ProductDAO extends JdbcDaoSupport{
 
@@ -29,6 +30,26 @@ public class ProductDAO extends JdbcDaoSupport{
     }
 
      */
+    public int addProduct(String name, String gender, String brand, String color, String type, String category
+            , String size, double price, int total, String img_path, String seller) {
+        try {
+            String sql = "insert into product (name, gender, brand, color, type, category, size, price, total, img_path, seller)" +
+                    "values (?,?,?,?,?,?,?,?,?,?,?)";
+            jdbcTemplate.update(sql, name, gender, brand, color, type, category, size, price, total, img_path, seller);
+            List<Product> products = getAllProducts();
+
+            return products.get(products.size()).getId();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    public boolean deleteProduct( int productID) {
+        String sql = "delete from product where id='"+productID+"'";
+        jdbcTemplate.update(sql);
+        return true;
+    }
 
     public List<Product> getAllProducts() {
         String sql = "select * from product";
@@ -40,7 +61,16 @@ public class ProductDAO extends JdbcDaoSupport{
 
         return product_list;
     }
+    public Product getProductById(int id) {
+        String sql = "select * from product where id='"+id+"'";
+        List<Product> product_list = getJdbcTemplate().query(sql,
+                new BeanPropertyRowMapper(Product.class));
 
+        for (Product p : product_list)
+            System.out.println(p.getName());
+
+        return product_list.size() > 0 ? product_list.get(0) : null;
+    }
 
 }
 
