@@ -1,4 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    // Create cookie for username
+    Cookie username = new Cookie("loggedUsername", request.getParameter("loggedUsername"));
+
+    // Set expiry date after 24 Hrs for both the cookie.
+    username.setMaxAge(60*60*24);
+
+    // Add the cookie in the response header.
+    response.addCookie( username );
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +32,6 @@ Lower Header Section
 -->
 <div class="container">
     <div id="gototop"> </div>
-
 
     <jsp:include page="/components/header.jsp" />
     <jsp:include page="/components/navbar.jsp" />

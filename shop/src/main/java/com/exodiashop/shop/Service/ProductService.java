@@ -29,17 +29,19 @@ public class ProductService {
 
 
     public Product getProductByID(int id){
-        return productDAO.getProductByID();
+        return productDAO.getProductByID(id);
     }
-/*
+
     public List<Product> getProductByCategory(String category_name){
-        return getProductList().stream().filter(t -> (t.getCategory_name().equals(category_name))).collect(Collectors.toList());
+        return productDAO.getProductByCategory(category_name);
     }
 
     public List<Product> getProductByContainInName(String criteria){
-        return getProductList().stream().filter(t -> (t.getCategory_name().contains(criteria))).collect(Collectors.toList());
+        return productDAO.getAllProducts().stream().filter(t -> (t.getName().toLowerCase().contains(criteria))).collect(Collectors.toList());
     }
-*/
 
+    public void deleteProductByID(int id){
+        boolean return_val = productDAO.deleteProduct(id);
+    }
 
 }

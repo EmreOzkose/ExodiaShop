@@ -1,10 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <!DOCTYPE html>
 <html lang="en" xmlns:c="http://www.w3.org/1999/XSL/Transform">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
 </head>
 <body>
 <div class="navbar">
@@ -17,12 +17,13 @@
             </a>
             <div class="nav-collapse">
                 <ul class="nav">
-                    <li class="active"><a href="/dashboard">Home ${loggedUser.name}</a></li>
-
-
+                    <li class="active"><a href="/dashboard">Home ${loggedUser.username} </a></li>
                 </ul>
-                <form action="/search" class="navbar-search pull-left">
+
+                <form action="/search" class="navbar-search pull-left" method="post">
                     <input type="text"  name="criteria" placeholder="Search" class="search-query span2">
+                    <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
+
                 </form>
 
                 <ul class="nav pull-right">

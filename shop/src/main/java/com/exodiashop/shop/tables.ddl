@@ -48,3 +48,18 @@ create table product
 alter table product
     add primary key (id);
 
+
+-- auto-generated definition
+create table seller
+(
+    id        int auto_increment,
+    name      varchar(45)  not null,
+    locations varchar(255) null,
+    products  int(100)     null,
+    constraint id_UNIQUE
+        unique (id)
+)
+    collate = utf8_turkish_ci;
+
+alter table seller
+    add primary key (id);

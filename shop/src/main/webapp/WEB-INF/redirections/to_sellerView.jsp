@@ -9,7 +9,7 @@
 <html>
 <head>
     <title></title>
-    <meta http-equiv="Refresh" content="0; url=/users/${loggedUsername}">
+    <meta http-equiv="Refresh" content="0; url=/sellerView">
 </head>
 <body>
 

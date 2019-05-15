@@ -25,7 +25,7 @@ public class EditProfileController {
         User user = userService.getUserByUserName(username);
 
         mav.addObject("isEdit", 1);
-        mav.addObject("user", user);
+        mav.addObject("loggedUser", user);
 
         return mav;
     }
@@ -42,7 +42,8 @@ public class EditProfileController {
         userService.updateUser(username, newUsername, newName, newSurname, newEmail, newPassword);
 
         mav.addObject("isEdit", 0);
-        mav.addObject("username", newUsername);
+        mav.addObject("loggedUser", userService.getUserByUserName(newUsername));
+        mav.addObject("loggedUsername", newUsername);
 
         return mav;
     }

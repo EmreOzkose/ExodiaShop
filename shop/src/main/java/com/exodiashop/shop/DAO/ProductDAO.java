@@ -20,27 +20,50 @@ public class ProductDAO extends JdbcDaoSupport{
     @Autowired
     DataSource datasource;
 
-    JdbcTemplate jdbcTemplate;
-
-    /*
-    public void addProduct(User user) {
-        String sql = "insert into user values(?,?,?,?,?,?,?,?,?,?,?)";
-        jdbcTemplate.update(sql, new Object[] {user.getId(), user.getUsername(), user.getPassword(), user.getName(),user.getSurname(),user.getDateofbirth(),user.getGender(), user.getEmail(), user.getAddress(), user.getPhonenumber() , "user"});
-    }
-
-     */
-
     public List<Product> getAllProducts() {
         String sql = "select * from product";
         List<Product> product_list = getJdbcTemplate().query(sql,
                 new BeanPropertyRowMapper(Product.class));
 
-        for (Product p : product_list)
-            System.out.println(p.getName());
+        return product_list;
+    }
+
+    public Product getProductByID(int id){
+        String sql = "select * from product where id = '"+id+"'";
+        List<Product> product_list = getJdbcTemplate().query(sql,
+                new BeanPropertyRowMapper(Product.class));
+
+        return product_list.get(0);
+    }
+
+    public List<Product> getProductByCategory(String category){
+        String sql = "select * from product where category = '"+category+"'";
+        List<Product> product_list = getJdbcTemplate().query(sql,
+                new BeanPropertyRowMapper(Product.class));
 
         return product_list;
     }
 
+    public int addProduct(String name, String gender, String brand, String color, String type, String category
+            , String size, double price, int total, String img_path, String seller) {
+        try {
+            String sql = "insert into product (name, gender, brand, color, type, category, size, price, total, img_path, seller)" +
+                    "values (?,?,?,?,?,?,?,?,?,?,?)";
+            getJdbcTemplate().update(sql, name, gender, brand, color, type, category, size, price, total, img_path, seller);
+            List<Product> products = getAllProducts();
+
+            return products.get(products.size()).getId();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    public boolean deleteProduct( int productID) {
+        String sql = "delete from product where id='"+productID+"'";
+        getJdbcTemplate().update(sql);
+        return true;
+    }
 
 }
 

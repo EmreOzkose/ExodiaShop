@@ -1,3 +1,5 @@
+<%@ page import="com.exodiashop.shop.Service.UserService" %>
+<%@ page import="com.exodiashop.shop.Model.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,7 +14,7 @@
     
     </head>
 <body>
-
+    <%User loggedUser = new User(); loggedUser.setUsername(request.getParameter("username"));%>
     <jsp:include page="/components/header.jsp" />
     <jsp:include page="/components/navbar.jsp" />
     <jsp:include page="/components/sidebar.jsp" />
