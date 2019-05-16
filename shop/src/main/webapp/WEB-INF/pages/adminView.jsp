@@ -26,8 +26,6 @@ Lower Header Section
     <jsp:include page="/components/header.jsp" />
     <jsp:include page="/components/navbar.jsp" />
 
-
-
     <div class="container">
         <div class="row">
             <div class="col-md-2">
@@ -38,7 +36,6 @@ Lower Header Section
                             <li><a href="products.html"><span class="icon-chevron-right"></span>Orders</a></li>
                             <li><a href="products.html"><span class="icon-chevron-right"></span>Customers</a></li>
                             <li><a href="products.html"><span class="icon-chevron-right"></span>Sellers</a></li>
-
                             <li style="border:0"> &nbsp;</li>
 
                         </ul>

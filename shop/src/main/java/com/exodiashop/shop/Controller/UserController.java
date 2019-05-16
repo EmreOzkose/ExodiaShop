@@ -2,6 +2,7 @@ package com.exodiashop.shop.Controller;
 
 
 import com.exodiashop.shop.Model.User;
+import com.exodiashop.shop.Service.ProductService;
 import com.exodiashop.shop.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,8 +20,10 @@ import javax.servlet.http.Cookie;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private ProductService productService;
 
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("/users")
     public List<User> getAllUsers() {
@@ -36,7 +39,10 @@ public class UserController {
         mav = new ModelAndView("user");
         mav.addObject("loggedUser", user);
         mav.addObject("isEdit", 0);
-
+        mav.addObject("product_list", productService.getProductList());
+        for(User u:userService.getUserList())
+            System.out.println(u.getUsername());
+        mav.addObject("user_list", userService.getUserList());
         return mav;
     }
 

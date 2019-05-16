@@ -31,9 +31,6 @@ public class UserDAO extends JdbcDaoSupport{
         List<User> user_list = getJdbcTemplate().query(sql,
                 new BeanPropertyRowMapper(User.class));
 
-        for (User u : user_list)
-            System.out.println(u.getUsername());
-
         return user_list;
     }
 
@@ -51,13 +48,55 @@ public class UserDAO extends JdbcDaoSupport{
         getJdbcTemplate().update("update user set username = ?, name = ?, surname = ?, email = ?, password = ? where username = ?", newUsername, newName, newSurname, newEmail, newPassword, username);
     }
 
+
+    public User validateUser(String username, String password) {
+        String sql = "select * from user where username='" + username + "' and password='" + password + "'";
+
+        List<User> users = getJdbcTemplate().query(sql, new UserMapper());
+
+        return users.size() > 0 ? users.get(0) : null;
+    }
+    public boolean check_username(String username) {
+        String sql = "select * from user where username='" + username +  "'";
+
+        List<User> users = getJdbcTemplate().query(sql, new UserMapper());
+        /*size 0 den büyükse , true döndürür yoksa null*/
+        return users.size() > 0 ? true : null;
+    }
+
+    public Boolean check_email(String email) {
+        String sql = "select * from user where email='" + email +  "'";
+
+        List<User> users = getJdbcTemplate().query(sql, new UserMapper());
+        /*size 0 den büyükse , true döndürür yoksa null*/
+        return users.size() > 0 ? true : null;
+    }
+
+    public Boolean check_pnumber(String pnumber) {
+        String sql = "select * from user where phonenumber='" + pnumber +  "'";
+
+        List<User> users = getJdbcTemplate().query(sql, new UserMapper());
+        /*size 0 den büyükse , true döndürür yoksa null*/
+        return users.size() > 0 ? true : null;
+    }
+
+    public String deleteUser(String username, String password) {
+        String sql ="delete from user where username ='"+username+"' and where password ='"+password+"'";
+
+        int update = getJdbcTemplate().update(sql);
+        if (update == 0) {
+            return "Failed";
+        } else {
+            return "SUCCESS";
+        }
+    }
+
 }
 
 class UserMapper implements RowMapper<User> {
 
     public User mapRow(ResultSet rs, int arg1) throws SQLException {
         User user = new User();
-        /*galiba jsp den gelen yazılar*/
 
         user.setUsername(rs.getString("username"));
         user.setPassword(rs.getString("password"));
