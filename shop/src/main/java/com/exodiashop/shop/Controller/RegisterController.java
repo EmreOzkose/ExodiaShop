@@ -32,34 +32,14 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
-    public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("User") @Valid User user, BindingResult bindingResult) {
+    public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
         userValidator.validate(user, bindingResult);
-        if (bindingResult.hasErrors() == true) {
+        if (bindingResult.hasErrors()) {
             return new ModelAndView("register");
         }
         userService.register(user);
         ModelAndView mav =new ModelAndView("dashboard");
         return mav.addObject( "name", user.getName());
     }
-    /**
-     *
-     * @param username
-     * @param name
-     * @param surname
-     * @param password
-     * @param dateofbirth
-     * @param gender
-     * @param email
-     * @param address
-     * @param phonenumber
-     * @return true if all information are convenient, else false
-     */
-    public boolean checkCorrectInfoForUser(String username, String name, String surname, String password, String dateofbirth, String gender, String email, String address, String phonenumber){
 
-        return true;
-    }
-
-    public boolean checkEmail(){
-        return true;
-    }
 }

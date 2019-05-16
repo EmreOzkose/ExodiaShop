@@ -8,4 +8,9 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
     <import resource="Product-beans.xml"/>
     <import resource="Seller-beans.xml"/>
 
+    <!--  messages.properties file connection-->
+    <bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
+        <property name="basename" value="messages" />
+    </bean>
+
 </beans>

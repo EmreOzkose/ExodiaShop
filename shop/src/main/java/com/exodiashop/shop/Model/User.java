@@ -12,7 +12,7 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-    @NotNull
+    @NotEmpty
     @Size(min = 4, max = 50)
     private String username;
     @NotNull
@@ -35,7 +35,7 @@ public class User {
     @NotNull
     private String gender;
     @NotNull
-    @Pattern(regexp = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$", message="uygun degil")
+    @Email(message = "Email is wrong")
     private String email;
     private String address;
     private String phonenumber;

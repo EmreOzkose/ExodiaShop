@@ -41,7 +41,7 @@ public class DashboardController {
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
     public ModelAndView listItems(HttpServletRequest request, HttpServletResponse response) {
         //User loggedUser = userService.getUserByUserName(request.getParameter("loggedUserName"));
-        User loggedUser = userService.getUserByUserName("flo.yetkili");
+        User loggedUser = userService.getUserByUserName(request.getParameter("loggedUsername"));
         List<Product> product_list = productService.getProductList();
 
 
