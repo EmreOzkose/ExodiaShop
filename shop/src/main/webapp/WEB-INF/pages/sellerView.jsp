@@ -139,30 +139,7 @@ Lower Header Section
         document.getElementById("defaultOpen").click();
     </script>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2">
-                <div id="sidebar" class="span3">
-                    <div class="well well-small">
-                        <ul class="nav nav-list">
-                            <li><a href="products.html"><span class="icon-chevron-right"></span>Products</a></li>
-                            <li><a href="products.html"><span class="icon-chevron-right"></span>Orders</a></li>
-                            <li style="border:0"> &nbsp;</li>
 
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-md-10">
-
-                <ul class="thumbnails">
-                    <h2>Seller view</h2>
-
-                </ul>
-            </div>
-        </div>
     </div>
 </div>
 

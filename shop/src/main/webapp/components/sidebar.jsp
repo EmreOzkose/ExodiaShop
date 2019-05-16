@@ -17,7 +17,7 @@
         }
 
     </style>
-
+    <link rel="shortcut icon" href="/img/logos/favicon.ico">
 </head>
 <body>
 

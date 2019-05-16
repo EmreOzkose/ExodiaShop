@@ -11,6 +11,7 @@
       <!-- Bootstrap styles -->
       <link href="/libs/bootstrap.css" rel="stylesheet"/>
       <link href="/libs/style.css" rel="stylesheet"/>
+        <link rel="shortcut icon" href="/img/logos/favicon.ico">
 
     
     </head>

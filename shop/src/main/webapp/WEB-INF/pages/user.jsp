@@ -40,36 +40,12 @@
 <body>
 
 <div class="container">
-    <div id="gototop"> </div>
 
     <jsp:include page="/components/header.jsp" />
     <jsp:include page="/components/navbar.jsp" />
 
 
-    <!--
-    Body Section
-    -->
-            <div class="row">
-                <div id="sidebar" class="span3">
-                    <div class="well-well-small">
-                        <ul class="nav nav-list">
 
-                        </ul>
-                    </div>
-
-
-
-                </div>
-        <div class="span9">
-
-            <!-------------------------------------------------------------------------------------
-            New Products
-
-            Clients
-            -->
-
-
-        </div><!-- /container -->
         <div class="well well-small">
 
             <div class="row-fluid">
