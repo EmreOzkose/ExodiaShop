@@ -11,25 +11,22 @@
       <!-- Bootstrap styles -->
       <link href="/libs/bootstrap.css" rel="stylesheet"/>
       <link href="/libs/style.css" rel="stylesheet"/>
+
     
     </head>
 <body>
     <%User loggedUser = new User(); loggedUser.setUsername(request.getParameter("username"));%>
-    <jsp:include page="/components/header.jsp" />
-    <jsp:include page="/components/navbar.jsp" />
-    <jsp:include page="/components/sidebar.jsp" />
+
+    <div class="container">
+        <jsp:include page="/components/header.jsp" />
+        <jsp:include page="/components/navbar.jsp" />
 
 
     <div class="row">
-
+        <jsp:include page="/components/sidebar.jsp" />
 	<div class="span9" style="background-color:rgba(0, 0, 0, 0.0);">
-    <ul class="breadcrumb" style="background-color:rgba(0, 0, 0, 0.0);">
-    <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-    <li><a href="products.html">Items</a> <span class="divider">/</span></li>
-    <li class="active">Preview</li>
-    </ul>
-	<div style="background-color:rgba(0, 0, 0, 0.0);" class="well well-small">
-	<div style="background-color:rgba(0, 0, 0, 0.0);" class="row-fluid">
+	<div class="well well-small">
+	<div class="row-fluid">
 			<div class="span5">
 			<div id="myCarousel" class="carousel slide cntr">
                 <div class="carousel-inner">
@@ -38,8 +35,7 @@
                   </div>
 
                 </div>
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+
             </div>
 			</div>
 			<div class="span7" style="background-color:rgba(0, 0, 0, 0.0);">
@@ -48,8 +44,10 @@
 
  <br><br>
 				  <br><br>
- <br><br><br><br>
-				  <br><br>
+                <h4>Seller: ${product.seller} </h4>
+                <h4>Gender: ${product.gender} </h4>
+                <h4>Color: ${product.color} </h4>
+                <h4>Size: ${product.size} </h4>
 				  <h4>${product.stock_number} items in stock</h4>
 				  <p>
 				  <br><br>
@@ -68,7 +66,7 @@
 </div>
 </div> <!-- Body wrapper -->
 
-
+    </div>
 </div><!-- /container -->
 
 

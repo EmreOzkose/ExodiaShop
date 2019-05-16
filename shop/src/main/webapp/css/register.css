@@ -1,9 +1,10 @@
 
 html {
-    height:100%;
+
 }
 
 body {
+    height:110%;
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
@@ -20,7 +21,7 @@ body {
     color: #ffffff;
     top: 38%;
     left: 50%;
-    position: fixed;
+    position: absolute;
     transform: translate(-50%, -50%);
     box-sizing: border-box;
     padding: 70px 30px;

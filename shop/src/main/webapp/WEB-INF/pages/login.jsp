@@ -133,7 +133,7 @@ table{
 </head>
 <body>
     <div class="login">
-    <img src="img/exodia-cursive.png" alt="exodia logo"/>
+    <img src="img/logos/exodia-cursive.png" alt="exodia logo"/>
     <h1> Sign in </h1>
 	<form id="loginForm" action="loginProcess" method="POST">
             <table align="center">
@@ -158,7 +158,10 @@ table{
                 <tr></tr>
                 <tr>
                         <tr></tr>
-                        <td><a href="home.jsp">Home</a></td>
+                        <td><a href="/dashboard">Home</a></td>
+                </tr>
+                <tr>
+                    <td><a href="/login">Don't have an account? Sign up!</a></td>
                 </tr>
             </table>
 	</form>
