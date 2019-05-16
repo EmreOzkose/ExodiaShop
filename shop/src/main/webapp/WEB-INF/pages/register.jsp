@@ -47,7 +47,7 @@
             </tr>
             <tr>
             <tr><td><label path="password">Password</label></td></tr>
-            <td><password required="required" path="password" name="password"	id="password" placeholder ="Password"/></td>
+            <td><input required="required" path="password" name="password"	id="password" placeholder ="Password"/></td>
             <td><errors path="password" cssClass="error" /></td>
             </tr>
 

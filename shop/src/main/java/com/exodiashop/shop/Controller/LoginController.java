@@ -1,5 +1,6 @@
 package com.exodiashop.shop.Controller;
 
+import com.exodiashop.shop.Model.User;
 import com.exodiashop.shop.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,15 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginController {
 
     @Autowired
-    private UserService userService;
+    UserService userService;
 
-    @RequestMapping("/login")
-    public ModelAndView index(){
-
-        ModelAndView mav = null;
-
-        mav = new ModelAndView("login");
-        mav.addObject("message", "Username or Password is wrong!!");
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView mav = new ModelAndView("login");
 
         return mav;
     }
@@ -31,18 +28,11 @@ public class LoginController {
     public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mav = null;
 
-        // TODO: user validation
-
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        Boolean is_valid_user = true;
-
-        if (is_valid_user) {
+        User user = userService.validateUser(request.getParameter("username"),request.getParameter("password"));
+        if (null != user) {
             mav = new ModelAndView("dashboard");
-            mav.addObject("username", username);
-        }
-        else{
+            mav.addObject("name", user.getName());
+        } else {
             mav = new ModelAndView("login");
             mav.addObject("message", "Username or Password is wrong!!");
         }
