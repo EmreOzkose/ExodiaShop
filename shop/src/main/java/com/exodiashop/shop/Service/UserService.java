@@ -1,15 +1,11 @@
 package com.exodiashop.shop.Service;
 
 import com.exodiashop.shop.DAO.UserDAO;
-import com.exodiashop.shop.DAO.UserDAO;
-import com.exodiashop.shop.Model.Product;
 import com.exodiashop.shop.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import org.springframework.context.ApplicationContext;
 

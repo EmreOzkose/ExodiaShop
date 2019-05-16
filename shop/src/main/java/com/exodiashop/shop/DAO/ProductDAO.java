@@ -1,6 +1,7 @@
 package com.exodiashop.shop.DAO;
 
 import com.exodiashop.shop.Model.Product;
+import com.exodiashop.shop.Model.Seller;
 import com.exodiashop.shop.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -21,56 +22,139 @@ public class ProductDAO extends JdbcDaoSupport{
     @Autowired
     DataSource datasource;
 
-    JdbcTemplate jdbcTemplate;
-
-    /*
-    public void addProduct(User user) {
-        String sql = "insert into user values(?,?,?,?,?,?,?,?,?,?,?)";
-        jdbcTemplate.update(sql, new Object[] {user.getId(), user.getUsername(), user.getPassword(), user.getName(),user.getSurname(),user.getDateofbirth(),user.getGender(), user.getEmail(), user.getAddress(), user.getPhonenumber() , "user"});
-    }
-
-     */
-    public int addProduct(String name, String gender, String brand, String color, String type, String category
-            , String size, double price, int total, String img_path, String seller) {
-        try {
-            String sql = "insert into product (name, gender, brand, color, type, category, size, price, total, img_path, seller)" +
-                    "values (?,?,?,?,?,?,?,?,?,?,?)";
-            jdbcTemplate.update(sql, name, gender, brand, color, type, category, size, price, total, img_path, seller);
-            List<Product> products = getAllProducts();
-
-            return products.get(products.size()).getId();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            return 0;
-        }
-    }
-    public boolean deleteProduct( int productID) {
-        String sql = "delete from product where id='"+productID+"'";
-        jdbcTemplate.update(sql);
-        return true;
-    }
-
     public List<Product> getAllProducts() {
         String sql = "select * from product";
         List<Product> product_list = getJdbcTemplate().query(sql,
                 new BeanPropertyRowMapper(Product.class));
 
-        for (Product p : product_list)
-            System.out.println(p.getName());
-
         return product_list;
     }
-    public Product getProductById(int id) {
-        String sql = "select * from product where id='"+id+"'";
+
+    public Product getProductByID(int id){
+        System.out.println("in: "+id);
+        String sql = "select * from product where id='" + id + "'";
         List<Product> product_list = getJdbcTemplate().query(sql,
                 new BeanPropertyRowMapper(Product.class));
 
-        for (Product p : product_list)
-            System.out.println(p.getName());
-
         return product_list.size() > 0 ? product_list.get(0) : null;
     }
+
+    public List<Product> getProductBySellerId(int id){
+        System.out.println("in: "+id);
+        String sql = "select * from product where seller='" + id + "'";
+        List<Product> product_list = getJdbcTemplate().query(sql,
+                new BeanPropertyRowMapper(Product.class));
+
+        System.out.println(product_list);
+        System.out.println(product_list.size());
+        return product_list.size() > 0 ? product_list : null;
+    }
+
+    public List<Product> getProductByCategory(String category){
+        String sql = "select * from product where category = '"+category+"'";
+        List<Product> product_list = getJdbcTemplate().query(sql,
+                new BeanPropertyRowMapper(Product.class));
+
+        return product_list;
+    }
+
+
+
+    public void addProduct(Seller s , String name, String gender, String brand, String color, String type, String category
+            , String size, String price, String total, String img_path) {
+        if(s != null) {
+            int seller_id = s.getId();
+            if (Pattern.matches("\\w", name) && Pattern.matches("\\w", brand)
+                    && Pattern.matches("\\w", type) && Pattern.matches("\\w", category)) {
+                try {
+                    Double cost = Double.parseDouble(price);
+                    int stock = Integer.parseInt(total);
+                    String sql = "insert into product (name, gender, brand, color, type, category, size, price, total, img_path, seller)" +
+                            "values (?,?,?,?,?,?,?,?,?,?,?)";
+                    getJdbcTemplate().update(sql, name, gender, brand, color, type, category, size, cost, stock, img_path, seller_id);
+                    String products = s.getProducts();
+                    if(!products.isEmpty() && products != null) {
+                        products += products+ "," + seller_id;
+                    }
+                    else products = seller_id+"";
+
+                    getJdbcTemplate().update("update seller set products = ? where id = ?", products, seller_id);
+                    return ;
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return ;
+                }
+
+            }
+        }
+        return ;
+    }
+    public boolean deleteProductByID( int productID) {
+        String sql = "delete from product where id='"+productID+"'";
+        getJdbcTemplate().update(sql);
+        return true;
+    }
+    public boolean deleteProduct(Seller s, String productID) {
+        try {
+            String sql = "delete from product where id='"+productID+"'";
+            getJdbcTemplate().update(sql);
+            String products = s.getProducts();
+            String arr[] = products.split(",");
+            String productlist="";
+            for(int i=0;i< arr.length; i++){
+                if(arr[i].equalsIgnoreCase(productID)){continue;}
+                else {
+                    if(i==0){ productlist += arr[i]; }
+                    else{
+                        productlist +=",";
+                        productlist += arr[i];
+                    }
+                }
+            }
+            getJdbcTemplate().update("update seller set products = ? where id = ?", productlist, s.getId());
+            return true;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+    public boolean editProduct(Seller s ,String id, String name, String gender, String brand, String color, String type, String category
+            , String size, String price, String total, String img_path) {
+        if(s != null) {
+            if (Pattern.matches("\\w", name) && Pattern.matches("\\w", brand)
+                    && Pattern.matches("\\w", type) && Pattern.matches("\\w", category)) {
+                try {
+                    Double cost = Double.parseDouble(price);
+                    int stock = Integer.parseInt(total);
+                    String products = s.getProducts();
+                    String arr[] = products.split(",");
+                    boolean hasProduct = false;
+                    for(int i=0;i< arr.length; i++){
+                        if(arr[i].equalsIgnoreCase(id)){
+                            hasProduct=true;
+                        }
+                    }
+                    if(hasProduct){
+                        getJdbcTemplate().update("update product set name = ?, gender = ?, brand = ?, color = ?, type = ?, category = ? " +
+                                ", size = ?, price = ?, total = ?, img_path = ? where id = ?", name, gender, brand, color, type, category,
+                                size, cost, stock, img_path, s.getId());
+                        return true;
+                    }
+                    else return false;
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return false;
+                }
+
+            }
+        }
+        return false;
+    }
+
 
 }
 

@@ -15,59 +15,5 @@
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="dataSource" uuid="1079c1ca-0c5c-49d1-a492-6d95ccf48318">
-      <driver-ref>mysql</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>spring
-
-C:/Users/MSI/Documents/GitHub/Exodia/Exodia/Exodia/shop/src/main/resources/database/Datasource.xml</remarks>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/exodiadb?serverTimezone=Turkey</jdbc-url>
-      <driver-properties>
-        <property name="autoReconnect" value="true" />
-        <property name="yearIsDateType" value="false" />
-        <property name="characterEncoding" value="utf8" />
-        <property name="zeroDateTimeBehavior" value="convertToNull" />
-        <property name="characterSetResults" value="utf8" />
-        <property name="tinyInt1isBit" value="false" />
-      </driver-properties>
-    </data-source>
-    <data-source source="LOCAL" name="org.hibernate.tutorial.jpa/Hibernate" uuid="2e6e5129-4fe4-45d4-a7a4-382b97ecac0b">
-      <driver-ref>mysql</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>Hibernate
-
-C:/Users/MSI/Documents/GitHub/Exodia/Exodia/Exodia/shop/src/main/persistence.xml</remarks>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/exodiadb</jdbc-url>
-      <driver-properties>
-        <property name="autoReconnect" value="true" />
-        <property name="yearIsDateType" value="false" />
-        <property name="characterEncoding" value="utf8" />
-        <property name="zeroDateTimeBehavior" value="convertToNull" />
-        <property name="characterSetResults" value="utf8" />
-        <property name="tinyInt1isBit" value="false" />
-      </driver-properties>
-    </data-source>
-    <data-source source="LOCAL" name="dataSource" uuid="7f27801c-a505-422f-868e-4aee5ee229b5">
-      <driver-ref>mysql</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>spring
-
-C:/Users/MSI/Documents/GitHub/Exodia/Exodia/Exodia/shop/src/main/resources/database/Datasource.xml</remarks>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/exodiadb?serverTimezone=Turkey</jdbc-url>
-      <driver-properties>
-        <property name="autoReconnect" value="true" />
-        <property name="yearIsDateType" value="false" />
-        <property name="characterEncoding" value="utf8" />
-        <property name="zeroDateTimeBehavior" value="convertToNull" />
-        <property name="characterSetResults" value="utf8" />
-        <property name="tinyInt1isBit" value="false" />
-      </driver-properties>
-    </data-source>
   </component>
 </project>

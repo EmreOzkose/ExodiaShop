@@ -16,11 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+
 @Controller
 public class DashboardController {
 
     @Autowired
-    private UserService userService;
+    UserService userService;
 
     @Autowired
     ProductService productService;
@@ -40,8 +41,9 @@ public class DashboardController {
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
     public ModelAndView listItems(HttpServletRequest request, HttpServletResponse response) {
         //User loggedUser = userService.getUserByUserName(request.getParameter("loggedUserName"));
-        User loggedUser = userService.getUserByUserName("lone");
+        User loggedUser = userService.getUserByUserName("2.yrtkiliabi");
         List<Product> product_list = productService.getProductList();
+
 
         ModelAndView mav = null;
         mav = new ModelAndView("dashboard");
@@ -49,8 +51,8 @@ public class DashboardController {
 
         if (null != loggedUser) {
             mav.addObject("loggedUser", loggedUser);
+            mav.addObject("loggedUsername", loggedUser.getUsername());
         }
-
         return mav;
 
     }

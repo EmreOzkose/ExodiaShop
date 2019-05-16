@@ -9,10 +9,9 @@
 <html>
 <head>
     <title></title>
+    <meta http-equiv="Refresh" content="0; url=/users/${loggedUsername}">
 </head>
 <body>
-<%
-    response.sendRedirect("/users/"+request.getParameter("username"));
-%>
+
 </body>
 </html>

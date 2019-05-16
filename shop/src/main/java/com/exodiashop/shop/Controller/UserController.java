@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+
 @Controller
 public class UserController {
 
@@ -32,7 +34,7 @@ public class UserController {
         User user = userService.getUserByUserName(username);
 
         mav = new ModelAndView("user");
-        mav.addObject("user", user);
+        mav.addObject("loggedUser", user);
         mav.addObject("isEdit", 0);
 
         return mav;
@@ -43,6 +45,19 @@ public class UserController {
         userService.addUser(user);
     }
 
+
+    @RequestMapping("/adminView")
+    public ModelAndView adminView(HttpServletRequest request, HttpServletResponse response){
+        ModelAndView mav = null;
+
+        User loggedUser = userService.getUserByUserName(request.getParameter("loggedUsername"));
+
+        mav = new ModelAndView("adminView");
+        mav.addObject("loggedUser", loggedUser);
+        mav.addObject("isEdit", 0);
+
+        return mav;
+    }
 
     /*import java.io.File;
     File dir = new File("./src/main/webapp/WEB-INF/pages/");

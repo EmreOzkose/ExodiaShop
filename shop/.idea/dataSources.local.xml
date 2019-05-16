@@ -9,24 +9,7 @@
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <introspection-schemas>*:@</introspection-schemas>
-    </data-source>
-    <data-source name="dataSource" uuid="1079c1ca-0c5c-49d1-a492-6d95ccf48318">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0" />
-      <user-name>root</user-name>
-    </data-source>
-    <data-source name="org.hibernate.tutorial.jpa/Hibernate" uuid="2e6e5129-4fe4-45d4-a7a4-382b97ecac0b">
-      <database-info product="MySQL" version="5.7.25-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.47 ( Revision: fe1903b1ecb4a96a917f7ed3190d80c049b1de29 )" dbms="MYSQL" exact-version="5.7.25" exact-driver-version="5.1">
-        <extra-name-characters>#@</extra-name-characters>
-        <identifier-quote-string>`</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
-      <user-name>root</user-name>
-      <introspection-schemas>*:@</introspection-schemas>
-    </data-source>
-    <data-source name="dataSource" uuid="7f27801c-a505-422f-868e-4aee5ee229b5">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0" />
-      <user-name>root</user-name>
+      <introspection-schemas>*:exodiadb</introspection-schemas>
     </data-source>
   </component>
 </project>

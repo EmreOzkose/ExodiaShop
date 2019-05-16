@@ -48,7 +48,7 @@ public class UserDAO extends JdbcDaoSupport{
 
     public void updateUser(String username, String newUsername, String newName, String newSurname, String newEmail, String newPassword){
         System.out.println("s: " + username + " new : " + newUsername);
-        getJdbcTemplate().update("update user set username = ?, name = ?, surname = ?, email = ?, password = ? where username = ?", newUsername, username);
+        getJdbcTemplate().update("update user set username = ?, name = ?, surname = ?, email = ?, password = ? where username = ?", newUsername, newName, newSurname, newEmail, newPassword, username);
     }
 
 }

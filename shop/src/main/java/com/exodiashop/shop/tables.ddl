@@ -48,6 +48,7 @@ create table product
 alter table product
     add primary key (id);
 
+
 -- auto-generated definition
 create table seller
 (
@@ -62,7 +63,3 @@ create table seller
 
 alter table seller
     add primary key (id);
-
-
-
-

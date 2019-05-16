@@ -7,9 +7,7 @@
       <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
       <DefaultCasing>lower/lower</DefaultCasing>
     </root>
-    <schema id="2" parent="1" name="deneme">
-      <Current>1</Current>
-      <Visible>1</Visible>
+    <schema id="2" parent="1" name="exodia_database">
       <Collation>latin1_swedish_ci</Collation>
     </schema>
     <schema id="3" parent="1" name="exodiadb">

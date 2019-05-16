@@ -13,6 +13,7 @@ import java.util.List;
 public class SellerService {
 
     SellerDAO sellerDAO;
+
     public SellerService(){
         ApplicationContext context = new ClassPathXmlApplicationContext("Module.xml");
         this.sellerDAO = (SellerDAO) context.getBean("sellerDAO");
@@ -20,16 +21,16 @@ public class SellerService {
 
     public List<Seller> getSellerList() { return sellerDAO.getAllSellers(); }
     public Seller getSellerById(int id) { return  sellerDAO.getSellerById(id);}
-    public List<Product> listProductsById(int id) { return  sellerDAO.listProductsById(id); }
+//    public List<Product> listProductsById(int id) { return  sellerDAO.listProductsById(id); }
     public String updateSellerProfile(String id, String name, String locations, String password){
         return  sellerDAO.updateSellerProfile(id, name, locations, password);
     }
     public boolean addSeller(String name, String locations, String password){ return sellerDAO.addSeller(name,locations,password);}
     public boolean deleteSeller(String id){return sellerDAO.deleteSeller(id);}
-    public boolean addProduct(String id, String name, String gender, String brand, String color, String type, String category
+/*    public boolean addProduct(String id, String name, String gender, String brand, String color, String type, String category
             , String size, String price, String total, String img_path) {
         return sellerDAO.addProduct(id, name, gender, brand, color, type, category, size, price, total, img_path);}
     public boolean deleteProduct(String SellerId, String productID){
         return  sellerDAO.deleteProduct(SellerId, productID);
-    }
+    }*/
 }

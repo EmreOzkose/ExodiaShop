@@ -10,7 +10,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>${user.name} profile</title>
+    <title>${loggedUser.username} profile</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap styles -->
@@ -19,90 +20,35 @@
     <link href="/libs/font-awesome/css/font-awesome.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="/img/logos/favicon.ico">
+
+    <style>
+        .viewButton {
+            display: inline-block;
+            border-radius: 4px;
+            border: none;
+            text-align: left;
+            padding: 0px 20px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 0px 0px;
+            background-color: rgba(255, 255, 255, .0);
+        }
+
+    </style>
+
 </head>
 <body>
-<!--
-	Upper Header Section
--->
 
-
-<!--
-Lower Header Section
--->
 <div class="container">
     <div id="gototop"> </div>
-    <header id="header">
-        <div class="row">
-            <div class="span4">
-                <h1>
-                    <a class="logo" href="/dashboard">
-                        <img src="/img/logos/exodia-cursive.png">
-                    </a>
-                </h1>
-            </div>
-            <div class="span4">
-                <div class="offerNoteWrapper">
-                    <h1 class="dotmark">
-                        <i class="icon-cut"></i>
-                    </h1>
-                </div>
-            </div>
-            <div class="span4 alignR">
-                <p><br> <strong>          </strong><br><br></p>
-                <span class="btn btn-mini">[ 0 ] <span class="icon-shopping-cart"></span></span>
-            </div>
-        </div>
-    </header>
+
+    <jsp:include page="/components/header.jsp" />
+    <jsp:include page="/components/navbar.jsp" />
+
 
     <!--
-    Navigation Bar Section
+    Body Section
     -->
-    <div class="navbar">
-        <div class="navbar-inner">
-            <div class="container">
-                <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <div class="nav-collapse">
-                    <ul class="nav">
-                        <li class="active"><a href="grid-view.html">Home</a></li>
-
-
-                    </ul>
-                    <form action="#" class="navbar-search pull-left">
-                        <input type="text" placeholder="Search" class="search-query span2">
-                    </form>
-                    <ul class="nav pull-right">
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#"> My account </a>
-                            <div class="dropdown-menu">
-                                <form class="form-horizontal loginFrm">
-
-                                    <div class="control-group">
-                                        <input type="text" class="span2" id="inputEmail" placeholder="Email">
-                                    </div>
-                                    <div class="control-group">
-                                        <input type="password" class="span2" id="inputPassword" placeholder="Password">
-                                    </div>
-                                    <div class="control-group">
-                                        <label class="checkbox">
-                                            <input type="checkbox"> Remember me
-                                        </label>
-                                        <button type="submit" class="shopBtn btn-block">Sign in</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-            <!--
-            Body Section
-            -->
             <div class="row">
                 <div id="sidebar" class="span3">
                     <div class="well-well-small">
@@ -128,31 +74,53 @@ Lower Header Section
 
             <div class="row-fluid">
                 <ul class="thumbnails">
-                    <h1>${user.name}</h1>
+                    <h1>${loggedUser.name} ${loggedUser.surname}</h1>
                 </ul>
                 <div class = "profile-table">
                     <hr class="softn clr"/>
 
+                    <ul id="productDetl" class="nav nav-tabs">
+                        <li class="active">
+                            <form action="/users/${loggedUser.username}" method="post">
+                                <button class="viewButton">Profile Details</button>
+                                <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
+                            </form>
+                        </li>
 
-                    <ul id="productDetail" class="nav nav-tabs">
-                        <li class="active"><a href="#home" data-toggle="tab">Profile Details</a></li>
+                        <li>
+                            <c:if test="${loggedUser.role.equals('admin')}">
+                                <form action="/adminView" method="post">
+                                    <button class="viewButton">Admin View</button>
+                                    <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
 
+                                </form>
+                            </c:if>
+                        </li>
 
+                        <li>
+                            <c:if test="${loggedUser.role.equals('seller')}">
+                                <form action="/sellerView" method="post">
+                                    <button class="viewButton">Seller View</button>
+                                    <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
+                                </form>
+                            </c:if>
+                        </li>
                     </ul>
-                    <img src="${user.profilePhoto}">
+
+                    <img src="${loggedUser.profilePhoto}">
                     <div id="myTabContent" class="tab-content tabWrapper">
                         <div class="tab-pane fade active in" id="home">
 
                             <c:choose>
                                 <c:when test="${isEdit == 1}">
-                                    <form id="loginForm" action="/users/${user.username}/editProfileProcess" method="POST">
+                                    <form id="loginForm" action="/users/${loggedUser.username}/editProfileProcess" method="POST">
 
                                         <table class="table table-striped">
                                             <tbody>
-                                            <tr class="techSpecRow"><td class="techSpecTD1">Username:</td><td class="techSpecTD2"><input required="required" type="text" name="newUsername"  value="${user.username}" placeholder ="Enter new username" id="username" /></td></tr>
-                                            <tr class="techSpecRow"><td class="techSpecTD1">Name: </td><td class="techSpecTD2"><input required="required" type="text" name="newName" value="${user.name}" placeholder ="Enter new name" id="name" /></td></tr>
-                                            <tr class="techSpecRow"><td class="techSpecTD1">Surname:</td><td class="techSpecTD2"><input required="required" type="text" name="newSurname" value="${user.surname}" placeholder ="Enter new surname" id="surname" /></td></tr>
-                                            <tr class="techSpecRow"><td class="techSpecTD1">Email: </td><td class="techSpecTD2"><input required="required" type="text" name="newEmail" value="${user.email}" placeholder ="Enter new email" id="email" /></td></tr>
+                                            <tr class="techSpecRow"><td class="techSpecTD1">Username:</td><td class="techSpecTD2"><input required="required" type="text" name="newUsername"  value="${loggedUser.username}" placeholder ="Enter new username" id="username" /></td></tr>
+                                            <tr class="techSpecRow"><td class="techSpecTD1">Name: </td><td class="techSpecTD2"><input required="required" type="text" name="newName" value="${loggedUser.name}" placeholder ="Enter new name" id="name" /></td></tr>
+                                            <tr class="techSpecRow"><td class="techSpecTD1">Surname:</td><td class="techSpecTD2"><input required="required" type="text" name="newSurname" value="${loggedUser.surname}" placeholder ="Enter new surname" id="surname" /></td></tr>
+                                            <tr class="techSpecRow"><td class="techSpecTD1">Email: </td><td class="techSpecTD2"><input required="required" type="text" name="newEmail" value="${loggedUser.email}" placeholder ="Enter new email" id="email" /></td></tr>
                                             <tr class="techSpecRow"><td class="techSpecTD1">Password:</td><td class="techSpecTD2"><input required="required" type="text" name="newPassword"  placeholder ="Enter new password" id="password" /></td></tr>
                                             <tr class="techSpecRow"><td class="techSpecTD1"></td><td class="techSpecTD2"><button id="login" name="login">Apply</button></td></tr>
 
@@ -164,14 +132,14 @@ Lower Header Section
                                 <c:otherwise>
                                     <table class="table table-striped">
                                         <tbody>
-                                        <tr class="techSpecRow"><td class="techSpecTD1">Username:</td><td class="techSpecTD2">${user.username}</td></tr>
-                                        <tr class="techSpecRow"><td class="techSpecTD1">Name: </td><td class="techSpecTD2">${user.name}</td></tr>
-                                        <tr class="techSpecRow"><td class="techSpecTD1">Surname:</td><td class="techSpecTD2">${user.surname}</td></tr>
-                                        <tr class="techSpecRow"><td class="techSpecTD1">Email: </td><td class="techSpecTD2">${user.email}</td></tr>
+                                        <tr class="techSpecRow"><td class="techSpecTD1">Username:</td><td class="techSpecTD2">${loggedUser.username}</td></tr>
+                                        <tr class="techSpecRow"><td class="techSpecTD1">Name: </td><td class="techSpecTD2">${loggedUser.name}</td></tr>
+                                        <tr class="techSpecRow"><td class="techSpecTD1">Surname:</td><td class="techSpecTD2">${loggedUser.surname}</td></tr>
+                                        <tr class="techSpecRow"><td class="techSpecTD1">Email: </td><td class="techSpecTD2">${loggedUser.email}</td></tr>
                                         <tr class="techSpecRow"><td class="techSpecTD1">Password:</td><td class="techSpecTD2">**********</td></tr>
                                         </tbody>
                                     </table>
-                                    <form id="loginForm" action="/users/${user.username}/editProfile" method="POST">
+                                    <form id="loginForm" action="/users/${loggedUser.username}/editProfile#home" method="POST">
                                         <p>  <button type="submit" class="shopBtn">> Edit Profile </button></p>
                                     </form>
                                 </c:otherwise>
