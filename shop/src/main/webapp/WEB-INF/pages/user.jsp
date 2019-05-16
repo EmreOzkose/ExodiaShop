@@ -189,12 +189,7 @@
                                 <button>X</button>
                             </form>
                         </td>
-                        <td>
-                            <form action="/UpdateProduct/${user.getUsername()}" method="post">
-                                <button>edit</button>
-
-                            </form>
-                        </td>
+                        
                     </tr>
                 </c:forEach>
 
