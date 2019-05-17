@@ -55,7 +55,7 @@ create table seller
     id        int auto_increment,
     name      varchar(45)  not null,
     locations varchar(255) null,
-    products  int(100)     null,
+    products  varchar(10000)     null,
     constraint id_UNIQUE
         unique (id)
 )

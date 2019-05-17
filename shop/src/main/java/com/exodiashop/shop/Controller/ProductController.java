@@ -2,13 +2,16 @@ package com.exodiashop.shop.Controller;
 
 
 import com.exodiashop.shop.Model.Product;
+import com.exodiashop.shop.Model.Seller;
 import com.exodiashop.shop.Model.User;
 import com.exodiashop.shop.Service.ProductService;
+import com.exodiashop.shop.Service.SellerService;
 import com.exodiashop.shop.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,17 +28,20 @@ public class ProductController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    SellerService sellerService;
 
-    @RequestMapping("/product/{id}")
+    @RequestMapping(value = "/product/{id}", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView viewProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable int id) {
         ModelAndView mav = null;
 
+        User loggedUser = userService.getUserByUserName(request.getParameter("loggedUsername"));
         Product product = productService.getProductByID(id);
 
         if (product != null) {
             mav = new ModelAndView("product");
             mav.addObject("product", product);
-            mav.addObject("loggedUser", request.getParameter("loggedUser"));
+            mav.addObject("loggedUser", loggedUser);
         }
         else{
             mav = new ModelAndView("404");
@@ -45,12 +51,13 @@ public class ProductController {
     }
 
 
-    @RequestMapping("/categories/{category_name}")
+    @RequestMapping(value = "/categories/{category_name}", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView viewCategory(HttpServletRequest request, HttpServletResponse response, @PathVariable String category_name) {
         ModelAndView mav = null;
 
         List<Product> product_list = productService.getProductByCategory(category_name);
 
+        System.out.println("in pro: " + request.getParameter("loggedUsername"));
         User loggedUser = userService.getUserByUserName(request.getParameter("loggedUsername"));
 
 
@@ -72,10 +79,37 @@ public class ProductController {
     public ModelAndView deleteProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable String id){
         productService.deleteProductByID(Integer.parseInt(id));
 
-        ModelAndView mav = new ModelAndView("../redirections/to_sellerView");
+        ModelAndView mav = new ModelAndView("../redirections/to_profile_product");
 
         User loggedUser = userService.getUserByUserName(request.getParameter("loggedUsername"));
         mav.addObject("loggedUser", loggedUser);
+        return mav;
+    }
+
+    @RequestMapping("/addProduct/{loggedUsername}")
+    public ModelAndView addProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable String loggedUsername) {
+        String arr[] = loggedUsername.split("\\.");
+
+        String name = request.getParameter("name");
+        String gender = request.getParameter("gender");
+        String brand = request.getParameter("brand");
+        String color = request.getParameter("color");
+        String type = request.getParameter("type");
+        String category = request.getParameter("category");
+        String size = request.getParameter("size");
+        String price = request.getParameter("price");
+        String total = request.getParameter("total");
+        String img_path = request.getParameter("img_path");
+        Seller s = sellerService.getSellerById(Integer.parseInt(arr[0]));
+
+        productService.addProduct(s, name, gender,brand,color,type, category, size, price, total, img_path);
+
+        ModelAndView mav = new ModelAndView("../redirections/to_profile_product");
+
+        User loggedUser = userService.getUserByUserName(loggedUsername);
+        mav.addObject("loggedUser", loggedUser);
+        mav.addObject("loggedUsername", loggedUser.getUsername());
+
         return mav;
     }
 

@@ -38,12 +38,12 @@ public class DashboardController {
         return mav;
     }
 
-    @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
+    @RequestMapping(value = "/dashboard", method = { RequestMethod.GET, RequestMethod.POST })
     public ModelAndView listItems(HttpServletRequest request, HttpServletResponse response) {
-        //User loggedUser = userService.getUserByUserName(request.getParameter("loggedUserName"));
-        User loggedUser = userService.getUserByUserName("flo.yetkili");
+        System.out.println("in dashboard: " + request.getParameter("loggedUsername"));
+        User loggedUser = userService.getUserByUserName(request.getParameter("loggedUsername"));
+        //User loggedUser = userService.getUserByUserName("flo.yetkili");
         List<Product> product_list = productService.getProductList();
-
 
         ModelAndView mav = null;
         mav = new ModelAndView("dashboard");

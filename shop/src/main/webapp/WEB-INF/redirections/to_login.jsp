@@ -9,10 +9,9 @@
 <html>
 <head>
     <title></title>
-    <meta http-equiv="Refresh" content="0; url=/dashboard?loggedUsername=${loggedUsername}">
+    <meta http-equiv="Refresh" content="0; url=/login">
 </head>
 <body>
-
 
 </body>
 </html>

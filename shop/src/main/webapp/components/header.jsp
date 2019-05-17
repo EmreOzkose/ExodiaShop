@@ -21,9 +21,15 @@
     <div class="row">
         <div class="span4">
             <h1>
-                <a class="logo" href="/dashboard">
-                    <img src="/img/logos/exodia-cursive.png" alt="exodia logo">
-                </a>
+                <form action="/dashboard" method="post">
+
+                    <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
+                    <button style="background-color: Transparent;border: none;">
+                        <img src="/img/logos/exodia-cursive.png" alt="exodia logo">
+                    </button>
+
+                </form>
+
             </h1>
         </div>
         <div class="span4">

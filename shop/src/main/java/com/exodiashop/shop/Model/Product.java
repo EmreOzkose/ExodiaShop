@@ -17,7 +17,7 @@ public class Product {
     private String size;
     private double price;
     private String img_path;
-    private int stock_number;
+    private int total;
     private String seller;
 
     public Product(){
@@ -63,12 +63,12 @@ public class Product {
         this.img_path = img_path;
     }
 
-    public int getStock_number() {
-        return stock_number;
+    public int getTotal() {
+        return total;
     }
 
-    public void setStock_number(int stock_number) {
-        this.stock_number = stock_number;
+    public void setTotal(int stock_number) {
+        this.total = stock_number;
     }
 
     public String getGender() {
