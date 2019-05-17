@@ -138,7 +138,7 @@
                     <img src="${loggedUser.profilePhoto}">
                     <hr class="softn clr"/>
                     <div id="myTabContent" class="tab-content tabWrapper">
-                        <div class="tab-pane fade active in" id="home">
+                        <div class="tab-pane fade active in" id="ProfileTab">
                             <c:choose>
                                 <c:when test="${isEdit == 1}">
                                     <form id="loginForm" action="/users/${loggedUser.username}/editProfileProcess" method="POST">
@@ -163,7 +163,7 @@
                                         <tr class="techSpecRow"><td class="techSpecTD1">Email: </td><td class="techSpecTD2">${loggedUser.email}</td></tr>
                                         </tbody>
                                     </table>
-                                    <form id="loginForm" action="/users/${loggedUser.username}/editProfile#home" method="POST">
+                                    <form id="loginForm" action="/users/${loggedUser.username}/editProfile#ProfileTab" method="POST">
                                         <p>  <button type="submit" class="shopBtn">> Edit Profile </button></p>
                                     </form>
                                 </c:otherwise>
@@ -200,8 +200,11 @@
             <div id="ProductTab" class="tabcontent">
                 <table style="width:100%; text-align:left">
                     <tr>
+                        <th>Image</th>
                         <th>Name</th>
+                        <th>Brand</th>
                         <th>Category</th>
+                        <th>Number of Stock</th>
                         <th>Price</th>
                         <th></th>
                         <th></th>
@@ -209,8 +212,11 @@
 
                     <c:forEach items="${product_list}" var="product">
                         <tr>
+                            <td><img src="${product.img_path}" height="100px" width="100px"></td>
                             <td>${product.name}</td>
+                            <td>${product.brand}</td>
                             <td>${product.category}</td>
+                            <td>${product.total}</td>
                             <td>${product.price}</td>
                             <td>
                                 <form action="/deleteProduct/${product.id}" method="post">
@@ -308,6 +314,9 @@
             } else{
                 if (arr[1] == "ProductTab"){
                     document.getElementById("defaultOpen1").click();
+                }
+                else if (arr[1] == "ProfileTab"){
+                    document.getElementById("defaultOpen0").click();
                 }
             }
         </script>

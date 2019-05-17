@@ -30,52 +30,17 @@
 
     <div class="row">
 
-        <jsp:include page="/components/sidebar.jsp" />
 
-
-
-        <div class="span9">
-
-            <div class="well well-small">
-                <h3>Products </h3>
-                <div class="row-fluid">
-                    <ul class="thumbnails">
-
-                        <c:if test="${product_list.size() == 0}">
-                            <h1>No Product</h1>
-                        </c:if>
-
-                        <c:forEach items="${product_list}" var="product">
-                            <li class="span4">
-                                <div class="thumbnail">
-                                    <a href="product.jsp" class="overlay"></a>
-
-                                    <a class="zoomTool" href="/product/${product.id}" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-
-                                    <form action="/product/${product.id}" method="post">
-                                        <input type="hidden" name="loggedUsername" value="${loggedUser.username}">
-                                        <button style="background-color: Transparent;border:none;"><img src="${product.img_path}"></button>
-                                    </form>
-
-                                    <div class="caption cntr">
-                                        <p>${product.name}</p>
-                                        <p><strong> $${product.price}</strong></p>
-                                        <form id="loginForm" action="/add2cart?username=${loggedUser.username}&productID=${product.id}" method="POST">
-                                            <table align="center">
-                                                <td align="center"><button id="login" name="add2cartbtn">Add to cart</button></td>
-                                            </table>
-                                        </form>
-
-                                        <br class="clr">
-                                    </div>
-                                </div>
-                            </li>
-                        </c:forEach>
-
-                    </ul>
-                </div>
-            </div>
+        <div class="col-md-3">
+            <jsp:include page="/components/sidebar.jsp" />
         </div>
+
+        <div class="col-md-9">
+            <jsp:include page="/components/cartPage.jsp" />
+        </div>
+
+
+
 
     </div>
 
