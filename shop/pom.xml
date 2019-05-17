@@ -52,7 +52,12 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>5.1.6.RELEASE</version>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>

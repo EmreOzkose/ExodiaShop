@@ -15,12 +15,12 @@ public class RegisterController {
     @Autowired
     UserService userService;
 
-    @RequestMapping("register")
+    @RequestMapping("/register")
     public String index() {
         return "register";
     }
 
-    @RequestMapping("registerProcess")
+    @RequestMapping("/registerProcess")
     public ModelAndView register(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mav = null;
 

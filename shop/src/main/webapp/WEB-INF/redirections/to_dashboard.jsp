@@ -9,10 +9,10 @@
 <html>
 <head>
     <title></title>
+    <meta http-equiv="Refresh" content="0; url=/dashboard?loggedUsername=${loggedUsername}">
 </head>
 <body>
-<%
-    response.sendRedirect("/dashboard");
-%>
+
+
 </body>
 </html>

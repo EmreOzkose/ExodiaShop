@@ -2,6 +2,8 @@ package com.exodiashop.shop.Controller;
 
 
 import com.exodiashop.shop.Model.User;
+import com.exodiashop.shop.Service.ProductService;
+import com.exodiashop.shop.Service.SellerService;
 import com.exodiashop.shop.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,20 +20,36 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private ProductService productService;
+
+    @Autowired
+    private SellerService sellerService;
+
 
     @RequestMapping("/users")
-    public List<User> getAllUsers(){
+    public List<User> getAllUsers() {
         return userService.getUserList();
     }
 
     @RequestMapping("/users/{username}")
     public ModelAndView viewUser(HttpServletRequest request, HttpServletResponse response, @PathVariable String username){
-        ModelAndView mav = null;
+        ModelAndView mav = new ModelAndView("user");
 
         User user = userService.getUserByUserName(username);
 
-        mav = new ModelAndView("user");
-        mav.addObject("user", user);
+        mav.addObject("loggedUser", user);
+        mav.addObject("isEdit", 0);
+
+        if (user.getRole().equals("seller")) {
+            String arr[] = user.getUsername().split("\\.");
+            int seller_id = sellerService.getSellerById(Integer.parseInt(arr[0])).getId();
+            mav.addObject("product_list", productService.getProductBySellerId(seller_id));
+        }
+        else if (user.getRole().equals("admin")){
+            mav.addObject("user_list", userService.getUserList());
+            mav.addObject("product_list", productService.getProductList());
+        }
 
         return mav;
     }
@@ -41,11 +59,19 @@ public class UserController {
         userService.addUser(user);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/users/{username}")
-    public void updateUser(@RequestBody User user, @PathVariable String username){
-        userService.updateUser(user, username);
-    }
 
+    @RequestMapping("/adminView")
+    public ModelAndView adminView(HttpServletRequest request, HttpServletResponse response){
+        ModelAndView mav = null;
+
+        User loggedUser = userService.getUserByUserName(request.getParameter("loggedUsername"));
+
+        mav = new ModelAndView("adminView");
+        mav.addObject("loggedUser", loggedUser);
+        mav.addObject("isEdit", 0);
+
+        return mav;
+    }
 
     /*import java.io.File;
     File dir = new File("./src/main/webapp/WEB-INF/pages/");
@@ -55,5 +81,7 @@ public class UserController {
             System.out.println(file.getName());
         }
     }*/
+
+
 
 }
