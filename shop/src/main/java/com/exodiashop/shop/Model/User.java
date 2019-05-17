@@ -12,30 +12,24 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-    @NotEmpty
-    @Size(min = 4, max = 50)
+    @NotEmpty @Size(min = 4, max = 50)
     private String username;
-    @NotNull
-    @Size(min = 8, max = 32)
+    @NotNull @Size(min = 8, max = 32)
     private String password;
     /*@NotNull
     @Size(min = 8, max = 32)
     private String passwordconfirm;*/
-    @NotNull
-    @Size(min = 3, max =60)
-    @Pattern(regexp="[a-zA-Z][a-zA-Z ]+", message="Name can only consist of letters")
+
+    @Pattern(regexp="[a-zA-Z][a-zA-Z ]+", message="Name can only consist of letters") @NotNull @Size(min = 3, max =60)
     private String name;
-    @NotNull
-    @Size(min = 3, max =60)
-    @Pattern(regexp="[a-zA-Z][a-zA-Z ]+", message="Surname can only consist of letters")
+
+    @Pattern(regexp="[a-zA-Z][a-zA-Z ]+", message="Surname can only consist of letters") @NotNull @Size(min = 3, max =60)
     private String surname;
-    @Past
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")@Past
     private Date dateofbirth;
     @NotNull
     private String gender;
-    @NotNull
-    @Email(message = "Email is wrong")
+    @Email(message = "Email is wrong")@NotNull
     private String email;
     private String address;
     private String phonenumber;

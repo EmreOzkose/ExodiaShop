@@ -3,6 +3,7 @@ package com.exodiashop.shop.Validator;
 
 import com.exodiashop.shop.Model.User;
 import com.exodiashop.shop.Service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -21,9 +22,6 @@ public class UserValidator implements Validator {
     @Override
     public void validate(Object o, Errors errors) {
         User user = (User) o;
-        System.out.println(user.getUsername());
-        System.out.println(user.getGender());
-        System.out.println(user.getEmail());
 
         if (userService.check_username(user.getUsername()) != false) {
             errors.rejectValue("username", "Duplicate.userForm.username");
@@ -43,6 +41,5 @@ public class UserValidator implements Validator {
         if(user.getDateofbirth() == null){
             errors.rejectValue("dateofbirth", "typeMismatch.postForm.date");
         }
-
     }
 }
