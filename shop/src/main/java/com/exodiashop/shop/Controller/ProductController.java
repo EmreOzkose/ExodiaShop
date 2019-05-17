@@ -79,10 +79,13 @@ public class ProductController {
     public ModelAndView deleteProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable String id){
         productService.deleteProductByID(Integer.parseInt(id));
 
+        String loggedUsername = request.getParameter("loggedUsername");
+        User loggedUser = userService.getUserByUserName(loggedUsername);
+
         ModelAndView mav = new ModelAndView("../redirections/to_profile_product");
 
-        User loggedUser = userService.getUserByUserName(request.getParameter("loggedUsername"));
         mav.addObject("loggedUser", loggedUser);
+        mav.addObject("loggedUsername", loggedUsername);
         return mav;
     }
 

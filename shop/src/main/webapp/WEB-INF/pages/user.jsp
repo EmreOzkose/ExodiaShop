@@ -126,6 +126,7 @@
                     <button class="tablinks" onclick="openCity(event, 'Rome') " >Orders</button>
                 </c:if>
                 <c:if test="${loggedUser.role.equals('admin')}">
+                    <button class="tablinks" onclick="openCity(event, 'ProductTab') " id="defaultOpen1">Products</button>
                     <button class="tablinks" onclick="openCity(event, 'UserTab') " >Users</button>
                 </c:if>
             </div>
@@ -185,7 +186,7 @@
                             <td>${user.username}</td>
 
                             <td>
-                                <form action="/DeleteProduct/${user.getUsername()}" method="post">
+                                <form action="/DeleteUser/${user.getUsername()}" method="post">
                                     <button>X</button>
                                 </form>
                             </td>
