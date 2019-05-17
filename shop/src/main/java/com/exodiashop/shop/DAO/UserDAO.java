@@ -51,6 +51,30 @@ public class UserDAO extends JdbcDaoSupport{
         getJdbcTemplate().update("update user set username = ?, name = ?, surname = ?, email = ?, password = ? where username = ?", newUsername, newName, newSurname, newEmail, newPassword, username);
     }
 
+    public User validateUser(String username, String password) {
+        String sql = "select * from user where username='" + username + "' and password='" + password + "'";
+
+        List<User> users = getJdbcTemplate().query(sql, new UserMapper());
+
+        return users.size() > 0 ? users.get(0) : null;
+    }
+
+    public boolean check_username(String username) {
+        String sql = "select * from user where username='" + username +  "'";
+
+        List<User> users = getJdbcTemplate().query(sql, new UserMapper());
+        /*size 0 den büyükse , true döndürür yoksa null*/
+        return users.size() > 0 ? true : false;
+    }
+
+    public boolean check_email(String email) {
+        String sql = "select * from user where email='" + email +  "'";
+
+        List<User> users = getJdbcTemplate().query(sql, new UserMapper());
+        /*size 0 den büyükse , true döndürür yoksa null*/
+        return users.size() > 0 ? true : false;
+    }
+
 }
 
 class UserMapper implements RowMapper<User> {

@@ -95,28 +95,7 @@ public class SellerController {
         }
     }
 
-/*    @RequestMapping("/sellers/addProduct/{id}")
-    public boolean addProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
-        try{
-            String name = request.getParameter("name");
-            String gender = request.getParameter("gender");
-            String brand = request.getParameter("brand");
-            String color = request.getParameter("color");
-            String type = request.getParameter("type");
-            String category = request.getParameter("category");
-            String size = request.getParameter("size");
-            String price = request.getParameter("price");
-            String total = request.getParameter("total");
-            String img_path = request.getParameter("img_path");
-            return sellerService.addProduct(id, name, gender,brand,color,type, category, size, price, total, img_path);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    @RequestMapping("/sellers/deleteProduct/{id}")
+/*    @RequestMapping("/sellers/deleteProduct/{id}")
     public boolean deleteProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
         try{
             String productId = request.getParameter("productId");

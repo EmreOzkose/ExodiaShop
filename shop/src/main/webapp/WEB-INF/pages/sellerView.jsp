@@ -92,7 +92,6 @@ Lower Header Section
     <div class="tab">
         <button class="tablinks" onclick="openCity(event, 'London') " id="defaultOpen">Products</button>
         <button class="tablinks" onclick="openCity(event, 'Paris')">Orders</button>
-        <button class="tablinks" onclick="openCity(event, 'Galler')">Add Product</button>
     </div>
 
     <!-- Tab content -->
@@ -134,73 +133,6 @@ Lower Header Section
         <p>List of orders</p>
     </div>
 
-
-    <div id="Galler" class="tabcontent">
-        <form id="loginForm" action="/addProduct/${loggedUser.username}" method="POST">
-        <table>
-            <tr>
-                <td>Name</td>
-                <td><input required="required" path="name" name="name" id="name" placeholder ="Product Name"/></td>
-                <td><errors path="name" cssClass="error" /></td>
-            </tr>
-            <tr>
-                <td>Gender</td>
-                <td><input required="required" path="gender" name="gender" id="gender" placeholder ="Gender"/></td>
-                <td><errors path="gender" cssClass="error" /></td>
-            </tr>
-
-            <tr>
-                <td>Brand</td>
-                <td><input required="required" path="brand" name="brand" id="brand" placeholder ="Brand"/></td>
-                <td><errors path="brand" cssClass="error" /></td>
-            </tr>
-
-            <tr>
-                <td>Color</td>
-                <td><input required="required" path="color" name="color" id="color" placeholder ="Color"/></td>
-                <td><errors path="color" cssClass="error" /></td>
-            </tr>
-            <tr>
-                <td>Type</td>
-                <td><input required="required" path="type" name="type" id="type" placeholder ="Type"/></td>
-                <td><errors path="type" cssClass="error" /></td>
-            </tr>
-
-            <tr>
-                <td>Category</td>
-                <td><input required="required" path="category" name="category" id="category" placeholder ="Category"/></td>
-                <td><errors path="brand" cssClass="error" /></td>
-            </tr>
-
-            <tr>
-                <td>Size</td>
-                <td><input required="required" path="size" name="size" id="size" placeholder ="Size"/></td>
-                <td><errors path="size" cssClass="error" /></td>
-            </tr>
-            <tr>
-                <td>Image</td>
-                <td><input required="required" path="img_path" name="img_path" id="img_path" placeholder ="Image"/></td>
-                <td><errors path="img_path" cssClass="error" /></td>
-            </tr>
-            <tr>
-                <td>Price</td>
-                <td><input required="required" path="price" name="price" id="price" placeholder ="Price"/></td>
-                <td><errors path="price" cssClass="error" /></td>
-            </tr>
-
-            <tr>
-                <td>Number of Stock</td>
-                <td><input required="required" path="total" name="total" id="total" placeholder ="Stock"/></td>
-                <td><errors path="total" cssClass="error" /></td>
-            </tr>
-        </table>
-
-            <p>  <button type="submit" class="shopBtn"> Edit Product </button></p>
-        </form>
-
-
-
-    </div>
 
     <script>
         // Get the element with id="defaultOpen" and click on it

@@ -37,6 +37,18 @@ public class UserService {
     public void updateUser(String username, String newUsername, String newName, String newSurname, String newEmail, String newPassword){
         userDao.updateUser(username, newUsername, newName, newSurname, newEmail, newPassword);
     }
+
+    public User validateUser(String username,String password) {
+        return userDao.validateUser(username,password);
+    }
+
+    public Boolean check_username(String username) {
+        return userDao.check_username(username);
+    }
+
+    public Boolean check_email(String email){
+        return userDao.check_email(email);
+    }
 /*
     public void add2cart(String username, int productID){
         Product product = productService.getProductByID(productID);

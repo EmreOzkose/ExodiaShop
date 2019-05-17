@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,17 +31,17 @@ public class ProductController {
     @Autowired
     SellerService sellerService;
 
-
-    @RequestMapping("/product/{id}")
+    @RequestMapping(value = "/product/{id}", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView viewProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable int id) {
         ModelAndView mav = null;
 
+        User loggedUser = userService.getUserByUserName(request.getParameter("loggedUsername"));
         Product product = productService.getProductByID(id);
 
         if (product != null) {
             mav = new ModelAndView("product");
             mav.addObject("product", product);
-            mav.addObject("loggedUser", request.getParameter("loggedUser"));
+            mav.addObject("loggedUser", loggedUser);
         }
         else{
             mav = new ModelAndView("404");
@@ -50,12 +51,13 @@ public class ProductController {
     }
 
 
-    @RequestMapping("/categories/{category_name}")
+    @RequestMapping(value = "/categories/{category_name}", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView viewCategory(HttpServletRequest request, HttpServletResponse response, @PathVariable String category_name) {
         ModelAndView mav = null;
 
         List<Product> product_list = productService.getProductByCategory(category_name);
 
+        System.out.println("in pro: " + request.getParameter("loggedUsername"));
         User loggedUser = userService.getUserByUserName(request.getParameter("loggedUsername"));
 
 
@@ -75,44 +77,43 @@ public class ProductController {
 
     @RequestMapping("/deleteProduct/{id}")
     public ModelAndView deleteProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable String id){
-       // productService.deleteProductByID(Integer.parseInt(id));
+        productService.deleteProductByID(Integer.parseInt(id));
 
-        int seller_id = Integer.parseInt(productService.getProductByID(Integer.parseInt(id)).getSeller());
-        productService.deleteProduct(sellerService.getSellerById(seller_id), id);
+        String loggedUsername = request.getParameter("loggedUsername");
+        User loggedUser = userService.getUserByUserName(loggedUsername);
 
-        ModelAndView mav = new ModelAndView("../redirections/to_sellerView");
+        ModelAndView mav = new ModelAndView("../redirections/to_profile_product");
 
-        User loggedUser = userService.getUserByUserName(request.getParameter("loggedUsername"));
         mav.addObject("loggedUser", loggedUser);
+        mav.addObject("loggedUsername", loggedUsername);
         return mav;
     }
+
     @RequestMapping("/addProduct/{loggedUsername}")
-    public boolean addProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable String loggedUsername) {
+    public ModelAndView addProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable String loggedUsername) {
         String arr[] = loggedUsername.split("\\.");
-        try{
-            String name = request.getParameter("name");
-            String gender = request.getParameter("gender");
-            String brand = request.getParameter("brand");
-            String color = request.getParameter("color");
-            String type = request.getParameter("type");
-            String category = request.getParameter("category");
-            String size = request.getParameter("size");
-            String price = request.getParameter("price");
-            String total = request.getParameter("total");
-            String img_path = request.getParameter("img_path");
-            Seller s = sellerService.getSellerById(Integer.getInteger(arr[0]));
-            productService.addProduct(s, name, gender,brand,color,type, category, size, price, total, img_path);
 
+        String name = request.getParameter("name");
+        String gender = request.getParameter("gender");
+        String brand = request.getParameter("brand");
+        String color = request.getParameter("color");
+        String type = request.getParameter("type");
+        String category = request.getParameter("category");
+        String size = request.getParameter("size");
+        String price = request.getParameter("price");
+        String total = request.getParameter("total");
+        String img_path = request.getParameter("img_path");
+        Seller s = sellerService.getSellerById(Integer.parseInt(arr[0]));
 
-            ModelAndView mav = new ModelAndView("../redirections/to_sellerView");
+        productService.addProduct(s, name, gender,brand,color,type, category, size, price, total, img_path);
 
-            User loggedUser = userService.getUserByUserName(request.getParameter("loggedUsername"));
-            mav.addObject("loggedUser", loggedUser);
-            return true;
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
+        ModelAndView mav = new ModelAndView("../redirections/to_profile_product");
+
+        User loggedUser = userService.getUserByUserName(loggedUsername);
+        mav.addObject("loggedUser", loggedUser);
+        mav.addObject("loggedUsername", loggedUser.getUsername());
+
+        return mav;
     }
+
 }

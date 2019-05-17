@@ -30,14 +30,7 @@ public class ProductService {
 
 
     public Product getProductByID(int id){
-        System.out.println("in service: "+id);
         return productDAO.getProductByID(id);
-    }
-
-
-    public List<Product> getProductBySellerId(int seller_id){
-        System.out.println("in service: "+seller_id);
-        return productDAO.getProductBySellerId(seller_id);
     }
 
     public List<Product> getProductByCategory(String category_name){
@@ -48,18 +41,19 @@ public class ProductService {
         return productDAO.getAllProducts().stream().filter(t -> (t.getName().toLowerCase().contains(criteria))).collect(Collectors.toList());
     }
 
+    public List<Product> getProductBySellerId(int seller_id){
+        System.out.println("in service: "+seller_id);
+        return productDAO.getProductBySellerId(seller_id);
+    }
+
     public void  addProduct(Seller s , String name, String gender, String brand, String color, String type, String category
             , String size, String price, String total, String img_path) {
         productDAO.addProduct(s,name, gender, brand, color, type, category, size, price, total, img_path);
 
     }
-    public void deleteProductByID(int id){
-        boolean return_val = productDAO.deleteProductByID(id);
-    }
 
-    public boolean deleteProduct(Seller s, String productID){ return productDAO.deleteProduct(s, productID);}
-    public boolean editProduct(Seller s ,String id, String name, String gender, String brand, String color, String type, String category
-            , String size, String price, String total, String img_path) {
-        return productDAO.editProduct(s, id,name,gender, brand, color, type, category, size, price, total, img_path);}
+    public void deleteProductByID(int id){
+        boolean return_val = productDAO.deleteProduct(id);
+    }
 
 }
