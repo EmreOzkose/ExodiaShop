@@ -22,9 +22,16 @@ public class UserDAO extends JdbcDaoSupport{
     DataSource datasource;
 
     public void register(User user) {
-        String sql = "insert into user values(?,?,?,?,?,?,?,?,?,?,?)";
-        getJdbcTemplate().update(sql, new Object[] {user.getId(), user.getUsername(), user.getPassword(), user.getName(),user.getSurname(),user.getDateofbirth(),user.getGender(), user.getEmail(), user.getAddress(), user.getPhonenumber() , "user"});
+        String sql = "insert into user values(?,?,?,?,?,?,?,?,?,?,?,?)";
+
+        /*blocks duplicate 0len input*/
+        if(user.getPhonenumber().length()==0){
+            user.setPhonenumber(null);
+        }
+
+        getJdbcTemplate().update(sql, new Object[] {user.getId(), user.getUsername(), user.getPassword(), user.getName(),user.getSurname(),user.getDateofbirth(),user.getGender(), user.getEmail(), user.getAddress(), user.getPhonenumber() , "user",user.getProfilePhoto()});
     }
+
 
     public List<User> getAllUsers() {
         String sql = "select * from user";
@@ -73,6 +80,17 @@ public class UserDAO extends JdbcDaoSupport{
         List<User> users = getJdbcTemplate().query(sql, new UserMapper());
         /*size 0 den büyükse , true döndürür yoksa null*/
         return users.size() > 0 ? true : false;
+    }
+
+    public String deleteUser(String username, String password) {
+        String sql ="delete from user where username ='"+username+"' and where password ='"+password+"'";
+
+        int update = getJdbcTemplate().update(sql);
+        if (update == 0) {
+            return "Failed";
+        } else {
+            return "SUCCESS";
+        }
     }
 
 }
