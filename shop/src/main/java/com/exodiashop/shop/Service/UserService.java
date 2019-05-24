@@ -49,6 +49,11 @@ public class UserService {
     public Boolean check_email(String email){
         return userDao.check_email(email);
     }
+
+    public void register(User user) {
+        userDao.register(user);
+    }
+
 /*
     public void add2cart(String username, int productID){
         Product product = productService.getProductByID(productID);
