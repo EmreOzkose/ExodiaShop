@@ -2,6 +2,7 @@ package com.exodiashop.shop.Controller;
 
 import com.exodiashop.shop.Model.Product;
 import com.exodiashop.shop.Model.User;
+import com.exodiashop.shop.Service.OrderService;
 import com.exodiashop.shop.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,9 @@ public class ShoppingController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    OrderService orderService;
 
     @RequestMapping(value = "/shoppingCart", method = { RequestMethod.GET, RequestMethod.POST })
     public ModelAndView viewShoppingCart(HttpServletRequest request, HttpServletResponse response){
@@ -90,7 +94,10 @@ public class ShoppingController {
 
     @RequestMapping(value = "/paymentProcess", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView paymenProcess(HttpServletRequest request, HttpServletResponse response){
-        ModelAndView mav = new ModelAndView("");
+        ModelAndView mav = new ModelAndView("../redirections/to_dashboard");
+
+        String loggedUsername = request.getParameter("loggedUsername");
+        User loggedUser = userService.getUserByUserName(loggedUsername);
 
         String cvv = request.getParameter("cvv");
         String expyear = request.getParameter("expyear");
@@ -100,10 +107,25 @@ public class ShoppingController {
 
         // TODO: Card Validation
         // - Check user's mony is enough or not
+        // - etc ..
 
-        
+        // place an order
+        orderService.placeAnOrder(loggedUsername);
+
+        // decrease stock from "product" table
+
+
+        // clean shopping cart of "user"
+
+
+        mav.addObject("loggedUsername", request.getParameter("loggedUsername"));
+        mav.addObject("loggedUser", loggedUser);
+        mav.addObject("lang", request.getParameter("lang"));
+
 
         return mav;
     }
+
+
 
 }

@@ -96,6 +96,7 @@
                             </div>
 
                             <form action="/deleteFromShoppingCart" method="post">
+                                <input type="hidden"  name="lang" value="${lang}" class="search-query span2">
                                 <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
                                 <input type="hidden"  name="productID" value="${product.id}" placeholder="Search" class="search-query span2">
                                 <button style="background-color: Transparent;">

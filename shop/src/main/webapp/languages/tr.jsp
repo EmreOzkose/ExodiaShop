@@ -15,3 +15,4 @@
 <c:set var = "Search" scope = "session" value = "Ara"/>
 <c:set var = "Products" scope = "session" value = "Ürünler"/>
 <c:set var = "Payment" scope = "session" value = "Ödeme"/>
+<c:set var = "Add2Cart" scope = "session" value = "Sepete ekle"/>

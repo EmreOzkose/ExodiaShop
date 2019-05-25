@@ -15,5 +15,6 @@
 <c:set var = "Search" scope = "session" value = "Search"/>
 <c:set var = "Products" scope = "session" value = "Products"/>
 <c:set var = "Payment" scope = "session" value = "Payment"/>
+<c:set var = "Add2Cart" scope = "session" value = "Add to Cart"/>
 
 

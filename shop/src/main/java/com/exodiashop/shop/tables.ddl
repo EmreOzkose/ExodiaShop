@@ -64,3 +64,20 @@ create table seller
 
 alter table seller
     add primary key (id);
+
+-- auto-generated definition
+create table `order`
+(
+    id          int                  not null,
+    Customer    varchar(50)          not null,
+    ProductIDs  varchar(10000)       not null,
+    isConfirmed int default 0 null,
+    isFinished  int default 0 null,
+    constraint order_id_uindex
+        unique (id)
+);
+
+alter table `order`
+    add primary key (id);
+
+

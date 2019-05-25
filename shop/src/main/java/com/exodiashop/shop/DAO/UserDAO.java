@@ -69,7 +69,11 @@ public class UserDAO extends JdbcDaoSupport{
 
     public void add2cart(String username, String productID){
         String shoppingCart = getShoppingCartByUsername(username);
-        shoppingCart += "," + productID;
+
+        if (shoppingCart.equals("") || shoppingCart == null)
+            shoppingCart = productID;
+        else
+            shoppingCart += "," + productID;
 
         getJdbcTemplate().update("update user set shoppingCart=? where username = ?", shoppingCart, username);
 
