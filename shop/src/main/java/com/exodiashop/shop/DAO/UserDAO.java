@@ -58,6 +58,47 @@ public class UserDAO extends JdbcDaoSupport{
         getJdbcTemplate().update("update user set username = ?, name = ?, surname = ?, email = ?, password = ? where username = ?", newUsername, newName, newSurname, newEmail, newPassword, username);
     }
 
+    public String getShoppingCartByUsername(String username){
+        String sql = "SELECT shoppingCart FROM user WHERE username=?";
+
+        String shoppingCart = (String)getJdbcTemplate().queryForObject(
+                sql, new Object[] { username }, String.class);
+
+        return shoppingCart;
+    }
+
+    public void add2cart(String username, String productID){
+        String shoppingCart = getShoppingCartByUsername(username);
+        shoppingCart += "," + productID;
+
+        getJdbcTemplate().update("update user set shoppingCart=? where username = ?", shoppingCart, username);
+
+    }
+
+    public void deleteFromShoppingCart(String username, String productID){
+        String shoppingCart = getShoppingCartByUsername(username);
+
+        if (!shoppingCart.contains(",")){
+            // shopping cart contain just 1 item
+
+            getJdbcTemplate().update("update user set shoppingCart=? where username = ?", "", username);
+        }
+        else{
+            String [] splitted = shoppingCart.split(",");
+            String tmp = "";
+            for(int i=0; i<splitted.length;i++) {
+                String s = splitted[i];
+                if (!s.equals(productID) && tmp.equals(""))
+                    tmp += s;
+                else if (!s.equals(productID))
+                    tmp += ',' + s;
+            }
+
+            getJdbcTemplate().update("update user set shoppingCart=? where username = ?", tmp, username);
+        }
+
+    }
+
     public User validateUser(String username, String password) {
         String sql = "select * from user where username='" + username + "' and password='" + password + "'";
 

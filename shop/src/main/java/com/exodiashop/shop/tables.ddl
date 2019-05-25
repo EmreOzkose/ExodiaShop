@@ -12,6 +12,7 @@ create table user
     phonenumber varchar(20)  null,
     role        varchar(45)  not null,
     profilePhoto        varchar(100) null,
+    shoppingCart varchar(10000) null,
     constraint id_UNIQUE
         unique (id),
     constraint phonenumber_UNIQUE

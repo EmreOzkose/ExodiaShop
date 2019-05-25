@@ -1299,7 +1299,7 @@
     </column>
     <column id="302" parent="237" name="products">
       <Position>4</Position>
-      <DataType>varchar(10000)|0s</DataType>
+      <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="303" parent="237" name="password">
@@ -1451,35 +1451,40 @@
       <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="329" parent="239" name="id_UNIQUE">
+    <column id="329" parent="239" name="shoppingCart">
+      <Position>13</Position>
+      <DataType>varchar(10000)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="330" parent="239" name="id_UNIQUE">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="330" parent="239" name="username_UNIQUE">
+    <index id="331" parent="239" name="username_UNIQUE">
       <ColNames>username</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="331" parent="239" name="phonenumber_UNIQUE">
+    <index id="332" parent="239" name="phonenumber_UNIQUE">
       <ColNames>phonenumber</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="332" parent="239" name="PRIMARY">
+    <key id="333" parent="239" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="333" parent="239" name="id_UNIQUE">
+    <key id="334" parent="239" name="id_UNIQUE">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>id_UNIQUE</UnderlyingIndexName>
     </key>
-    <key id="334" parent="239" name="username_UNIQUE">
+    <key id="335" parent="239" name="username_UNIQUE">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>username_UNIQUE</UnderlyingIndexName>
     </key>
-    <key id="335" parent="239" name="phonenumber_UNIQUE">
+    <key id="336" parent="239" name="phonenumber_UNIQUE">
       <ColNames>phonenumber</ColNames>
       <UnderlyingIndexName>phonenumber_UNIQUE</UnderlyingIndexName>
     </key>
