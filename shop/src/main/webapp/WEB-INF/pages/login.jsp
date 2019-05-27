@@ -133,7 +133,7 @@ table{
 </head>
 <body>
     <div class="login">
-    <img src="img/exodia-cursive.png" alt="exodia logo"/>
+    <img src="/img/logos/exodia-cursive.png" alt="exodia logo"/>
     <h1> Sign in </h1>
 	<form id="loginForm" action="loginProcess" method="POST">
             <table align="center">
@@ -146,7 +146,7 @@ table{
                 <tr>
                          <tr>
                              <td><label >Password:</label></td></tr>
-                <td><input required="required" type="text" name="password"  placeholder ="Enter your password" id="password" /></td>
+                <td><input required="required" type="password" name="password"  placeholder ="Enter your password" id="password" /></td>
 
 
                 </tr>

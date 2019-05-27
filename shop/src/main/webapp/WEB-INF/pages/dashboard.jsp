@@ -1,89 +1,60 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%
-    // Create cookie for username
-    Cookie username = new Cookie("loggedUsername", request.getParameter("loggedUsername"));
+    // Create cookies for first and last names.
+    Cookie loggedUsernameCookie = new Cookie("loggedUsernameCookie", request.getParameter("loggedUsername"));
 
-    // Set expiry date after 24 Hrs for both the cookie.
-    username.setMaxAge(60*60*24);
+    String lang_s = request.getParameter("lang");
+    Cookie lang = new Cookie("lang", lang_s);
 
-    // Add the cookie in the response header.
-    response.addCookie( username );
+    loggedUsernameCookie.setMaxAge(60*60*24);
+    lang.setMaxAge(60*60*24);
+
+    response.addCookie( loggedUsernameCookie );
+    response.addCookie( lang );
 %>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Exodia Dashboard</title>
+    <!-- Add language option-->
+    <c:if test="${lang.equals('tr')}">
+        <jsp:include page="/languages/tr.jsp" />
+    </c:if>
+    <c:if test="${lang.equals('en')}">
+        <jsp:include page="/languages/en.jsp" />
+    </c:if>
+
+    <title>${dashboard_text}</title>
 
     <!-- Bootstrap styles -->
-<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <link href="/libs/bootstrap.css" rel="stylesheet"/>
     <link href="/libs/style.css" rel="stylesheet"/>
+    <link href="/libs/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link rel="shortcut icon" href="/img/logos/favicon.ico">
-
 
 </head>
 <body>
 
 
-<!--
-Lower Header Section
--->
 <div class="container">
-    <div id="gototop"> </div>
-
     <jsp:include page="/components/header.jsp" />
     <jsp:include page="/components/navbar.jsp" />
 
+    <div class="row">
 
+        <div class="col-md-3">
+            <jsp:include page="/components/sidebar.jsp" />
+        </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2">
-                <jsp:include page="/components/sidebar.jsp" />
-            </div>
-            <div class="col-md-10">
-                <h3>Products </h3>
-                <ul class="thumbnails">
-
-                    <c:if test="${product_list.size() == 0}">
-                        <h1>No Product</h1>
-                    </c:if>
-
-                    <c:forEach items="${product_list}" var="product">
-                        <li class="span4">
-                            <div class="thumbnail">
-                                <a href="product.jsp" class="overlay"></a>
-
-                                <a class="zoomTool" href="/product/${product.id}" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                <a href="/product/${product.id}"><img src="${product.img_path}" alt=""></a>
-                                <div class="caption cntr">
-                                    <p>${product.name}</p>
-                                    <p><strong> $${product.price}</strong></p>
-                                    <form id="loginForm" action="/add2cart?username=${loggedUser.username}&productID=${product.id}" method="POST">
-                                        <table align="center">
-                                            <td align="center"><button id="login" name="add2cartbtn">Add to cart</button></td>
-                                        </table>
-                                    </form>
-
-                                    <br class="clr">
-                                </div>
-                            </div>
-                        </li>
-                    </c:forEach>
-
-                </ul>
-            </div>
+        <div class="col-md-9">
+            <jsp:include page="/components/cartPage.jsp" />
         </div>
 
     </div>
-
-
-
-
-</div>
-
 
 </body>
 </html>

@@ -39,6 +39,7 @@ public class EditProfileController {
         String newSurname = request.getParameter("newSurname");
         String newEmail = request.getParameter("newEmail");
         String newPassword = request.getParameter("newPassword");
+        String newPasswordVal = request.getParameter("newPasswordVal");
         userService.updateUser(username, newUsername, newName, newSurname, newEmail, newPassword);
 
         mav.addObject("isEdit", 0);

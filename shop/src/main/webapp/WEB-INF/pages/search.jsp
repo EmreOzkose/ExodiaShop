@@ -33,7 +33,7 @@ Lower Header Section
             </div>
 
             <c:if test="${product_list.size() == 0}">
-                <h1>No Product Found</h1>
+                <h1>No related item</h1>
             </c:if>
 
             <c:forEach items="${product_list}" var="product">

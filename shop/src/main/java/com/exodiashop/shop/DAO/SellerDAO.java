@@ -22,8 +22,6 @@ public class SellerDAO  extends  JdbcDaoSupport {
     @Autowired
     ProductDAO productDAO;
 
-    JdbcTemplate jdbcTemplate;
-
     public List<Seller> getAllSellers() {
         String sql = "select * from seller";
         List<Seller> seller_list = getJdbcTemplate().query(sql, new BeanPropertyRowMapper(Seller.class));
@@ -37,7 +35,7 @@ public class SellerDAO  extends  JdbcDaoSupport {
 
     public Seller getSellerById(int id) {
 
-        String sql = "select * from seller where seller='" + id + "'";
+        String sql = "select * from seller where id='" + id + "'";
         List<Seller> seller_list = getJdbcTemplate().query(sql, new BeanPropertyRowMapper(Seller.class));
 
         return seller_list.size() > 0 ? seller_list.get(0) : null;
@@ -79,14 +77,14 @@ public class SellerDAO  extends  JdbcDaoSupport {
             result = "Format of the password is not correct!";
         }
         if(password.length() < 8){
-            result = "Lenght of the password is too short!";
+            result = "Length of the password is too short!";
         }
         return result;
     }
     public boolean addSeller(String name, String locations, String password) {
         if (Pattern.matches("\\w", name) && Pattern.matches("\\w", password)) {
             String sql = "insert into seller (name, locations, password)" + "values (?,?,?)";
-            jdbcTemplate.update(sql,name, locations, password );
+            getJdbcTemplate().update(sql,name, locations, password );
             return true;
         }
         return false;
@@ -94,37 +92,10 @@ public class SellerDAO  extends  JdbcDaoSupport {
     }
     public boolean deleteSeller(String id) {
             String sql = "delete from seller where id='" + Integer.parseInt(id) + "'";
-            jdbcTemplate.update(sql);
+            getJdbcTemplate().update(sql);
             return true;
     }
-    // id = sellerID, in seller table, products are hold like productId1, productId2 ...
-    public boolean addProduct(String id, String name, String gender, String brand, String color, String type, String category
-            , String size, String price, String total, String img_path) {
-        Seller s = getSellerById(Integer.parseInt(id));
-        if(s != null) {
-            if (Pattern.matches("\\w", name) && Pattern.matches("\\w", brand)
-                    && Pattern.matches("\\w", type) && Pattern.matches("\\w", category)) {
-                try {
-                    Double cost = Double.parseDouble(price);
-                    int stock = Integer.parseInt(total);
-                    int success = productDAO.addProduct(name, gender, brand, color, type, category, size, cost, stock, img_path, id);
-                    if (success > 0) {
-                        if(s.getProducts() != "") {
-                            String product = s.getProducts() + "," + success;
-                            s.setProducts(product);
-                        }
-                        else s.setProducts(success+"");
-                        return true;
-                    } else return false;
-                } catch (NumberFormatException e) {
-                    e.printStackTrace();
-                    return false;
-                }
 
-            }
-        }
-        return false;
-    }
     public boolean deleteProduct(String SellerId, String productID) {
         try {
             Seller s = getSellerById(Integer.parseInt(SellerId));

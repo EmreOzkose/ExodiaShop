@@ -12,24 +12,30 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-    @NotEmpty @Size(min = 4, max = 50)
+    @NotNull
+    @Size(min = 4, max = 50)
     private String username;
-    @NotNull @Size(min = 8, max = 32)
-    private String password;
-    /*@NotNull
+    @NotNull
     @Size(min = 8, max = 32)
-    private String passwordconfirm;*/
-
-    @Pattern(regexp="[a-zA-Z][a-zA-Z ]+", message="Name can only consist of letters") @NotNull @Size(min = 3, max =60)
+    private String password;
+  //  @NotNull
+ //   @Size(min = 8, max = 32)
+//    private String passwordconfirm;
+    @NotNull
+    @Size(min = 3, max =60)
+    @Pattern(regexp="[a-zA-Z][a-zA-Z ]+", message="Name can only consist of letters")
     private String name;
-
-    @Pattern(regexp="[a-zA-Z][a-zA-Z ]+", message="Surname can only consist of letters") @NotNull @Size(min = 3, max =60)
+    @NotNull
+    @Size(min = 3, max =60)
+    @Pattern(regexp="[a-zA-Z][a-zA-Z ]+", message="Surname can only consist of letters")
     private String surname;
-    @DateTimeFormat(pattern = "dd/MM/yyyy")@Past
+    @Past
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dateofbirth;
     @NotNull
     private String gender;
-    @Email(message = "Email is wrong")@NotNull
+    @NotNull
+    @Pattern(regexp = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$", message="uygun degil")
     private String email;
     private String address;
     private String phonenumber;
@@ -127,6 +133,15 @@ public class User {
         this.role = role;
     }
 
+/*    public String getPasswordconfirm() {
+        return passwordconfirm;
+    }
+
+    public void setPasswordconfirm(String passwordconfirm) {
+        this.passwordconfirm = passwordconfirm;
+    }
+
+*/
     public List<Product> getShoppingCart() {
         List<Product> productList = new ArrayList<>();
 

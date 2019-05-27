@@ -6,8 +6,6 @@ import com.exodiashop.shop.Validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,13 +33,21 @@ public class RegisterController {
 
     @RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
     public ModelAndView addUser(@Valid @ModelAttribute("user")  User user, BindingResult bindingResult) {
+        ModelAndView mav = null;
+
         userValidator.validate(user, bindingResult);
+
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("register");
+            System.out.println(bindingResult.getAllErrors());
+
+            mav = new ModelAndView("register");
+            mav.addObject( "error_message", "Something went wrong ! Please try again");
+            return mav;
         }
+
         userService.register(user);
-        ModelAndView mav =new ModelAndView("dashboard");
-        mav.addObject( "name", user.getName());
+        mav =new ModelAndView("../redirections/to_dashboard");
+        mav.addObject( "loggedUsername", user.getName());
         return mav;
     }
 

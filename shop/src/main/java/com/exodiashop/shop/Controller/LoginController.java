@@ -29,12 +29,13 @@ public class LoginController {
         ModelAndView mav = null;
 
         User user = userService.validateUser(request.getParameter("username"),request.getParameter("password"));
+
         if (null != user) {
             mav = new ModelAndView("../redirections/to_dashboard");
             mav.addObject("loggedUser", user);
             mav.addObject("loggedUsername", user.getUsername());
         } else {
-            mav = new ModelAndView("login");
+            mav = new ModelAndView("../redirections/to_login");
             mav.addObject("message", "Username or Password is wrong!!");
         }
 

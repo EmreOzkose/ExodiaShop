@@ -2,6 +2,7 @@ package com.exodiashop.shop.Controller;
 
 import com.exodiashop.shop.Model.Product;
 import com.exodiashop.shop.Model.Seller;
+import com.exodiashop.shop.Model.User;
 import com.exodiashop.shop.Service.ProductService;
 import com.exodiashop.shop.Service.SellerService;
 import com.exodiashop.shop.Service.UserService;
@@ -44,7 +45,7 @@ public class SellerController {
         }
     }
 
-    @RequestMapping("/sellers/listProducts/{id}")
+/*    @RequestMapping("/sellers/listProducts/{id}")
     public List<Product> listProducts(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
         try{
             return sellerService.listProductsById(Integer.parseInt(id));
@@ -53,7 +54,7 @@ public class SellerController {
             e.printStackTrace();
             return null;
         }
-    }
+    }*/
 
     @RequestMapping("/sellers/updateSellerProfile/{id}")
     public String updateSellerProfile(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
@@ -94,28 +95,7 @@ public class SellerController {
         }
     }
 
-    @RequestMapping("/sellers/addProduct/{id}")
-    public boolean addProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
-        try{
-            String name = request.getParameter("name");
-            String gender = request.getParameter("gender");
-            String brand = request.getParameter("brand");
-            String color = request.getParameter("color");
-            String type = request.getParameter("type");
-            String category = request.getParameter("category");
-            String size = request.getParameter("size");
-            String price = request.getParameter("price");
-            String total = request.getParameter("total");
-            String img_path = request.getParameter("img_path");
-            return sellerService.addProduct(id, name, gender,brand,color,type, category, size, price, total, img_path);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    @RequestMapping("/sellers/deleteProduct/{id}")
+/*    @RequestMapping("/sellers/deleteProduct/{id}")
     public boolean deleteProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
         try{
             String productId = request.getParameter("productId");
@@ -125,19 +105,47 @@ public class SellerController {
             e.printStackTrace();
             return false;
         }
-    }
+    }*/
 
     @RequestMapping("/sellerView")
     public ModelAndView sellerView (HttpServletRequest request, HttpServletResponse response){
         ModelAndView mav = new ModelAndView("sellerView");
 
-        mav.addObject("loggedUser", userService.getUserByUserName(request.getParameter("loggedUsername")));
-        mav.addObject("product_list", productService.getProductList());
+        User u = userService.getUserByUserName(request.getParameter("loggedUsername"));
+        String  arr[]= u.getUsername().split("\\.");
+        int seller_id = sellerService.getSellerById(Integer.parseInt(arr[0])).getId();
 
+        mav.addObject("loggedUser", u);
+        mav.addObject("product_list", productService.getProductBySellerId(seller_id));
         return mav;
     }
 
 
+/*    @RequestMapping("/editProduct")
+    public ModelAndView editProduct (HttpServletRequest request, HttpServletResponse response){
+        ModelAndView mav = new ModelAndView("sellerView");
+        User u = userService.getUserByUserName(request.getParameter("loggedUsername"));
+        String  arr[]=  u.getUsername().split("\\.");
+        int seller_id = sellerService.getSellerById(Integer.parseInt(arr[0])).getId();
+*//*        mav.addObject("loggedUser", u);
+        mav.addObject("product_list", productService.getProductBySellerId(seller_id));*//*
+        return mav;
+    }*/
+/*
+    @RequestMapping("/editProduct/{id}")
+    public ModelAndView editProduct (HttpServletRequest request, HttpServletResponse response){
+        ModelAndView mav = new ModelAndView("sellerView");
+
+        User u = userService.getUserByUserName(request.getParameter("loggedUsername"));
+        int seller_id = sellerService.getSellerById(Integer.parseInt(u.getUsername().split(".")[0])).getId();
+
+
+        mav.addObject("loggedUser", u);
+        mav.addObject("product_list", sellerService.listProductsById(seller_id));
+
+        return mav;
+    }
+*/
 
 /*
     @RequestMapping("/sellers/{id}")

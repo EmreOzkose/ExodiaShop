@@ -24,6 +24,7 @@
 <div id="sidebar" class="span3">
     <div class="well well-small">
         <ul class="nav nav-list">
+            <!--
             <form action="/categories/women" method="post">
                 <li><a href=""><span class="icon-chevron-right"><button class="button">Women</button></span></a></li>
                 <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
@@ -32,24 +33,25 @@
                 <li><a href=""><span class="icon-chevron-right"><button class="button">Men</button></span></a></li>
                 <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
             </form>
+            -->
             <form action="/categories/shoes" method="post">
-                <li><a href=""><span class="icon-chevron-right"><button class="button">Shoes</button></span></a></li>
+                <li><a href=""><span class="icon-chevron-right"><button class="button">${Shoes}</button></span></a></li>
                 <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
             </form>
             <form action="/categories/accessory" method="post">
-                <li><a href=""><span class="icon-chevron-right"><button class="button">Accessory</button></span></a></li>
+                <li><a href=""><span class="icon-chevron-right"><button class="button">${Accessory}</button></span></a></li>
                 <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
             </form>
             <form action="/categories/clothes" method="post">
-                <li><a href=""><span class="icon-chevron-right"><button class="button">Clothes</button></span></a></li>
+                <li><a href=""><span class="icon-chevron-right"><button class="button">${Clothes}</button></span></a></li>
                 <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
             </form>
             <form action="/categories/cosmetic" method="post">
-                <li><a href=""><span class="icon-chevron-right"><button class="button">Cosmetic</button></span></a></li>
+                <li><a href=""><span class="icon-chevron-right"><button class="button">${Cosmetic}</button></span></a></li>
                 <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
             </form>
             <form action="/categories/electronics" method="post">
-                <li><a href=""><span class="icon-chevron-right"><button class="button">Electronics</button></span></a></li>
+                <li><a href=""><span class="icon-chevron-right"><button class="button">${Electronics}</button></span></a></li>
                 <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
             </form>
 

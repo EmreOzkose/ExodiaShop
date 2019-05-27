@@ -2,6 +2,8 @@ package com.exodiashop.shop.Controller;
 
 
 import com.exodiashop.shop.Model.User;
+import com.exodiashop.shop.Service.ProductService;
+import com.exodiashop.shop.Service.SellerService;
 import com.exodiashop.shop.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,16 +12,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.SQLException;
 import java.util.List;
-
-import javax.servlet.http.Cookie;
 
 @Controller
 public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ProductService productService;
+
+    @Autowired
+    private SellerService sellerService;
 
 
     @RequestMapping("/users")
@@ -29,13 +34,22 @@ public class UserController {
 
     @RequestMapping("/users/{username}")
     public ModelAndView viewUser(HttpServletRequest request, HttpServletResponse response, @PathVariable String username){
-        ModelAndView mav = null;
+        ModelAndView mav = new ModelAndView("user");
 
         User user = userService.getUserByUserName(username);
 
-        mav = new ModelAndView("user");
         mav.addObject("loggedUser", user);
         mav.addObject("isEdit", 0);
+
+        if (user.getRole().equals("seller")) {
+            String arr[] = user.getUsername().split("\\.");
+            int seller_id = sellerService.getSellerById(Integer.parseInt(arr[0])).getId();
+            mav.addObject("product_list", productService.getProductBySellerId(seller_id));
+        }
+        else if (user.getRole().equals("admin")){
+            mav.addObject("user_list", userService.getUserList());
+            mav.addObject("product_list", productService.getProductList());
+        }
 
         return mav;
     }
