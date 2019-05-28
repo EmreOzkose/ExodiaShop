@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 
@@ -39,10 +40,12 @@ public class DashboardController {
     }
 
     @RequestMapping(value = "/dashboard", method = { RequestMethod.GET, RequestMethod.POST })
-    public ModelAndView listItems(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView listItems(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
         System.out.println("in dashboard: " + request.getParameter("loggedUsername"));
-        User loggedUser = userService.getUserByUserName(request.getParameter("loggedUsername"));
-        //User loggedUser = userService.getUserByUserName("flo.yetkili");
+
+        // String loggedUserName = request.getParameter("loggedUsername");
+        String loggedUserName = "yunusemre123";
+        User loggedUser = userService.getUserByUserName(loggedUserName);
         List<Product> product_list = productService.getProductList();
 
         ModelAndView mav = null;

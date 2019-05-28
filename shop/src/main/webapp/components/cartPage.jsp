@@ -17,7 +17,7 @@
 <div class="span9">
 
     <div class="well well-small">
-        <h3>Products </h3>
+        <h3>${Products} </h3>
         <div class="row-fluid">
             <ul class="thumbnails">
 
@@ -33,7 +33,16 @@
                             <div class="caption cntr">
                                 <p>${product.name}</p>
                                 <p><strong> $${product.price}</strong></p>
-                                <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
+                                <h4><div class="shopBtn">
+                                    <form action="/add2cart" method="post">
+                                        <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
+                                        <input type="hidden"  name="productID" value="${product.id}" placeholder="Search" class="search-query span2">
+                                        <button style="background-color: Transparent;border: none;">
+                                            ${Add2Cart}
+                                        </button>
+                                    </form>
+
+                                </div></h4>
                                 <br class="clr">
                             </div>
                         </div>

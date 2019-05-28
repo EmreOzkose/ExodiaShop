@@ -18,9 +18,9 @@ public class User {
     @NotNull
     @Size(min = 8, max = 32)
     private String password;
-    @NotNull
-    @Size(min = 8, max = 32)
-    private String passwordconfirm;
+  //  @NotNull
+ //   @Size(min = 8, max = 32)
+//    private String passwordconfirm;
     @NotNull
     @Size(min = 3, max =60)
     @Pattern(regexp="[a-zA-Z][a-zA-Z ]+", message="Name can only consist of letters")
@@ -133,7 +133,7 @@ public class User {
         this.role = role;
     }
 
-    public String getPasswordconfirm() {
+/*    public String getPasswordconfirm() {
         return passwordconfirm;
     }
 
@@ -141,7 +141,7 @@ public class User {
         this.passwordconfirm = passwordconfirm;
     }
 
-
+*/
     public List<Product> getShoppingCart() {
         List<Product> productList = new ArrayList<>();
 
