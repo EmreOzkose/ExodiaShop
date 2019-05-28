@@ -46,8 +46,7 @@ public class ProductService {
         return productDAO.getProductBySellerId(seller_id);
     }
 
-    public void  addProduct(Seller s , String name, String gender, String brand, String color, String type, String category
-            , String size, String price, String total, String img_path) {
+    public void  addProduct(Seller s , String name, String gender, String brand, String color, String type, String category, String size, String price, String total, String img_path) {
         productDAO.addProduct(s,name, gender, brand, color, type, category, size, price, total, img_path);
 
     }

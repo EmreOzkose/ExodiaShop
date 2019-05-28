@@ -74,17 +74,19 @@ public class UserService {
         return userDao.validateUser(username,password);
     }
 
-    public Boolean check_username(String username) {
+    public boolean check_username(String username) {
         return userDao.check_username(username);
     }
 
-    public Boolean check_email(String email){
+    public boolean check_email(String email){
         return userDao.check_email(email);
     }
 
     public void register(User user) {
         userDao.register(user);
     }
+
+    public String deleteUser(String username, String password) {return userDao.deleteUser(username,password);}
 
 /*
     public void add2cart(String username, int productID){

@@ -102,7 +102,7 @@ public class UserDAO extends JdbcDaoSupport{
         }
 
     }
-
+    /*for login system*/
     public User validateUser(String username, String password) {
         String sql = "select * from user where username='" + username + "' and password='" + password + "'";
 
