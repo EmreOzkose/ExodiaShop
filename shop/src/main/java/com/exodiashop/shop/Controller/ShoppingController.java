@@ -113,9 +113,11 @@ public class ShoppingController {
         orderService.placeAnOrder(loggedUsername);
 
         // decrease stock from "product" table
-
+        List<Integer> productIds = userService.getShoppingCartByUsernameInteger(loggedUsername);
+        orderService.decreaseStock(productIds);
 
         // clean shopping cart of "user"
+        userService.cleanShoppingCart(loggedUsername);
 
 
         mav.addObject("loggedUsername", request.getParameter("loggedUsername"));

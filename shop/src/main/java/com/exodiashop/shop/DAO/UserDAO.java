@@ -103,6 +103,11 @@ public class UserDAO extends JdbcDaoSupport{
 
     }
 
+    public void cleanShoppingCart(String username){
+        String sql = "update user set shoppingCart='' where username = ?";
+        getJdbcTemplate().update(sql, username);
+    }
+
     public User validateUser(String username, String password) {
         String sql = "select * from user where username='" + username + "' and password='" + password + "'";
 

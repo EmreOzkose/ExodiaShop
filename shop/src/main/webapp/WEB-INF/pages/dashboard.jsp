@@ -27,6 +27,7 @@
         <jsp:include page="/languages/en.jsp" />
     </c:if>
 
+
     <title>${dashboard_text}</title>
 
     <!-- Bootstrap styles -->
@@ -52,7 +53,7 @@
 </head>
 <body>
 
-
+${lang}
 <div class="container">
     <jsp:include page="/components/header.jsp" />
     <jsp:include page="/components/navbar.jsp" />

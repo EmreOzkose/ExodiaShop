@@ -63,6 +63,14 @@ public class UserService {
         return shopping_cart;
     }
 
+    public List<Integer> getShoppingCartByUsernameInteger(String username){
+        List<Product> shopping_cart = this.getShoppingCartByUsername(username);
+        List<Integer> shopping_cart_int = new ArrayList<>();
+        for (Product p : shopping_cart)
+            shopping_cart_int.add(p.getId());
+        return shopping_cart_int;
+    }
+
     public void add2cart(String username, String productID){
         userDao.add2cart(username, productID);
     }
@@ -84,6 +92,10 @@ public class UserService {
 
     public void register(User user) {
         userDao.register(user);
+    }
+
+    public void cleanShoppingCart(String username){
+        userDao.cleanShoppingCart(username);
     }
 
 /*

@@ -156,6 +156,19 @@ public class ProductDAO extends JdbcDaoSupport{
         return false;
     }
 
+    public void decreaseStock(int productID){
+        // get poduct stock information
+        String sql0 = "select * from product where id='" + productID + "'";
+        List<Product> product_list = getJdbcTemplate().query(sql0,
+                new BeanPropertyRowMapper(Product.class));
+
+        int current_stock = product_list.get(0).getTotal();
+
+        // decrease 1
+        String sql1 = "update product set total = ? where id = ?";
+        getJdbcTemplate().update(sql1, Integer.toString(current_stock-1), productID);
+    }
+
 }
 
 class ProductMapper implements RowMapper<Product> {

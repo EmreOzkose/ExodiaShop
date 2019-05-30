@@ -1,21 +1,21 @@
 package com.exodiashop.shop.Service;
 
 import com.exodiashop.shop.DAO.OrderDAO;
-import com.exodiashop.shop.DAO.ProductDAO;
 import com.exodiashop.shop.Model.Product;
-import com.exodiashop.shop.Model.Seller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class OrderService {
     @Autowired
     UserService userService;
+
+    @Autowired
+    ProductService productService;
 
     OrderDAO orderDAO;
 
@@ -50,6 +50,16 @@ public class OrderService {
                 shoppingCart_s += ',' + Integer.toString(shoppingCart.get(i).getId());
         }
         return shoppingCart_s;
+    }
+
+    public void decreaseStock(List<Integer> productIds){
+        for (int id : productIds){
+            this.decreaseStock(id);
+        }
+    }
+
+    public void decreaseStock(int productId){
+        productService.decreaseStock(productId);
     }
 
 }

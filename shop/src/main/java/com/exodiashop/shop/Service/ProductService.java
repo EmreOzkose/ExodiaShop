@@ -56,4 +56,8 @@ public class ProductService {
         boolean return_val = productDAO.deleteProduct(id);
     }
 
+    public void decreaseStock(int productID){
+        productDAO.decreaseStock(productID);
+    }
+
 }
