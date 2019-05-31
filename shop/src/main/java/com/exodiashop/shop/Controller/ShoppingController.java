@@ -119,15 +119,24 @@ public class ShoppingController {
         // clean shopping cart of "user"
         userService.cleanShoppingCart(loggedUsername);
 
-
         mav.addObject("loggedUsername", request.getParameter("loggedUsername"));
         mav.addObject("loggedUser", loggedUser);
         mav.addObject("lang", request.getParameter("lang"));
 
-
         return mav;
     }
 
+    @RequestMapping("/shoppingHistory")
+    public ModelAndView viewShoppingHistory(HttpServletRequest request, HttpServletResponse response){
+        ModelAndView mav = new ModelAndView("shoppingHistory");
 
+        String loggedUsername = request.getParameter("loggedUsername");
+        User loggedUser = userService.getUserByUserName(loggedUsername);
+
+        mav.addObject(loggedUsername);
+        mav.addObject(loggedUser);
+
+        return mav;
+    }
 
 }

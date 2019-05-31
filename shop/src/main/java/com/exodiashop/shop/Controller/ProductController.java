@@ -35,13 +35,17 @@ public class ProductController {
     public ModelAndView viewProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable int id) {
         ModelAndView mav = null;
 
-        User loggedUser = userService.getUserByUserName(request.getParameter("loggedUsername"));
+        String loggedUsername = request.getParameter("loggedUsername");
+        System.out.println("in pr cont");
+        System.out.println(loggedUsername);
+        User loggedUser = userService.getUserByUserName(loggedUsername);
         Product product = productService.getProductByID(id);
 
         if (product != null) {
             mav = new ModelAndView("product");
             mav.addObject("product", product);
             mav.addObject("loggedUser", loggedUser);
+            mav.addObject("loggedUsername", loggedUsername);
         }
         else{
             mav = new ModelAndView("404");

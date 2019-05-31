@@ -2,6 +2,7 @@ package com.exodiashop.shop.Controller;
 
 
 import com.exodiashop.shop.Model.User;
+import com.exodiashop.shop.Service.OrderService;
 import com.exodiashop.shop.Service.ProductService;
 import com.exodiashop.shop.Service.SellerService;
 import com.exodiashop.shop.Service.UserService;
@@ -26,6 +27,9 @@ public class UserController {
     @Autowired
     private SellerService sellerService;
 
+    @Autowired
+    private OrderService orderService;
+
 
     @RequestMapping("/users")
     public List<User> getAllUsers() {
@@ -49,6 +53,10 @@ public class UserController {
         else if (user.getRole().equals("admin")){
             mav.addObject("user_list", userService.getUserList());
             mav.addObject("product_list", productService.getProductList());
+            mav.addObject("orderList", orderService.getUnconfirmedOrderList());
+        }
+        else if (user.getRole().equals("customer")){
+            mav.addObject("orderList", orderService.getOrdersByUsername(username));
         }
 
         return mav;

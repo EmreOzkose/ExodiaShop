@@ -1,5 +1,7 @@
 package com.exodiashop.shop.Model;
 
+import com.exodiashop.shop.Service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.GeneratedValue;
@@ -12,9 +14,14 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import com.exodiashop.shop.Model.Product;
 
 
 public class Order {
+
+    @Autowired
+    ProductService productService;
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;

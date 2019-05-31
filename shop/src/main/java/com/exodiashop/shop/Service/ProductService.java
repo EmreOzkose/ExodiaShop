@@ -42,7 +42,6 @@ public class ProductService {
     }
 
     public List<Product> getProductBySellerId(int seller_id){
-        System.out.println("in service: "+seller_id);
         return productDAO.getProductBySellerId(seller_id);
     }
 

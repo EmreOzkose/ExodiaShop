@@ -120,14 +120,18 @@
             <!-- Tab links -->
             <div class="tab">
                 <button class="tablinks" onclick="openCity(event, 'London') " id="defaultOpen0">Profile Details</button>
+                <c:if test="${loggedUser.role.equals('customer')}">
+                    <button class="tablinks" onclick="openCity(event, 'ShoppingHistory') " id="defaultOpen0">Shopping History</button>
+                </c:if>
                 <c:if test="${loggedUser.role.equals('seller')}">
                     <button class="tablinks" onclick="openCity(event, 'ProductTab') " id="defaultOpen1">Products</button>
                     <button class="tablinks" onclick="openCity(event, 'Galler')">Add Product</button>
-                    <button class="tablinks" onclick="openCity(event, 'Rome') " >Orders</button>
+                    <button class="tablinks" onclick="openCity(event, 'OrdersSeller') " >Orders</button>
                 </c:if>
                 <c:if test="${loggedUser.role.equals('admin')}">
                     <button class="tablinks" onclick="openCity(event, 'ProductTab') " id="defaultOpen1">Products</button>
                     <button class="tablinks" onclick="openCity(event, 'UserTab') " >Users</button>
+                    <button class="tablinks" onclick="openCity(event, 'OrdersAdmin') " >Orders</button>
                 </c:if>
             </div>
 
@@ -172,6 +176,60 @@
                     </div>
                 </div>
             </div>
+
+            <div id="ShoppingHistory" class="tabcontent">
+                <div class = "profile-table">
+                    <hr class="softn clr"/>
+                    <div class="tab-pane fade active in" id="Prof">
+                        <c:choose>
+                            <c:when test="${orderList.size() > 0}">
+                                <table style="width: 100%">
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Products</th>
+                                        <th>Confirm</th>
+                                    </tr>
+                                    <c:forEach items="${orderList}" var="order">
+                                        <tr>
+                                            <td style="text-align: center">${order.getId()}</td>
+                                            <td>
+                                                <table style="width: 100%">
+                                                    <tr>
+                                                        <th>ProductID</th>
+                                                        <th>Product Page</th>
+                                                    </tr>
+                                                    <c:forEach items="${order.getProductIDs().split(',')}" var="p_id">
+                                                        <tr style="text-align: center">
+                                                            <td>${p_id}</td>
+                                                            <td>
+                                                                <form action="/product/${p_id}" method="post">
+                                                                    <button style="border: 0px">go to the page</button>
+                                                                    <input type="hidden" name="loggedUsername" value="${loggedUser.username}"/>
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </table>
+
+                                            </td>
+                                            <td>
+                                                <form action="/finishOrder/${loggedUsername}/${order.getId()}" method="post">
+                                                    <button>confirm order is reach to you !</button>
+                                                </form>
+                                            </td>
+
+                                        </tr>
+                                    </c:forEach>
+                                </table>
+                            </c:when>
+                            <c:otherwise>
+                                <h2 style="text-align: center">There is not order. Let's buy something !</h2>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                </div>
+            </div>
+
             <div id="UserTab" class="tabcontent">
                 <table style="width:100%; text-align:left">
                     <tr>
@@ -236,8 +294,52 @@
                 </table>
 
             </div>
-            <div id="Rome" class="tabcontent">
+            <div id="OrdersSeller" class="tabcontent">
                 <p>List of orders</p>
+            </div>
+            <div id="OrdersAdmin" class="tabcontent">
+                    <c:choose>
+                        <c:when test="${orderList.size() > 0}">
+                            <table style="width: 100%">
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Products</th>
+                                    <th>Confirm</th>
+                                </tr>
+                                <c:forEach items="${orderList}" var="order">
+                                    <tr>
+                                        <td style="text-align: center">${order.getId()}</td>
+                                        <td>
+                                            <table style="width: 100%">
+                                                <tr>
+                                                    <th>ProductID</th>
+                                                    <th>Product Page</th>
+                                                </tr>
+                                                <c:forEach items="${order.getProductIDs().split(',')}" var="p_id">
+                                                    <tr style="text-align: center">
+                                                        <td>${p_id}</td>
+                                                        <td><a href="/product/${p_id}">go to the page</a></td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </table>
+
+                                        </td>
+                                        <td>
+                                            <form action="/confirmOrder/${order.getId()}" method="post">
+                                                <button>confirm</button>
+                                            </form>
+                                        </td>
+
+                                    </tr>
+                                </c:forEach>
+                            </table>
+                        </c:when>
+                        <c:otherwise>
+                            <h2 style="text-align: center">There is not unconfirmed item</h2>
+                        </c:otherwise>
+                    </c:choose>
+
+
             </div>
             <div id="Galler" class="tabcontent">
                 <form id="loorm" action="/addProduct/${loggedUser.username}" method="POST">

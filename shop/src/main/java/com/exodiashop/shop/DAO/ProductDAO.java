@@ -32,7 +32,9 @@ public class ProductDAO extends JdbcDaoSupport{
     }
 
     public Product getProductByID(int id){
-        String sql = "select * from product where id = '"+id+"'";
+        System.out.println("in product dao");
+        System.out.println(id);
+        String sql = "select * from `product` where id = "+id;
         List<Product> product_list = getJdbcTemplate().query(sql,
                 new BeanPropertyRowMapper(Product.class));
 

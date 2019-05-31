@@ -1,6 +1,7 @@
 package com.exodiashop.shop.Service;
 
 import com.exodiashop.shop.DAO.OrderDAO;
+import com.exodiashop.shop.Model.Order;
 import com.exodiashop.shop.Model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -62,4 +63,16 @@ public class OrderService {
         productService.decreaseStock(productId);
     }
 
+    public List<Order> getUnconfirmedOrderList(){
+        return orderDAO.getUnconfirmedOrderList();
+    }
+
+    public void confirmOrder(int orderID){
+        orderDAO.confirmOrder(orderID);
+    }
+
+    public List<Order> getOrdersByUsername(String username){
+        List<Order> orderList = orderDAO.getOrdersByUsername(username);
+        return orderList;
+    }
 }
