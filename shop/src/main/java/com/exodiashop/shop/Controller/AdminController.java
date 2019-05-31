@@ -81,7 +81,6 @@ public class AdminController {
 
     @RequestMapping(value = "/AddProduct", method = RequestMethod.POST)
     public ModelAndView AddProductProcess(HttpServletRequest request, HttpServletResponse response, @Valid Product product, BindingResult bindingResult) {
-        ModelAndView mav;
         productValidator.validate(product,bindingResult);
 
         if (bindingResult.hasErrors() == true) {
@@ -115,21 +114,23 @@ public class AdminController {
         }
         return ListProductProcess(request, response);
     }
+
+
     @RequestMapping(value = "/DeleteProduct", method = RequestMethod.POST)
     public ModelAndView DeleteProductProcess(HttpServletRequest request, HttpServletResponse response) {
-        //productService.deleteProductByID();
+        productService.deleteProductByID(Integer.parseInt(request.getParameter("id")));
         return ListProductProcess(request, response);
     }
 
     @RequestMapping(value = "/ListOrders", method = RequestMethod.POST)
     public ModelAndView ListOrdersProcess(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mav = new ModelAndView("AdminPage");
-        //mav.addObject(orderService.getAllProduct());
+        mav.addObject(orderService.getOrderlist());
         return mav;
     }
     @RequestMapping(value = "/CancelOrders", method = RequestMethod.POST)
     public ModelAndView CancelOrdersProcess(HttpServletRequest request, HttpServletResponse response) {
-        //orderService.delete();
+        orderService.changeconfirm(request.getParameter("customer"),request.getParameter("productid"),Boolean.parseBoolean(request.getParameter("isconfirmed")));
         return  ListOrdersProcess(request, response);
     }
 }

@@ -47,8 +47,7 @@ public class UserDAO extends JdbcDaoSupport{
     public User getUserByUsername(String username) {
         String sql = "select * from user where username='" + username + "'";
 
-        List<User> user_list = getJdbcTemplate().query(sql,
-                new BeanPropertyRowMapper(User.class));
+        List<User> user_list = getJdbcTemplate().query(sql,new BeanPropertyRowMapper(User.class));
 
         return user_list.size() > 0 ? user_list.get(0) : null;
     }
@@ -61,8 +60,7 @@ public class UserDAO extends JdbcDaoSupport{
     public String getShoppingCartByUsername(String username){
         String sql = "SELECT shoppingCart FROM user WHERE username=?";
 
-        String shoppingCart = (String)getJdbcTemplate().queryForObject(
-                sql, new Object[] { username }, String.class);
+        String shoppingCart = (String)getJdbcTemplate().queryForObject(   sql, new Object[] { username }, String.class);
 
         return shoppingCart;
     }

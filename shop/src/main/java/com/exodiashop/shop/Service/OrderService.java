@@ -2,6 +2,7 @@ package com.exodiashop.shop.Service;
 
 import com.exodiashop.shop.DAO.OrderDAO;
 import com.exodiashop.shop.DAO.ProductDAO;
+import com.exodiashop.shop.Model.Order;
 import com.exodiashop.shop.Model.Product;
 import com.exodiashop.shop.Model.Seller;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,4 +53,11 @@ public class OrderService {
         return shoppingCart_s;
     }
 
+    public List<Order> getOrderlist(){
+        return orderDAO.getAllOrder();
+    }
+
+    public String changeconfirm(String customer,String productid,boolean isconfirmed) {
+        return orderDAO.changeconfirm(customer,productid,isconfirmed);
+    }
 }
