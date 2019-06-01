@@ -21,59 +21,7 @@
     <link href="/libs/font-awesome/css/font-awesome.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="/img/logos/favicon.ico">
-
-    <style>
-        .viewButton {
-            display: inline-block;
-            border-radius: 4px;
-            border: none;
-            text-align: left;
-            padding: 0px 20px;
-            transition: all 0.5s;
-            cursor: pointer;
-            margin: 0px 0px;
-            background-color: rgba(255, 255, 255, .0);
-        }
-
-    </style>
-    <style>
-
-        /* Style the tab */
-        .tab {
-            overflow: hidden;
-            border: 1px solid #ccc;
-            background-color: #f1f1f1;
-        }
-
-        /* Style the buttons that are used to open the tab content */
-        .tab button {
-            background-color: inherit;
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 16px;
-            transition: 0.3s;
-        }
-
-        /* Change background color of buttons on hover */
-        .tab button:hover {
-            background-color: #ddd;
-        }
-
-        /* Create an active/current tablink class */
-        .tab button.active {
-            background-color: #ccc;
-        }
-
-        /* Style the tab content */
-        .tabcontent {
-            display: none;
-            padding: 6px 12px;
-            border: 1px solid #ccc;
-            border-top: none;
-        }
-    </style>
+    <link href="/css/user.css" rel="stylesheet">
 
     <script>
         function openCity(evt, cityName) {
@@ -99,7 +47,6 @@
 
     </script>
 
-
 </head>
 <body>
 
@@ -108,6 +55,7 @@
 
     <jsp:include page="/components/header.jsp" />
     <jsp:include page="/components/navbar.jsp" />
+
     <div class="well well-small">
         <div class="row-fluid">
             <ul class="thumbnails">
@@ -115,17 +63,15 @@
             </ul>
 
 
-
-
             <!-- Tab links -->
             <div class="tab">
-                <button class="tablinks" onclick="openCity(event, 'London') " id="defaultOpen0">Profile Details</button>
+                <button class="tablinks" onclick="openCity(event, 'ProfileDetails') " id="defaultOpen0">Profile Details</button>
                 <c:if test="${loggedUser.role.equals('customer')}">
                     <button class="tablinks" onclick="openCity(event, 'ShoppingHistory') " id="defaultOpen0">Shopping History</button>
                 </c:if>
                 <c:if test="${loggedUser.role.equals('seller')}">
                     <button class="tablinks" onclick="openCity(event, 'ProductTab') " id="defaultOpen1">Products</button>
-                    <button class="tablinks" onclick="openCity(event, 'Galler')">Add Product</button>
+                    <button class="tablinks" onclick="openCity(event, 'AddProduct')">Add Product</button>
                     <button class="tablinks" onclick="openCity(event, 'OrdersSeller') " >Orders</button>
                 </c:if>
                 <c:if test="${loggedUser.role.equals('admin')}">
@@ -135,9 +81,7 @@
                 </c:if>
             </div>
 
-
-
-            <div id="London" class="tabcontent">
+            <div id="ProfileDetails" class="tabcontent">
                 <div class = "profile-table">
                     <img src="${loggedUser.profilePhoto}">
                     <hr class="softn clr"/>
@@ -176,7 +120,6 @@
                     </div>
                 </div>
             </div>
-
             <div id="ShoppingHistory" class="tabcontent">
                 <div class = "profile-table">
                     <hr class="softn clr"/>
@@ -187,7 +130,8 @@
                                     <tr>
                                         <th>Order ID</th>
                                         <th>Products</th>
-                                        <th>Confirm</th>
+                                        <th>Admin Confirmation</th>
+                                        <th>Finish the order</th>
                                     </tr>
                                     <c:forEach items="${orderList}" var="order">
                                         <tr>
@@ -213,9 +157,28 @@
 
                                             </td>
                                             <td>
-                                                <form action="/finishOrder/${loggedUsername}/${order.getId()}" method="post">
-                                                    <button>confirm order is reach to you !</button>
-                                                </form>
+
+                                                <c:choose>
+                                                    <c:when test="${order.isConfirmed() == 1}">
+                                                        ${YES}
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        ${NO}
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </td>
+                                            <td>
+                                                <c:choose>
+                                                    <c:when test="${order.isConfirmed() == 1}">
+                                                        <form action="/finishOrder/${loggedUsername}/${order.getId()}" method="post">
+                                                            <button>confirm order is reach to you !</button>
+                                                        </form>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        ${WaitConfirmation}
+                                                    </c:otherwise>
+                                                </c:choose>
+
                                             </td>
 
                                         </tr>
@@ -229,7 +192,6 @@
                     </div>
                 </div>
             </div>
-
             <div id="UserTab" class="tabcontent">
                 <table style="width:100%; text-align:left">
                     <tr>
@@ -341,7 +303,7 @@
 
 
             </div>
-            <div id="Galler" class="tabcontent">
+            <div id="AddProduct" class="tabcontent">
                 <form id="loorm" action="/addProduct/${loggedUser.username}" method="POST">
                     <table>
                         <tr>
@@ -406,7 +368,8 @@
 
             </div>
 
-        <script>
+            <!- Set default view of the page ->
+            <script>
             // Get the element with id="defaultOpen" and click on it
             var url = window.location.href;
             var arr = url.split('#');

@@ -53,7 +53,7 @@ public class OrderDAO extends JdbcDaoSupport{
      */
     public List<Order> getOrdersByUsername(String username){
         String sql = "select * from `order` where Customer='" + username + "'";
-        List<Order> orderList = getJdbcTemplate().query(sql, new BeanPropertyRowMapper(Order.class));
+        List<Order> orderList = getJdbcTemplate().query(sql, new OrderMapper());
 
         return orderList;
     }
@@ -65,6 +65,11 @@ class OrderMapper implements RowMapper<Order> {
     public Order mapRow(ResultSet rs, int arg1) throws SQLException {
         Order o = new Order();
 
+        o.setId(rs.getInt("id"));
+        o.setCustomer(rs.getString("Customer"));
+        o.setProductIDs(rs.getString("ProductIDs"));
+        o.setConfirmed(rs.getInt("isConfirmed"));
+        o.setFinished(rs.getInt("isFinished"));
 
         return o;
     }

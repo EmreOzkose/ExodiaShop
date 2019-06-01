@@ -121,6 +121,17 @@ public class SellerDAO  extends  JdbcDaoSupport {
         }
 
     }
+
+    public String id2Name(int id){
+        String sql = "select * from `seller` where id='" + id + "'";
+        List<Seller> seller_list = getJdbcTemplate().query(sql, new BeanPropertyRowMapper(Seller.class));
+
+        String name = "";
+        if (seller_list.size() > 0)
+            name = seller_list.get(0).getName();
+
+        return name;
+    }
 }
 
 class SellerMapper implements RowMapper<Seller> {

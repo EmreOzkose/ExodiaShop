@@ -81,3 +81,19 @@ alter table `order`
     add primary key (id);
 
 
+-- auto-generated definition
+create table comment
+(
+    id          int auto_increment,
+    Commentator varchar(50)                                     not null,
+    Text        varchar(1000)                                   null,
+    ProductID   int                                             not null,
+    Date        date                                            null,
+    Star        enum ('0', '1', '2', '3', '4', '5') default '0' null,
+    constraint Comment_id_uindex
+        unique (id)
+);
+
+alter table comment
+    add primary key (id);
+

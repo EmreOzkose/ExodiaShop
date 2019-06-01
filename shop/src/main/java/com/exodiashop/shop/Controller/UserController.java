@@ -1,6 +1,7 @@
 package com.exodiashop.shop.Controller;
 
 
+import com.exodiashop.shop.Model.Order;
 import com.exodiashop.shop.Model.User;
 import com.exodiashop.shop.Service.OrderService;
 import com.exodiashop.shop.Service.ProductService;
@@ -57,6 +58,8 @@ public class UserController {
         }
         else if (user.getRole().equals("customer")){
             mav.addObject("orderList", orderService.getOrdersByUsername(username));
+            for (Order o : orderService.getOrdersByUsername(username))
+                System.out.println("id: " + o.getId() +"bool:"+o.isConfirmed());
         }
 
         return mav;

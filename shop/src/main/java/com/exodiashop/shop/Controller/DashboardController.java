@@ -41,7 +41,7 @@ public class DashboardController {
 
     @RequestMapping(value = "/dashboard", method = { RequestMethod.GET, RequestMethod.POST })
     public ModelAndView listItems(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
-        System.out.println("in dashboard: " + request.getParameter("loggedUsername"));
+        System.out.println("logged User : " + request.getParameter("loggedUsername"));
 
         // String loggedUserName = request.getParameter("loggedUsername");
         String loggedUserName = "yunusemre123";
@@ -60,19 +60,7 @@ public class DashboardController {
         return mav;
 
     }
-/*
-    @RequestMapping("/add2cart")
-    public String add2cart(HttpServletRequest request, HttpServletResponse response) {
-        String username = request.getParameter("username");
-        String productID = request.getParameter("productID");
 
-        userService.add2cart(username, Integer.parseInt(productID));
-
-        return "../redirections/to_dashboard";
-    }
-
-
- */
     @RequestMapping(method = RequestMethod.GET, value = "/checkout/{username}")
     public ModelAndView checkout(HttpServletRequest request, HttpServletResponse response, @PathVariable String username){
         ModelAndView mav = new ModelAndView("checkout");

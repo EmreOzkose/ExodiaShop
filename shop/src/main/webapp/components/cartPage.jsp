@@ -17,7 +17,7 @@
 
             if (cookie.getName().equals("lang"))
                 lang = cookie.getValue( );
-            else if (cookie.getName().equals("loggedUsername"))
+            else if (cookie.getName().equals("loggedUsernameCookie"))
                 loggedUsername = cookie.getValue( );
 
         }

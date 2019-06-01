@@ -1,9 +1,11 @@
 package com.exodiashop.shop.Controller;
 
 
+import com.exodiashop.shop.Model.Comment;
 import com.exodiashop.shop.Model.Product;
 import com.exodiashop.shop.Model.Seller;
 import com.exodiashop.shop.Model.User;
+import com.exodiashop.shop.Service.CommentService;
 import com.exodiashop.shop.Service.ProductService;
 import com.exodiashop.shop.Service.SellerService;
 import com.exodiashop.shop.Service.UserService;
@@ -31,6 +33,9 @@ public class ProductController {
     @Autowired
     SellerService sellerService;
 
+    @Autowired
+    CommentService commentService;
+
     @RequestMapping(value = "/product/{id}", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView viewProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable int id) {
         ModelAndView mav = null;
@@ -41,11 +46,17 @@ public class ProductController {
         User loggedUser = userService.getUserByUserName(loggedUsername);
         Product product = productService.getProductByID(id);
 
+        List<Comment> commentList = commentService.getCommentsByProductID(product.getId());
+        System.out.println("in pr co comment");
+        for (Comment c :commentList)
+            System.out.println(c.getText());
+
         if (product != null) {
             mav = new ModelAndView("product");
             mav.addObject("product", product);
             mav.addObject("loggedUser", loggedUser);
             mav.addObject("loggedUsername", loggedUsername);
+            mav.addObject("commentList", commentList);
         }
         else{
             mav = new ModelAndView("404");

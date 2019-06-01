@@ -29,4 +29,8 @@ public class SellerService {
     public boolean addSeller(String name, String locations, String password){ return sellerDAO.addSeller(name,locations,password);}
     public boolean deleteSeller(String id){return sellerDAO.deleteSeller(id);}
 
+    public String id2Name(int id){
+        return sellerDAO.id2Name(id);
+    }
+
 }

@@ -16,5 +16,7 @@
 <c:set var = "Products" scope = "session" value = "Products"/>
 <c:set var = "Payment" scope = "session" value = "Payment"/>
 <c:set var = "Add2Cart" scope = "session" value = "Add to Cart"/>
-
-
+<c:set var = "Seller" scope = "session" value = "Seller"/>
+<c:set var = "YES" scope = "session" value = "YES"/>
+<c:set var = "NO" scope = "session" value = "NO"/>
+<c:set var = "WaitConfirmation" scope = "session" value = "Wait for admin confirmation"/>
