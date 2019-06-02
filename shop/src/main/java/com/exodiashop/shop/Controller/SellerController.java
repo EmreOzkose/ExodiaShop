@@ -45,16 +45,9 @@ public class SellerController {
         }
     }
 
-/*    @RequestMapping("/sellers/listProducts/{id}")
-    public List<Product> listProducts(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
-        try{
-            return sellerService.listProductsById(Integer.parseInt(id));
-        }
-        catch (NumberFormatException e){
-            e.printStackTrace();
-            return null;
-        }
-    }*/
+
+
+    // Mağaza(store) bilgisinde değişiklij yapılacaksa burada ki location bilgisi değiştirilmemeli
 
     @RequestMapping("/sellers/updateSellerProfile/{id}")
     public String updateSellerProfile(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
@@ -87,7 +80,10 @@ public class SellerController {
     @RequestMapping("/sellers/deleteSeller/{id}")
     public boolean deleteSeller(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
         try{
-            return sellerService.deleteSeller(id);
+            User u = userService.getUserByUserName(request.getParameter("loggedUsername"));
+            String  arr[]= u.getUsername().split("\\.");
+            int seller_id = sellerService.getSellerById(Integer.parseInt(arr[0])).getId();
+            return sellerService.deleteSeller(seller_id);
         }
         catch (Exception e){
             e.printStackTrace();
@@ -95,17 +91,7 @@ public class SellerController {
         }
     }
 
-/*    @RequestMapping("/sellers/deleteProduct/{id}")
-    public boolean deleteProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
-        try{
-            String productId = request.getParameter("productId");
-            return sellerService.deleteProduct(id, productId);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }*/
+
 
     @RequestMapping("/sellerView")
     public ModelAndView sellerView (HttpServletRequest request, HttpServletResponse response){
@@ -120,6 +106,52 @@ public class SellerController {
         return mav;
     }
 
+    @RequestMapping("/addStore")
+    public boolean addStore (HttpServletRequest request, HttpServletResponse response, @PathVariable String id){
+        String store = request.getParameter("locations");
+        User u = userService.getUserByUserName(request.getParameter("loggedUsername"));
+        String  arr[]= u.getUsername().split("\\.");
+        int seller_id = sellerService.getSellerById(Integer.parseInt(arr[0])).getId();
+        return  sellerService.addStore(seller_id, store);
+    }
+    @RequestMapping("/deleteStore")
+    public boolean deleteStore (HttpServletRequest request, HttpServletResponse response, @PathVariable String id){
+        try {
+            String store = request.getParameter("store");
+            User u = userService.getUserByUserName(request.getParameter("loggedUsername"));
+            String arr[] = u.getUsername().split("\\.");
+            int seller_id = sellerService.getSellerById(Integer.parseInt(arr[0])).getId();
+            return  sellerService.deleteStore(seller_id, store);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+                                        ////////////// OLD CODES////////////
+
+/*    @RequestMapping("/sellers/deleteProduct/{id}")
+    public boolean deleteProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
+        try{
+            String productId = request.getParameter("productId");
+            return sellerService.deleteProduct(id, productId);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }*/
+
+/*    @RequestMapping("/sellers/listProducts/{id}")
+    public List<Product> listProducts(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
+        try{
+            return sellerService.listProductsById(Integer.parseInt(id));
+        }
+        catch (NumberFormatException e){
+            e.printStackTrace();
+            return null;
+        }
+    }*/
 
 /*    @RequestMapping("/editProduct")
     public ModelAndView editProduct (HttpServletRequest request, HttpServletResponse response){

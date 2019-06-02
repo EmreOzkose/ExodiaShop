@@ -43,8 +43,8 @@ public class DashboardController {
     public ModelAndView listItems(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
         System.out.println("in dashboard: " + request.getParameter("loggedUsername"));
 
-        // String loggedUserName = request.getParameter("loggedUsername");
-        String loggedUserName = "yunusemre123";
+        String loggedUserName = request.getParameter("loggedUsername");
+        //String loggedUserName = "yunusemre123";
         User loggedUser = userService.getUserByUserName(loggedUserName);
         List<Product> product_list = productService.getProductList();
 

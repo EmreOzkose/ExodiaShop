@@ -4,6 +4,7 @@ import com.exodiashop.shop.Model.Product;
 import com.exodiashop.shop.Model.Seller;
 import com.exodiashop.shop.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -60,13 +61,16 @@ public class ProductDAO extends JdbcDaoSupport{
 
     public void addProduct(Seller s , String name, String gender, String brand, String color, String type, String category
             , String size, String price, String total, String img_path) {
+        boolean result = false;
         if(s != null) {
             int seller_id = s.getId();
+            try{
+                Double cost = Double.parseDouble(price);
+                int stock = Integer.parseInt(total);
+                if (Pattern.matches("\\w+", name) && Pattern.matches("\\w+", brand)
+                    && Pattern.matches("\\w+", type) && Pattern.matches("\\w+", category)
+                    && cost > 0.0) {
 
-            if (Pattern.matches("\\w+", name) && Pattern.matches("\\w+", brand)
-                    && Pattern.matches("\\w+", type) && Pattern.matches("\\w+", category)) {
-                    Double cost = Double.parseDouble(price);
-                    int stock = Integer.parseInt(total);
                     String sql = "insert into product (name, gender, brand, color, type, category, size, price, total, img_path, seller)" +
                             "values (?,?,?,?,?,?,?,?,?,?,?)";
                     getJdbcTemplate().update(sql, name, gender, brand, color, type, category, size, cost, stock, img_path, seller_id);
@@ -80,8 +84,18 @@ public class ProductDAO extends JdbcDaoSupport{
                     else products = seller_id+"";
 
                     getJdbcTemplate().update("update seller set products = ? where id = ?", products, seller_id);
+                    result = true;
+                }
+
+            } catch (NumberFormatException e) {
+                result = false;
+                e.printStackTrace();
+            } catch (DataAccessException e) {
+                result = false;
+                e.printStackTrace();
             }
         }
+        //return result;
     }
     public boolean deleteProduct( int productID) {
         String sql = "delete from product where id='"+productID+"'";
@@ -125,11 +139,13 @@ public class ProductDAO extends JdbcDaoSupport{
     public boolean editProduct(Seller s , String id, String name, String gender, String brand, String color, String type, String category
             , String size, String price, String total, String img_path) {
         if(s != null) {
-            if (Pattern.matches("\\w", name) && Pattern.matches("\\w", brand)
-                    && Pattern.matches("\\w", type) && Pattern.matches("\\w", category)) {
-                try {
-                    Double cost = Double.parseDouble(price);
-                    int stock = Integer.parseInt(total);
+            try {
+                Double cost = Double.parseDouble(price);
+                int stock = Integer.parseInt(total);
+                if (Pattern.matches("\\w+", name) && Pattern.matches("\\w+", brand)
+                        && Pattern.matches("\\w+", type) && Pattern.matches("\\w+", category)
+                        && cost > 0.0) {
+
                     String products = s.getProducts();
                     String arr[] = products.split(",");
                     boolean hasProduct = false;
@@ -145,12 +161,11 @@ public class ProductDAO extends JdbcDaoSupport{
                         return true;
                     }
                     else return false;
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return false;
                 }
-
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+                return false;
             }
         }
         return false;
