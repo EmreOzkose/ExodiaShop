@@ -3,6 +3,8 @@ package com.exodiashop.shop.Controller;
 import com.exodiashop.shop.Model.Product;
 import com.exodiashop.shop.Model.User;
 import com.exodiashop.shop.Service.OrderService;
+import com.exodiashop.shop.Service.ProductService;
+import com.exodiashop.shop.Service.SellerService;
 import com.exodiashop.shop.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,12 @@ public class ShoppingController {
 
     @Autowired
     OrderService orderService;
+
+    @Autowired
+    SellerService sellerService;
+
+    @Autowired
+    ProductService productService;
 
     @RequestMapping(value = "/shoppingCart", method = { RequestMethod.GET, RequestMethod.POST })
     public ModelAndView viewShoppingCart(HttpServletRequest request, HttpServletResponse response){
@@ -118,6 +126,15 @@ public class ShoppingController {
 
         // clean shopping cart of "user"
         userService.cleanShoppingCart(loggedUsername);
+
+        // add price to seller wallet
+        for (int productID : productIds){
+            System.out.println(productID);
+            Product p = productService.getProductByID(productID);
+            System.out.println(p.getName());
+            System.out.println(p.getPrice());
+            sellerService.add2wallet(Integer.parseInt(p.getSeller()), (float)p.getPrice());
+        }
 
         mav.addObject("loggedUsername", request.getParameter("loggedUsername"));
         mav.addObject("loggedUser", loggedUser);

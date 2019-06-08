@@ -44,7 +44,7 @@ public class DashboardController {
         System.out.println("logged User : " + request.getParameter("loggedUsername"));
 
         // String loggedUserName = request.getParameter("loggedUsername");
-        String loggedUserName = "yunusemre123";
+        String loggedUserName = "2.yetkili";
         User loggedUser = userService.getUserByUserName(loggedUserName);
         List<Product> product_list = productService.getProductList();
 

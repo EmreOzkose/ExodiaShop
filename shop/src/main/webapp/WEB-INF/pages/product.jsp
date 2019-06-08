@@ -1,7 +1,5 @@
 <%@ page import="com.exodiashop.shop.Service.UserService" %>
-<%@ page import="com.exodiashop.shop.Service.SellerService" %>
-<%@ page import="org.springframework.beans.factory.annotation.Autowired" %>
-<%@ page import="com.exodiashop.shop.Model.Product" %>
+<%@ page import="com.exodiashop.shop.Model.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
@@ -23,7 +21,6 @@
                 lang = cookie.getValue( );
             else if (cookie.getName().equals("loggedUsernameCookie"))
                 loggedUsername = cookie.getValue( );
-
         }
     }
     pageContext.setAttribute("lang", lang);
@@ -31,6 +28,7 @@
 
     UserService userService = new UserService();
     pageContext.setAttribute("loggedUser", userService.getUserByUserName(loggedUsername));
+
 %>
 
 

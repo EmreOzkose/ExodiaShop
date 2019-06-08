@@ -54,9 +54,11 @@ alter table product
 create table seller
 (
     id        int auto_increment,
-    name      varchar(45)  not null,
+    name      varchar(50)  not null,
     locations varchar(255) null,
-    products  varchar(10000)     null,
+    products  varchar(100) null,
+    password  varchar(45)  not null,
+    wallet    float        null,
     constraint id_UNIQUE
         unique (id)
 )
@@ -64,6 +66,8 @@ create table seller
 
 alter table seller
     add primary key (id);
+
+
 
 -- auto-generated definition
 create table `order`

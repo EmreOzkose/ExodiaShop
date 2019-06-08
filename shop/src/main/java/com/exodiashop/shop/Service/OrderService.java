@@ -71,8 +71,13 @@ public class OrderService {
         orderDAO.confirmOrder(orderID);
     }
 
+    public void finisOrder(int orderID){
+        orderDAO.finisOrder(orderID);
+    }
+
     public List<Order> getOrdersByUsername(String username){
         List<Order> orderList = orderDAO.getOrdersByUsername(username);
         return orderList;
     }
+
 }

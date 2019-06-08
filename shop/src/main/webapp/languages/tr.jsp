@@ -20,3 +20,5 @@
 <c:set var = "YES" scope = "session" value = "EVET"/>
 <c:set var = "NO" scope = "session" value = "HAYIR"/>
 <c:set var = "WaitConfirmation" scope = "session" value = "Admin onayı için bekleyiniz"/>
+<c:set var = "AdminConfirmation" scope = "session" value = "Admin onayı"/>
+<c:set var = "OrderDone" scope = "session" value = "Sipariş tamamlandı"/>

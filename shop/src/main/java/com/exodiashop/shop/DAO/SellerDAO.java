@@ -132,6 +132,17 @@ public class SellerDAO  extends  JdbcDaoSupport {
 
         return name;
     }
+
+    public void add2wallet(int id, float amount){
+        String sql = "select * from `seller` where id='" + id + "'";
+        List<Seller> seller_list = getJdbcTemplate().query(sql, new BeanPropertyRowMapper(Seller.class));
+        Seller seller = seller_list.get(0);
+        float currentWallet = seller.getWallet();
+
+        String sql2 = "update `seller` set wallet=? where id = ?";
+        getJdbcTemplate().update(sql2, (currentWallet + amount), id);
+
+    }
 }
 
 class SellerMapper implements RowMapper<Seller> {
@@ -142,6 +153,7 @@ class SellerMapper implements RowMapper<Seller> {
         s.setPassword(rs.getString("password"));
         s.setLocations(rs.getString("locations"));
         s.setProducts(rs.getString("products"));
+        s.setWallet(rs.getFloat("wallet"));
         return s;
     }
 }

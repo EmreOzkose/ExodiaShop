@@ -1,19 +1,18 @@
 package com.exodiashop.shop.Controller;
 
-import com.exodiashop.shop.DAO.OrderDAO;
-import com.exodiashop.shop.Model.Product;
 import com.exodiashop.shop.Model.User;
+import com.exodiashop.shop.Service.CookieService;
 import com.exodiashop.shop.Service.OrderService;
 import com.exodiashop.shop.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 
 @Controller
 public class OrderController {
@@ -23,6 +22,8 @@ public class OrderController {
 
     @Autowired
     OrderService orderService;
+
+    CookieService cookieService = new CookieService();
 
     @RequestMapping("/confirmOrder/{orderID}")
     public ModelAndView confirmOrder(HttpServletRequest request, HttpServletResponse response, @PathVariable int orderID){
@@ -39,19 +40,12 @@ public class OrderController {
         return mav;
     }
 
-    @RequestMapping("/finishOrder/{loggedUsername}/{OrderID}")
-    public ModelAndView finishOrder(HttpServletRequest request, HttpServletResponse response, @PathVariable String loggedUsername, @PathVariable int OrderID){
-        ModelAndView mav = new ModelAndView("../redirections/to_profile.jsp");
-
-        User loggedUser = userService.getUserByUserName(loggedUsername);
-
-        mav.addObject("loggedUsername", loggedUsername);
-        mav.addObject("loggedUser", loggedUser);
-
-
+    @RequestMapping("/finishOrder/{orderID}")
+    public ModelAndView finishOrder(HttpServletRequest request, HttpServletResponse response, @PathVariable int orderID){
+        ModelAndView mav = new ModelAndView("../redirections/to_profile");
+        orderService.finisOrder(orderID);
 
         return mav;
     }
-
 
 }

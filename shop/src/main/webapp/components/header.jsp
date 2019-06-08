@@ -58,7 +58,8 @@
 
         <div class="span4">
             <h1>
-                <form action="/dashboard" method="post">
+                <!--
+                                    <form action="/dashboard" method="post">
 
                     <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
                     <button style="background-color: Transparent;border: none;">
@@ -66,6 +67,12 @@
                     </button>
 
                 </form>
+                -->
+
+                <a href="/dashboard">
+                    <img src="/img/logos/exodia-cursive.png" alt="exodia logo">
+                </a>
+
 
             </h1>
         </div>

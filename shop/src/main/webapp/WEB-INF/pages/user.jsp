@@ -1,3 +1,4 @@
+<%@ page import="com.exodiashop.shop.Service.CookieService" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
@@ -8,6 +9,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%
+    CookieService cookieService = new CookieService();
+    String loggedUsername = cookieService.getCookie(request, response, "loggedUsernameCookie");
+    pageContext.setAttribute("loggedUsername", loggedUsername);
+%>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -130,7 +138,7 @@
                                     <tr>
                                         <th>Order ID</th>
                                         <th>Products</th>
-                                        <th>Admin Confirmation</th>
+                                        <th>${AdminConfirmation}</th>
                                         <th>Finish the order</th>
                                     </tr>
                                     <c:forEach items="${orderList}" var="order">
@@ -170,9 +178,17 @@
                                             <td>
                                                 <c:choose>
                                                     <c:when test="${order.isConfirmed() == 1}">
-                                                        <form action="/finishOrder/${loggedUsername}/${order.getId()}" method="post">
-                                                            <button>confirm order is reach to you !</button>
-                                                        </form>
+                                                        <c:choose>
+                                                            <c:when test="${order.isFinished() == 1}">
+                                                                ${OrderDone}
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <form action="/finishOrder/${order.getId()}" method="post">
+                                                                    <button>confirm order is reach to you !</button>
+                                                                </form>
+                                                            </c:otherwise>
+                                                        </c:choose>
+
                                                     </c:when>
                                                     <c:otherwise>
                                                         ${WaitConfirmation}

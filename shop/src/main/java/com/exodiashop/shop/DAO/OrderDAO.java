@@ -48,6 +48,11 @@ public class OrderDAO extends JdbcDaoSupport{
         getJdbcTemplate().update(sql, orderID);
     }
 
+    public void finisOrder(int orderID){
+        String sql = "update `order` set isFinished=1 where id = ?";
+        getJdbcTemplate().update(sql, orderID);
+    }
+
     /*
     customer process
      */

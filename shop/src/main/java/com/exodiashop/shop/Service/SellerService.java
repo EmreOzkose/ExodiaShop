@@ -33,4 +33,8 @@ public class SellerService {
         return sellerDAO.id2Name(id);
     }
 
+    public void add2wallet(int id, float amount){
+        sellerDAO.add2wallet(id, amount);
+    }
+
 }

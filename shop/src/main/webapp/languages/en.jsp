@@ -20,3 +20,5 @@
 <c:set var = "YES" scope = "session" value = "YES"/>
 <c:set var = "NO" scope = "session" value = "NO"/>
 <c:set var = "WaitConfirmation" scope = "session" value = "Wait for admin confirmation"/>
+<c:set var = "AdminConfirmation" scope = "session" value = "Admin Confirmation"/>
+<c:set var = "OrderDone" scope = "session" value = "Order is done"/>
