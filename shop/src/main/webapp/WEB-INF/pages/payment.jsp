@@ -46,6 +46,9 @@
     <c:if test="${lang.equals('en')}">
         <jsp:include page="/languages/en.jsp" />
     </c:if>
+    <c:if test="${lang == null}">
+        <jsp:include page="/languages/en.jsp" />
+    </c:if>
 
 </head>
 <body>

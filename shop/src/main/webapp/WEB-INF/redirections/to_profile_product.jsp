@@ -10,6 +10,7 @@
 <head>
     <title></title>
     <meta http-equiv="Refresh" content="0; url=/users/${loggedUsername}#ProductTab">
+
 </head>
 <body>
 

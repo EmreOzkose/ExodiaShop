@@ -30,17 +30,18 @@ alter table user
 create table product
 (
     id       int auto_increment,
-    name     varchar(45)  not null,
-    gender   varchar(45)  null,
-    brand    varchar(45)  not null,
-    color    varchar(45)  null,
-    type     varchar(45)  not null,
-    category varchar(45)  not null,
-    size     varchar(45)  null,
-    price    double       not null,
-    total    int          not null,
-    img_path    varchar(200) not null,
-    seller   varchar(100) not null,
+    name     varchar(45)   not null,
+    gender   varchar(45)   null,
+    brand    varchar(45)   not null,
+    color    varchar(45)   null,
+    type     varchar(45)   not null,
+    category varchar(45)   not null,
+    size     varchar(45)   null,
+    price    double        not null,
+    total    int           not null,
+    img_path varchar(200)  not null,
+    seller   varchar(100)  not null,
+    location varchar(1000) null,
     constraint id_UNIQUE
         unique (id)
 )
@@ -48,6 +49,7 @@ create table product
 
 alter table product
     add primary key (id);
+
 
 
 -- auto-generated definition

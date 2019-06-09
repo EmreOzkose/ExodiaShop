@@ -1,6 +1,7 @@
 package com.exodiashop.shop.Service;
 
 import com.exodiashop.shop.DAO.UserDAO;
+import com.exodiashop.shop.Model.Order;
 import com.exodiashop.shop.Model.Product;
 import com.exodiashop.shop.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +11,19 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.context.ApplicationContext;
+import org.springframework.web.servlet.ModelAndView;
 
 @Service
 public class UserService {
 
     @Autowired
-    ProductService productService;
+    private ProductService productService;
+
+    @Autowired
+    private SellerService sellerService;
+
+    @Autowired
+    private OrderService orderService;
 
     UserDAO userDao;
 
@@ -98,12 +106,32 @@ public class UserService {
         userDao.cleanShoppingCart(username);
     }
 
-/*
-    public void add2cart(String username, int productID){
-        Product product = productService.getProductByID(productID);
-        getUserList().stream().filter(t -> t.getUsername().equals(username)).findFirst().get().getShoppingCart().add(product);
+    /* View Functions */
+    public ModelAndView userPage(ModelAndView mav, String username){
+        User user = getUserByUserName(username);
+
+        mav.addObject("loggedUser", user);
+        mav.addObject("isEdit", 0);
+
+        if (user.getRole().equals("seller")) {
+            String arr[] = user.getUsername().split("\\.");
+            int seller_id = sellerService.getSellerById(Integer.parseInt(arr[0])).getId();
+            mav.addObject("product_list", productService.getProductBySellerId(seller_id));
+        }
+        else if (user.getRole().equals("admin")){
+            mav.addObject("user_list", getUserList());
+            mav.addObject("product_list", productService.getProductList());
+            mav.addObject("orderList", orderService.getUnconfirmedOrderList());
+        }
+        else if (user.getRole().equals("customer")){
+            mav.addObject("orderList", orderService.getOrdersByUsername(username));
+            for (Order o : orderService.getOrdersByUsername(username))
+                System.out.println("id: " + o.getId() +"bool:"+o.isConfirmed());
+        }
+
+        mav.addObject("loggedUsername", username);
+
+        return mav;
     }
 
-
- */
 }

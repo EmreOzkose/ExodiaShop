@@ -58,6 +58,15 @@
 </head>
 <body>
 
+<% String message = (String)request.getAttribute("alertMsg");
+
+%>
+
+<script type="text/javascript">
+    var msg = "<%=message%>";
+    if (msg != "null")
+        alert(msg);
+</script>
 
 <div class="container">
 
@@ -235,38 +244,97 @@
             </div>
             <div id="ProductTab" class="tabcontent">
                 <table style="width:100%; text-align:left">
-                    <tr>
+                    <tr style="text-align: center;font-size: 20px;">
                         <th>Image</th>
-                        <th>Name</th>
-                        <th>Brand</th>
-                        <th>Category</th>
-                        <th>Number of Stock</th>
-                        <th>Price</th>
-                        <th></th>
-                        <th></th>
+                        <th>Informations</th>
+                        <th>Location</th>
+                        <th>Delete</th>
                     </tr>
 
                     <c:forEach items="${product_list}" var="product">
                         <tr>
-                            <td><img src="${product.img_path}" height="100px" width="100px"></td>
-                            <td>${product.name}</td>
-                            <td>${product.brand}</td>
-                            <td>${product.category}</td>
-                            <td>${product.total}</td>
-                            <td>${product.price}</td>
+                            <form action="/editProduct/${product.id}" method="post">
+                                <td><img src="${product.img_path}" height="100px" width="100px"></td>
+
+                                <td>
+                                    <table style="width: 100%;">
+                                        <tr>
+                                            <td>Name</td>
+                                            <td><input type="text" name="newName" placeholder="${product.name}" value="${product.name}" /></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Brand</td>
+                                            <td>${product.brand}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Category</td>
+                                            <td>${product.category}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Number of Stock</td>
+                                            <td><input type="text" name="newTotal" placeholder="${product.total}" value="${product.total}"/></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Price</td>
+                                            <td><input type="text" name="newPrice" placeholder="${product.price}" value="${product.price}" /></td>
+                                        </tr>
+                                    </table>
+                                    <p>
+                                        <button>edit</button>
+                                        <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
+                                    </p>
+
+                                </td>
+                            </form>
+
+                            <td>
+                                <form action="/addLocation/${product.id}#ProductTab" method="post">
+                                    <table>
+                                        <tr>
+                                            <p style="word-break: break-all; ">${product.location}</p>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="text" style="width: 100%;" name="newLocation" placeholder="" class="search-query span2"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <button>Add</button>
+                                                <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+
+                                <form action="/deleteLocation/${product.id}#ProductTab" method="post">
+                                    <table>
+                                        <tr>
+                                            <td><input type="text" style="width: 100%;" name="deletedLocation" placeholder="" class="search-query span2"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <button>delete</button>
+                                                <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </td>
+
                             <td>
                                 <form action="/deleteProduct/${product.id}" method="post">
                                     <button>X</button>
                                     <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
                                 </form>
                             </td>
-                            <td>
-                                <form action="/editProduct/${product.id}" method="post">
-                                    <button>edit</button>
-                                    <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
-                                </form>
-                            </td>
+
                         </tr>
+
+
+
                     </c:forEach>
 
                 </table>

@@ -168,6 +168,29 @@ public class ProductDAO extends JdbcDaoSupport{
         getJdbcTemplate().update(sql1, Integer.toString(current_stock-1), productID);
     }
 
+    public void updateProduct(int productID, String name, int total, float price){
+        String sql = "update product set name = ?, price = ?, total = ? where id = ?";
+        getJdbcTemplate().update(sql, name, price, total, productID);
+
+    }
+
+    public void updateLocation2Product(int productID, String location){
+        String sql = "update product set location = ? where id = ?";
+        getJdbcTemplate().update(sql, location, productID);
+    }
+
+    public String getLocationByID(int productID){
+        String sql0 = "select * from product where id='" + productID + "'";
+        List<Product> product_list = getJdbcTemplate().query(sql0,
+                new BeanPropertyRowMapper(Product.class));
+
+        Product p = product_list.get(0);
+        if(p == null) return null;
+        String location = p.getLocation();
+
+        return location;
+    }
+
 }
 
 class ProductMapper implements RowMapper<Product> {
@@ -187,6 +210,7 @@ class ProductMapper implements RowMapper<Product> {
         p.setTotal(rs.getInt("total"));
         p.setImg_path(rs.getString("img_path"));
         p.setSeller(rs.getString("seller"));
+        p.setLocation(rs.getString("location"));
 
         return p;
     }

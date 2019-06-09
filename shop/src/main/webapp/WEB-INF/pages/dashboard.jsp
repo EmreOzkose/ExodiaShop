@@ -2,7 +2,8 @@
 
 <%
     // Create cookies for first and last names.
-    Cookie loggedUsernameCookie = new Cookie("loggedUsernameCookie", request.getParameter("loggedUsername"));
+    String loggedUsername = request.getParameter("loggedUsername");
+    Cookie loggedUsernameCookie = new Cookie("loggedUsernameCookie", loggedUsername);
 
     String lang_s = request.getParameter("lang");
     Cookie lang = new Cookie("lang", lang_s);
@@ -12,6 +13,8 @@
 
     response.addCookie( loggedUsernameCookie );
     response.addCookie( lang );
+
+    pageContext.setAttribute("loggedUsername", loggedUsername);
 %>
 
 
@@ -24,6 +27,9 @@
         <jsp:include page="/languages/tr.jsp" />
     </c:if>
     <c:if test="${lang.equals('en')}">
+        <jsp:include page="/languages/en.jsp" />
+    </c:if>
+    <c:if test="${lang == null}">
         <jsp:include page="/languages/en.jsp" />
     </c:if>
 

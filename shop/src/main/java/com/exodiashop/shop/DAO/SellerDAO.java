@@ -143,6 +143,39 @@ public class SellerDAO  extends  JdbcDaoSupport {
         getJdbcTemplate().update(sql2, (currentWallet + amount), id);
 
     }
+
+    public boolean deleteStore(int id, String store) {
+        try {
+            if (Pattern.matches("\\w+", store)) {
+                Seller s = getSellerById(id);
+                if (s != null) {
+                    if (s.getLocations().isEmpty()) {
+                        return false;
+                    }
+                    else {
+                        String locations ="";
+                        String arr[] =  s.getLocations().split(",");
+                        for(int i=0; i<arr.length;i++){
+                            if(!arr[i].equalsIgnoreCase(store)) {
+                                if(i==0) {
+                                    i++;
+                                    locations += arr[i];
+                                }
+                                else locations+= "," + arr[i];
+                            }
+                        }
+                        getJdbcTemplate().update("update seller set locations = ? where id = ?", locations, s.getId());
+                        return true;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+
+    }
 }
 
 class SellerMapper implements RowMapper<Seller> {

@@ -59,4 +59,16 @@ public class ProductService {
         productDAO.decreaseStock(productID);
     }
 
+    public void updateProduct(int productID, String name, int total, float price){
+        productDAO.updateProduct(productID, name, total, price);
+    }
+
+    public void updateLocation2Product(int productID, String location){
+        productDAO.updateLocation2Product(productID, location);
+    }
+
+    public String getLocationByID(int productID){
+        return productDAO.getLocationByID(productID);
+    }
+
 }

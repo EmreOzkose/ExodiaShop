@@ -26,7 +26,7 @@
 
             if (cookie.getName().equals("lang"))
                 lang = cookie.getValue( );
-            else if (cookie.getName().equals("loggedUsername"))
+            else if (cookie.getName().equals("loggedUsernameCookie"))
                 loggedUsername = cookie.getValue( );
 
         }
@@ -85,14 +85,14 @@
             <p><br> <strong>          </strong><br><br></p>
 
             <form action="/setLang/en" method="post">
-                <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
+                <input type="hidden"  name="loggedUsername" value="${loggedUsername}" placeholder="Search" class="search-query span2">
                 <button style="background-color: Transparent;border: none;">
                     <span class="btn btn-mini">EN</span>
                 </button>
             </form>
 
             <form action="/setLang/tr" method="post">
-                <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
+                <input type="hidden"  name="loggedUsername" value="${loggedUsername}" placeholder="Search" class="search-query span2">
                 <button style="background-color: Transparent;border: none;">
                     <span class="btn btn-mini">TR</span>
                 </button>
@@ -102,7 +102,7 @@
             <c:if test="${loggedUser!=null && loggedUser.role == 'customer'}">
                 <form action="/shoppingCart" method="post">
 
-                    <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
+                    <input type="hidden"  name="loggedUsername" value="${loggedUsername}" placeholder="Search" class="search-query span2">
                     <button style="background-color: Transparent;border: none;">
                         <span class="btn btn-mini"><span class="icon-shopping-cart"></span></span>
                     </button>

@@ -12,7 +12,7 @@
 <%
     CookieService cookieService = new CookieService();
     String loggedUsername = cookieService.getCookie(request, response, "loggedUsernameCookie");
-    pageContext.setAttribute("loggedUsername", loggedUsername);
+    // pageContext.setAttribute("loggedUsername", loggedUsername);
 
 %>
 

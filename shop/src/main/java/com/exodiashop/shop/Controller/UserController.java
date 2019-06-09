@@ -41,26 +41,7 @@ public class UserController {
     public ModelAndView viewUser(HttpServletRequest request, HttpServletResponse response, @PathVariable String username){
         ModelAndView mav = new ModelAndView("user");
 
-        User user = userService.getUserByUserName(username);
-
-        mav.addObject("loggedUser", user);
-        mav.addObject("isEdit", 0);
-
-        if (user.getRole().equals("seller")) {
-            String arr[] = user.getUsername().split("\\.");
-            int seller_id = sellerService.getSellerById(Integer.parseInt(arr[0])).getId();
-            mav.addObject("product_list", productService.getProductBySellerId(seller_id));
-        }
-        else if (user.getRole().equals("admin")){
-            mav.addObject("user_list", userService.getUserList());
-            mav.addObject("product_list", productService.getProductList());
-            mav.addObject("orderList", orderService.getUnconfirmedOrderList());
-        }
-        else if (user.getRole().equals("customer")){
-            mav.addObject("orderList", orderService.getOrdersByUsername(username));
-            for (Order o : orderService.getOrdersByUsername(username))
-                System.out.println("id: " + o.getId() +"bool:"+o.isConfirmed());
-        }
+        mav = userService.userPage(mav, username);
 
         return mav;
     }
