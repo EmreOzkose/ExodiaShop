@@ -41,7 +41,6 @@ public class DashboardController {
 
     @RequestMapping(value = "/dashboard", method = { RequestMethod.GET, RequestMethod.POST })
     public ModelAndView listItems(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
-        System.out.println("logged User : " + request.getParameter("loggedUsername"));
 
         // String loggedUserName = request.getParameter("loggedUsername");
         String loggedUserName = "2.yetkili";
