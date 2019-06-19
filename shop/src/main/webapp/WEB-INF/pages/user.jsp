@@ -87,6 +87,7 @@
                     <button class="tablinks" onclick="openCity(event, 'ShoppingHistory') " id="defaultOpen0">Shopping History</button>
                 </c:if>
                 <c:if test="${loggedUser.role.equals('seller')}">
+                    <button class="tablinks" onclick="openCity(event, 'SellerDetails') " id="defaultOpen1">Seller Profile</button>
                     <button class="tablinks" onclick="openCity(event, 'ProductTab') " id="defaultOpen1">Products</button>
                     <button class="tablinks" onclick="openCity(event, 'AddProduct')">Add Product</button>
                     <button class="tablinks" onclick="openCity(event, 'OrdersSeller') " >Orders</button>
@@ -129,6 +130,39 @@
                                         </tbody>
                                     </table>
                                     <form id="loginForm" action="/users/${loggedUser.username}/editProfile#ProfileTab" method="POST">
+                                        <p>  <button type="submit" class="shopBtn">> Edit Profile </button></p>
+                                    </form>
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="SellerDetails" class="tabcontent">
+                <div class = "profile-table">
+                    <img src="${loggedUser.profilePhoto}">
+                    <hr class="softn clr"/>
+                    <div id="myTContent" class="tab-content tabWrapper">
+                        <div class="tab-pane fade active in" id="PrileTab">
+                            <c:choose>
+                                <c:when test="${isEdit == 1}">
+                                    <form id="loginForm" action="/sellers/updateSellerProfile/${loggedUser.username}" method="POST">
+                                        <table class="table table-striped">
+                                            <tbody>
+                                            <tr class="techSpecRow"><td class="techSpecTD1">Name: </td><td class="techSpecTD2"><input required="required" type="text" name="newName" value="${seller.name}" placeholder ="Enter new name" id="nme" /></td></tr>
+                                            <tr class="techSpecRow"><td class="techSpecTD1">Password:</td><td class="techSpecTD2"><input required="required" type="password" name="newPassword" value="${seller.password}" placeholder ="Enter new password" id="paord" /></td></tr>
+                                            <tr class="techSpecRow"><td class="techSpecTD1"></td><td class="techSpecTD2"><button id="lin" name="login">Apply</button></td></tr>
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </c:when>
+                                <c:otherwise>
+                                    <table class="table table-striped">
+                                        <tbody>
+                                        <tr class="techSpecRow"><td class="techSpecTD1">Name: </td><td class="techSpecTD2">${seller.name}</td></tr>
+                                        </tbody>
+                                    </table>
+                                    <form id="loginForm" action="/users/${loggedUser.username}/editProfile#SellerProfileTab" method="POST">
                                         <p>  <button type="submit" class="shopBtn">> Edit Profile </button></p>
                                     </form>
                                 </c:otherwise>
@@ -465,6 +499,9 @@
                     document.getElementById("defaultOpen1").click();
                 }
                 else if (arr[1] == "ProfileTab"){
+                    document.getElementById("defaultOpen0").click();
+                }
+                else if (arr[1] == "SellerProfileTab"){
                     document.getElementById("defaultOpen0").click();
                 }
             }

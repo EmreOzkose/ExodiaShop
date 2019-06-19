@@ -3,6 +3,7 @@ package com.exodiashop.shop.Service;
 import com.exodiashop.shop.DAO.UserDAO;
 import com.exodiashop.shop.Model.Order;
 import com.exodiashop.shop.Model.Product;
+import com.exodiashop.shop.Model.Seller;
 import com.exodiashop.shop.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -117,6 +118,10 @@ public class UserService {
             String arr[] = user.getUsername().split("\\.");
             int seller_id = sellerService.getSellerById(Integer.parseInt(arr[0])).getId();
             mav.addObject("product_list", productService.getProductBySellerId(seller_id));
+
+            Seller seller = sellerService.getSellerById(seller_id);
+            mav.addObject("seller", seller);
+
         }
         else if (user.getRole().equals("admin")){
             mav.addObject("user_list", getUserList());

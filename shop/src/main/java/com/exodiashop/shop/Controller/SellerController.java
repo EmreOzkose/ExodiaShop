@@ -8,12 +8,14 @@ import com.exodiashop.shop.Service.SellerService;
 import com.exodiashop.shop.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -45,18 +47,34 @@ public class SellerController {
         }
     }
 
-    @RequestMapping("/sellers/updateSellerProfile/{id}")
-    public String updateSellerProfile(HttpServletRequest request, HttpServletResponse response, @PathVariable String id) {
+    @RequestMapping("/sellers/updateSellerProfile/{username}")
+    public ModelAndView updateSellerProfile(HttpServletRequest request, HttpServletResponse response, @PathVariable String username) {
+        ModelAndView mav = new ModelAndView("user");
+
         try{
-            String name = request.getParameter("name");
-            String locations = request.getParameter("locations");
-            String password = request.getParameter("password");
-            return sellerService.updateSellerProfile(id, name, locations, password);
+            User seller = userService.getUserByUserName(username);
+            System.out.println(username);
+            String id = username.split("\\.")[0];
+
+            String name = request.getParameter("newName");
+            String locations = sellerService.getSellerById(Integer.parseInt(id)).getLocations();
+            String password = request.getParameter("newPassword");
+
+            String message = sellerService.updateSellerProfile(id, name, locations, password);
+            request.setAttribute("alertMsg", message);
+            RequestDispatcher rd=request.getRequestDispatcher("user");
+            rd.include(request, response);
         }
         catch (Exception e){
             e.printStackTrace();
             return null;
         }
+
+        mav.addObject("isEdit", 0);
+        mav.addObject("loggedUser", userService.getUserByUserName(username));
+        mav.addObject("loggedUsername", username);
+
+        return mav;
     }
 
     @RequestMapping("/sellers/addSeller")

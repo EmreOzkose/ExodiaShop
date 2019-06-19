@@ -61,23 +61,73 @@ public class SellerDAO  extends  JdbcDaoSupport {
 
     public String updateSellerProfile(String id, String name, String locations, String password){
         String result = "";
-        if (Pattern.matches("\\w", name) && Pattern.matches("\\w", password) && password.length() >= 8 ) {
+        String checkPass = passCheck(password);
+        if (Pattern.matches("\\w+", name) && Pattern.matches("\\w+", locations)
+                && checkPass.equalsIgnoreCase("Password is valid.") ) {
             Seller s = getSellerById(Integer.parseInt(id));
             if(s != null){
-                s.setName(name);
-                s.setLocations(locations);
-                s.setPassword(password);
+                getJdbcTemplate().update("update seller set name = ?, locations = ?, password = ? where id = ?", name, locations, password, s.getId());
                 result = "Updated";
             }
         }
-        if (!Pattern.matches("\\w", name)){
-            result = "Format of the name is not correct!";
+        else {
+            if(checkPass.equalsIgnoreCase("Password is valid.")){
+                if((Pattern.matches("\\w+", name))) {
+                    result = "Please enter a location correct in format(Ankara, Istanbul etc.)";
+                }
+                else result =  "Please enter valid name!";
+            }
+            else result = checkPass;
         }
-        if(!Pattern.matches("\\w", password)){
-            result = "Format of the password is not correct!";
-        }
+        return result;
+    }
+    public static String  passCheck(String password){
+        System.out.println("ghtrehgdsfgds");
+        boolean valid = true;
+        String result = "";
         if(password.length() < 8){
-            result = "Length of the password is too short!";
+            System.out.println("Password is not eight characters long.");
+            result = "Password is not eight characters long.";
+            valid = false;
+        }
+        String upperCase = "(.*[A-Z].*)";
+        if(!password.matches(upperCase)){
+            System.out.println("Password must contain at least one capital letter.");
+            result = "Password must contain at least one capital letter.";
+            valid = false;
+        }
+        String numbers = "(.*[0-9].*)";
+        if(!password.matches(numbers)){
+            System.out.println("Password must contain at least one number.");
+            result = "Password must contain at least one number.";
+            valid = false;
+        }
+        String specialChars = "(.*[ ! # @ $ % ^ & * ( ) - _ = + [ ] ; : ' \" , < . > / ?].*)";
+        if(!password.matches(specialChars)){
+            System.out.println("Password must contain at least one special character.");
+            result = "Password must contain at least one special character.";
+            valid = false;
+        }
+        String space = "(.*[   ].*)";
+        if(password.matches(space)){
+            System.out.println("Password cannot contain a space.");
+            result = "Password cannot contain a space.";
+            valid = false;
+        }
+        if(password.startsWith("?")){
+            System.out.println("Password cannot start with '?'.");
+            result = "Password cannot start with '?'.";
+            valid = false;
+
+        }
+        if(password.startsWith("!")){
+            System.out.println("Password cannot start with '!'.");
+            result = "Password cannot start with '!'.";
+            valid = false;
+        }
+        if(valid){
+            System.out.println("Password is valid.");
+            result = "Password is valid.";
         }
         return result;
     }
@@ -96,31 +146,6 @@ public class SellerDAO  extends  JdbcDaoSupport {
             return true;
     }
 
-    public boolean deleteProduct(String SellerId, String productID) {
-        try {
-            Seller s = getSellerById(Integer.parseInt(SellerId));
-            String products = s.getProducts();
-            String arr[] = products.split(",");
-            String productlist="";
-            for(int i=0;i< arr.length; i++){
-                if(arr[i].equalsIgnoreCase(productID)){continue;}
-                else {
-                    if(i==0){ productlist += arr[i]; }
-                    else{
-                        productlist +=",";
-                        productlist += arr[i];
-                    }
-                }
-            }
-            s.setProducts(productlist);
-            return true;
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-
-    }
 
     public String id2Name(int id){
         String sql = "select * from `seller` where id='" + id + "'";
