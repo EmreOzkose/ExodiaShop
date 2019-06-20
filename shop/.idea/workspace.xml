@@ -5,38 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b4e75f9-1f27-4089-b263-84495b2e1b1a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Controller/AdminController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Service/SecurityService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Validator/ProductValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/922ceb9b-f1b8-4fab-9175-094491f33621.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/922ceb9b-f1b8-4fab-9175-094491f33621.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Controller/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Controller/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/DAO/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/DAO/OrderDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/DAO/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/DAO/ProductDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/DAO/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/configuration/WebConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/configuration/WebConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/tables.ddl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/tables.ddl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/database/Datasource.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database/Datasource.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Controller/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/components/cartPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/components/cartPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/Controller/DashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/Controller/DashboardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/DAO/OrderDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/DAO/OrderDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/DAO/OrderMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/DAO/OrderMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/DAO/ProductDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/DAO/ProductDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/DAO/ProductMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/DAO/ProductMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/DAO/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/DAO/UserDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/DAO/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/DAO/UserMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/Model/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/Model/Product.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/Service/OrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/Service/OrderService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/Service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/Service/ProductService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/Service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/Service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/configuration/WebConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/exodiashop/shop/configuration/WebConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/database/Datasource.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/database/Datasource.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -109,47 +80,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Controller/AdminController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+            <state relative-caret-position="187">
+              <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Service/OrderService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="65" column="28" lean-forward="true" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
-              <folding>
-                <element signature="e#1873#1874#0" expanded="true" />
-                <element signature="e#1918#1919#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/exodiashop/shop/DAO/OrderDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="das://922ceb9b-f1b8-4fab-9175-094491f33621/schema/exodiadb/table/product">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state projectRestartId="a01c788c-1cfe-486e-847a-9c4cfa68146a">
-              <filtering>
-                <filter text="" />
-              </filtering>
             </state>
           </provider>
         </entry>
@@ -196,7 +131,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/Comment-beans.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/product.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/components/navbar.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Controller/OrderController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/languages/en.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/languages/tr.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Model/Seller.java" />
@@ -221,8 +155,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/database/Datasource.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Controller/DashboardController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Service/UserService.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user.jsp" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
         <option value="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/tables.ddl" />
         <option value="$PROJECT_DIR$/src/main/webapp/components/cartPage.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Model/Product.java" />
@@ -234,6 +166,9 @@
         <option value="$PROJECT_DIR$/src/main/resources/Security-beans.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/Module.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Service/SecurityService.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
+        <option value="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Controller/OrderController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Controller/AdminController.java" />
       </list>
     </option>
@@ -567,7 +502,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="207049000" />
+    <option name="totallyTimeSpent" value="208983000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="768" extended-state="6" />
@@ -583,7 +518,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32902297" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4977307" visible="true" weight="0.3204023" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4977307" visible="true" weight="0.3204023" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3994253" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -731,16 +666,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Controller/OrderController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Model/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -837,21 +762,6 @@
             <element signature="e#2492#2493#0" expanded="true" />
             <element signature="e#2531#2532#0" expanded="true" />
             <element signature="e#2565#2566#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="261" selection-start-line="261" selection-end-line="261" />
-          <folding>
-            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#5;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#7;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#8;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
           </folding>
         </state>
       </provider>
@@ -1141,10 +1051,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="490" lean-forward="true" selection-start-line="490" selection-end-line="490" />
+          <folding>
+            <element signature="n#div#8;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Controller/OrderController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/exodiashop/shop/Controller/AdminController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+        <state relative-caret-position="187">
+          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

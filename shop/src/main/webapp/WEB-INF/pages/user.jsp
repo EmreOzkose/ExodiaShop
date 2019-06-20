@@ -96,6 +96,7 @@
                     <button class="tablinks" onclick="openCity(event, 'ProductTab') " id="defaultOpen1">Products</button>
                     <button class="tablinks" onclick="openCity(event, 'UserTab') " >Users</button>
                     <button class="tablinks" onclick="openCity(event, 'OrdersAdmin') " >Orders</button>
+                    <button class="tablinks" onclick="openCity(event, 'GenerateSaleReport') " >Generate Sale Report</button>
                 </c:if>
             </div>
 
@@ -227,6 +228,7 @@
                                                             </c:when>
                                                             <c:otherwise>
                                                                 <form action="/finishOrder/${order.getId()}" method="post">
+                                                                    <input type="hidden" value="${loggedUsername}" name="loggedUsername"/>
                                                                     <button>confirm order is reach to you !</button>
                                                                 </form>
                                                             </c:otherwise>
@@ -421,7 +423,6 @@
                         </c:otherwise>
                     </c:choose>
 
-
             </div>
             <div id="AddProduct" class="tabcontent">
                 <form id="loorm" action="/addProduct/${loggedUser.username}" method="POST">
@@ -486,6 +487,13 @@
                     <p>  <button type="submit" class="shopBtn"> Add </button></p>
                 </form>
 
+            </div>
+
+            <div id="GenerateSaleReport" class="tabcontent">
+                <form action="/generateSaleReport" method="post">
+                    <button>Generate</button>
+                    <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
+                </form>
             </div>
 
             <!- Set default view of the page ->

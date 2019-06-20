@@ -50,6 +50,13 @@ public class AdminController {
         return mav;
     }
 
+    @RequestMapping(value = "/generateSaleReport", method = RequestMethod.POST)
+    public ModelAndView GenerateSaleReport(HttpServletRequest request, HttpServletResponse response){
+        ModelAndView mav = new ModelAndView("../redirections/to_profile");
+
+        return mav;
+    }
+
     @RequestMapping(value = "/ListOrders", method = RequestMethod.POST)
     public ModelAndView ListOrdersProcess(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mav = new ModelAndView("AdminPage");

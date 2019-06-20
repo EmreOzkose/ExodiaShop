@@ -27,7 +27,7 @@ public class OrderController {
 
     @RequestMapping("/confirmOrder/{orderID}")
     public ModelAndView confirmOrder(HttpServletRequest request, HttpServletResponse response, @PathVariable int orderID){
-        ModelAndView mav = new ModelAndView("../redirections/to_profile.jsp");
+        ModelAndView mav = new ModelAndView("../redirections/to_profile");
 
         String loggedUsername = request.getParameter("loggedUser");
         User loggedUser = userService.getUserByUserName(loggedUsername);
@@ -43,6 +43,13 @@ public class OrderController {
     @RequestMapping("/finishOrder/{orderID}")
     public ModelAndView finishOrder(HttpServletRequest request, HttpServletResponse response, @PathVariable int orderID){
         ModelAndView mav = new ModelAndView("../redirections/to_profile");
+
+        String loggedUsername = request.getParameter("loggedUser");
+        User loggedUser = userService.getUserByUserName(loggedUsername);
+
+        mav.addObject("loggedUsername", loggedUsername);
+        mav.addObject("loggedUser", loggedUser);
+
         orderService.finisOrder(orderID);
 
         return mav;
