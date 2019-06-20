@@ -30,9 +30,8 @@ public class OrderDAO extends JdbcDaoSupport{
     }
 
     public List<Order> getAllOrder() {
-        String sql = "select * from order";
+        String sql = "select * from `order`";
         List<Order> order_list = getJdbcTemplate().query(sql,new BeanPropertyRowMapper(Order.class));
-
         return order_list;
     }
 

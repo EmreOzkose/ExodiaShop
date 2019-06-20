@@ -40,12 +40,7 @@ public class UserDAO extends JdbcDaoSupport{
 
     public List<User> getAllUsers() {
         String sql = "select * from user";
-        List<User> user_list = getJdbcTemplate().query(sql,
-                new BeanPropertyRowMapper(User.class));
-
-        for (User u : user_list)
-            System.out.println(u.getUsername());
-
+        List<User> user_list = getJdbcTemplate().query(sql,new BeanPropertyRowMapper(User.class));
         return user_list;
     }
 
