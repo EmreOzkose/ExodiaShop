@@ -42,8 +42,8 @@ public class DashboardController {
     @RequestMapping(value = "/dashboard", method = { RequestMethod.GET, RequestMethod.POST })
     public ModelAndView listItems(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
 
-        // String loggedUserName = request.getParameter("loggedUsername");
-        String loggedUserName = "2.yetkili";
+        String loggedUserName = request.getParameter("loggedUsername");
+        //String loggedUserName = "2.yetkili";
         User loggedUser = userService.getUserByUserName(loggedUserName);
         List<Product> product_list = productService.getProductList();
 

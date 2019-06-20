@@ -42,6 +42,7 @@ create table product
     img_path varchar(200)  not null,
     seller   varchar(100)  not null,
     location varchar(1000) null,
+    state    int default 1 not null,
     constraint id_UNIQUE
         unique (id)
 )

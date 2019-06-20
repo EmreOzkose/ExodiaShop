@@ -59,6 +59,13 @@ public class OrderService {
         }
     }
 
+    public List<Order> getOrderlist(){
+        return orderDAO.getAllOrder();
+    }
+    public String changeconfirm(String customer,String productid,boolean isconfirmed) {
+        return orderDAO.changeconfirm(customer,productid,isconfirmed);
+    }
+
     public void decreaseStock(int productId){
         productService.decreaseStock(productId);
     }

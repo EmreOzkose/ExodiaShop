@@ -52,7 +52,7 @@ public class ProductService {
     }
 
     public void deleteProductByID(int id){
-        boolean return_val = productDAO.deleteProduct(id);
+      productDAO.deleteProduct(id);
     }
 
     public void decreaseStock(int productID){

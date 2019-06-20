@@ -265,7 +265,9 @@
                             <td>${user.username}</td>
 
                             <td>
-                                <form action="/DeleteUser/${user.getUsername()}" method="post">
+                                <form action="/DeleteUser" method="post">
+                                    <input type="hidden" value="${user.username}" name="deletedUser"/>
+                                    <input type="hidden" value="${loggedUsername}" name="loggedUsername"/>
                                     <button>X</button>
                                 </form>
                             </td>

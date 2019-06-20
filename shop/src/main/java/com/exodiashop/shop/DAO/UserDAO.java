@@ -15,15 +15,20 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class UserDAO extends JdbcDaoSupport{
 
     @Autowired
     DataSource datasource;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+
     public void register(User user) {
         String sql = "insert into user values(?,?,?,?,?,?,?,?,?,?,?,?)";
-
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         /*blocks duplicate 0len input*/
         if(user.getPhonenumber().length()==0){
             user.setPhonenumber(null);
@@ -132,12 +137,12 @@ public class UserDAO extends JdbcDaoSupport{
         return users.size() > 0 ? true : false;
     }
 
-    public String deleteUser(String username, String password) {
-        String sql ="delete from user where username ='"+username+"' and where password ='"+password+"'";
+    public String deleteUser(String username) {
+        String sql ="delete from user where username ='"+username+"'";
 
         int update = getJdbcTemplate().update(sql);
         if (update == 0) {
-            return "Failed";
+            return "FAIL";
         } else {
             return "SUCCESS";
         }

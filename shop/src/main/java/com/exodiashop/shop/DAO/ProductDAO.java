@@ -96,10 +96,10 @@ public class ProductDAO extends JdbcDaoSupport{
         }
         //return result;
     }
-    public boolean deleteProduct( int productID) {
+
+    public void deleteProduct( int productID) {
         String sql = "delete from product where id='"+productID+"'";
         getJdbcTemplate().update(sql);
-        return true;
     }
 
     public boolean deleteProductByID( int productID) {
@@ -132,7 +132,6 @@ public class ProductDAO extends JdbcDaoSupport{
             e.printStackTrace();
             return false;
         }
-
     }
 
     public boolean editProduct(Seller s , String id, String name, String gender, String brand, String color, String type, String category
@@ -226,6 +225,7 @@ class ProductMapper implements RowMapper<Product> {
         p.setImg_path(rs.getString("img_path"));
         p.setSeller(rs.getString("seller"));
         p.setLocation(rs.getString("location"));
+        p.setState(rs.getInt("state"));
 
         return p;
     }

@@ -29,6 +29,23 @@ public class OrderDAO extends JdbcDaoSupport{
         getJdbcTemplate().update(sql, username, shoppingCart);
     }
 
+    public List<Order> getAllOrder() {
+        String sql = "select * from order";
+        List<Order> order_list = getJdbcTemplate().query(sql,new BeanPropertyRowMapper(Order.class));
+
+        return order_list;
+    }
+
+    public String changeconfirm(String customer,String productid,boolean isconfirmed) {
+        String sql = "Update order set isconfirmed = ? where customer = ? and where productid = ?";
+        int result = getJdbcTemplate().update(sql,isconfirmed,customer,productid);
+        if (result == 0) {
+            return "Failed";
+        } else {
+            return "SUCCESS";
+        }
+    }
+
     /*
     Admin process
      */

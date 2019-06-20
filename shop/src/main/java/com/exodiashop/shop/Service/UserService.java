@@ -139,4 +139,6 @@ public class UserService {
         return mav;
     }
 
+    public String deleteUser(String username) {return userDao.deleteUser(username);}
+
 }

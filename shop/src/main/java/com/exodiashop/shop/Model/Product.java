@@ -20,6 +20,7 @@ public class Product {
     private int total;
     private String seller;
     private String location;
+    private int state;
 
     public Product(){
 
@@ -134,5 +135,13 @@ public class Product {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 }
