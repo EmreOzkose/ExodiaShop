@@ -4,6 +4,7 @@ import com.exodiashop.shop.Model.Product;
 import com.exodiashop.shop.Model.Seller;
 import com.exodiashop.shop.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -32,7 +33,7 @@ public class ProductDAO extends JdbcDaoSupport{
     }
 
     public Product getProductByID(int id){
-        String sql = "select * from product where id = '"+id+"'";
+        String sql = "select * from `product` where id = "+id;
         List<Product> product_list = getJdbcTemplate().query(sql,
                 new BeanPropertyRowMapper(Product.class));
 
@@ -48,7 +49,6 @@ public class ProductDAO extends JdbcDaoSupport{
     }
 
     public List<Product> getProductBySellerId(int id){
-        System.out.println("in: "+id);
         String sql = "select * from product where seller='" + id + "'";
         List<Product> product_list = getJdbcTemplate().query(sql,
                 new BeanPropertyRowMapper(Product.class));
@@ -60,13 +60,16 @@ public class ProductDAO extends JdbcDaoSupport{
 
     public void addProduct(Seller s , String name, String gender, String brand, String color, String type, String category
             , String size, String price, String total, String img_path) {
+        boolean result = false;
         if(s != null) {
             int seller_id = s.getId();
+            try{
+                Double cost = Double.parseDouble(price);
+                int stock = Integer.parseInt(total);
+                if (Pattern.matches("\\w+", name) && Pattern.matches("\\w+", brand)
+                        && Pattern.matches("\\w+", type) && Pattern.matches("\\w+", category)
+                        && cost > 0.0) {
 
-            if (Pattern.matches("\\w+", name) && Pattern.matches("\\w+", brand)
-                    && Pattern.matches("\\w+", type) && Pattern.matches("\\w+", category)) {
-                    Double cost = Double.parseDouble(price);
-                    int stock = Integer.parseInt(total);
                     String sql = "insert into product (name, gender, brand, color, type, category, size, price, total, img_path, seller)" +
                             "values (?,?,?,?,?,?,?,?,?,?,?)";
                     getJdbcTemplate().update(sql, name, gender, brand, color, type, category, size, cost, stock, img_path, seller_id);
@@ -80,13 +83,23 @@ public class ProductDAO extends JdbcDaoSupport{
                     else products = seller_id+"";
 
                     getJdbcTemplate().update("update seller set products = ? where id = ?", products, seller_id);
+                    result = true;
+                }
+
+            } catch (NumberFormatException e) {
+                result = false;
+                e.printStackTrace();
+            } catch (DataAccessException e) {
+                result = false;
+                e.printStackTrace();
             }
         }
+        //return result;
     }
-    public boolean deleteProduct( int productID) {
+
+    public void deleteProduct( int productID) {
         String sql = "delete from product where id='"+productID+"'";
         getJdbcTemplate().update(sql);
-        return true;
     }
 
     public boolean deleteProductByID( int productID) {
@@ -119,17 +132,18 @@ public class ProductDAO extends JdbcDaoSupport{
             e.printStackTrace();
             return false;
         }
-
     }
 
     public boolean editProduct(Seller s , String id, String name, String gender, String brand, String color, String type, String category
             , String size, String price, String total, String img_path) {
         if(s != null) {
-            if (Pattern.matches("\\w", name) && Pattern.matches("\\w", brand)
-                    && Pattern.matches("\\w", type) && Pattern.matches("\\w", category)) {
-                try {
-                    Double cost = Double.parseDouble(price);
-                    int stock = Integer.parseInt(total);
+            try {
+                Double cost = Double.parseDouble(price);
+                int stock = Integer.parseInt(total);
+                if (Pattern.matches("\\w+", name) && Pattern.matches("\\w+", brand)
+                        && Pattern.matches("\\w+", type) && Pattern.matches("\\w+", category)
+                        && cost > 0.0) {
+
                     String products = s.getProducts();
                     String arr[] = products.split(",");
                     boolean hasProduct = false;
@@ -145,15 +159,50 @@ public class ProductDAO extends JdbcDaoSupport{
                         return true;
                     }
                     else return false;
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return false;
                 }
-
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+                return false;
             }
         }
         return false;
+    }
+
+    public void decreaseStock(int productID){
+        // get poduct stock information
+        String sql0 = "select * from product where id='" + productID + "'";
+        List<Product> product_list = getJdbcTemplate().query(sql0,
+                new BeanPropertyRowMapper(Product.class));
+
+        int current_stock = product_list.get(0).getTotal();
+
+        // decrease 1
+        String sql1 = "update product set total = ? where id = ?";
+        getJdbcTemplate().update(sql1, Integer.toString(current_stock-1), productID);
+    }
+
+    public void updateProduct(int productID, String name, int total, float price){
+        String sql = "update product set name = ?, price = ?, total = ? where id = ?";
+        getJdbcTemplate().update(sql, name, price, total, productID);
+
+    }
+
+    public void updateLocation2Product(int productID, String location){
+        String sql = "update product set location = ? where id = ?";
+        getJdbcTemplate().update(sql, location, productID);
+    }
+
+    public String getLocationByID(int productID){
+        String sql0 = "select * from product where id='" + productID + "'";
+        List<Product> product_list = getJdbcTemplate().query(sql0,
+                new BeanPropertyRowMapper(Product.class));
+
+        Product p = product_list.get(0);
+        if(p == null) return null;
+        String location = p.getLocation();
+
+        return location;
     }
 
 }
@@ -175,6 +224,8 @@ class ProductMapper implements RowMapper<Product> {
         p.setTotal(rs.getInt("total"));
         p.setImg_path(rs.getString("img_path"));
         p.setSeller(rs.getString("seller"));
+        p.setLocation(rs.getString("location"));
+        p.setState(rs.getInt("state"));
 
         return p;
     }

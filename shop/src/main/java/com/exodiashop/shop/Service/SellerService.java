@@ -23,10 +23,22 @@ public class SellerService {
     public Seller getSellerById(int id) { return  sellerDAO.getSellerById(id);}
     public Seller getSellerByName(int id) { return  sellerDAO.getSellerById(id);}
     public List<Product> listProductsById(int id) { return  sellerDAO.listProductsById(id); }
+
     public String updateSellerProfile(String id, String name, String locations, String password){
         return  sellerDAO.updateSellerProfile(id, name, locations, password);
     }
+
     public boolean addSeller(String name, String locations, String password){ return sellerDAO.addSeller(name,locations,password);}
     public boolean deleteSeller(String id){return sellerDAO.deleteSeller(id);}
+
+    public String id2Name(int id){
+        return sellerDAO.id2Name(id);
+    }
+
+    public void add2wallet(int id, float amount){
+        sellerDAO.add2wallet(id, amount);
+    }
+
+    public boolean deleteStore(int id, String store){return sellerDAO.deleteStore(id, store);}
 
 }

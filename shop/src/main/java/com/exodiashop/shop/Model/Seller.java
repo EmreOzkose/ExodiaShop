@@ -18,6 +18,8 @@ public class Seller {
 
     private String locations;
 
+    private float wallet;
+
     public int getId() {
         return id;
     }
@@ -60,4 +62,11 @@ public class Seller {
 
     private String products;
 
+    public float getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(float wallet) {
+        this.wallet = wallet;
+    }
 }

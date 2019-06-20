@@ -1,7 +1,9 @@
 package com.exodiashop.shop.Service;
 
 import com.exodiashop.shop.DAO.UserDAO;
+import com.exodiashop.shop.Model.Order;
 import com.exodiashop.shop.Model.Product;
+import com.exodiashop.shop.Model.Seller;
 import com.exodiashop.shop.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -10,12 +12,19 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.context.ApplicationContext;
+import org.springframework.web.servlet.ModelAndView;
 
 @Service
 public class UserService {
 
     @Autowired
-    ProductService productService;
+    private ProductService productService;
+
+    @Autowired
+    private SellerService sellerService;
+
+    @Autowired
+    private OrderService orderService;
 
     UserDAO userDao;
 
@@ -63,6 +72,14 @@ public class UserService {
         return shopping_cart;
     }
 
+    public List<Integer> getShoppingCartByUsernameInteger(String username){
+        List<Product> shopping_cart = this.getShoppingCartByUsername(username);
+        List<Integer> shopping_cart_int = new ArrayList<>();
+        for (Product p : shopping_cart)
+            shopping_cart_int.add(p.getId());
+        return shopping_cart_int;
+    }
+
     public void add2cart(String username, String productID){
         userDao.add2cart(username, productID);
     }
@@ -74,11 +91,11 @@ public class UserService {
         return userDao.validateUser(username,password);
     }
 
-    public boolean check_username(String username) {
+    public Boolean check_username(String username) {
         return userDao.check_username(username);
     }
 
-    public boolean check_email(String email){
+    public Boolean check_email(String email){
         return userDao.check_email(email);
     }
 
@@ -86,14 +103,42 @@ public class UserService {
         userDao.register(user);
     }
 
-    public String deleteUser(String username, String password) {return userDao.deleteUser(username,password);}
-
-/*
-    public void add2cart(String username, int productID){
-        Product product = productService.getProductByID(productID);
-        getUserList().stream().filter(t -> t.getUsername().equals(username)).findFirst().get().getShoppingCart().add(product);
+    public void cleanShoppingCart(String username){
+        userDao.cleanShoppingCart(username);
     }
 
+    /* View Functions */
+    public ModelAndView userPage(ModelAndView mav, String username){
+        User user = getUserByUserName(username);
 
- */
+        mav.addObject("loggedUser", user);
+        mav.addObject("isEdit", 0);
+
+        if (user.getRole().equals("seller")) {
+            String arr[] = user.getUsername().split("\\.");
+            int seller_id = sellerService.getSellerById(Integer.parseInt(arr[0])).getId();
+            mav.addObject("product_list", productService.getProductBySellerId(seller_id));
+
+            Seller seller = sellerService.getSellerById(seller_id);
+            mav.addObject("seller", seller);
+
+        }
+        else if (user.getRole().equals("admin")){
+            mav.addObject("user_list", getUserList());
+            mav.addObject("product_list", productService.getProductList());
+            mav.addObject("orderList", orderService.getUnconfirmedOrderList());
+        }
+        else if (user.getRole().equals("customer")){
+            mav.addObject("orderList", orderService.getOrdersByUsername(username));
+            for (Order o : orderService.getOrdersByUsername(username))
+                System.out.println("id: " + o.getId() +"bool:"+o.isConfirmed());
+        }
+
+        mav.addObject("loggedUsername", username);
+
+        return mav;
+    }
+
+    public String deleteUser(String username) {return userDao.deleteUser(username);}
+
 }

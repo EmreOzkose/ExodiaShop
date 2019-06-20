@@ -1,3 +1,4 @@
+<%@ page import="com.exodiashop.shop.Service.CookieService" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
@@ -8,6 +9,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%
+    CookieService cookieService = new CookieService();
+    String loggedUsername = cookieService.getCookie(request, response, "loggedUsernameCookie");
+    pageContext.setAttribute("loggedUsername", loggedUsername);
+%>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -21,59 +29,7 @@
     <link href="/libs/font-awesome/css/font-awesome.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="/img/logos/favicon.ico">
-
-    <style>
-        .viewButton {
-            display: inline-block;
-            border-radius: 4px;
-            border: none;
-            text-align: left;
-            padding: 0px 20px;
-            transition: all 0.5s;
-            cursor: pointer;
-            margin: 0px 0px;
-            background-color: rgba(255, 255, 255, .0);
-        }
-
-    </style>
-    <style>
-
-        /* Style the tab */
-        .tab {
-            overflow: hidden;
-            border: 1px solid #ccc;
-            background-color: #f1f1f1;
-        }
-
-        /* Style the buttons that are used to open the tab content */
-        .tab button {
-            background-color: inherit;
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 16px;
-            transition: 0.3s;
-        }
-
-        /* Change background color of buttons on hover */
-        .tab button:hover {
-            background-color: #ddd;
-        }
-
-        /* Create an active/current tablink class */
-        .tab button.active {
-            background-color: #ccc;
-        }
-
-        /* Style the tab content */
-        .tabcontent {
-            display: none;
-            padding: 6px 12px;
-            border: 1px solid #ccc;
-            border-top: none;
-        }
-    </style>
+    <link href="/css/user.css" rel="stylesheet">
 
     <script>
         function openCity(evt, cityName) {
@@ -99,15 +55,24 @@
 
     </script>
 
-
 </head>
 <body>
 
+<% String message = (String)request.getAttribute("alertMsg");
+
+%>
+
+<script type="text/javascript">
+    var msg = "<%=message%>";
+    if (msg != "null")
+        alert(msg);
+</script>
 
 <div class="container">
 
     <jsp:include page="/components/header.jsp" />
     <jsp:include page="/components/navbar.jsp" />
+
     <div class="well well-small">
         <div class="row-fluid">
             <ul class="thumbnails">
@@ -115,25 +80,27 @@
             </ul>
 
 
-
-
             <!-- Tab links -->
             <div class="tab">
-                <button class="tablinks" onclick="openCity(event, 'London') " id="defaultOpen0">Profile Details</button>
+                <button class="tablinks" onclick="openCity(event, 'ProfileDetails') " id="defaultOpen0">Profile Details</button>
+                <c:if test="${loggedUser.role.equals('customer')}">
+                    <button class="tablinks" onclick="openCity(event, 'ShoppingHistory') " id="defaultOpen0">Shopping History</button>
+                </c:if>
                 <c:if test="${loggedUser.role.equals('seller')}">
+                    <button class="tablinks" onclick="openCity(event, 'SellerDetails') " id="defaultOpen1">Seller Profile</button>
                     <button class="tablinks" onclick="openCity(event, 'ProductTab') " id="defaultOpen1">Products</button>
-                    <button class="tablinks" onclick="openCity(event, 'Galler')">Add Product</button>
-                    <button class="tablinks" onclick="openCity(event, 'Rome') " >Orders</button>
+                    <button class="tablinks" onclick="openCity(event, 'AddProduct')">Add Product</button>
+                    <button class="tablinks" onclick="openCity(event, 'OrdersSeller') " >Orders</button>
                 </c:if>
                 <c:if test="${loggedUser.role.equals('admin')}">
                     <button class="tablinks" onclick="openCity(event, 'ProductTab') " id="defaultOpen1">Products</button>
                     <button class="tablinks" onclick="openCity(event, 'UserTab') " >Users</button>
+                    <button class="tablinks" onclick="openCity(event, 'OrdersAdmin') " >Orders</button>
+                    <button class="tablinks" onclick="openCity(event, 'GenerateSaleReport') " >Generate Sale Report</button>
                 </c:if>
             </div>
 
-
-
-            <div id="London" class="tabcontent">
+            <div id="ProfileDetails" class="tabcontent">
                 <div class = "profile-table">
                     <img src="${loggedUser.profilePhoto}">
                     <hr class="softn clr"/>
@@ -172,6 +139,120 @@
                     </div>
                 </div>
             </div>
+            <div id="SellerDetails" class="tabcontent">
+                <div class = "profile-table">
+                    <img src="${loggedUser.profilePhoto}">
+                    <hr class="softn clr"/>
+                    <div id="myTContent" class="tab-content tabWrapper">
+                        <div class="tab-pane fade active in" id="PrileTab">
+                            <c:choose>
+                                <c:when test="${isEdit == 1}">
+                                    <form id="loginForm" action="/sellers/updateSellerProfile/${loggedUser.username}" method="POST">
+                                        <table class="table table-striped">
+                                            <tbody>
+                                            <tr class="techSpecRow"><td class="techSpecTD1">Name: </td><td class="techSpecTD2"><input required="required" type="text" name="newName" value="${seller.name}" placeholder ="Enter new name" id="nme" /></td></tr>
+                                            <tr class="techSpecRow"><td class="techSpecTD1">Password:</td><td class="techSpecTD2"><input required="required" type="password" name="newPassword" value="${seller.password}" placeholder ="Enter new password" id="paord" /></td></tr>
+                                            <tr class="techSpecRow"><td class="techSpecTD1"></td><td class="techSpecTD2"><button id="lin" name="login">Apply</button></td></tr>
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </c:when>
+                                <c:otherwise>
+                                    <table class="table table-striped">
+                                        <tbody>
+                                        <tr class="techSpecRow"><td class="techSpecTD1">Name: </td><td class="techSpecTD2">${seller.name}</td></tr>
+                                        </tbody>
+                                    </table>
+                                    <form id="loginForm" action="/users/${loggedUser.username}/editProfile#SellerProfileTab" method="POST">
+                                        <p>  <button type="submit" class="shopBtn">> Edit Profile </button></p>
+                                    </form>
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="ShoppingHistory" class="tabcontent">
+                <div class = "profile-table">
+                    <hr class="softn clr"/>
+                    <div class="tab-pane fade active in" id="Prof">
+                        <c:choose>
+                            <c:when test="${orderList.size() > 0}">
+                                <table style="width: 100%">
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Products</th>
+                                        <th>${AdminConfirmation}</th>
+                                        <th>Finish the order</th>
+                                    </tr>
+                                    <c:forEach items="${orderList}" var="order">
+                                        <tr>
+                                            <td style="text-align: center">${order.getId()}</td>
+                                            <td>
+                                                <table style="width: 100%">
+                                                    <tr>
+                                                        <th>ProductID</th>
+                                                        <th>Product Page</th>
+                                                    </tr>
+                                                    <c:forEach items="${order.getProductIDs().split(',')}" var="p_id">
+                                                        <tr style="text-align: center">
+                                                            <td>${p_id}</td>
+                                                            <td>
+                                                                <form action="/product/${p_id}" method="post">
+                                                                    <button style="border: 0px">go to the page</button>
+                                                                    <input type="hidden" name="loggedUsername" value="${loggedUser.username}"/>
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </table>
+
+                                            </td>
+                                            <td>
+
+                                                <c:choose>
+                                                    <c:when test="${order.isConfirmed() == 1}">
+                                                        ${YES}
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        ${NO}
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </td>
+                                            <td>
+                                                <c:choose>
+                                                    <c:when test="${order.isConfirmed() == 1}">
+                                                        <c:choose>
+                                                            <c:when test="${order.isFinished() == 1}">
+                                                                ${OrderDone}
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <form action="/finishOrder/${order.getId()}" method="post">
+                                                                    <input type="hidden" value="${loggedUsername}" name="loggedUsername"/>
+                                                                    <button>confirm order is reach to you !</button>
+                                                                </form>
+                                                            </c:otherwise>
+                                                        </c:choose>
+
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        ${WaitConfirmation}
+                                                    </c:otherwise>
+                                                </c:choose>
+
+                                            </td>
+
+                                        </tr>
+                                    </c:forEach>
+                                </table>
+                            </c:when>
+                            <c:otherwise>
+                                <h2 style="text-align: center">There is not order. Let's buy something !</h2>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                </div>
+            </div>
             <div id="UserTab" class="tabcontent">
                 <table style="width:100%; text-align:left">
                     <tr>
@@ -186,7 +267,9 @@
                             <td>${user.username}</td>
 
                             <td>
-                                <form action="/DeleteUser/${user.getUsername()}" method="post">
+                                <form action="/DeleteUser" method="post">
+                                    <input type="hidden" value="${user.username}" name="deletedUser"/>
+                                    <input type="hidden" value="${loggedUsername}" name="loggedUsername"/>
                                     <button>X</button>
                                 </form>
                             </td>
@@ -199,47 +282,149 @@
             </div>
             <div id="ProductTab" class="tabcontent">
                 <table style="width:100%; text-align:left">
-                    <tr>
+                    <tr style="text-align: center;font-size: 20px;">
                         <th>Image</th>
-                        <th>Name</th>
-                        <th>Brand</th>
-                        <th>Category</th>
-                        <th>Number of Stock</th>
-                        <th>Price</th>
-                        <th></th>
-                        <th></th>
+                        <th>Informations</th>
+                        <th>Location</th>
+                        <th>Delete</th>
                     </tr>
 
                     <c:forEach items="${product_list}" var="product">
                         <tr>
-                            <td><img src="${product.img_path}" height="100px" width="100px"></td>
-                            <td>${product.name}</td>
-                            <td>${product.brand}</td>
-                            <td>${product.category}</td>
-                            <td>${product.total}</td>
-                            <td>${product.price}</td>
+                            <form action="/editProduct/${product.id}" method="post">
+                                <td><img src="${product.img_path}" height="100px" width="100px"></td>
+
+                                <td>
+                                    <table style="width: 100%;">
+                                        <tr>
+                                            <td>Name</td>
+                                            <td><input type="text" name="newName" placeholder="${product.name}" value="${product.name}" /></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Brand</td>
+                                            <td>${product.brand}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Category</td>
+                                            <td>${product.category}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Number of Stock</td>
+                                            <td><input type="text" name="newTotal" placeholder="${product.total}" value="${product.total}"/></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Price</td>
+                                            <td><input type="text" name="newPrice" placeholder="${product.price}" value="${product.price}" /></td>
+                                        </tr>
+                                    </table>
+                                    <p>
+                                        <button>edit</button>
+                                        <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
+                                    </p>
+
+                                </td>
+                            </form>
+
+                            <td>
+                                <form action="/addLocation/${product.id}#ProductTab" method="post">
+                                    <table>
+                                        <tr>
+                                            <p style="word-break: break-all; ">${product.location}</p>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="text" style="width: 100%;" name="newLocation" placeholder="" class="search-query span2"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <button>Add</button>
+                                                <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+
+                                <form action="/deleteLocation/${product.id}#ProductTab" method="post">
+                                    <table>
+                                        <tr>
+                                            <td><input type="text" style="width: 100%;" name="deletedLocation" placeholder="" class="search-query span2"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <button>delete</button>
+                                                <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </td>
+
                             <td>
                                 <form action="/deleteProduct/${product.id}" method="post">
                                     <button>X</button>
                                     <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
                                 </form>
                             </td>
-                            <td>
-                                <form action="/editProduct/${product.id}" method="post">
-                                    <button>edit</button>
-                                    <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
-                                </form>
-                            </td>
+
                         </tr>
+
+
+
                     </c:forEach>
 
                 </table>
 
             </div>
-            <div id="Rome" class="tabcontent">
+            <div id="OrdersSeller" class="tabcontent">
                 <p>List of orders</p>
             </div>
-            <div id="Galler" class="tabcontent">
+            <div id="OrdersAdmin" class="tabcontent">
+                    <c:choose>
+                        <c:when test="${orderList.size() > 0}">
+                            <table style="width: 100%">
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Products</th>
+                                    <th>Confirm</th>
+                                </tr>
+                                <c:forEach items="${orderList}" var="order">
+                                    <tr>
+                                        <td style="text-align: center">${order.getId()}</td>
+                                        <td>
+                                            <table style="width: 100%">
+                                                <tr>
+                                                    <th>ProductID</th>
+                                                    <th>Product Page</th>
+                                                </tr>
+                                                <c:forEach items="${order.getProductIDs().split(',')}" var="p_id">
+                                                    <tr style="text-align: center">
+                                                        <td>${p_id}</td>
+                                                        <td><a href="/product/${p_id}">go to the page</a></td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </table>
+
+                                        </td>
+                                        <td>
+                                            <form action="/confirmOrder/${order.getId()}" method="post">
+                                                <button>confirm</button>
+                                            </form>
+                                        </td>
+
+                                    </tr>
+                                </c:forEach>
+                            </table>
+                        </c:when>
+                        <c:otherwise>
+                            <h2 style="text-align: center">There is not unconfirmed item</h2>
+                        </c:otherwise>
+                    </c:choose>
+
+            </div>
+            <div id="AddProduct" class="tabcontent">
                 <form id="loorm" action="/addProduct/${loggedUser.username}" method="POST">
                     <table>
                         <tr>
@@ -304,7 +489,15 @@
 
             </div>
 
-        <script>
+            <div id="GenerateSaleReport" class="tabcontent">
+                <form action="/generateSaleReport" method="post">
+                    <button>Generate</button>
+                    <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
+                </form>
+            </div>
+
+            <!- Set default view of the page ->
+            <script>
             // Get the element with id="defaultOpen" and click on it
             var url = window.location.href;
             var arr = url.split('#');
@@ -316,6 +509,9 @@
                     document.getElementById("defaultOpen1").click();
                 }
                 else if (arr[1] == "ProfileTab"){
+                    document.getElementById("defaultOpen0").click();
+                }
+                else if (arr[1] == "SellerProfileTab"){
                     document.getElementById("defaultOpen0").click();
                 }
             }

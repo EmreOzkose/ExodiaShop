@@ -8,5 +8,6 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
     <import resource="Product-beans.xml"/>
     <import resource="Seller-beans.xml"/>
     <import resource="Order-beans.xml"/>
+    <import resource="Comment-beans.xml"/>
 
 </beans>

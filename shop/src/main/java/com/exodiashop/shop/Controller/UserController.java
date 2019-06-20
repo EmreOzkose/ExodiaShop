@@ -1,7 +1,9 @@
 package com.exodiashop.shop.Controller;
 
 
+import com.exodiashop.shop.Model.Order;
 import com.exodiashop.shop.Model.User;
+import com.exodiashop.shop.Service.OrderService;
 import com.exodiashop.shop.Service.ProductService;
 import com.exodiashop.shop.Service.SellerService;
 import com.exodiashop.shop.Service.UserService;
@@ -26,6 +28,9 @@ public class UserController {
     @Autowired
     private SellerService sellerService;
 
+    @Autowired
+    private OrderService orderService;
+
 
     @RequestMapping("/users")
     public List<User> getAllUsers() {
@@ -36,20 +41,7 @@ public class UserController {
     public ModelAndView viewUser(HttpServletRequest request, HttpServletResponse response, @PathVariable String username){
         ModelAndView mav = new ModelAndView("user");
 
-        User user = userService.getUserByUserName(username);
-
-        mav.addObject("loggedUser", user);
-        mav.addObject("isEdit", 0);
-
-        if (user.getRole().equals("seller")) {
-            String arr[] = user.getUsername().split("\\.");
-            int seller_id = sellerService.getSellerById(Integer.parseInt(arr[0])).getId();
-            mav.addObject("product_list", productService.getProductBySellerId(seller_id));
-        }
-        else if (user.getRole().equals("admin")){
-            mav.addObject("user_list", userService.getUserList());
-            mav.addObject("product_list", productService.getProductList());
-        }
+        mav = userService.userPage(mav, username);
 
         return mav;
     }

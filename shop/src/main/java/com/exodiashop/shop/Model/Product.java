@@ -19,6 +19,8 @@ public class Product {
     private String img_path;
     private int total;
     private String seller;
+    private String location;
+    private int state;
 
     public Product(){
 
@@ -125,5 +127,21 @@ public class Product {
 
     public void setSeller(String seller) {
         this.seller = seller;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 }

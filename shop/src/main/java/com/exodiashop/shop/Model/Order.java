@@ -1,27 +1,25 @@
 package com.exodiashop.shop.Model;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import com.exodiashop.shop.Service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 
 public class Order {
+
+    @Autowired
+    ProductService productService;
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
     private String Customer;
     private String ProductIDs;
-    private boolean isConfirmed;
-    private boolean isFinished;
+    private int isConfirmed;
+    private int isFinished;
 
     public int getId() {
         return id;
@@ -47,19 +45,19 @@ public class Order {
         ProductIDs = productIDs;
     }
 
-    public boolean isConfirmed() {
+    public int isConfirmed() {
         return isConfirmed;
     }
 
-    public void setConfirmed(boolean confirmed) {
+    public void setConfirmed(int confirmed) {
         isConfirmed = confirmed;
     }
 
-    public boolean isFinished() {
+    public int isFinished() {
         return isFinished;
     }
 
-    public void setFinished(boolean finished) {
+    public void setFinished(int finished) {
         isFinished = finished;
     }
 }

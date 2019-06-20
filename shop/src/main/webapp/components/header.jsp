@@ -22,11 +22,11 @@
     if( cookies != null ) {
         for (int i = 0; i < cookies.length; i++) {
             cookie = cookies[i];
-            System.out.println(cookie.getName());
+            //System.out.println(cookie.getName());
 
             if (cookie.getName().equals("lang"))
                 lang = cookie.getValue( );
-            else if (cookie.getName().equals("loggedUsername"))
+            else if (cookie.getName().equals("loggedUsernameCookie"))
                 loggedUsername = cookie.getValue( );
 
         }
@@ -58,7 +58,8 @@
 
         <div class="span4">
             <h1>
-                <form action="/dashboard" method="post">
+                <!--
+                                    <form action="/dashboard" method="post">
 
                     <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
                     <button style="background-color: Transparent;border: none;">
@@ -66,6 +67,12 @@
                     </button>
 
                 </form>
+                -->
+
+                <a href="/dashboard">
+                    <img src="/img/logos/exodia-cursive.png" alt="exodia logo">
+                </a>
+
 
             </h1>
         </div>
@@ -78,14 +85,14 @@
             <p><br> <strong>          </strong><br><br></p>
 
             <form action="/setLang/en" method="post">
-                <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
+                <input type="hidden"  name="loggedUsername" value="${loggedUsername}" placeholder="Search" class="search-query span2">
                 <button style="background-color: Transparent;border: none;">
                     <span class="btn btn-mini">EN</span>
                 </button>
             </form>
 
             <form action="/setLang/tr" method="post">
-                <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
+                <input type="hidden"  name="loggedUsername" value="${loggedUsername}" placeholder="Search" class="search-query span2">
                 <button style="background-color: Transparent;border: none;">
                     <span class="btn btn-mini">TR</span>
                 </button>
@@ -95,7 +102,7 @@
             <c:if test="${loggedUser!=null && loggedUser.role == 'customer'}">
                 <form action="/shoppingCart" method="post">
 
-                    <input type="hidden"  name="loggedUsername" value="${loggedUser.username}" placeholder="Search" class="search-query span2">
+                    <input type="hidden"  name="loggedUsername" value="${loggedUsername}" placeholder="Search" class="search-query span2">
                     <button style="background-color: Transparent;border: none;">
                         <span class="btn btn-mini"><span class="icon-shopping-cart"></span></span>
                     </button>

@@ -1,6 +1,9 @@
 package com.exodiashop.shop.DAO;
 
 import com.exodiashop.shop.Model.Order;
+import com.exodiashop.shop.Model.Product;
+import com.exodiashop.shop.Model.Seller;
+import com.exodiashop.shop.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
@@ -16,18 +19,21 @@ public class OrderDAO extends JdbcDaoSupport{
     @Autowired
     DataSource datasource;
 
-    public List<Order> getAllOrder() {
-        String sql = "select * from order";
-        List<Order> order_list = getJdbcTemplate().query(sql,new BeanPropertyRowMapper(Order.class));
-
-        return order_list;
-    }
-
+    /*
+    customer process
+     */
     public void placeAnOrder(String username, String shoppingCart){
         //int added_order_ind = Integer.parseInt(getJdbcTemplate().queryForObject("SELECT id FROM order ORDER BY id DESC LIMIT 1;", new Object[] {}, String.class));
 
         String sql = "insert into `order` (Customer, ProductIDs) values (?,?)";
         getJdbcTemplate().update(sql, username, shoppingCart);
+    }
+
+    public List<Order> getAllOrder() {
+        String sql = "select * from order";
+        List<Order> order_list = getJdbcTemplate().query(sql,new BeanPropertyRowMapper(Order.class));
+
+        return order_list;
     }
 
     public String changeconfirm(String customer,String productid,boolean isconfirmed) {
@@ -39,22 +45,53 @@ public class OrderDAO extends JdbcDaoSupport{
             return "SUCCESS";
         }
     }
+
+    /*
+    Admin process
+     */
+    public List<Order> getUnconfirmedOrderList(){
+        String sql = "select * from `order` where isConfirmed=0";
+        List<Order> orderList = getJdbcTemplate().query(sql, new BeanPropertyRowMapper(Order.class));
+
+
+        return orderList;
+    }
+
+    /*
+    admin process
+     */
+    public void confirmOrder(int orderID){
+        String sql = "update `order` set isConfirmed=1 where id = ?";
+        getJdbcTemplate().update(sql, orderID);
+    }
+
+    public void finisOrder(int orderID){
+        String sql = "update `order` set isFinished=1 where id = ?";
+        getJdbcTemplate().update(sql, orderID);
+    }
+
+    /*
+    customer process
+     */
+    public List<Order> getOrdersByUsername(String username){
+        String sql = "select * from `order` where Customer='" + username + "'";
+        List<Order> orderList = getJdbcTemplate().query(sql, new OrderMapper());
+
+        return orderList;
+    }
+
 }
-/*    public void update(Integer id, Integer age){
-      String SQL = "update Student set age = ? where id = ?";
-      jdbcTemplateObject.update(SQL, age, id);
-      System.out.println("Updated Record with ID = " + id );
-      return;
-   }*/
 
 class OrderMapper implements RowMapper<Order> {
 
     public Order mapRow(ResultSet rs, int arg1) throws SQLException {
         Order o = new Order();
-        o.setCustomer(rs.getString("customer"));
-        o.setProductIDs(rs.getString("productid"));
-        o.setConfirmed(rs.getBoolean("confirmed"));
-        o.setFinished(rs.getBoolean("finished"));
+
+        o.setId(rs.getInt("id"));
+        o.setCustomer(rs.getString("Customer"));
+        o.setProductIDs(rs.getString("ProductIDs"));
+        o.setConfirmed(rs.getInt("isConfirmed"));
+        o.setFinished(rs.getInt("isFinished"));
 
         return o;
     }

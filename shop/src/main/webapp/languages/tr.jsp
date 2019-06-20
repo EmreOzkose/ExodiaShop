@@ -16,3 +16,9 @@
 <c:set var = "Products" scope = "session" value = "Ürünler"/>
 <c:set var = "Payment" scope = "session" value = "Ödeme"/>
 <c:set var = "Add2Cart" scope = "session" value = "Sepete ekle"/>
+<c:set var = "Seller" scope = "session" value = "Satıcı"/>
+<c:set var = "YES" scope = "session" value = "EVET"/>
+<c:set var = "NO" scope = "session" value = "HAYIR"/>
+<c:set var = "WaitConfirmation" scope = "session" value = "Admin onayı için bekleyiniz"/>
+<c:set var = "AdminConfirmation" scope = "session" value = "Admin onayı"/>
+<c:set var = "OrderDone" scope = "session" value = "Sipariş tamamlandı"/>

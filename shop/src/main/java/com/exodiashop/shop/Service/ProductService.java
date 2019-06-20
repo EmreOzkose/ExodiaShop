@@ -42,17 +42,33 @@ public class ProductService {
     }
 
     public List<Product> getProductBySellerId(int seller_id){
-        System.out.println("in service: "+seller_id);
         return productDAO.getProductBySellerId(seller_id);
     }
 
-    public void  addProduct(Seller s , String name, String gender, String brand, String color, String type, String category, String size, String price, String total, String img_path) {
+    public void  addProduct(Seller s , String name, String gender, String brand, String color, String type, String category
+            , String size, String price, String total, String img_path) {
         productDAO.addProduct(s,name, gender, brand, color, type, category, size, price, total, img_path);
 
     }
 
     public void deleteProductByID(int id){
-        boolean return_val = productDAO.deleteProduct(id);
+      productDAO.deleteProduct(id);
+    }
+
+    public void decreaseStock(int productID){
+        productDAO.decreaseStock(productID);
+    }
+
+    public void updateProduct(int productID, String name, int total, float price){
+        productDAO.updateProduct(productID, name, total, price);
+    }
+
+    public void updateLocation2Product(int productID, String location){
+        productDAO.updateLocation2Product(productID, location);
+    }
+
+    public String getLocationByID(int productID){
+        return productDAO.getLocationByID(productID);
     }
 
 }

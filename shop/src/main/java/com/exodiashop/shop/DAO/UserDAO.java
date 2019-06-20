@@ -15,15 +15,20 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class UserDAO extends JdbcDaoSupport{
 
     @Autowired
     DataSource datasource;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+
     public void register(User user) {
         String sql = "insert into user values(?,?,?,?,?,?,?,?,?,?,?,?)";
-
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         /*blocks duplicate 0len input*/
         if(user.getPhonenumber().length()==0){
             user.setPhonenumber(null);
@@ -47,7 +52,8 @@ public class UserDAO extends JdbcDaoSupport{
     public User getUserByUsername(String username) {
         String sql = "select * from user where username='" + username + "'";
 
-        List<User> user_list = getJdbcTemplate().query(sql,new BeanPropertyRowMapper(User.class));
+        List<User> user_list = getJdbcTemplate().query(sql,
+                new BeanPropertyRowMapper(User.class));
 
         return user_list.size() > 0 ? user_list.get(0) : null;
     }
@@ -60,7 +66,8 @@ public class UserDAO extends JdbcDaoSupport{
     public String getShoppingCartByUsername(String username){
         String sql = "SELECT shoppingCart FROM user WHERE username=?";
 
-        String shoppingCart = (String)getJdbcTemplate().queryForObject(   sql, new Object[] { username }, String.class);
+        String shoppingCart = (String)getJdbcTemplate().queryForObject(
+                sql, new Object[] { username }, String.class);
 
         return shoppingCart;
     }
@@ -100,7 +107,12 @@ public class UserDAO extends JdbcDaoSupport{
         }
 
     }
-    /*for login system*/
+
+    public void cleanShoppingCart(String username){
+        String sql = "update user set shoppingCart='' where username = ?";
+        getJdbcTemplate().update(sql, username);
+    }
+
     public User validateUser(String username, String password) {
         String sql = "select * from user where username='" + username + "' and password='" + password + "'";
 
@@ -125,12 +137,12 @@ public class UserDAO extends JdbcDaoSupport{
         return users.size() > 0 ? true : false;
     }
 
-    public String deleteUser(String username, String password) {
-        String sql ="delete from user where username ='"+username+"' and where password ='"+password+"'";
+    public String deleteUser(String username) {
+        String sql ="delete from user where username ='"+username+"'";
 
         int update = getJdbcTemplate().update(sql);
         if (update == 0) {
-            return "Failed";
+            return "FAIL";
         } else {
             return "SUCCESS";
         }

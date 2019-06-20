@@ -2,7 +2,8 @@
 
 <%
     // Create cookies for first and last names.
-    Cookie loggedUsernameCookie = new Cookie("loggedUsernameCookie", request.getParameter("loggedUsername"));
+    String loggedUsername = request.getParameter("loggedUsername");
+    Cookie loggedUsernameCookie = new Cookie("loggedUsernameCookie", loggedUsername);
 
     String lang_s = request.getParameter("lang");
     Cookie lang = new Cookie("lang", lang_s);
@@ -12,6 +13,8 @@
 
     response.addCookie( loggedUsernameCookie );
     response.addCookie( lang );
+
+    pageContext.setAttribute("loggedUsername", loggedUsername);
 %>
 
 
@@ -26,6 +29,10 @@
     <c:if test="${lang.equals('en')}">
         <jsp:include page="/languages/en.jsp" />
     </c:if>
+    <c:if test="${lang == null}">
+        <jsp:include page="/languages/en.jsp" />
+    </c:if>
+
 
     <title>${dashboard_text}</title>
 
@@ -36,10 +43,23 @@
     <link href="/libs/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link rel="shortcut icon" href="/img/logos/favicon.ico">
 
+    <script type='text/javascript'>
+        (function(){
+            if( window.localStorage ){
+                if( !localStorage.getItem('firstLoad') ){
+                    localStorage['firstLoad'] = true;
+                    window.location.reload();
+                }
+                else
+                    localStorage.removeItem('firstLoad');
+            }
+        })();
+
+    </script>
 </head>
 <body>
 
-
+${lang}
 <div class="container">
     <jsp:include page="/components/header.jsp" />
     <jsp:include page="/components/navbar.jsp" />

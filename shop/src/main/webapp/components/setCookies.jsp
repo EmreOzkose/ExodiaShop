@@ -12,7 +12,7 @@
     if( cookies != null ) {
         for (int i = 0; i < cookies.length; i++) {
             cookie = cookies[i];
-            System.out.println(cookie.getName());
+            //System.out.println(cookie.getName());
 
             if (cookie.getName().equals("lang"))
                 lang = cookie.getValue( );
