@@ -13,6 +13,12 @@ Exodia is an online shopping system where people can buy or sellers can sell any
 
 
 # Visual Assets
+<img src="images/GUI screen shots/exodia-signup.PNG" align="middle" />
+<img src="images/GUI screen shots/exodia-signin.PNG" align="middle" />
+<img src="images/GUI screen shots/exodia-mainpage-loggedin.PNG" align="middle" />
+<img src="images/GUI screen shots/exodia-productdetail.PNG" align="middle" />
+<img src="images/GUI screen shots/exodia-userpage.PNG" align="middle" />
+<img src="images/GUI screen shots/exodia-cardpage.PNG" align="middle" />
 
 # Team Members
 | Role | Name | Github Account | Contact |
