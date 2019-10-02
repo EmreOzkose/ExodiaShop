@@ -6,7 +6,8 @@ Exodia is an online shopping system where people can buy or sellers can sell any
 - Database - MySQL
 - MVC Pattern
 
-<img src="images/architecture_notebook_tpl section 6 MVC.jpg"/>
+<img src="images/architecture_notebook_tpl section 6 MVC.jpg" align="middle" />
+<img src="architecture_notebook_tpl section 2 adlı dosyanın kopyası.jpg" align="middle" />
 
 
 # Visual Assets
