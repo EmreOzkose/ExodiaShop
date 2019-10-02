@@ -24,8 +24,8 @@ Exodia is an online shopping system where people can buy or sellers can sell any
 | Role | Name | Github Account | Contact |
 | --- | --- | --- | --- |
 | Project Manager | Yunus Emre Özköse | @EmreOzkose | yunusemreozkose@gmail.com |
-| Tester | Fatma Nisa Hopcu | | |
-| Configuration Manager | Enes Furkan Çiğdem | | |
-| Software Architect | Mehmet Taha Usta | | |
-| Analyst | Ezgi Naz Güngör | | |
+| Tester | Fatma Nisa Hopcu | @fnisahopcu | |
+| Configuration Manager | Enes Furkan Çiğdem | @Enescigdem | |
+| Software Architect | Mehmet Taha Usta | @MTUSTA | |
+| Analyst | Ezgi Naz Güngör | @ezgigungor | |
 
