@@ -28,5 +28,5 @@ Exodia is an online shopping system where people can buy or sellers can sell any
 | Tester | Fatma Nisa Hopcu | @fnisahopcu | |
 | Configuration Manager | Enes Furkan Çiğdem | @Enescigdem | |
 | Software Architect | Mehmet Taha Usta | @MTUSTA | |
-| Analyst | Ezgi Naz Güngör | @ezgigungor | |
+| Analyst | Ezgi Naz Güngör | @ezgigungor | ezgigungor114@gmail.com |
 
