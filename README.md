@@ -13,6 +13,7 @@ Exodia is an online shopping system where people can buy or sellers can sell any
 
 
 # Visual Assets
+* These screen shots may be from previous version
 <img src="images/GUI screen shots/exodia-signup.PNG" align="middle" />
 <img src="images/GUI screen shots/exodia-signin.PNG" align="middle" />
 <img src="images/GUI screen shots/exodia-mainpage-loggedin.PNG" align="middle" />
